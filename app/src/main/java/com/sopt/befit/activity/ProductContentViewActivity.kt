@@ -6,7 +6,7 @@ import android.support.v4.app.DialogFragment
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.befit.Fragment.SizeCheckLoginDialogFragment
-import com.sopt.befit.R.layout.dl_size_check_login_fragment
+import com.sopt.befit.R
 import kotlinx.android.synthetic.main.dl_size_check_login_fragment.*
 import org.json.JSONObject
 
