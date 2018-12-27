@@ -1,9 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MySizeAddActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/layout_my_size_add_top"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_my_size_add_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="내 사이즈 추가" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_my_size_add_p_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_my_size_add_top"
+        android:text="조던 스포츠웨어 에어 티" />
+
+    <ImageView
+        android:id="@+id/img_my_size_add_p_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_my_size_add_p_name"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_my_size_add_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_my_size_add_p_img"
+        android:text="사이즈 선택" />
+
+    <ImageView
+        android:id="@+id/img_my_size_add_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_my_size_add_select"
+        android:layout_marginLeft="78dp"
+        android:layout_marginTop="47dp"
+        android:layout_toRightOf="@id/tv_my_size_add_select"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/img_my_size_add_m"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_my_size_add_select"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="47dp"
+        android:layout_toRightOf="@id/img_my_size_add_s"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/img_my_size_add_l"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_my_size_add_select"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="47dp"
+        android:layout_toRightOf="@id/img_my_size_add_m"
+        android:src="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/btn_my_size_add_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_my_size_add_m"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="192dp"
+        android:background="#000000"
+        android:text="추가"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>
