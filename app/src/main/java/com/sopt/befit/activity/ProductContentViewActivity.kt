@@ -1,9 +1,8 @@
-package com.sopt.befit
+package com.sopt.befit.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.befit.Fragment.SizeCheckLoginDialogFragment
