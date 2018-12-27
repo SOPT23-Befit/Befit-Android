@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/btn_rv_item_jjim_product"
+    android:layout_width="160dp"
+    android:layout_height="240dp">
+
+    <ImageView
+        android:id="@+id/img_rv_item_jjim_product_main"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_rv_item_jjim_product_b_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_rv_item_jjim_product_main"
+        android:layout_alignParentStart="true"
+        android:lineSpacingExtra="0.5sp"
+        android:text="UNIQLO"
+        android:textColor="#000000"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_rv_item_jjim_product_p_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_rv_item_jjim_product_b_name"
+        android:layout_alignParentStart="true"
+        android:lineSpacingExtra="0.5sp"
+        android:text="투버튼 롱코트"
+        android:textColor="#000000"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/tv_rv_item_jjim_product_p_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_rv_item_jjim_product_p_name"
+        android:layout_alignParentStart="true"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv_rv_item_jjim_product_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_rv_item_jjim_product_b_name"
+        android:layout_alignParentEnd="true"
+        android:text="♥" />
+
+</RelativeLayout>
