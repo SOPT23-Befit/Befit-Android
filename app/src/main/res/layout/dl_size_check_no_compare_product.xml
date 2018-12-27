@@ -44,8 +44,9 @@
         android:layout_below="@id/tv_size_check_no_compare_text2"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
+        android:id="@+id/btn_dl_size_check_add_cloth"
         >
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_size_check_no_compare_add_cloth"
             android:layout_width="36dp"
             android:layout_height="36dp"

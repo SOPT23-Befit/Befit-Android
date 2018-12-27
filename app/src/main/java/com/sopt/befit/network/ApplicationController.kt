@@ -1,8 +1,6 @@
-package com.sopt.befit.Fragment
+package com.sopt.befit.network
 
 import android.app.Application
-import android.app.IntentService
-import com.sopt.befit.network.NetworkService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
