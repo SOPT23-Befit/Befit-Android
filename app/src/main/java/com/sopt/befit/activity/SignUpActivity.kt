@@ -1,7 +1,8 @@
-package com.sopt.befit
+package com.sopt.befit.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.sopt.befit.R
 
 class SignUpActivity : AppCompatActivity() {
 
