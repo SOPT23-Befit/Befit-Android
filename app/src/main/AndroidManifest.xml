@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.AddMySizeBrandPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,14 +18,14 @@
         </activity>
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.ProductContentViewActivity" />
-        <activity android:name=".activity.AddMySize"></activity>
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SearchForGoods" />
         <activity android:name=".activity.SearchForBrands" />
         <activity android:name=".activity.InputInfo" />
-        <activity android:name=".activity.ProductContentViewActivity"></activity>
-        <activity android:name=".activity.BrandMainActivity"></activity>
-        <activity android:name=".activity.JjimActivity"></activity>
-        <activity android:name=".activity.MySizeAddActivity"></activity>
+        <activity android:name=".activity.BrandMainActivity" />
+        <activity android:name=".activity.JjimActivity" />
+        <activity android:name=".activity.MySizeAddActivity" />
+        <activity android:name=".activity.AddMySizeGoodsPageActivity"></activity>
     </application>
 
 </manifest>
