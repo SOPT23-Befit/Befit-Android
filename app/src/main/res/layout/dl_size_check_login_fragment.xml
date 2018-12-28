@@ -39,7 +39,9 @@
                 android:layout_marginLeft="200dp"
                 android:text="자동로그인"
                 android:textColor="#797979"
+
                 android:textSize="10sp" />
+
 
             <ImageButton
                 android:layout_width="32dp"
