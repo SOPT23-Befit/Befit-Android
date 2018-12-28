@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.sopt.befit.R
+
 import com.sopt.befit.activity.AddMySizeBrandPageActivity
 import com.sopt.befit.activity.AddMySizeGoodsPageActivity
+
 import com.sopt.befit.data.BrandData
 import org.jetbrains.anko.startActivity
 
@@ -25,10 +27,14 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
         holder.name.text = dataList[position].name
 
         holder.btn.setOnClickListener {
+
             (ctx as AddMySizeBrandPageActivity).brandBoxVisibleController(dataList[position].name)
         }
         holder.btn.setOnClickListener {
             (ctx as AddMySizeBrandPageActivity).startActivity<AddMySizeGoodsPageActivity>()
+
+            
+
         }
 
     }
