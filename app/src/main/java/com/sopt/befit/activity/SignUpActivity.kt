@@ -61,7 +61,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         networkservice = ApplicationController.instance.networkService
     }
     fun postUserCreate(username: String, userpw: String, useremail:String, userbirth: String){
-        
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
