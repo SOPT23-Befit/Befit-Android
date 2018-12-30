@@ -31,6 +31,17 @@ class SizeCheckLoginDialogFragment() : DialogFragment() {
     val datalist : ArrayList<ClosetData> by lazy {
         ArrayList<ClosetData>()
     }
+    var email : String? = null
+    var password : String? = null
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?. let {
+            email= it.getString("email")
+            password =it.getString("password")
+        }
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = inflater.inflate(R.layout.dl_size_check_login_fragment ,container,false)
         return view

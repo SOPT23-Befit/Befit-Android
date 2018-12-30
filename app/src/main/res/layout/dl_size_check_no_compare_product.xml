@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:minHeight="300dp"
+    android:minWidth="360dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="328dp"
     android:layout_height="486dp"
