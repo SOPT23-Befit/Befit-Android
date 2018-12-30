@@ -8,7 +8,7 @@ import android.widget.RelativeLayout
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.R
-import kotlinx.android.synthetic.main.content_aaaamain.*
+
 
 class MainActivity : AppCompatActivity() {
     val networkServie: NetworkService by lazy {
