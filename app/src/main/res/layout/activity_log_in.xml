@@ -41,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="이메일"
+                android:background="@null"
                 android:ems="10"
                 android:background="@null"
                 android:layout_centerVertical="true"/>
@@ -75,6 +76,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="0dp"
                 android:layout_toRightOf="@id/iv_log_in_pw"
+                android:background="@null"
                 android:ems="10"
                 android:background="@null"
                 android:gravity="center_vertical"
