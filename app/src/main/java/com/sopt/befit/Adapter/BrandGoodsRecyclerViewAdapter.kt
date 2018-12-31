@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.sopt.befit.BrandData
+import com.sopt.befit.R
 import com.sopt.befit.data.BrandData
 
 class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<BrandGoodsRecyclerViewAdapter.Holder>() {
@@ -22,7 +22,7 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
         holder.name.text = dataList[position].name
 
         holder.btn.setOnClickListener {
-            (ctx as BrandData).brandBoxVisibleController(dataList[position].name)
+            //(ctx as BrandData).brandBoxVisibleController(dataList[position].name)
         }
 
 
