@@ -33,7 +33,6 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
         holder.btn.setOnClickListener {
             (ctx as AddMySizeBrandPageActivity).startActivity<AddMySizeGoodsPageActivity>()
 
-            
 
         }
 
@@ -44,6 +43,4 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
         val btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_brand_whole_box) as RelativeLayout
 
     }
-
 }
-
