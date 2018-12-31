@@ -1,82 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:minHeight="300dp"
+    android:minWidth="360dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="328dp"
+    android:layout_height="486dp"
     android:orientation="vertical"
     >
 
     <ImageView
         android:id="@+id/iv_size_check_no_compare__example_cloth"
-        android:layout_width="100dp"
+        android:layout_width="157dp"
 
-        android:layout_height="180dp"
+        android:layout_height="169dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
 
-        android:layout_marginTop="134dp"
+        android:layout_marginTop="63dp"
         android:src="@drawable/buttonround" />
     <TextView
         android:id="@+id/tv_size_check_no_compare_text1"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/iv_size_check_no_compare__example_cloth"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_width="244dp"
+        android:layout_marginTop="31dp"
         android:layout_height="wrap_content"
         android:text="비교할 옷의 정보가 없습니다."
-        android:textSize="20dp"
+        android:gravity="center"
+        android:textSize="16sp"
         android:textColor="#191919"
         />
     <TextView
         android:id="@+id/tv_size_check_no_compare_text2"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/tv_size_check_no_compare_text1"
-        android:layout_width="wrap_content"
+        android:layout_width="244dp"
         android:layout_height="wrap_content"
         android:text="새로운 옷의 정보를 추가하시겠습니까?"
-        android:textSize="20dp"
+        android:textSize="15sp"
         android:textColor="#191919"
         />
 
     <LinearLayout
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="70dp"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_size_check_no_compare_text2"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
         android:id="@+id/btn_dl_size_check_add_cloth"
+        android:gravity="center"
         >
         <ImageView
             android:id="@+id/ib_size_check_no_compare_add_cloth"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginLeft="8dp"
             android:src="@mipmap/ic_launcher"
             />
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_width="136dp"
+            android:layout_height="17dp"
             android:layout_marginLeft="16dp"
             android:text="옷 정보 추가 하기"
-            android:textSize="20dp"
+            android:textSize="14sp"
             android:textColor="#191919"
             />
 
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="42dp"
         android:background="#000000"
         android:layout_alignParentBottom="true"
 
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="17dp"
             android:layout_centerInParent="true"
             android:text="취소"
             android:textColor="#ffffff"
-            android:textSize="20dp"
+            android:textSize="14sp"
             />
     </RelativeLayout>
 </RelativeLayout>

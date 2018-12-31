@@ -33,7 +33,9 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
         holder.btn.setOnClickListener {
             (ctx as AddMySizeBrandPageActivity).startActivity<AddMySizeGoodsPageActivity>()
 
+            
 
+        }
 
         }
 

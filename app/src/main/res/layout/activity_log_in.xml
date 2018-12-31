@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LogInActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="befit"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_log_in_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+
+            <EditText
+                android:id="@+id/et_log_in_email"
+                android:layout_toRightOf="@id/iv_log_in_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="이메일"
+                android:ems="10"
+                android:background="@null"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000">
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            >
+
+            <ImageView
+                android:id="@+id/iv_log_in_pw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                />
+
+            <EditText
+                android:id="@+id/et_log_in_pw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:layout_toRightOf="@id/iv_log_in_pw"
+                android:ems="10"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="비밀번호" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000">
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_log_in_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:textColor="#6f5ce5"
+            android:text="회원가입"/>
+        <Button
+            android:id="@+id/btn_log_in_find_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:textColor="#6f5ce5"
+            android:text="비밀번호 찾기"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_log_in_confirm"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:text="로그인"
+        android:background="#000000"
+        android:textColor="#ffffff"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:layout_gravity="center" />
+    <Button
+        android:id="@+id/btn_log_in_just_look"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="그냥 둘러볼래요"
+        android:background="#ffffff"
+        android:textColor="#6f5ce5"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
