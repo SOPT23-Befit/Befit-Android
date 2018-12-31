@@ -15,7 +15,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-   </activity>
+        </activity>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.ProductContentViewActivity" />
@@ -25,9 +25,11 @@
         <activity android:name=".activity.BrandMainActivity" />
         <activity android:name=".activity.JjimActivity" />
         <activity android:name=".activity.MySizeAddActivity" />
-        <activity android:name=".activity.AddMySizeGoodsPageActivity"></activity>
-
-
+        <activity android:name=".activity.AddMySizeGoodsPageActivity" />
+        <activity android:name=".activity.SelectBrandActivity" />
+        <activity android:name=".activity.SearchEmailActivity" />
+        <activity android:name=".activity.ResetPasswordActivity" />
+        <activity android:name=".activity.SearchPasswordActivity"></activity>
     </application>
 
 </manifest>
