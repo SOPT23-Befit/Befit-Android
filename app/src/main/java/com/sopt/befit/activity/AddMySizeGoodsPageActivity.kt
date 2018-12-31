@@ -62,4 +62,5 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         //통신 성공했을때, BrandGoodsRecyclerViewAdapter.datalist에 통신에 대한 데이터를 넣어준 다음 notify시켜주면 된다.
         //searchKeyWord 여기에 검색어가 담겨있으니까, 통신할때 이 값을 넘겨주면 됨!!!
     }
+
 }
