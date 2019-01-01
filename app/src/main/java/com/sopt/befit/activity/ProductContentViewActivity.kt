@@ -12,16 +12,17 @@ import com.sopt.befit.R
 class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_content_view)
-
         setViewClickListener()
         //윤환이형 답
 //        val sizecheckloginDialog : DialogFragment = SizeCheckLoginDialogFragment()
 //        sizecheckloginDialog.show(supportFragmentManager,"loginDialog")
 //        btn_dl_size_check_login.setOnClickListener {
     }
+
 
     private fun setViewClickListener() {
 
@@ -34,10 +35,7 @@ class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
             val builder = SizeCheckLoginDialogFragment()
             var fm = supportFragmentManager
             builder.show(fm, "SizeCheckLogin")
-
-
         }
-
     }
 }
 
