@@ -68,7 +68,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/search"
             android:background="@null"
-            android:text="찾고 계신 상품이 무엇인가요?" />
+            android:hint="찾고 계신 상품이 무엇인가요?" />
     </RelativeLayout>
 
     <RelativeLayout

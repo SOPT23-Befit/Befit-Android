@@ -22,7 +22,6 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //메인 사진 띄우기
         holder.b_name.text = dataList[position].b_name
-
         holder.item_btn.setOnClickListener {
             //넘어간다
         }
@@ -32,7 +31,6 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
         val main: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_brand_main) as ImageView
         val heart: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_brand_heart) as ImageView
         val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_brand_b_name) as TextView
-
         val item_btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_item_jjim_brand) as RelativeLayout
     }
 }

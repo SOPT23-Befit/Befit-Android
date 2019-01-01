@@ -30,7 +30,9 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 
+
 class SizeCheckLoginDialogFragment() : DialogFragment(),View.OnClickListener {
+
     val networkServie: NetworkService by lazy{
         ApplicationController.instance.networkService
     }
@@ -70,6 +72,35 @@ class SizeCheckLoginDialogFragment() : DialogFragment(),View.OnClickListener {
         super.onActivityCreated(savedInstanceState)
 
     }
+
+
+    private fun getLoginResponse(){
+        if(et_dl_size_check_login_email.text.toString().isNotEmpty() && et_dl_size_check_login_pw.text.toString().isNotEmpty()){
+            dl_input_email = et_dl_size_check_login_email.text.toString()
+            dl_input_pw = et_dl_size_check_login_pw.text.toString()
+            val jsonObject: JSONObject = JSONObject()
+
+            jsonObject.put("email",dl_input_email)
+            jsonObject.put("password",dl_input_pw)
+            val gsonObject : JsonObject= JsonParser().parse(jsonObject.toString()) as JsonObject
+
+
+
+            val postLoginResponse = networkServie.postLoginResponse("application/json",gsonObject)
+            postLoginResponse.enqueue(object:retrofit2.Callback<PostLoginResponse>{
+                override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
+                    Log.e("Login 실패",t.toString())
+                }
+
+                override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
+                    if(response.isSuccessful){
+                        val token = response.body()!!.data.token
+                        SharedPreferenceController.setAuthorization(activity!!, token)
+                        toast(SharedPreferenceController.getAuthorization(activity!!))
+                        //1.등록 옷 정보가 있으면 옷 비교 dialog로
+                        //2.등록 옷 정보가 없으면 옷 추가 dialog로
+                        if(datalist.size == 0) { //등록 옷 정보가 없다면
+                            //startActivity<>()
 
 
 
