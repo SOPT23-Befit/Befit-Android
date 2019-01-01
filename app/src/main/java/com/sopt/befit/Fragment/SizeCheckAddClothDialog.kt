@@ -11,7 +11,7 @@ import android.view.View.inflate
 import android.view.ViewGroup
 import com.sopt.befit.R
 
-class SizeCheckAddClothDialogFragment(): DialogFragment() {
+class SizeCheckAddClothDialog(): DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = inflater.inflate(R.layout.dl_size_check_no_compare_product,container,false)

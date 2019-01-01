@@ -11,6 +11,7 @@ import com.sopt.befit.R
 
 import com.sopt.befit.activity.AddMySizeBrandPageActivity
 import com.sopt.befit.activity.AddMySizeGoodsPageActivity
+import com.sopt.befit.activity.SelectBrandGoodsWindowActivity
 
 import com.sopt.befit.data.BrandData
 import org.jetbrains.anko.startActivity
@@ -26,23 +27,28 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.name.text = dataList[position].name
 
-        holder.btn.setOnClickListener {
+
+        holder.brandbtn.setOnClickListener {
 
             (ctx as AddMySizeBrandPageActivity).brandBoxVisibleController(dataList[position].name)
         }
-        holder.btn.setOnClickListener {
-            (ctx as AddMySizeBrandPageActivity).startActivity<AddMySizeGoodsPageActivity>()
+        holder.goodsbtn.setOnClickListener {
 
-            
-
+            (ctx as AddMySizeGoodsPageActivity).brandBoxVisibleController(dataList[position].name)
         }
+        holder.brandbtn.setOnClickListener {
+            (ctx as AddMySizeBrandPageActivity).startActivity<SelectBrandGoodsWindowActivity>()
+        }
+        //holder.goodsbtn.setOnClickListener {
+        //    (ctx as AddMySizeGoodsPageActivity).startActivity<SelectBrandGoodsWindowActivity>()
+        //}
 
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.tv_rv_brand_data) as TextView
-        val btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_brand_whole_box) as RelativeLayout
-
+        val brandbtn: RelativeLayout = itemView.findViewById(R.id.btn_rv_brand_whole_box) as RelativeLayout
+        val goodsbtn: RelativeLayout = itemView.findViewById(R.id.btn_rv_brand_whole_box) as RelativeLayout
     }
 
 }

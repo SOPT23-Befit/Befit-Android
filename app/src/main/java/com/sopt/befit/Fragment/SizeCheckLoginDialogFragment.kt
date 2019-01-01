@@ -1,6 +1,7 @@
 package com.sopt.befit.Fragment
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.util.Log
@@ -12,6 +13,9 @@ import android.widget.EditText
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.befit.R
+import com.sopt.befit.R.id.et_dl_size_check_login_email
+import com.sopt.befit.R.id.et_dl_size_check_login_pw
+import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.data.ClosetData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.ApplicationController
@@ -25,6 +29,9 @@ import retrofit2.Call
 import retrofit2.Response
 
 class SizeCheckLoginDialogFragment() : DialogFragment() {
+    var dl_input_email : String? = null
+    var dl_input_pw : String? = null
+
     val networkServie: NetworkService by lazy{
         ApplicationController.instance.networkService
     }
@@ -54,13 +61,15 @@ class SizeCheckLoginDialogFragment() : DialogFragment() {
 
     private fun getLoginResponse(){
         if(et_dl_size_check_login_email.text.toString().isNotEmpty() && et_dl_size_check_login_pw.text.toString().isNotEmpty()){
-            val dl_input_email = et_dl_size_check_login_email.text.toString()
-            val dl_input_pw = et_dl_size_check_login_pw.text.toString()
+            dl_input_email = et_dl_size_check_login_email.text.toString()
+            dl_input_pw = et_dl_size_check_login_pw.text.toString()
             val jsonObject: JSONObject = JSONObject()
 
             jsonObject.put("email",dl_input_email)
             jsonObject.put("password",dl_input_pw)
             val gsonObject : JsonObject= JsonParser().parse(jsonObject.toString()) as JsonObject
+
+
 
             val postLoginResponse = networkServie.postLoginResponse("application/json",gsonObject)
             postLoginResponse.enqueue(object:retrofit2.Callback<PostLoginResponse>{
