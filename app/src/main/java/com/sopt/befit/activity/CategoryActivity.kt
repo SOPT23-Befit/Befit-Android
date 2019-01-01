@@ -9,27 +9,18 @@ import com.sopt.befit.data.JjimProductData
 import kotlinx.android.synthetic.main.activity_brand_main.*
 import kotlinx.android.synthetic.main.activity_category.*
 
-class BrandMainActivity : AppCompatActivity() {
+class CategoryActivity : AppCompatActivity() {
 
     lateinit var jjimProductRecyclerViewAdapter: JjimProductRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_brand_main)
+        setContentView(R.layout.activity_category)
 
         setRecyclerView()
-
-        /*
-        refresh_brand_main_act.setOnRefresh {
-            toast("새로 고침!")
-        }
-
-         */
     }
 
     private fun setRecyclerView() {
-
-        //통신 브랜드에 맞는 프로덕션들 출력
 
         var dataList: ArrayList<JjimProductData> = ArrayList()
         dataList.add(JjimProductData("유니클로", "후리스", "29800원", true))
@@ -40,7 +31,7 @@ class BrandMainActivity : AppCompatActivity() {
         dataList.add(JjimProductData("유니클로", "레깅스", "9000원", true))
 
         jjimProductRecyclerViewAdapter = JjimProductRecyclerViewAdapter(this, dataList)
-        rv_brand_main_product_list.adapter = jjimProductRecyclerViewAdapter
-        rv_brand_main_product_list.layoutManager = GridLayoutManager(this, 2)
+        rv_category_product_list.adapter = jjimProductRecyclerViewAdapter
+        rv_category_product_list.layoutManager = GridLayoutManager(this, 2)
     }
 }

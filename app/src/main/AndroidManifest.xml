@@ -9,19 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
+      
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" />
         <activity android:name=".activity.InputInfo" />
         <activity android:name=".activity.JjimActivity" />
-        <activity android:name=".activity.LogInActivity"/>
-        <activity android:name=".activity.MainActivity" >
-        </activity>
+      
+        <activity android:name=".activity.LogInActivity" />
+        <activity android:name=".activity.MainActivity">
 
-        <activity android:name=".activity.MySizeAddActivity" >
-        </activity>
+        <activity android:name=".activity.MySizeAddActivity" />
 
         <activity android:name=".activity.SignUpActivity" />
 
@@ -41,6 +39,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+          
+        <activity android:name=".activity.SearchForGoods" />
+        <activity android:name=".activity.SearchForBrands" />
+        <activity android:name=".activity.SearchProductActivity" />
+        <activity android:name=".activity.CategoryActivity"/>
+    </application>
 
 
 
@@ -54,6 +58,4 @@
         <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".activity.SearchPasswordActivity"></activity>
    </application>
-
-
 </manifest>
