@@ -7,5 +7,5 @@ data class UserData(
         var name : String,
         var brand1_idx : Int,
         var brand2_idx : Int,
-        var birthdat : String
+        var birthday : String
 )

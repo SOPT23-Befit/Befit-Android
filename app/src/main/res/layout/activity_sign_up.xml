@@ -258,6 +258,7 @@
                 android:ems="10"
                 android:textSize="14sp"
                 android:textColor="#b8191919"
+                android:background="@null"
                 android:hint="비밀번호 확인"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp" />
