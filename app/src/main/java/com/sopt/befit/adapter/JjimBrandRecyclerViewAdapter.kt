@@ -29,7 +29,7 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val main: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_brand_main) as ImageView
+        val logo: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_brand_logo) as ImageView
         val heart: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_brand_heart) as ImageView
         val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_brand_b_name) as TextView
 
