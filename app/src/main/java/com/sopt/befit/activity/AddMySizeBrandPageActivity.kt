@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.ImageView
-import com.sopt.befit.Adapter.BrandGoodsRecyclerViewAdapter
+import com.sopt.befit.adapter.BrandGoodsRecyclerViewAdapter
 import com.sopt.befit.R
 import com.sopt.befit.data.BrandData
 import kotlinx.android.synthetic.main.activity_add_my_size.*
 import kotlinx.android.synthetic.main.activity_add_my_size_goods_page.*
+import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
+import org.jetbrains.anko.startActivity
 
 class AddMySizeBrandPageActivity : AppCompatActivity(){
 
@@ -29,6 +31,9 @@ class AddMySizeBrandPageActivity : AppCompatActivity(){
     }
 
     fun setBtnClickListener(){
+        btn_activity_add_my_size_brand_back.setOnClickListener{
+            startActivity<SelectBrandGoodsWindowActivity>()
+        }
         alphabet.add(btn_activity_search_for_brands_a)
         alphabet.add(btn_activity_search_for_brands_b)
         alphabet.add(btn_activity_search_for_brands_c)
@@ -77,11 +82,12 @@ class AddMySizeBrandPageActivity : AppCompatActivity(){
         brandBrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this,brandList)
         rv_add_my_size_brand_list.adapter = brandBrandsRecyclerViewAdapter
         rv_add_my_size_brand_list.layoutManager = LinearLayoutManager(this)
-
     }
-
-
     fun brandBoxVisibleController(brandName : String){
+        activity_add_my_size_brand_selected.visibility = View.GONE
         activity_add_my_size_brand_name.text = brandName
     }
+
+
+
 }

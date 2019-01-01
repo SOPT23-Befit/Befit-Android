@@ -26,28 +26,29 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
         holder.p_price.text = dataList[position].p_price
 
         if (dataList[position].p_like) {
-            holder.heart.text="♥"
+            //찬 하트 이미지 표시
         } else {
-            holder.heart.text="♡"
+            //빈 하트 이미지 표시
         }
 
         holder.item_btn.setOnClickListener{
-            //넘어간다
+            //프로덕트의 상세페이지로 넘어간다
         }
 
         holder.heart.setOnClickListener{
             dataList[position].p_like=!dataList[position].p_like
             if (dataList[position].p_like) {
-                holder.heart.text="♥"
+                //뷰의 하트 이미지 변경 & 서버에 전달
             } else {
-                holder.heart.text="♡"
+
             }
         }
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val main: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_product_main) as ImageView
-        val heart : TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_heart) as TextView
+        val heart: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_product_heart) as ImageView
+
         val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_b_name) as TextView
         val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_name) as TextView
         val p_price: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_price) as TextView
