@@ -1,4 +1,4 @@
-package com.sopt.befit.Adapter
+package com.sopt.befit.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

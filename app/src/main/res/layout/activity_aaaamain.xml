@@ -1,0 +1,80 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lo_aaa_main_fragment_container">
+
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_bottom_navi_act_frag_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tl_bottom_navi_act_bottom_menu">
+        </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl_bottom_navi_act_bottom_menu"
+            android:elevation="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom">
+            </android.support.design.widget.TabLayout>
+
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/category_menu"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+
+        <TextView
+            android:id="@+id/list_head"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingTop="30dp"
+            android:layout_marginLeft="16dp"
+            />
+
+
+        <ExpandableListView
+            android:id="@+id/nav_list"
+            android:layout_width="278dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/list_head"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="0dp"
+            android:background="#ffffff"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:groupIndicator="@null"
+            android:paddingTop="30dp"
+            >
+
+
+        </ExpandableListView>
+    </LinearLayout>
+
+
+</RelativeLayout>
