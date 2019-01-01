@@ -110,7 +110,7 @@ class SizeCheckLoginDialogFragment() : DialogFragment(),View.OnClickListener {
                                * 지금의 경우에는 0번째 인덱스에 jwt라는 키값이 있는 걸 확인했고
                                * 그래서 0번째 인덱스의 value를 뽑아내어 jwt 값을 가지고 왔다.
                                * */
-
+                                    toast("success")
                                     Log.v("Login Success", response!!.headers().value(0))
                                     SharedPreferenceController.instance!!.setPrefData("jwt", response!!.headers().value(0))
                                     loginstatus = 1
