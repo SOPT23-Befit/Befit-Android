@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.ImageView
-import com.sopt.befit.Adapter.BrandGoodsRecyclerViewAdapter
+import com.sopt.befit.adapter.BrandGoodsRecyclerViewAdapter
 import com.sopt.befit.R
 import com.sopt.befit.data.BrandData
 import kotlinx.android.synthetic.main.activity_add_my_size.*
