@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+ 
       
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
@@ -23,6 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        
         <activity android:name=".activity.MySizeAddActivity" />
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.ProductContentViewActivity" />
@@ -35,6 +38,7 @@
         <activity android:name=".activity.MyPageAccountSettingActivity"/>
         <activity android:name=".activity.SelectBrandActivity" />
         <activity android:name=".activity.SearchEmailActivity" />
+
         <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".activity.SearchPasswordActivity"/>
    </application>
