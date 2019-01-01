@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.AddMySizeBrandPageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SignUpActivity" />
@@ -28,7 +24,13 @@
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.SelectBrandActivity" />
         <activity android:name=".activity.SearchEmailActivity" />
-        <activity android:name=".activity.ResetPasswordActivity" />
+        <activity android:name=".activity.ResetPasswordActivity" >
+         <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".activity.SearchPasswordActivity"></activity>
     </application>
 
