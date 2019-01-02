@@ -38,7 +38,7 @@ class SearchPasswordActivity : AppCompatActivity() {
 
                     override fun onResponse(call: Call<PostForPwFindUserResponse>, response: Response<PostForPwFindUserResponse>) {
                         response?.let {
-                                //slack 에 서버 한테 post인데 status 200 이니까 물어보기 
+                                //slack 에 서버 한테 post인데 status 200 이니까 물어보기
                         }
                     }
                 })
