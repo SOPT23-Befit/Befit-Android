@@ -14,7 +14,11 @@
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.CategoryActivity" />
         <activity android:name=".activity.InputInfo" />
@@ -33,11 +37,7 @@
         </activity>
         <activity android:name=".activity.SelectBrandActivity" />
         <activity android:name=".activity.SelectBrandGoodsWindowActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.SignUpActivity" />
     </application>
