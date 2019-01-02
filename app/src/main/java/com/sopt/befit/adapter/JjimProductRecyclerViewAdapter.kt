@@ -46,10 +46,10 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val main: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_product_main) as ImageView
+        val main: ImageView = itemView.findViewById(R.id.img_rv_item_my_size_lookup_main) as ImageView
         val heart: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_product_heart) as ImageView
 
-        val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_b_name) as TextView
+        val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_my_size_lookup_b_name) as TextView
         val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_name) as TextView
         val p_price: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_price) as TextView
 
