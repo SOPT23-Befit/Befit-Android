@@ -30,9 +30,6 @@ class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
                 //대신 밑에서 함수 만들어두기
             }
 
-            //val builder = SizeCheckLoginDialogFragment()
-            //var fm = supportFragmentManager
-            //builder.show(fm, "SizeCheckLogin")
 
         }
     }
