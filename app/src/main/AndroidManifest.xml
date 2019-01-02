@@ -24,9 +24,9 @@
             </intent-filter>
         </activity>
 
-
         
         <activity android:name=".activity.MySizeAddActivity" />
+
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.ProductContentViewActivity" />
         <activity android:name=".activity.AAAAMainActivity"/>
