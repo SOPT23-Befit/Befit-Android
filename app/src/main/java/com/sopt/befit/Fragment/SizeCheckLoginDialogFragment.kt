@@ -31,9 +31,12 @@ import retrofit2.Call
 import retrofit2.Response
 
 
-class SizeCheckLoginDialogFragment() : DialogFragment(),View.OnClickListener {
-
-    val networkServie: NetworkService by lazy{
+class SizeCheckLoginDialogFragment() : DialogFragment(), View.OnClickListener {
+    override fun onClick(v: View?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    /*
+ val networkServie: NetworkService by lazy{
         ApplicationController.instance.networkService
     }
     val datalist : ArrayList<ClosetData> by lazy {
@@ -168,4 +171,6 @@ class SizeCheckLoginDialogFragment() : DialogFragment(),View.OnClickListener {
             }
         }
         }
-    }
+ */
+
+}
