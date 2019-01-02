@@ -5,9 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import com.sopt.befit.R
 import com.sopt.befit.data.JjimProductData
 
@@ -26,9 +24,9 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
         holder.p_price.text = dataList[position].p_price
 
         if (dataList[position].p_like) {
-            //찬 하트 이미지 표시
+            holder.heart.setChecked(true)
         } else {
-            //빈 하트 이미지 표시
+
         }
 
         holder.item_btn.setOnClickListener{
@@ -38,16 +36,18 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
         holder.heart.setOnClickListener{
             dataList[position].p_like=!dataList[position].p_like
             if (dataList[position].p_like) {
-                //뷰의 하트 이미지 변경 & 서버에 전달
+                dataList[position].p_like=false
+                //서버에 전달
             } else {
-
+                dataList[position].p_like=true
             }
         }
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val main: ImageView = itemView.findViewById(R.id.img_rv_item_my_size_lookup_main) as ImageView
-        val heart: ImageView = itemView.findViewById(R.id.img_rv_item_jjim_product_heart) as ImageView
+
+        val heart: ToggleButton = itemView.findViewById(R.id.img_rv_item_jjim_product_heart) as ToggleButton
 
         val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_my_size_lookup_b_name) as TextView
         val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_name) as TextView

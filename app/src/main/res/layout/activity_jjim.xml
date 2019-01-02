@@ -75,6 +75,8 @@
     <FrameLayout
         android:id="@+id/fl_main_act_fragment_block"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:background="#ebebeb"
+        android:layout_height="match_parent"
+        ></FrameLayout>
 
 </LinearLayout>
