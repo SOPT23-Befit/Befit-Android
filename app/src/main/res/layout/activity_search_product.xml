@@ -117,6 +117,7 @@
     </RelativeLayout>
 
     <FrameLayout
+        android:background="#ebebeb"
         android:id="@+id/fl_search_product_fragment_block"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
