@@ -14,11 +14,15 @@
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" >
+          
+        </activity>
+        <activity android:name=".activity.CategoryActivity" >
+          
+        </activity>
+        <activity android:name=".activity.InputInfo" />
+        <activity android:name=".activity.JjimActivity" >
 
         </activity>
-        <activity android:name=".activity.CategoryActivity" />
-        <activity android:name=".activity.InputInfo" />
-        <activity android:name=".activity.JjimActivity" />
         <activity android:name=".activity.LogInActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.MyPageAccountSettingActivity" />
@@ -37,6 +41,7 @@
         <activity android:name=".activity.SearchForGoods" />
         <activity android:name=".activity.SearchPasswordActivity" />
         <activity android:name=".activity.SearchProductActivity">
+
         </activity>
         <activity android:name=".activity.SelectBrandActivity" />
         <activity android:name=".activity.SelectBrandGoodsWindowActivity" >
