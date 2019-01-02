@@ -10,8 +10,6 @@ import com.sopt.befit.R
 
 class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_content_view)
@@ -31,6 +29,7 @@ class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
                 //dialog 에서 실행해야할 함수 선언 ctx.function
                 //대신 밑에서 함수 만들어두기
             }
+
 
         }
     }

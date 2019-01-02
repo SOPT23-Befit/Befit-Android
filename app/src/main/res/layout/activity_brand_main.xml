@@ -168,29 +168,31 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_brand_main_product_count"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:background="#ebebeb"
-                android:gravity="center_vertical"
-                android:lineSpacingExtra="2sp"
-                android:paddingLeft="16dp"
-                android:text="product (65)"
-                android:textColor="#000000"
-                android:textSize="14sp" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ebebeb">
 
                 <TextView
-                    android:id="@+id/tv_category_new"
+                    android:id="@+id/tv_brand_main_product_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ebebeb"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="2sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="product (65)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_brand_main_new"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="10dp"
                     android:letterSpacing="0.06"
@@ -201,21 +203,21 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="1dp"
+                    android:layout_width="0.5dp"
                     android:layout_height="8dp"
-                    android:layout_alignTop="@id/tv_category_new"
+                    android:layout_alignTop="@id/tv_brand_main_new"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@id/tv_category_new"
+                    android:layout_toLeftOf="@id/tv_brand_main_new"
                     android:background="#707070" />
 
                 <TextView
-                    android:id="@+id/tv_search_product_popular"
+                    android:id="@+id/tv_brand_main_popular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/tv_category_new"
+                    android:layout_alignTop="@id/tv_brand_main_new"
                     android:layout_marginRight="20dp"
-                    android:layout_toLeftOf="@id/tv_category_new"
+                    android:layout_toLeftOf="@id/tv_brand_main_new"
                     android:letterSpacing="0.06"
                     android:lineSpacingExtra="2sp"
                     android:text="인기순"
