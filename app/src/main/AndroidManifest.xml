@@ -14,11 +14,7 @@
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.CategoryActivity" />
         <activity android:name=".activity.InputInfo" />
@@ -27,6 +23,13 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.MyPageAccountSettingActivity" />
         <activity android:name=".activity.MySizeAddActivity" />
+        <activity android:name=".activity.MySizeLookupActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.ProductContentViewActivity" />
         <activity android:name=".activity.SearchEmailActivity" />
         <activity android:name=".activity.ResetPasswordActivity" />

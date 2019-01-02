@@ -26,6 +26,7 @@
             android:layout_marginLeft="16dp"
             android:inputType="textPersonName"
             android:paddingLeft="34dp"
+            android:cursorVisible="false"
             android:text="찾고 계신 상품이 무엇인가요?"
             android:background="@drawable/shape_search_box"/>
 
