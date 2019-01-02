@@ -26,7 +26,7 @@ class MySizeAddActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
         dataList.add("l")
 
         sp_my_size_add_select_size.adapter= ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList)
-        //sp_my_size_add_select_size.adapter = SelectSizeSpinnerAdapterval(this, dataList)
+
         sp_my_size_add_select_size.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 toast("선택된 아이템 : "+sp_my_size_add_select_size.getItemAtPosition((position)))
