@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
@@ -29,6 +30,11 @@ class SearchProductActivity : AppCompatActivity() {
     }
 
     private fun setViewClickListener() {
+        et_search_product_write.setOnClickListener{
+            et_search_product_write.setText("")
+            rv_search_product_2.setVisibility(View.VISIBLE)
+            layout_search_product_bottom.setVisibility(View.GONE)
+        }
         img_search_product_p.setOnClickListener {
             replaceFragment(SProductFragment())
             if(img_search_product_b.isChecked){
@@ -61,9 +67,7 @@ class SearchProductActivity : AppCompatActivity() {
 
     private fun setRecyclerView() {
 
-        //내가 선호하는 프로덕션만 출력
-
-        var dataList: ArrayList<ImageView> = ArrayList()
+        var dataList: ArrayList<String> = ArrayList()
 
         searchProductImageRecyclerViewAdapter = SearchProductImageRecyclerViewAdapter(this, dataList)
         rv_search_product_2.adapter = searchProductImageRecyclerViewAdapter

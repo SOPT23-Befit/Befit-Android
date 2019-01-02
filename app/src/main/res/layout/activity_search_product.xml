@@ -46,80 +46,89 @@
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
     <LinearLayout
+        android:id="@+id/layout_search_product_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible">
 
-        <ToggleButton
-            android:id="@+id/img_search_product_p"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/selector_top_product"
-            android:textOff=""
-            android:textOn=""
-            android:checked="true"/>
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal">
 
-        <ToggleButton
-            android:id="@+id/img_search_product_b"
+            <ToggleButton
+                android:id="@+id/img_search_product_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_top_product"
+                android:checked="true"
+                android:textOff=""
+                android:textOn="" />
+
+            <ToggleButton
+                android:id="@+id/img_search_product_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_top_brand"
+                android:textOff=""
+                android:textOn="" />
+
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/selector_top_brand"
-            android:textOff=""
-            android:textOn=""/>
+            android:background="#ebebeb">
+
+            <TextView
+                android:id="@+id/tv_search_product_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="2sp"
+                android:text="신상순"
+                android:textColor="#7a36e4"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0.5dp"
+                android:layout_height="8dp"
+                android:layout_alignTop="@id/tv_search_product_new"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/tv_search_product_new"
+                android:background="#707070" />
+
+            <TextView
+                android:id="@+id/tv_search_product_popular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_search_product_new"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@id/tv_search_product_new"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="2sp"
+                android:text="인기순"
+                android:textColor="#848484"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_search_product_fragment_block"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ebebeb"></FrameLayout>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ebebeb">
-
-        <TextView
-            android:id="@+id/tv_search_product_new"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="10dp"
-            android:letterSpacing="0.06"
-            android:lineSpacingExtra="2sp"
-            android:text="신상순"
-            android:textColor="#7a36e4"
-            android:textSize="10sp" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0.5dp"
-            android:layout_height="8dp"
-            android:layout_alignTop="@id/tv_search_product_new"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@id/tv_search_product_new"
-            android:background="#707070" />
-
-        <TextView
-            android:id="@+id/tv_search_product_popular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/tv_search_product_new"
-            android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@id/tv_search_product_new"
-            android:letterSpacing="0.06"
-            android:lineSpacingExtra="2sp"
-            android:text="인기순"
-            android:textColor="#848484"
-            android:textSize="10sp" />
-
-    </RelativeLayout>
-
-    <FrameLayout
-        android:background="#ebebeb"
-        android:id="@+id/fl_search_product_fragment_block"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
 
 </LinearLayout>
