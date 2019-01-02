@@ -11,19 +11,17 @@
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" >
-
-        </activity>
-        <activity android:name=".activity.InputInfo" />
-        <activity android:name=".activity.JjimActivity"></activity>
-        <activity android:name=".activity.LogInActivity" />
-        <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".activity.MySizeAddActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.InputInfo" />
+        <activity android:name=".activity.JjimActivity"></activity>
+        <activity android:name=".activity.LogInActivity" />
+        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MySizeAddActivity" ></activity>
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.ProductContentViewActivity" />
         <activity android:name=".activity.AAAAMainActivity" >
