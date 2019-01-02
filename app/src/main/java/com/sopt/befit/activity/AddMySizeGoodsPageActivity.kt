@@ -6,10 +6,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import com.sopt.befit.Adapter.BrandGoodsRecyclerViewAdapter
+import com.sopt.befit.adapter.BrandGoodsRecyclerViewAdapter
 import com.sopt.befit.R
 import com.sopt.befit.data.BrandData
 import kotlinx.android.synthetic.main.activity_add_my_size_goods_page.*
+import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
+import org.jetbrains.anko.startActivity
 
 class AddMySizeGoodsPageActivity : AppCompatActivity() {
 
@@ -24,6 +26,9 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         setRecyclerView()
     }
     fun setBtnClickListener(){
+        btn_activity_add_my_size_goods_back.setOnClickListener{
+            startActivity<SelectBrandGoodsWindowActivity>()
+        }
         et_add_my_size_act_search_goods.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 //                // 입력이 끝났을 때
@@ -61,5 +66,10 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         //onResponse(){}
         //통신 성공했을때, BrandGoodsRecyclerViewAdapter.datalist에 통신에 대한 데이터를 넣어준 다음 notify시켜주면 된다.
         //searchKeyWord 여기에 검색어가 담겨있으니까, 통신할때 이 값을 넘겨주면 됨!!!
+    }
+
+    fun brandBoxVisibleController(brandName : String){
+        activity_add_my_size_goods_selected.visibility = View.GONE
+        activity_add_my_size_goods_name.text = brandName
     }
 }
