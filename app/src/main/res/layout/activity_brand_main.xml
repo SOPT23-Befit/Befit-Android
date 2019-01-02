@@ -7,132 +7,238 @@
     android:orientation="vertical"
     tools:context=".activity.BrandMainActivity">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/refresh_brand_main_act"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img_brand_main_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="브랜드" />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="240dp">
-
-        <ImageView
-            android:id="@+id/img_brand_main_background"
+        <LinearLayout
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:srcCompat="@mipmap/ic_launcher" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img_brand_main_circle_background"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerInParent="true"
-            app:srcCompat="@drawable/textboxround" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/img_brand_main_b_heart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_brand_main_background"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@mipmap/ic_launcher" />
+                <ImageView
+                    android:id="@+id/img_brand_main_back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_left_arrow_wh" />
 
-        <TextView
-            android:id="@+id/tv_brand_main_b_name_eng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img_brand_main_circle_background"
-            android:layout_centerHorizontal="true"
-            android:text="VANS" />
+                <TextView
+                    android:id="@+id/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="18dp"
+                    android:lineSpacingExtra="2sp"
+                    android:text="브랜드"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_brand_main_b_name_kor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_brand_main_b_name_eng"
-            android:layout_centerHorizontal="true"
-            android:text="반스" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    </RelativeLayout>
+                <ImageView
+                    android:id="@+id/img_brand_main_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="144dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
-    <RelativeLayout
-        android:id="@+id/layout_brand_main_one_product"
-        android:layout_width="match_parent"
-        android:layout_height="120dp">
+                <ImageView
+                    android:id="@+id/img_brand_main_circle"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignTop="@id/img_brand_main_background"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="99dp"
+                    app:srcCompat="@drawable/textboxround" />
 
-        <ImageView
-            android:id="@+id/img_brand_main_back_image"
-            android:layout_width="240dp"
-            android:layout_height="120dp"
-            android:layout_centerInParent="true"
-            app:srcCompat="@mipmap/ic_launcher" />
+                <ImageView
+                    android:id="@+id/img_brand_main_b_heart"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_below="@id/img_brand_main_background"
+                    android:layout_alignRight="@id/img_brand_main_background"
+                    android:layout_margin="10dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
-        <ImageView
-            android:id="@+id/img_brand_main_p_heart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@id/img_brand_main_back_image"
-            android:layout_centerVertical="true"
-            app:srcCompat="@mipmap/ic_launcher" />
+                <TextView
+                    android:id="@+id/tv_brand_main_b_name_eng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_brand_main_circle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:lineSpacingExtra="2sp"
+                    android:text="VANS"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
-        <ImageView
-            android:id="@+id/img_brand_main_p_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/img_brand_main_back_image"
-            android:layout_centerVertical="true"
-            app:srcCompat="@mipmap/ic_launcher" />
+                <TextView
+                    android:id="@+id/tv_brand_main_b_name_kor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_brand_main_b_name_eng"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="4dp"
+                    android:lineSpacingExtra="1sp"
+                    android:text="반스"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tv_brand_main_p_b_name_kor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/img_brand_main_p_heart"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="127dp"
-            android:text="UNIQLO" />
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_brand_main_p_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_brand_main_p_b_name_kor"
-            android:layout_centerVertical="true"
-            android:text="투버튼 롱코트" />
+            <RelativeLayout
+                android:id="@+id/layout_brand_main_one_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_brand_main_b_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_brand_main_p_b_name_kor"
-            android:layout_alignBottom="@+id/img_brand_main_p_heart"
-            android:text="150,000" />
+                <ImageView
+                    android:id="@+id/img_brand_main_back_image"
+                    android:layout_width="338dp"
+                    android:layout_height="162dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="9dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
-    </RelativeLayout>
+                <ImageView
+                    android:id="@+id/img_brand_main_p_heart"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_alignRight="@id/img_brand_main_back_image"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_brand_main_product_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="product (65)" />
+                <ImageView
+                    android:id="@+id/img_brand_main_p_image"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_alignLeft="@id/img_brand_main_back_image"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_brand_main_product_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/tv_brand_main_p_b_name_kor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="61dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_toRightOf="@id/img_brand_main_p_image"
+                    android:lineSpacingExtra="2sp"
+                    android:text="유니클로"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_brand_main_p_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_brand_main_p_b_name_kor"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_toRightOf="@id/img_brand_main_p_image"
+                    android:lineSpacingExtra="1sp"
+                    android:text="투버튼 롱코트"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_brand_main_b_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_brand_main_p_name"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@id/img_brand_main_p_image"
+                    android:lineSpacingExtra="1sp"
+                    android:text="150,000"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ebebeb">
+
+                <TextView
+                    android:id="@+id/tv_brand_main_product_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ebebeb"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="2sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="product (65)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_brand_main_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:letterSpacing="0.06"
+                    android:lineSpacingExtra="2sp"
+                    android:text="신상순"
+                    android:textColor="#7a36e4"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0.5dp"
+                    android:layout_height="8dp"
+                    android:layout_alignTop="@id/tv_brand_main_new"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/tv_brand_main_new"
+                    android:background="#707070" />
+
+                <TextView
+                    android:id="@+id/tv_brand_main_popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/tv_brand_main_new"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@id/tv_brand_main_new"
+                    android:letterSpacing="0.06"
+                    android:lineSpacingExtra="2sp"
+                    android:text="인기순"
+                    android:textColor="#848484"
+                    android:textSize="10sp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_brand_main_product_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:background="#ebebeb"
+                android:padding="4dp"
+                android:gravity="center">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

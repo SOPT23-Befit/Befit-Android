@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SearchProductActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/img_search"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26dp"/>
+
+        <EditText
+            android:id="@+id/et_search_product_write"
+            android:layout_width="284dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:inputType="textPersonName"
+            android:paddingLeft="34dp"
+            android:text="찾고 계신 상품이 무엇인가요?"
+            android:background="@drawable/shape_search_box"/>
+
+        <TextView
+            android:id="@+id/tv_search_product_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:text="취소" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_search_product_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/img_search_product_p"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_top_product"
+            android:textOff=""
+            android:textOn=""
+            android:checked="true"/>
+
+        <ToggleButton
+            android:id="@+id/img_search_product_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_top_brand"
+            android:textOff=""
+            android:textOn=""/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ebebeb">
+
+        <TextView
+            android:id="@+id/tv_search_product_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
+            android:letterSpacing="0.06"
+            android:lineSpacingExtra="2sp"
+            android:text="신상순"
+            android:textColor="#7a36e4"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0.5dp"
+            android:layout_height="8dp"
+            android:layout_alignTop="@id/tv_search_product_new"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/tv_search_product_new"
+            android:background="#707070" />
+
+        <TextView
+            android:id="@+id/tv_search_product_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_search_product_new"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/tv_search_product_new"
+            android:letterSpacing="0.06"
+            android:lineSpacingExtra="2sp"
+            android:text="인기순"
+            android:textColor="#848484"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_search_product_fragment_block"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+</LinearLayout>

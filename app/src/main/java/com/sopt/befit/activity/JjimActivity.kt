@@ -6,14 +6,14 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.view.View
 import android.widget.CheckBox
-import com.sopt.befit.Fragment.BrandFragment
-import com.sopt.befit.Fragment.ProductFragment
 import com.sopt.befit.R
 import kotlinx.android.synthetic.main.activity_jjim.*
 import android.view.MotionEvent
 import android.view.View.OnTouchListener
 import com.sopt.befit.fragment.BrandFragment
 import com.sopt.befit.fragment.ProductFragment
+
+
 
 
 class JjimActivity : AppCompatActivity() , View.OnClickListener{

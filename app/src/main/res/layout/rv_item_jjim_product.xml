@@ -2,53 +2,73 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/btn_rv_item_jjim_product"
-    android:layout_width="160dp"
-    android:layout_height="240dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="#FFFFFF">
 
-    <ImageView
-        android:id="@+id/img_rv_item_jjim_product_main"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/tv_rv_item_jjim_product_b_name"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/img_rv_item_jjim_product_main"
-        android:layout_alignParentStart="true"
-        android:lineSpacingExtra="0.5sp"
-        android:text="UNIQLO"
-        android:textColor="#000000"
-        android:textSize="16dp" />
+        android:layout_centerInParent="true">
 
-    <TextView
-        android:id="@+id/tv_rv_item_jjim_product_p_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_rv_item_jjim_product_b_name"
-        android:layout_alignParentStart="true"
-        android:lineSpacingExtra="0.5sp"
-        android:text="투버튼 롱코트"
-        android:textColor="#000000"
-        android:textSize="24dp" />
+        <ImageView
+            android:id="@+id/img_rv_item_my_size_lookup_main"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_rv_item_jjim_product_p_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_rv_item_jjim_product_p_name"
-        android:layout_alignParentStart="true"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/tv_rv_item_my_size_lookup_b_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_rv_item_my_size_lookup_main"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="2sp"
+            android:text="유니클로"
+            android:textColor="#000000"
+            android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/tv_rv_item_jjim_product_heart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tv_rv_item_jjim_product_b_name"
-        android:layout_alignParentEnd="true"
-        android:text="♥" />
+        <TextView
+            android:id="@+id/tv_rv_item_jjim_product_p_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_rv_item_my_size_lookup_b_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="1sp"
+            android:text="투버튼 롱코트"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_rv_item_jjim_product_p_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_rv_item_jjim_product_p_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:lineSpacingExtra="1sp"
+            android:text="150,000"
+            android:layout_marginBottom="24dp"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/img_rv_item_jjim_product_heart"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_below="@id/img_rv_item_my_size_lookup_main"
+            android:layout_alignRight="@id/img_rv_item_my_size_lookup_main"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="2dp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
