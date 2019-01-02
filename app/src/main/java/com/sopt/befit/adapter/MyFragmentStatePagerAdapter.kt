@@ -12,7 +12,7 @@ class MyFragmentStatePagerAdapter(fm : FragmentManager,val FragmentCount : Int) 
         when(position)
         {
             0->return HomeFragment()
-            1->return SearchFragment()
+            1->return HomeFragment()//SearchFragment()
             2->return BrandRankingFragment()
             4->return MypageFragment()
 

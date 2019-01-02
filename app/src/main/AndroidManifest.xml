@@ -14,14 +14,12 @@
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" />
         <activity android:name=".activity.InputInfo" />
-        <activity android:name=".activity.JjimActivity" />
+        <activity android:name=".activity.JjimActivity" >
+
+        </activity>
         <activity android:name=".activity.LogInActivity" />
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         
@@ -32,7 +30,13 @@
         <activity android:name=".activity.AAAAMainActivity"/>
         <activity android:name=".activity.SearchForGoods" />
         <activity android:name=".activity.SearchForBrands" />
-        <activity android:name=".activity.SearchProductActivity" />
+        <activity android:name=".activity.SearchProductActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.CategoryActivity"/>
         <activity android:name=".activity.SelectBrandGoodsWindowActivity" />
         <activity android:name=".activity.MyPageAccountSettingActivity"/>
