@@ -31,6 +31,7 @@ class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
         }
         val fm : FragmentManager = supportFragmentManager
 
+
         // 옷정보가 없다면
            val sizecheckDialog : DialogFragment = SizeCheckAddClothDialog()
         //옷정보가 없다면
@@ -44,6 +45,7 @@ class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
         }else{
             btn_activity_product_contentview_size_check.setOnClickListener {
                 //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
+
             }
         }
 
