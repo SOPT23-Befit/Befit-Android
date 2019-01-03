@@ -29,8 +29,6 @@ class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
                 //dialog 에서 실행해야할 함수 선언 ctx.function
                 //대신 밑에서 함수 만들어두기
             }
-
-
         }
     }
 }
