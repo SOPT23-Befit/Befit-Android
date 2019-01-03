@@ -127,33 +127,17 @@
 
   
 
-        <Spinner
-            android:id="@+id/spinner_sign_up_select_year"
-            android:background="@drawable/spinner_background"
-            android:layout_width="90.9dp"
-            android:layout_height="46dp"
-            android:spinnerMode="dropdown"
-            android:layout_marginRight="9.1dp"
-            >
-
-        </Spinner>
-            <Spinner
-                android:layout_marginRight="9.1dp"
-                android:id="@+id/spinner_sign_up_select_month"
-                android:background="@drawable/spinner_background"
-                android:layout_width="90.9dp"
-                android:spinnerMode="dropdown"
-                android:layout_height="46dp">
-
-            </Spinner>
-            <Spinner
-                android:id="@+id/spinner_sign_up_select_day"
-                android:background="@drawable/spinner_background"
-                android:layout_width="90.9dp"
-                android:spinnerMode="dropdown"
-                android:layout_height="46dp">
-
-            </Spinner>
+            <TextView
+                android:id="@+id/tv_sign_up_select_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="년 월 일"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_years_click"
+                android:background="@null"/>
 
         </LinearLayout>
         <RelativeLayout

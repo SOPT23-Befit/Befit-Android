@@ -17,8 +17,10 @@ class LogInActivity : AppCompatActivity() {
         }
         ibtn_log_in_confirm.setOnClickListener(){
 
-            startActivity<AAAAMainActivity>("id" to "이메일")//정보 전달
+
+            startActivity<MainActivity>()//
         }
+
 
     }
 }
