@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:adroid="http://schemas.android.com/apk/res-auto"
     package="com.sopt.befit">
 
     <application
@@ -7,39 +8,35 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true">
- 
-      
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".activity.AAAAMainActivity" />
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
-        <activity android:name=".activity.BrandMainActivity" />
+        <activity android:name=".activity.BrandMainActivity" >
+
+        </activity>
+        <activity android:name=".activity.CategoryActivity" />
         <activity android:name=".activity.InputInfo" />
         <activity android:name=".activity.JjimActivity" />
         <activity android:name=".activity.LogInActivity" />
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-
-        
-        <activity android:name=".activity.MySizeAddActivity" />
-
-        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.MyPageAccountSettingActivity" />
         <activity android:name=".activity.ProductContentViewActivity" />
-        <activity android:name=".activity.AAAAMainActivity"/>
-        <activity android:name=".activity.SearchForGoods" />
-        <activity android:name=".activity.SearchForBrands" />
-        <activity android:name=".activity.SearchProductActivity" />
-        <activity android:name=".activity.CategoryActivity"/>
-        <activity android:name=".activity.SelectBrandGoodsWindowActivity" />
-        <activity android:name=".activity.MyPageAccountSettingActivity"/>
-        <activity android:name=".activity.SelectBrandActivity" />
         <activity android:name=".activity.SearchEmailActivity" />
-
         <activity android:name=".activity.ResetPasswordActivity" />
-        <activity android:name=".activity.SearchPasswordActivity"/>
-   </application>
+        <activity android:name=".activity.SearchPasswordActivity" />
+        <activity android:name=".activity.SearchProductActivity">
+        </activity>
+        <activity android:name=".activity.SelectBrandActivity" />
+        <activity android:name=".activity.SelectBrandGoodsWindowActivity" />
+        <activity android:name=".activity.SignUpActivity" />
+    </application>
 </manifest>
