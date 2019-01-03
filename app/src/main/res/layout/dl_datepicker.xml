@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:maxHeight="200dp"
+    android:maxWidth= "300dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="440dp"
+    android:orientation="vertical">
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:id="@+id/datePicker"
+        android:datePickerMode="spinner"
+        android:layout_gravity="center"/>
+    <RelativeLayout
+        android:layout_width="160dp"
+        android:background="@drawable/blackboxround"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+
+        >
+
+        <TextView
+            android:id="@+id/btn_dl_datepicker_ok"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="확인"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

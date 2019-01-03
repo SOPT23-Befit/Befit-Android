@@ -2,13 +2,16 @@ package com.sopt.befit.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import com.sopt.befit.R
 import com.sopt.befit.data.ModifyPWData
-import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.put.PutModifyPwResponse
 import kotlinx.android.synthetic.main.activity_reset_password.*
@@ -44,7 +47,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                 }
                 override fun onResponse(call: Call<PutModifyPwResponse>, response: Response<PutModifyPwResponse>) {
                     response?.let {
-                        when(it.code()){
+                        when(it.body()!!.status){
                             201 ->{
                                 Log.v("success",response.message().toString())
                                 startActivity(Intent(this@ResetPasswordActivity,LogInActivity::class.java))
@@ -78,9 +81,32 @@ class ResetPasswordActivity : AppCompatActivity() {
         }
     }
 
+    var pwTextWatcher = object : TextWatcher{
+        override fun afterTextChanged(s: Editable?) {
+
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            tv_check_new_pw.visibility = View.VISIBLE
+            if(et_activity_reset_pw_input_new_pw_1.equals(et_activity_reset_pw_input_new_pw_2)){
+                tv_check_new_pw.setTextColor((ContextCompat.getColor(this@ResetPasswordActivity,R.color.colorAccent)))
+                tv_check_new_pw.text = "일치"
+            }else{
+                tv_check_new_pw.setTextColor(Color.parseColor("#7a36e4"))
+                tv_check_new_pw.text = "불일치"
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_reset_password)
+        tv_check_new_pw.visibility = View.INVISIBLE
+        et_activity_reset_pw_input_new_pw_2.addTextChangedListener(pwTextWatcher)
         btn_activity_reset_pw_ok.setOnClickListener {
             //버튼을 눌렀을 때
             val rePW = et_activity_reset_pw_input_new_pw_1.text.toString()
