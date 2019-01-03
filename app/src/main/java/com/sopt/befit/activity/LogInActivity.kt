@@ -13,14 +13,12 @@ class LogInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_log_in)
 
         btn_log_in_join.setOnClickListener(){
-            startActivity<SignUpActivity>()
+            startActivity<SelectGenderActivity>()
         }
-        btn_log_in_confirm.setOnClickListener(){
+        ibtn_log_in_confirm.setOnClickListener(){
 
-            startActivity<MainActivity>()//
+            startActivity<AAAAMainActivity>("id" to "이메일")//정보 전달
         }
-        btn_log_in_just_look.setOnClickListener(){
-            startActivity<MainActivity>()
-        }
+
     }
 }
