@@ -8,10 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.sopt.befit.R
 import com.sopt.befit.data.UserData
 import com.sopt.befit.db.SharedPreferenceController
@@ -35,6 +32,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     var mMonth: Int = c.get(Calendar.MONTH)
     var mDay: Int = c.get(Calendar.DAY_OF_MONTH)
 
+    var datepickertoggle = 0//0->안보임,1->보임
+
     lateinit var networkservice : NetworkService
     lateinit var userData: UserData
     private var overlapNetWorking : String = ""
@@ -49,7 +48,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 var gender : String = intent.getStringExtra("gender")
                 var brand1 : Int = intent.getIntExtra("brand1",0)
                 var brand2 : Int = intent.getIntExtra("brand2",1)
-                var birth = tv_sign_up_select_year.text.toString() + tv_sign_up_select_month.text.toString() + tv_sign_up_select_day.text.toString()
+                var birth = tv_sign_up_select_year.text.toString()
                 if(email.length > 0 && password.length > 0 && passwordcheck.length > 0 && name.length > 0){
                    if(Pattern.matches("^(?=.*\\d)(?=.*[.!@#$%])(?=.*[a-zA-Z]).{8,20}$", password)){ //pw 유효성 검사
                             if(password.equals(passwordcheck)){ //서로 같은지
@@ -131,8 +130,33 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         init()
         //생년월일 선택 -> calender dialog 띄우기
         btn_sign_up_select_bithday.setOnClickListener {
-            createDialog()!!.show()
+            if(datepickertoggle==0)
+            {
+                datepickertoggle=1
+                date_picker.visibility=View.VISIBLE
+            }
+            else if(datepickertoggle==1)
+            {
+                datepickertoggle=0
+                date_picker.visibility=View.INVISIBLE
+            }
         }
+
+        val dateChangeListener = DatePicker.OnDateChangedListener{
+            view, year, monthOfYear, dayOfMonth ->
+            tv_sign_up_select_year.text = String.format(
+                    Locale.KOREA,"%d-%d-%d",
+                    year,monthOfYear+1,dayOfMonth
+            )
+        }
+
+        date_picker.init(
+                date_picker.year,
+                date_picker.month,
+                date_picker.dayOfMonth,
+                dateChangeListener)
+
+
 
     }
 

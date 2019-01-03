@@ -15,12 +15,11 @@ class LogInActivity : AppCompatActivity() {
         btn_log_in_join.setOnClickListener(){
             startActivity<SignUpActivity>()
         }
-        btn_log_in_confirm.setOnClickListener(){
+        ibtn_log_in_confirm.setOnClickListener(){
 
             startActivity<MainActivity>()//
         }
-        btn_log_in_just_look.setOnClickListener(){
-            startActivity<MainActivity>()
-        }
+
+
     }
 }
