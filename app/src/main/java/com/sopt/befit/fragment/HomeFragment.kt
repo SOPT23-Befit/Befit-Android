@@ -63,6 +63,7 @@ class HomeFragment: Fragment(){
     val new:MutableList<String> = ArrayList()
     val best : MutableList<String> = ArrayList()
     val women : MutableList<String> = ArrayList()
+
     women.add("Outer")
     women.add("Jacket")
     women.add("Coat")

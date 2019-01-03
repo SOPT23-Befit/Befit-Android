@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
-            android:text="L"
+            android:text="S"
             android:textColor="#191919"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -320,12 +320,12 @@
         android:layout_width="match_parent"
         android:layout_height="41.5dp">
         <ImageView
-        android:id="@+id/compare_size_number1"
-        android:layout_width="7.5dp"
-        android:layout_height="7.5dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="20.5dp"
-        android:src="@drawable/oval_shape_white"/>
+            android:id="@+id/compare_size_number1"
+            android:layout_width="7.5dp"
+            android:layout_height="7.5dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="20.5dp"
+            android:src="@drawable/oval_shape_black"/>
         <ImageView
             android:id="@+id/compare_size_number2"
             android:layout_width="7.5dp"
@@ -341,7 +341,7 @@
             android:layout_toRightOf="@+id/compare_size_number2"
             android:layout_marginLeft="7.5dp"
             android:layout_marginTop="20.5dp"
-            android:src="@drawable/oval_shape_black"/>
+            android:src="@drawable/oval_shape_white"/>
     </RelativeLayout>
 
 </LinearLayout>
