@@ -118,78 +118,33 @@
             android:orientation="horizontal"
             android:layout_width="291.9dp"
             android:layout_height="46dp">
-        <RelativeLayout
-            android:id="@+id/btn_sign_up_select_year"
-            android:background="@drawable/textboxround"
+        <Spinner
+            android:id="@+id/spinner_sign_up_select_year"
+            android:background="@drawable/spinner_background"
             android:layout_width="90.9dp"
-            android:layout_height="46dp">
-            <TextView
-                android:id="@+id/tv_sign_up_select_year"
-                android:layout_width="50dp"
-                android:layout_height="46dp"
-                android:text="연"
-                android:background="#ffffff"
-                android:textColor="#707070"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="14dp"
-                />
-            <ImageView
-                android:layout_toRightOf="@id/tv_sign_up_select_year"
-                android:layout_width="22dp"
-                android:layout_height="23dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_years_click"
-
-                />
-        </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/btn_sign_up_select_month"
-                android:background="@drawable/textboxround"
+            android:layout_height="46dp"
+            android:spinnerMode="dropdown"
+            android:layout_marginRight="9.1dp"
+            >
+s
+        </Spinner>
+            <Spinner
+                android:layout_marginRight="9.1dp"
+                android:id="@+id/spinner_sign_up_select_month"
+                android:background="@drawable/spinner_background"
                 android:layout_width="90.9dp"
+                android:spinnerMode="dropdown"
                 android:layout_height="46dp">
-                <TextView
-                    android:id="@+id/tv_sign_up_select_month"
-                    android:layout_width="50dp"
-                    android:layout_height="46dp"
-                    android:text="월"
-                    android:background="#ffffff"
-                    android:textColor="#707070"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="14dp"
-                    />
-                <ImageView
-                    android:layout_toRightOf="@id/tv_sign_up_select_month"
-                    android:layout_width="22dp"
-                    android:layout_height="23dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_years_click"
 
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/btn_sign_up_select_day"
-                android:background="@drawable/textboxround"
+            </Spinner>
+            <Spinner
+                android:id="@+id/spinner_sign_up_select_day"
+                android:background="@drawable/spinner_background"
                 android:layout_width="90.9dp"
+                android:spinnerMode="dropdown"
                 android:layout_height="46dp">
-                <TextView
-                    android:id="@+id/tv_sign_up_select_day"
-                    android:layout_width="50dp"
-                    android:layout_height="46dp"
-                    android:text="일"
-                    android:background="#ffffff"
-                    android:textColor="#707070"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="14dp"
-                    />
-                <ImageView
-                    android:layout_toRightOf="@id/tv_sign_up_select_day"
-                    android:layout_width="22dp"
-                    android:layout_height="23dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_years_click"
 
-                    />
-            </RelativeLayout>
+            </Spinner>
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -261,7 +216,7 @@
                 android:paddingRight="8dp" />
 
             <TextView
-                android:id="@+id/btn_sign_up_overlap"
+                android:id="@+id/tv_sign_up_overlap"
                 android:layout_width="78dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"

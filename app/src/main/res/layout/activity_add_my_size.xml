@@ -3,36 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp">
+
         <ImageView
             android:id="@+id/btn_activity_add_my_size_brand_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_left_arrow_wh"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_left_arrow_wh" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="70dp"
             android:text="브랜드 선택"
             android:textColor="#000000"
-            android:layout_centerVertical="true"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginLeft="70dp"/>
+            android:textStyle="bold" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000"
-        android:alpha="0.3">
-    </RelativeLayout>
+        android:alpha="0.3"
+        android:background="#000000"></RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp">
@@ -117,6 +122,7 @@
                 android:layout_toRightOf="@id/btn_activity_search_for_brands_h"
                 android:src="@drawable/button_brandsearch_i" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp">
@@ -201,6 +207,7 @@
                 android:layout_toRightOf="@id/btn_activity_search_for_brands_q"
                 android:src="@drawable/button_brandsearch_r" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp">
@@ -285,25 +292,26 @@
                 android:layout_toRightOf="@id/btn_activity_search_for_brands_z"
                 android:src="@drawable/button_brandsearch_etc" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="308dp"
             android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="18dp"
             android:alpha="0.3"
-            android:background="#000000"
-            android:layout_marginLeft="30dp">
-        </RelativeLayout>
+            android:background="#000000"></RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/activity_add_my_size_brand_selected"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_add_my_size_brand_list"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+                android:id="@+id/rv_add_my_size_brand_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

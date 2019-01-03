@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
+import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
-import com.sopt.befit.adapter.SearchProductStringRecyclerViewAdapter
 import com.sopt.befit.fragment.SBrandFragment
 import com.sopt.befit.fragment.SProductFragment
 import kotlinx.android.synthetic.main.activity_search_product.*
@@ -15,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_search_product.*
 class SearchProductActivity : AppCompatActivity() {
 
     lateinit var searchProductImageRecyclerViewAdapter: SearchProductImageRecyclerViewAdapter
-    lateinit var searchProductStringRecyclerViewAdapter: SearchProductStringRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +30,26 @@ class SearchProductActivity : AppCompatActivity() {
     }
 
     private fun setViewClickListener() {
+        et_search_product_write.setOnClickListener{
+            et_search_product_write.setText("")
+            rv_search_product_2.setVisibility(View.VISIBLE)
+            layout_search_product_bottom.setVisibility(View.GONE)
+        }
         img_search_product_p.setOnClickListener {
             replaceFragment(SProductFragment())
+            if(img_search_product_b.isChecked){
+                img_search_product_b.setChecked(false)
+            }else{
+                img_search_product_p.setChecked(true)
+            }
         }
         img_search_product_b.setOnClickListener {
             replaceFragment(SBrandFragment())
+            if(img_search_product_p.isChecked){
+                img_search_product_p.setChecked(false)
+            }else{
+                img_search_product_b.setChecked(true)
+            }
         }
     }
 
@@ -52,18 +67,10 @@ class SearchProductActivity : AppCompatActivity() {
 
     private fun setRecyclerView() {
 
-        //내가 선호하는 프로덕션만 출력
-
         var dataList: ArrayList<String> = ArrayList()
-        dataList.add("유니클로")
-        dataList.add("후아유")
-        dataList.add("오아이오아이")
-        dataList.add("휠라")
-        dataList.add("아디다스")
-        dataList.add("나이키")
 
-        searchProductStringRecyclerViewAdapter = SearchProductStringRecyclerViewAdapter(this, dataList)
-        rv_search_product_2.adapter = searchProductStringRecyclerViewAdapter
+        searchProductImageRecyclerViewAdapter = SearchProductImageRecyclerViewAdapter(this, dataList)
+        rv_search_product_2.adapter = searchProductImageRecyclerViewAdapter
         rv_search_product_2.layoutManager = LinearLayoutManager(this)
     }
 }

@@ -1,9 +1,8 @@
-package com.sopt.befit.Fragment
+package com.sopt.befit.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,7 @@ import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
 import com.sopt.befit.data.JjimBrandData
 import kotlinx.android.synthetic.main.fragment_brand.*
 
-class BrandFragment : Fragment() {
-
+class BrandRankingFragment :Fragment(){
     lateinit var jjimBrandRecyclerViewAdapter: JjimBrandRecyclerViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

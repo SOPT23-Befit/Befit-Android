@@ -2,22 +2,27 @@ package com.sopt.befit.activity
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.view.ViewParent
+import android.widget.*
 import com.sopt.befit.R
 import com.sopt.befit.data.UserData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostSignUpResponse
+import kotlinx.android.synthetic.main.activity_reset_password.*
+import kotlinx.android.synthetic.main.activity_search_password.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.toast
 import org.json.JSONObject
@@ -30,18 +35,27 @@ import java.util.regex.Pattern
 import kotlin.collections.ArrayList
 
 class SignUpActivity : AppCompatActivity(), View.OnClickListener {
-    val c = GregorianCalendar.getInstance()
-    var mYear: Int = c.get(Calendar.YEAR)
-    var mMonth: Int = c.get(Calendar.MONTH)
-    var mDay: Int = c.get(Calendar.DAY_OF_MONTH)
 
+
+    private lateinit var adapter : ArrayAdapter<String>
     lateinit var networkservice : NetworkService
     lateinit var userData: UserData
     private var overlapNetWorking : String = ""
+
+
     override fun onClick(v: View?) {
         when(v!!){
+            btn_activity_search_pw_bithday->{
+                //DatePicker.OnDateChangedListener{
+                   // txtDate.text = String.format(
+                           // Locale.K
+                    //)
+              //  }
+
+            }
             btn_sign_up_next_page ->{
                 val intent = Intent(this,SelectBrandActivity::class.java)
+
                 var name = et_sign_up_name.text.toString()
                 var password = et_sign_up_password.text.toString()
                 var passwordcheck  = et_sign_up_password_check.text.toString()
@@ -49,13 +63,21 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 var gender : String = intent.getStringExtra("gender")
                 var brand1 : Int = intent.getIntExtra("brand1",0)
                 var brand2 : Int = intent.getIntExtra("brand2",1)
-                var birth = tv_sign_up_select_year.text.toString() + tv_sign_up_select_month.text.toString() + tv_sign_up_select_day.text.toString()
+
+                val year = spinner_sign_up_select_year.selectedItem as String
+                val month = spinner_sign_up_select_month.selectedItem as String
+                val day = spinner_sign_up_select_day.selectedItem as String
+                val birth = year + month + day
+
+
                 if(email.length > 0 && password.length > 0 && passwordcheck.length > 0 && name.length > 0){
                    if(Pattern.matches("^(?=.*\\d)(?=.*[.!@#$%])(?=.*[a-zA-Z]).{8,20}$", password)){ //pw 유효성 검사
                             if(password.equals(passwordcheck)){ //서로 같은지
                                 postUserCreate(name,password,email,birth,gender,brand1,brand2)
+
                             }else{
                                 toast("비밀번호 확인과 비밀번호가 일치하지 않습니다.")
+                                tv_sign_up_overlap.visibility = View.VISIBLE
                             }
                    }else{
                        toast("비밀번호 형식이 유효하지 않습니다.")
@@ -71,10 +93,21 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+
+    var mDateSetListener = DatePickerDialog.OnDateSetListener {
+        view, year, month, dayOfMonth ->
+
+    }
+
+
     fun init(){
         btn_sign_up_next_page.setOnClickListener(this)
         networkservice = ApplicationController.instance.networkService
         SharedPreferenceController.instance!!.load(this)
+
+
+
     }
     fun postUserCreate(username: String, userpw: String, useremail:String, userbirth: String,usergender : String, userbrand1 : Int, userbrand2 : Int){
             //userData에 값 넣기
@@ -92,7 +125,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                    override fun onResponse(call : Call<PostSignUpResponse>, response: Response<PostSignUpResponse>){
 
                        response?.let {
-                           when(it.code()){
+                           when(it.body()!!.status){
                                201 ->{
                                    SharedPreferenceController.instance!!.setPrefData("jwt",response.headers().value(0))
                                    Log.v("success",response.headers().toString())
@@ -122,54 +155,40 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                })
            }
     }
+
+    var pwTextWatcher = object : TextWatcher{
+        override fun afterTextChanged(s: Editable?) {
+
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            tv_sign_up_overlap.visibility = View.VISIBLE
+            if(et_sign_up_password.equals(et_sign_up_password_check)){
+                tv_check_new_pw.setTextColor((ContextCompat.getColor(this@SignUpActivity,R.color.colorAccent)))
+                tv_check_new_pw.text = "일치"
+            }else{
+                tv_check_new_pw.setTextColor(Color.parseColor("#7a36e4"))
+                tv_check_new_pw.text = "불일치"
+            }
+
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-
-
+        tv_sign_up_overlap.visibility = View.INVISIBLE
+        et_sign_up_password_check.addTextChangedListener(pwTextWatcher)
+        adapter = ArrayAdapter(this@SignUpActivity, android.R.layout.simple_spinner_item)
 
         init()
-        //생년월일 선택 -> calender dialog 띄우기
-        btn_sign_up_select_bithday.setOnClickListener {
-            createDialog()!!.show()
-        }
 
     }
 
 
 
 
-    private fun createDialog(): Dialog?{
-        return DatePickerDialog(this,mDateSetListener,mYear,mMonth,mDay)
-    }
-    var mDateSetListener = DatePickerDialog.OnDateSetListener{
-        view, year, month, dayOfMonth ->  Toast.makeText(
-            applicationContext,
-            "날짜: $year-$month-$dayOfMonth",
-            Toast.LENGTH_SHORT
-    ).show()
-    }
-    private fun setIninText(){
-        val name : String? = intent.getStringExtra("name")
-        val email : String? = intent.getStringExtra("email")
-        val comparevalue : Boolean
-        if(name != null){
-            et_sign_up_name.setText(name)
-        }
-        if(email != null && email.length>= 6 && email.length<=12){
-            et_sign_up_email.setText(email)
-
-
-        }
-}
-    private fun setOnClickListener(){
-        btn_sign_up_next_page.setOnClickListener {
-            val intent : Intent = Intent()
-            intent.putExtra("email",et_sign_up_email.text.toString())
-            intent.putExtra("password",et_sign_up_password.text.toString())
-            intent.putExtra("name",et_sign_up_name.text.toString())
-            intent.putExtra("passwordcheck",et_sign_up_password_check.text.toString())
-
-        }
-    }
 }
