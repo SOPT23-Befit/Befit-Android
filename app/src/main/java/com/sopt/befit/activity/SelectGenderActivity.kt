@@ -3,13 +3,16 @@ package com.sopt.befit.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.sopt.befit.R
+
 import kotlinx.android.synthetic.main.activity_select_gender2.*
+
 import org.jetbrains.anko.startActivity
 
 class SelectGenderActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_select_gender2)
 
         var gender: Int = 0
@@ -23,15 +26,18 @@ class SelectGenderActivity : AppCompatActivity() {
                 startActivity<BrandPreferenceWomanActivity>("gender" to "여")
             }
             if (gender == 2) {
+
                 startActivity<BrandPreferenceManActivity>("gender" to "남")
             }
 
         }
 
+
         ibtn_select_gender_back.setOnClickListener() {
 
             startActivity<LogInActivity>()
         }
+
 
         lo_select_gender_female.setOnClickListener() {
 
@@ -63,10 +69,13 @@ class SelectGenderActivity : AppCompatActivity() {
             gender = 2
             if (status_m == 0) {
                 if (status_fm == 0) {
+
+
                     ibtn_select_gender_next.isClickable = true
                     status_m = 1
                     iv_gender_m.setImageResource(R.drawable.man_clicked)
                     ibtn_select_gender_next.setImageResource(R.drawable.ic_purplearrow)
+
                 } else if (status_fm == 1) {
                     ibtn_select_gender_next.isClickable = true
                     status_m = 1
@@ -83,5 +92,7 @@ class SelectGenderActivity : AppCompatActivity() {
 
 
         }
+
+
     }
 }

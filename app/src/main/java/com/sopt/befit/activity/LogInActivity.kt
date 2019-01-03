@@ -13,9 +13,10 @@ class LogInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_log_in)
 
         btn_log_in_join.setOnClickListener(){
-            startActivity<SignUpActivity>()
+            startActivity<SelectGenderActivity>()
         }
         ibtn_log_in_confirm.setOnClickListener(){
+
 
             startActivity<MainActivity>()//
         }

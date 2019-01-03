@@ -18,16 +18,22 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
 
     lateinit var  brandGoodsRecyclerViewAdapter : BrandGoodsRecyclerViewAdapter
 
+
+    companion object {
+        lateinit var goodsinstance : AddMySizeGoodsPageActivity
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_my_size_goods_page)
         rv_add_my_size_goods_list.visibility = View.GONE
         setBtnClickListener()
         setRecyclerView()
+        goodsinstance = this
     }
     fun setBtnClickListener(){
         btn_activity_add_my_size_goods_back.setOnClickListener{
-            startActivity<SelectBrandGoodsWindowActivity>()
+            AddMySizeGoodsPageActivity.goodsinstance.finish()
         }
         et_add_my_size_act_search_goods.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -45,7 +51,9 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
                 }
             }
         })
-        rv_add_my_size_goods_list.visibility=View.VISIBLE
+        et_add_my_size_act_search_goods.setOnClickListener{
+            rv_add_my_size_goods_list.visibility=View.VISIBLE
+        }
 
     }
 
@@ -68,8 +76,4 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         //searchKeyWord 여기에 검색어가 담겨있으니까, 통신할때 이 값을 넘겨주면 됨!!!
     }
 
-    fun brandBoxVisibleController(brandName : String){
-        activity_add_my_size_goods_selected.visibility = View.GONE
-        activity_add_my_size_goods_name.text = brandName
-    }
 }

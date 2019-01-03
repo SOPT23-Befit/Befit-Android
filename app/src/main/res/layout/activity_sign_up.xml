@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_centerInParent="true"
+    tools:ignore="MissingDefaultResource">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true">
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="#ffff"
@@ -118,78 +124,21 @@
             android:orientation="horizontal"
             android:layout_width="291.9dp"
             android:layout_height="46dp">
-        <RelativeLayout
-            android:id="@+id/btn_sign_up_select_year"
-            android:background="@drawable/textboxround"
-            android:layout_width="90.9dp"
-            android:layout_height="46dp">
+
+  
+
             <TextView
                 android:id="@+id/tv_sign_up_select_year"
-                android:layout_width="50dp"
-                android:layout_height="46dp"
-                android:text="연"
-                android:background="#ffffff"
-                android:textColor="#707070"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="년 월 일"
                 />
-            <ImageView
-                android:layout_toRightOf="@id/tv_sign_up_select_year"
-                android:layout_width="22dp"
-                android:layout_height="23dp"
-                android:layout_centerVertical="true"
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_years_click"
+                android:background="@null"/>
 
-                />
-        </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/btn_sign_up_select_month"
-                android:background="@drawable/textboxround"
-                android:layout_width="90.9dp"
-                android:layout_height="46dp">
-                <TextView
-                    android:id="@+id/tv_sign_up_select_month"
-                    android:layout_width="50dp"
-                    android:layout_height="46dp"
-                    android:text="월"
-                    android:background="#ffffff"
-                    android:textColor="#707070"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="14dp"
-                    />
-                <ImageView
-                    android:layout_toRightOf="@id/tv_sign_up_select_month"
-                    android:layout_width="22dp"
-                    android:layout_height="23dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_years_click"
-
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/btn_sign_up_select_day"
-                android:background="@drawable/textboxround"
-                android:layout_width="90.9dp"
-                android:layout_height="46dp">
-                <TextView
-                    android:id="@+id/tv_sign_up_select_day"
-                    android:layout_width="50dp"
-                    android:layout_height="46dp"
-                    android:text="일"
-                    android:background="#ffffff"
-                    android:textColor="#707070"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="14dp"
-                    />
-                <ImageView
-                    android:layout_toRightOf="@id/tv_sign_up_select_day"
-                    android:layout_width="22dp"
-                    android:layout_height="23dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_years_click"
-
-                    />
-            </RelativeLayout>
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -261,7 +210,7 @@
                 android:paddingRight="8dp" />
 
             <TextView
-                android:id="@+id/btn_sign_up_overlap"
+                android:id="@+id/tv_sign_up_overlap"
                 android:layout_width="78dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
@@ -274,7 +223,7 @@
                 android:textSize="14dp" />
 
         </RelativeLayout>
-            <TextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:layout_below="@id/btn_sign_up_emailoverlap"
@@ -315,10 +264,16 @@
             />
     </LinearLayout>
 
-
-
-
-
 </LinearLayout>
 
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:visibility="invisible">
 
+    </DatePicker>
+</RelativeLayout>

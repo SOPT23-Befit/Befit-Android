@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.sopt.befit.R
 
+
 class BrandPreferenceManActivity : AppCompatActivity() {
 
     var preferenceCnt = 0

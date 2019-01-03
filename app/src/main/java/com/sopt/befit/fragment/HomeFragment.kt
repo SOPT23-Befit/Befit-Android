@@ -1,5 +1,6 @@
 package com.sopt.befit.fragment
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -15,6 +16,7 @@ import com.sopt.befit.adapter.JjimProductRecyclerViewAdapter
 import com.sopt.befit.data.JjimProductData
 import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.layout_group.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
@@ -134,6 +136,9 @@ class HomeFragment: Fragment(){
 
     nav_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
 
+
+
+        //tv_listview_title.setTextColor() 카테고리 누르면 텍스트 컬러변경
 
         Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
 
