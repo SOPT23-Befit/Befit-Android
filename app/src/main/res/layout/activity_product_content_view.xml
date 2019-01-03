@@ -1,15 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_activity_size_check"
-        android:text="사이즈 체크"
-        android:textSize="12dp"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+        <ImageButton
+            android:id="@+id/btn_activity_product_contentview_cancel"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/cancel"
+            android:background="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            />
+        <TextView
+            android:id="@+id/tv_activity_product_contentview_brandname"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_toRightOf="@id/btn_activity_product_contentview_cancel"
+            android:text="ADD"
+            android:textSize="22sp"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:textColor="#000000"
 
-</android.support.constraint.ConstraintLayout>
+            />
+        <ImageButton
+            android:layout_marginRight="4dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:id="@+id/btn_activity_product_contentview_size_check"
+            android:background="@drawable/size_check_box"
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
