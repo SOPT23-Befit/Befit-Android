@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_centerInParent="true"
+    tools:ignore="MissingDefaultResource">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true">
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="#ffff"
@@ -118,33 +124,21 @@
             android:orientation="horizontal"
             android:layout_width="291.9dp"
             android:layout_height="46dp">
-        <Spinner
-            android:id="@+id/spinner_sign_up_select_year"
-            android:background="@drawable/spinner_background"
-            android:layout_width="90.9dp"
-            android:layout_height="46dp"
-            android:spinnerMode="dropdown"
-            android:layout_marginRight="9.1dp"
-            >
-s
-        </Spinner>
-            <Spinner
-                android:layout_marginRight="9.1dp"
-                android:id="@+id/spinner_sign_up_select_month"
-                android:background="@drawable/spinner_background"
-                android:layout_width="90.9dp"
-                android:spinnerMode="dropdown"
-                android:layout_height="46dp">
 
-            </Spinner>
-            <Spinner
-                android:id="@+id/spinner_sign_up_select_day"
-                android:background="@drawable/spinner_background"
-                android:layout_width="90.9dp"
-                android:spinnerMode="dropdown"
-                android:layout_height="46dp">
+  
 
-            </Spinner>
+            <TextView
+                android:id="@+id/tv_sign_up_select_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="년 월 일"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_years_click"
+                android:background="@null"/>
+
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -229,7 +223,7 @@ s
                 android:textSize="14dp" />
 
         </RelativeLayout>
-            <TextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:layout_below="@id/btn_sign_up_emailoverlap"
@@ -270,10 +264,16 @@ s
             />
     </LinearLayout>
 
-
-
-
-
 </LinearLayout>
 
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:visibility="invisible">
 
+    </DatePicker>
+</RelativeLayout>
