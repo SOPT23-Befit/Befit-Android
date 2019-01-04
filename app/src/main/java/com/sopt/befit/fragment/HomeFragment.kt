@@ -1,5 +1,7 @@
 package com.sopt.befit.fragment
 
+import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -7,14 +9,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
 import com.sopt.befit.activity.JjimActivity
-import com.sopt.befit.adapter.Expandable
-import com.sopt.befit.adapter.JjimProductRecyclerViewAdapter
+import com.sopt.befit.adapter.*
 import com.sopt.befit.data.JjimProductData
 import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.layout_group.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
@@ -34,6 +37,8 @@ class HomeFragment: Fragment(){
 
         setcategory()
         setRecyclerView()
+        configureBannerNavigation()
+        configureHomeBrandNavigation()
 
         ibtn_menu_open.setOnClickListener(){
             ibtn_menu_open.visibility=View.INVISIBLE
@@ -48,7 +53,10 @@ class HomeFragment: Fragment(){
             AAAAMainActivity.instance.tabvisible()
         }
 
+        if(body.isNotEmpty()){
 
+            //iv_listview_arrow.visibility=View.INVISIBLE
+        }
 
       //ㅂㅐ너 클릭시
         //브랜드상품 클릭시
@@ -63,6 +71,7 @@ class HomeFragment: Fragment(){
     val new:MutableList<String> = ArrayList()
     val best : MutableList<String> = ArrayList()
     val women : MutableList<String> = ArrayList()
+
     women.add("Outer")
     women.add("Jacket")
     women.add("Coat")
@@ -128,11 +137,16 @@ class HomeFragment: Fragment(){
 
 
 
+
     nav_list.setAdapter(Expandable(activity!!,header,body))
 
 
 
     nav_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+
+
+
+        tv_listview_title.setTextColor(Color.parseColor("#7a36e4"))
 
 
         Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
@@ -164,5 +178,38 @@ class HomeFragment: Fragment(){
     }
 
 
+    private fun configureHomeBrandNavigation()
+    {
+        vp_aaa_main_home_fragment.adapter = HomeFragmentBrandPagerAdapter(fragmentManager!!,3)
+        vp_aaa_main_home_fragment.offscreenPageLimit = 3
+        lo_tab_aaa_main_home_fragment.setupWithViewPager(vp_aaa_main_home_fragment)
+//TabLayout에 붙일 layout을 찾아준 다음
+        val brandNaviLayout : View = this.layoutInflater.inflate(R.layout.main_brand_tab_bar, null, false)
+//탭 하나하나 TabLayout에 연결시켜줍니다.
+        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.customView = brandNaviLayout.findViewById(R.id.iv_home_fragment_first) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(1)!!.customView = brandNaviLayout.findViewById(R.id.iv_home_fragment_second) as ImageView
+
+        lo_tab_aaa_main_home_fragment.getTabAt(2)!!.customView = brandNaviLayout.findViewById(R.id.iv_home_fragment_third) as ImageView
+
+        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.select()
+
+    }
+    private fun configureBannerNavigation()
+    {
+        vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(fragmentManager!!,3)
+        vp_aaa_main_banner.offscreenPageLimit = 3
+        lo_tab_aaa_main_home_fragment.setupWithViewPager(vp_aaa_main_banner)
+//TabLayout에 붙일 layout을 찾아준 다음
+        val bannerNaviLayout : View = this.layoutInflater.inflate(R.layout.main_brand_tab_bar, null, false)
+//탭 하나하나 TabLayout에 연결시켜줍니다.
+        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_1) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(1)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_2) as ImageView
+
+        lo_tab_aaa_main_home_fragment.getTabAt(2)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_3) as ImageView
+
+
+        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.select()
+
+    }
 }
 

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BrandPreferenceManActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ibtn_brand_prefer_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="41dp"
+        android:layout_marginLeft="26dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선호브랜드 2가지"
+            android:textColor="#7a36e4"
+            android:textStyle="bold"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="를"
+            android:textStyle="bold"
+            android:textSize="28sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="선택해주세요"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:layout_marginLeft="26dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@null"
+            android:src="@drawable/woman_andersson_bell"
+            tools:layout_editor_absoluteX="120.8dp"
+            tools:layout_editor_absoluteY="331.5dp"/>
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="155dp"
+            android:layout_marginLeft="169dp"
+            android:background="@null"
+            android:src="@drawable/woman_oioi" />
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="145dp"
+
+            android:background="@null"
+            android:src="@drawable/woman_critic"
+
+            tools:layout_editor_absoluteX="75.3dp"
+            tools:layout_editor_absoluteY="561.6dp"/>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/woman_thisisneverthat"
+            tools:layout_editor_absoluteX="81.8dp"
+            tools:layout_editor_absoluteY="196dp"/>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="48dp"
+            android:background="@null"
+            android:src="@drawable/woman_romantic_crwon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="214.5dp"
+            tools:layout_editor_absoluteY="224.8dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/woman_minav"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="299dp"/>
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/woman_lafudgestore"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            tools:layout_editor_absoluteX="120.8dp"
+            tools:layout_editor_absoluteY="331.5dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="353.8dp"
+            android:layout_marginLeft="251.7dp"
+
+            android:background="@null"
+            android:src="@drawable/woman_more_or_less"
+       />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/ibtn_brand_prefer_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_grayarrow"
+            android:layout_gravity="right" />
+    </LinearLayout>
+
+
+</LinearLayout>

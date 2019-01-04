@@ -20,13 +20,19 @@
                 android:id="@+id/ibtn_menu_open"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@drawable/button_ham"
+                android:background="@null"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"/>
             <TextView
                 android:id="@+id/tv_aaa_main_befit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="befit"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:layout_marginLeft="30dp"
+                android:textStyle="bold"/>
         </LinearLayout>
         <RelativeLayout
             android:id="@+id/lo_aaa_main_home_brand_rec"
@@ -98,7 +104,7 @@
 
 
        <LinearLayout
-           android:layout_width="wrap_content"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content">
            <TextView
                android:id="@+id/list_head"
@@ -109,12 +115,14 @@
                android:textStyle="bold"
                android:paddingTop="30dp"
                android:layout_marginLeft="16dp"
-               />
+               android:layout_weight="8"/>
            <ImageButton
                android:id="@+id/ibtn_menu_close"
                android:layout_width="wrap_content"
                android:layout_height="56dp"
-               android:src="@mipmap/ic_launcher"/>
+               android:src="@drawable/cancel"
+               android:layout_weight="1"/>
+
        </LinearLayout>
 
 
@@ -130,7 +138,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginLeft="26dp"
             android:layout_marginTop="0dp"
-            android:background="#ffffff"
+            android:background="@null"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"

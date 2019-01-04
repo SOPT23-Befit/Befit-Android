@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:text="투버튼 롱코트"
+            android:textColor="#191919"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="L"
+            android:textColor="#191919"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="241dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30.3dp"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+
+        <TextView
+            android:id="@+id/tv_my_size_add_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="옷변경"
+            android:textColor="#191919"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/sp_compare_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_my_size_add_select"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
+            android:spinnerMode="dialog"></Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="29dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="사이즈 비교"
+            android:textColor="#191919"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="288.6dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60.2dp"
+        android:background="#707070"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="31dp">
+
+        <TableLayout
+            android:id="@+id/layout_my_size_add_display_tvs"
+            android:layout_width="288.6dp"
+            android:layout_height="31dp"
+            android:layout_centerHorizontal="true">
+
+            <TableRow
+                android:layout_weight="1"
+                android:background="#f9fafb"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_00"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="총장"
+                    android:textColor="#191919"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_01"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="소매길이"
+                    android:textColor="#191919"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_02"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="어깨너비"
+                    android:textColor="#191919"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_03"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="가슴단면"
+                    android:textColor="#191919"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_04"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="암홀"
+                    android:textColor="#191919"
+                    android:textSize="12sp" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="288.6dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60.2dp"
+        android:background="#dcdcdc"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="31dp">
+
+        <TableLayout
+            android:layout_width="288.6dp"
+            android:layout_height="31dp"
+            android:layout_centerHorizontal="true">
+
+            <TableRow
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="4cm 큼"
+                    android:textColor="#7a36e4"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2cm 큼"
+                    android:textColor="#7a36e4"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_7"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="딱맞음"
+                    android:textColor="#7a36e4"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="1cm 큼"
+                    android:textColor="#7a36e4"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_9"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2cm 작음"
+                    android:textColor="#7a36e4"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="288.6dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60.2dp"
+        android:background="#dcdcdc"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="31dp">
+
+        <TableLayout
+            android:layout_width="288.6dp"
+            android:layout_height="31dp"
+            android:layout_centerHorizontal="true">
+
+            <TableRow
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="61cm"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_11"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="73.5cm"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="36cm"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_13"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="43cm"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_my_size_add_display_15"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="55.5cm"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="288.6dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60.2dp"
+        android:background="#707070"></RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="41.5dp">
+        <ImageView
+        android:id="@+id/compare_size_number1"
+        android:layout_width="7.5dp"
+        android:layout_height="7.5dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="20.5dp"
+        android:src="@drawable/oval_shape_white"/>
+        <ImageView
+            android:id="@+id/compare_size_number2"
+            android:layout_width="7.5dp"
+            android:layout_height="7.5dp"
+            android:layout_toRightOf="@+id/compare_size_number1"
+            android:layout_marginLeft="7.5dp"
+            android:layout_marginTop="20.5dp"
+            android:src="@drawable/oval_shape_white"/>
+        <ImageView
+            android:id="@+id/compare_size_number3"
+            android:layout_width="7.5dp"
+            android:layout_height="7.5dp"
+            android:layout_toRightOf="@+id/compare_size_number2"
+            android:layout_marginLeft="7.5dp"
+            android:layout_marginTop="20.5dp"
+            android:src="@drawable/oval_shape_black"/>
+    </RelativeLayout>
+
+</LinearLayout>
