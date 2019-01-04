@@ -144,7 +144,7 @@ android:layout_marginLeft="26dp"/>
             android:background="@null"
             android:src="@drawable/man_liberteng_brand_select"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteX="120.8dp"
+            tools:layout_editor_absoluteX="100dp"
             tools:layout_editor_absoluteY="331.5dp" />
 
         <ImageButton
