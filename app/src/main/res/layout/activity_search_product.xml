@@ -5,53 +5,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.SearchProductActivity">
+    tools:context=".activity.SearchProductActivity"
+    android:windowSoftInputMode="stateHidden|adjustPan">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp">
+        android:layout_height="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:src="@drawable/img_search"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="26dp"/>
+        <RelativeLayout
+            android:id="@+id/layout_search_product_search_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/searcharea">
 
-        <EditText
-            android:id="@+id/et_search_product_write"
-            android:layout_width="284dp"
-            android:layout_height="32dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:inputType="textPersonName"
-            android:paddingLeft="34dp"
-            android:cursorVisible="false"
-            android:text="찾고 계신 상품이 무엇인가요?"
-            android:background="@drawable/shape_search_box"/>
+            <EditText
+                android:id="@+id/et_search_product_write"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:inputType="textPersonName"
+                android:lineSpacingExtra="30sp"
+                android:paddingLeft="34dp"
+                android:hint="찾고 계신 상품이 무엇인가요?"
+                android:textColor="#848484"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/img_search" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_search_product_cancle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            android:text="취소" />
-    </RelativeLayout>
+            android:layout_width="49dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:gravity="center"
+            android:lineSpacingExtra="2sp"
+            android:text="취소"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_search_product_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:id="@+id/rv_search_product_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#ebebeb"
+        android:padding="0.5dp"
+        ></android.support.v7.widget.RecyclerView>
 
     <LinearLayout
         android:id="@+id/layout_search_product_bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,22 +105,24 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/layout_search_product_new_popular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ebebeb">
 
-            <TextView
+            <CheckedTextView
                 android:id="@+id/tv_search_product_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="8dp"
+                android:checked="true"
                 android:letterSpacing="0.06"
                 android:lineSpacingExtra="2sp"
                 android:text="신상순"
-                android:textColor="#7a36e4"
+                android:textColor="@color/text_color_new_popular"
                 android:textSize="10sp" />
 
             <TextView
@@ -109,7 +135,7 @@
                 android:layout_toLeftOf="@id/tv_search_product_new"
                 android:background="#707070" />
 
-            <TextView
+            <CheckedTextView
                 android:id="@+id/tv_search_product_popular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +145,7 @@
                 android:letterSpacing="0.06"
                 android:lineSpacingExtra="2sp"
                 android:text="인기순"
-                android:textColor="#848484"
+                android:textColor="@color/text_color_new_popular"
                 android:textSize="10sp" />
 
         </RelativeLayout>

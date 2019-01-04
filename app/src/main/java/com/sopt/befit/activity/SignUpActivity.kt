@@ -56,6 +56,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     if (Pattern.matches("^(?=.*\\d)(?=.*[.!@#$%])(?=.*[a-zA-Z]).{8,20}$", password)) { //pw 유효성 검사
                         if (password.equals(passwordcheck)) { //서로 같은지
                             postUserCreate(name, password, email, birth, gender, brand1, brand2)
+                            btn_sign_up_next_page.isClickable=true
+                            btn_sign_up_next_page.setImageResource(R.drawable.ic_purplearrow)
 
                         } else {
                             toast("비밀번호 확인과 비밀번호가 일치하지 않습니다.")
@@ -83,6 +85,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             //SharedPreferenceController.instance().load(this)
 
 
+            startActivity<AAAAMainActivity>("email" to "email")//로그인 상태로 즉 회원 정보 보내야함
         }
     }
 

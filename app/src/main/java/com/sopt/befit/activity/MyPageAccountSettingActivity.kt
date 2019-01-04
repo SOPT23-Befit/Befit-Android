@@ -16,12 +16,14 @@ class MyPageAccountSettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page_account_setting)
+
+
         setSwitchClick()
         logOutOnClick()
 
     }
 
-    fun setSwitchClick() {
+    fun setSwitchClick(){
         sw_activity_my_page_account_setting_turn.setOnCheckedChangeListener { switch, isChecked ->
             if (isChecked) {
             } else {

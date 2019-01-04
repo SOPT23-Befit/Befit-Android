@@ -289,7 +289,7 @@
             android:id="@+id/btn_sign_up_next_page"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_purplearrow"
+            android:src="@drawable/ic_grayarrow"
             android:layout_marginLeft="245dp"
             android:layout_marginTop="21dp"
             />
