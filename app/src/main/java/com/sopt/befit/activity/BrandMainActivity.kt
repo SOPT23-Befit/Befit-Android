@@ -7,7 +7,6 @@ import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimProductRecyclerViewAdapter
 import com.sopt.befit.data.JjimProductData
 import kotlinx.android.synthetic.main.activity_brand_main.*
-import kotlinx.android.synthetic.main.activity_category.*
 
 class BrandMainActivity : AppCompatActivity() {
 
@@ -19,12 +18,30 @@ class BrandMainActivity : AppCompatActivity() {
 
         setRecyclerView()
 
+        setViewClickListener()
+
         /*
         refresh_brand_main_act.setOnRefresh {
             toast("새로 고침!")
         }
-
          */
+    }
+
+    private fun setViewClickListener() {
+        tv_brand_main_new.setOnClickListener {
+            //리사이클러뷰 재통신
+            if(tv_brand_main_popular.isChecked){
+                tv_brand_main_popular.setChecked(false)
+                tv_brand_main_new.setChecked(true)
+            }
+        }
+        tv_brand_main_popular.setOnClickListener {
+            //리사이클러 뷰 재통신
+            if(tv_brand_main_new.isChecked){
+                tv_brand_main_new.setChecked(false)
+                tv_brand_main_popular.setChecked(true)
+            }
+        }
     }
 
     private fun setRecyclerView() {

@@ -3,14 +3,19 @@ package com.sopt.befit.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MySizeLookupRecyclerViewAdapter
 import com.sopt.befit.data.MySizeLookupData
+import kotlinx.android.synthetic.main.activity_my_page_account_setting.*
 import kotlinx.android.synthetic.main.activity_my_size_lookup.*
+import kotlinx.android.synthetic.main.rv_item_my_size_lookup.*
+import kotlinx.android.synthetic.main.rv_item_my_size_lookup.view.*
 
 class MySizeLookupActivity : AppCompatActivity() {
 
     lateinit var mySizeLookupRecyclerViewAdapter: MySizeLookupRecyclerViewAdapter
+    lateinit var mySizeLookupDeleteRecyclerViewAdapter: MySizeLookupRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,15 +27,17 @@ class MySizeLookupActivity : AppCompatActivity() {
     }
 
     private fun setViewClickListener() {
-        tv_my_size_add_edit.setOnClickListener{
-            if(tv_my_size_add_edit.text=="편집") {
-                tv_my_size_add_edit.setText("제거")
-            }else{
+        tv_my_size_add_edit.setOnClickListener {
+            if (tv_my_size_add_edit.text == "편집") {
+                tv_my_size_add_edit.setText("완료")
+
+                //mySizeLookupRecyclerViewAdapter.notifyItemRangeChanged(0, mySizeLookupRecyclerViewAdapter.getItemCount());
+                rv_my_size_lookup.adapter = mySizeLookupDeleteRecyclerViewAdapter
+            } else {
                 tv_my_size_add_edit.setText("편집")
+                img_rv_item_my_size_lookup_delete.visibility = View.GONE
+                rv_my_size_lookup.adapter = mySizeLookupRecyclerViewAdapter
             }
-            //편집 페이지로 가기
-            //모든 리사이클러뷰가 delete 사진이 활성화
-            //누르면 바로 삭제
         }
     }
 
@@ -40,11 +47,13 @@ class MySizeLookupActivity : AppCompatActivity() {
         dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
         dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
         dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
+        dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
+        dataList.add(MySizeLookupData("", "", "", false))
 
+        mySizeLookupRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList, 0)
+        mySizeLookupDeleteRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList, 1)
 
-        mySizeLookupRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList)
         rv_my_size_lookup.adapter = mySizeLookupRecyclerViewAdapter
         rv_my_size_lookup.layoutManager = GridLayoutManager(this, 2)
-
     }
 }

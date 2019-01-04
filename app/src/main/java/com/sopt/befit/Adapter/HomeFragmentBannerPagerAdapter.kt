@@ -3,16 +3,17 @@ package com.sopt.befit.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.sopt.befit.fragment.BrandRankingFragment
-import com.sopt.befit.fragment.HomeFragment
-import com.sopt.befit.fragment.MypageFragment
+import com.sopt.befit.fragment.*
 
-class HomeBannerPagerAdapter(fm : FragmentManager, val FragmentCount : Int) : FragmentStatePagerAdapter(fm){
+
+class HomeFragmentBannerPagerAdapter(fm : FragmentManager, val FragmentCount : Int) : FragmentStatePagerAdapter(fm){
 
     override fun getItem(position: Int): Fragment? {
         when(position)
         {
-
+            0->return MainBannerFragment1()
+            1->return MainBannerFragment2()//SearchFragment()
+            2->return MainBannerFragment3()
 
             else->return null
         }

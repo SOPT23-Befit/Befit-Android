@@ -51,7 +51,7 @@
         android:textSize="28sp"
         android:layout_marginLeft="26dp"/>
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -59,65 +59,40 @@
             android:id="@+id/imageButton5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+
             android:background="@null"
             android:src="@drawable/woman_andersson_bell"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton7"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton6"
-            app:layout_constraintHorizontal_bias="0.187"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton8"
-            app:layout_constraintVertical_bias="1.0" />
+            tools:layout_editor_absoluteX="120.8dp"
+            tools:layout_editor_absoluteY="331.5dp"/>
 
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="155dp"
+            android:layout_marginLeft="169dp"
             android:background="@null"
-            android:src="@drawable/woman_oioi"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.722"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.711" />
+            android:src="@drawable/woman_oioi" />
 
         <ImageButton
             android:id="@+id/imageButton7"
             android:layout_width="wrap_content"
             android:layout_height="145dp"
-            android:layout_marginStart="75.4dp"
-            android:layout_marginEnd="164.2dp"
+
             android:background="@null"
             android:src="@drawable/woman_critic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.392"
-            app:layout_constraintStart_toStartOf="parent" />
+
+            tools:layout_editor_absoluteX="75.3dp"
+            tools:layout_editor_absoluteY="561.6dp"/>
 
         <ImageButton
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="81.7dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@null"
             android:src="@drawable/woman_thisisneverthat"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintHorizontal_bias="0.425"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            tools:layout_editor_absoluteX="81.8dp"
+            tools:layout_editor_absoluteY="196dp"/>
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -129,51 +104,40 @@
             android:src="@drawable/woman_romantic_crwon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="214.3dp"
-            tools:layout_editor_absoluteY="224.7dp" />
+            tools:layout_editor_absoluteX="214.5dp"
+            tools:layout_editor_absoluteY="224.8dp" />
 
         <ImageButton
             android:id="@+id/imageButton8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="8dp"
             android:background="@null"
             android:src="@drawable/woman_minav"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.262" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="299dp"/>
 
         <ImageButton
             android:id="@+id/imageButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="118dp"
             android:background="@null"
             android:src="@drawable/woman_lafudgestore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            tools:layout_editor_absoluteX="120.8dp"
+            tools:layout_editor_absoluteY="331.5dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="180dp"
-            android:layout_marginBottom="8dp"
+
+            android:layout_marginTop="353.8dp"
+            android:layout_marginLeft="251.7dp"
+
             android:background="@null"
             android:src="@drawable/woman_more_or_less"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageButton4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+       />
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
