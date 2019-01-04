@@ -10,15 +10,16 @@ import java.lang.Boolean.TRUE
 
 class MyPageAccountSettingActivity : AppCompatActivity() {
 
-    val switch: Switch = findViewById(R.id.sw_activity_my_page_account_setting_turn)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page_account_setting)
+
+
         setSwitchClick()
     }
     fun setSwitchClick(){
-        switch.setOnCheckedChangeListener { switch, isChecked ->
+        sw_activity_my_page_account_setting_turn.setOnCheckedChangeListener { switch, isChecked ->
             if (isChecked) {
                 //ON일 때 작동할 로직
             } else {

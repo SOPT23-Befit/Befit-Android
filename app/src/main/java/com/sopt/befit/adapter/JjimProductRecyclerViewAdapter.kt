@@ -50,7 +50,7 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
         val heart: ToggleButton = itemView.findViewById(R.id.img_rv_item_jjim_product_heart) as ToggleButton
 
         val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_my_size_lookup_b_name) as TextView
-        val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_name) as TextView
+        val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_my_size_lookup_p_name) as TextView
         val p_price: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_price) as TextView
 
         val item_btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_item_jjim_product) as RelativeLayout
