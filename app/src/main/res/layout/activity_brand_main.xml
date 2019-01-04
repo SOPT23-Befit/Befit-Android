@@ -13,10 +13,10 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:descendantFocusability="blocksDescendants"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -177,28 +177,29 @@
                     android:id="@+id/tv_brand_main_product_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:background="#ebebeb"
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="2sp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="16dp"
                     android:text="product (65)"
                     android:textColor="#000000"
                     android:textSize="14sp" />
 
-                <TextView
+                <CheckedTextView
                     android:id="@+id/tv_brand_main_new"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="16dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:checked="true"
                     android:letterSpacing="0.06"
                     android:lineSpacingExtra="2sp"
                     android:text="신상순"
-                    android:textColor="#7a36e4"
+                    android:textColor="@color/text_color_new_popular"
                     android:textSize="10sp" />
 
                 <TextView
@@ -211,7 +212,7 @@
                     android:layout_toLeftOf="@id/tv_brand_main_new"
                     android:background="#707070" />
 
-                <TextView
+                <CheckedTextView
                     android:id="@+id/tv_brand_main_popular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,7 +222,7 @@
                     android:letterSpacing="0.06"
                     android:lineSpacingExtra="2sp"
                     android:text="인기순"
-                    android:textColor="#848484"
+                    android:textColor="@color/text_color_new_popular"
                     android:textSize="10sp" />
 
             </RelativeLayout>
@@ -230,10 +231,10 @@
                 android:id="@+id/rv_brand_main_product_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:nestedScrollingEnabled="false"
                 android:background="#ebebeb"
-                android:padding="4dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:nestedScrollingEnabled="false"
+                android:padding="4dp">
 
             </android.support.v7.widget.RecyclerView>
 

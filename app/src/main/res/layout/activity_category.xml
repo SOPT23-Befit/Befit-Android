@@ -92,7 +92,6 @@
                 android:id="@+id/rv_category_product_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="18dp"
                 android:background="#ebebeb"
                 android:gravity="center"
                 android:nestedScrollingEnabled="false"

@@ -30,12 +30,12 @@ class BrandRankingFragment :Fragment(){
         //내가 좋아하는
 
         val dataList : ArrayList<JjimBrandData> = ArrayList()
-        dataList.add(JjimBrandData("유니클로"))
-        dataList.add(JjimBrandData("서브웨이"))
-        dataList.add(JjimBrandData("프링글스"))
-        dataList.add(JjimBrandData("유니클로"))
-        dataList.add(JjimBrandData("서브웨이"))
-        dataList.add(JjimBrandData("프링글스"))
+        dataList.add(JjimBrandData("유니클로", true))
+        dataList.add(JjimBrandData("서브웨이", true))
+        dataList.add(JjimBrandData("프링글스", true))
+        dataList.add(JjimBrandData("유니클로", false))
+        dataList.add(JjimBrandData("서브웨이", true))
+        dataList.add(JjimBrandData("프링글스", false))
 
         jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList)
         rv_frag_brand_list.adapter = jjimBrandRecyclerViewAdapter
