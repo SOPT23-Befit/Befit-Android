@@ -6,19 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
+import com.sopt.befit.activity.MySizeLookupActivity
+import kotlinx.android.synthetic.main.dl_size_check_no_compare_product.*
+import org.jetbrains.anko.support.v4.startActivity
+
 
 class SizeCheckAddClothDialog(): DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = inflater.inflate(R.layout.dl_size_check_no_compare_product,container,false)
-
         return view
     }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        btn_dl_size_check_add_cloth.setOnClickListener {
+            //내옷추가 액티비티로
+            startActivity<MySizeLookupActivity>()
+        }
+        dl_size_check_add_cloth_cancel.setOnClickListener {
+            dismiss()
+        }
     }
 
 

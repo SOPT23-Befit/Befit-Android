@@ -28,7 +28,7 @@
             android:id="@+id/btn_activity_select_brand_goods_window_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="추가"
+            android:text="완료"
             android:layout_centerVertical="true"
             android:textSize="14sp"
             android:layout_marginRight="16dp"
@@ -72,39 +72,44 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="15.5dp"/>
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/btn_selected_goods"
-        android:clickable="false"
         android:layout_width="match_parent"
-        android:layout_height="52dp">
+        android:layout_height="52dp"
+        android:clickable="false">
+
         <TextView
             android:id="@+id/btn_activity_select_brand_goods_window_goods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="13dp"
+            android:clickable="false"
             android:text="상품 선택"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="13dp"/>
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/activity_add_my_size_goods_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:textSize="16sp"
+            android:layout_marginRight="32dp"
             android:textColor="#7a36e4"
-            android:layout_marginRight="32dp"/>
+            android:textSize="16sp" />
+
         <ImageView
             android:id="@+id/btn_activity_select_brand_goods_window_arrow"
             android:layout_width="16.5dp"
             android:layout_height="16.5dp"
-            android:src="@drawable/ic_right_arrow_wh"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15.5dp"/>
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.5dp"
+            android:src="@drawable/ic_right_arrow_wh" />
     </RelativeLayout>
     <LinearLayout
         android:id="@+id/activity_my_size_add"
@@ -160,9 +165,11 @@
                 android:layout_alignTop="@id/tv_my_size_add_select"
                 android:layout_marginLeft="71dp"
                 android:layout_toRightOf="@id/tv_my_size_add_select"
-                android:spinnerMode="dialog"></Spinner>
+                android:spinnerMode="dialog">
+            </Spinner>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/activity_select_brand_goods_window_size"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="60dp">
