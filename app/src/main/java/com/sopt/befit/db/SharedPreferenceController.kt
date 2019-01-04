@@ -2,7 +2,9 @@ package com.sopt.befit.db
 
 import android.content.Context
 import android.content.SharedPreferences
+
 import android.widget.ShareActionProvider
+
 
 
 //DB를 이용하지 않고 데이터 저장하는 방법
