@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.Switch
 import android.widget.ToggleButton
 import com.sopt.befit.R
+import com.sopt.befit.db.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_my_page_account_setting.*
+import org.jetbrains.anko.startActivity
 import java.lang.Boolean.TRUE
 
 class MyPageAccountSettingActivity : AppCompatActivity() {
@@ -16,6 +18,12 @@ class MyPageAccountSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page_account_setting)
         setSwitchClick()
+        btn_activity_my_page_account_setting_log_out.setOnClickListener {
+            SharedPreferenceController.clearUserSharedPreferences(this)
+            startActivity<LogInActivity>()
+            finish()
+        }
+
     }
     fun setSwitchClick(){
         switch.setOnCheckedChangeListener { switch, isChecked ->
