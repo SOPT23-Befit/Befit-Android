@@ -11,7 +11,8 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_brand_prefernce_woman)
+        setContentView(R.layout.activity_brand_preference_woman)
+
 
 
     }
