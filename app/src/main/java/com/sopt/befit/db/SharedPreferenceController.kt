@@ -26,20 +26,22 @@ object SharedPreferenceController {
 
     }
 
-   /* fun getAuthorization(context: Context): String {
+    fun getAuthorization(context: Context): String {
         val pref = context.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
         return pref.getString(myAuth, "")
     }
 
-    fun getPref(context: Context) {
+    /*fun getPref(context: Context) {
         if (pref == null) {
             pref = context.getSharedPreferences(SHARED_PREFS_CONFIGURATION, Context.MODE_PRIVATE)
         }
     }
+    */
 
-    fun load(context: Context) {
+    /*fun load(context: Context) {
         getPref(context)
     }
+    */
 
     fun setPrefData(key: String, value: Float) {
         val editor = pref!!.edit()
@@ -68,10 +70,11 @@ object SharedPreferenceController {
         editor.putLong(key, value)
         editor.commit()
     }
-    */
+
+
 
     //여기서부터 아이디패스워드
-    fun setUserId(ctx: Context, input_id: String) {                        //아이디 설정
+    fun setUserID(ctx: Context, input_id: String) {                        //아이디 설정
         val preferences: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = preferences.edit()
         editor.putString(USER_ID, input_id)
@@ -101,6 +104,27 @@ object SharedPreferenceController {
         editor.clear()
         editor.commit()
     }
+    /*
+    companion object {
+        //공유 명칭
+        //SHARED_PREF 바꿔줘야한다!!!
+        private val SHARED_PREFS_CONFIGURATION = "GithubConfiguration"
+        @Volatile private  var sharedPreferenceManager: SharedPreferenceController? = null
+
+        val instance : SharedPreferenceController?
+            get(){
+                if (sharedPreferenceManager == null){
+                    synchronized(SharedPreferenceController::class.java){
+                        if(sharedPreferenceManager ==null)
+                            sharedPreferenceManager = SharedPreferenceController()
+                    }
+                }
+                return sharedPreferenceManager
+
+            }
+    }
+    */
 
 }
+
 

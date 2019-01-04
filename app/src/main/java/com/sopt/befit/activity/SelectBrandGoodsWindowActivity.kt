@@ -68,7 +68,7 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
                 toast("선택된 아이템 : " + sp_my_size_add_select_size.getItemAtPosition((position)))
                 //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
                 btn_activity_select_brand_goods_window_add.visibility = View.VISIBLE
-               // activity_select_brand_goods_window_size.visibility= View.VISIBLE
+                activity_select_brand_goods_window_size.visibility= View.VISIBLE
 
 
         }
