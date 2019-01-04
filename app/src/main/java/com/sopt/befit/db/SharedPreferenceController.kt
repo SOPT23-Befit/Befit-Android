@@ -13,7 +13,7 @@ import android.widget.ShareActionProvider
 object SharedPreferenceController {
     private val USER_NAME: String = "MYKEY"
     private val myAuth = "myAuth"
-
+    private val USER_IDX : String = "user_idx"
     private val USER_ID: String = "user_id"
     private val USER_PW: String = "user_pw"
 
@@ -98,6 +98,11 @@ object SharedPreferenceController {
     fun getUserPW(ctx: Context): String {
         val preferences: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
         return preferences.getString(USER_PW, "")
+    }
+
+    fun getUserIDX(ctx: Context) : Int {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(USER_IDX, Context.MODE_PRIVATE)
+        return preferences.getInt(USER_IDX, -1)
     }
 
     fun clearUserSharedPreferences(ctx: Context) {
