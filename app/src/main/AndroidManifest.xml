@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".activity.AAAAMainActivity" />
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
@@ -28,6 +27,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.MyPageAccountSettingActivity" >
         </activity>
         <activity android:name=".activity.MyPageAccountSettingActivity" />
         <activity android:name=".activity.MyPageTotalUserInfoManage" />

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.DatePicker
 
 import com.sopt.befit.R
 import com.sopt.befit.data.ForPwUserData
@@ -50,7 +51,7 @@ class SearchPasswordActivity : AppCompatActivity() {
                                 when(it.body()!!.status){
                                     201->{
                                         // 이 아래 줄 수정 필요
-                                        SharedPreferenceController.instance!!.setPrefData("user_idx",response.body().toString())
+                                        //SharedPreferenceController.instance!!.setPrefData("user_idx",response.body().toString())
                                         Log.v("success",response.headers().toString())
                                         Log.v("exist user",response.message().toString())
                                         startActivity(Intent(this@SearchPasswordActivity,ResetPasswordActivity::class.java))

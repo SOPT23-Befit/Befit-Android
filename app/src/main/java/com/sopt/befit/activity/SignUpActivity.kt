@@ -24,7 +24,7 @@ import retrofit2.Response
 import java.util.*
 import java.util.regex.Pattern
 
-class SignUpActivity : AppCompatActivity(),View.OnClickListener  {
+class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
     var datepickerStatus = 0//0안보임 1보임
 
@@ -82,104 +82,104 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener  {
     fun init() {
         btn_sign_up_next_page.setOnClickListener() {
             networkservice = ApplicationController.instance.networkService
-            SharedPreferenceController.instance!!.load(this)
+            //SharedPreferenceController.instance().load(this)
 
 
             startActivity<AAAAMainActivity>("email" to "email")//로그인 상태로 즉 회원 정보 보내야함
         }
     }
-        fun postUserCreate(username: String, userpw: String, useremail: String, userbirth: String, usergender: String, userbrand1: Int, userbrand2: Int) {
-            //userData에 값 넣기
-            userData = UserData(useremail, userpw, usergender, username, userbrand1, userbrand2, userbirth)
-            if (overlapNetWorking == "") {
-                overlapNetWorking = "networking"
 
-                var userCreateResponse = networkservice.postSignUpResponse(userData)
-                userCreateResponse!!.enqueue(object : Callback<PostSignUpResponse> {
-                    override fun onFailure(call: Call<PostSignUpResponse>, t: Throwable) {
-                        Log.v("Error LoginActivity : ", t.message)
-                        overlapNetWorking = ""
-                    }
+    fun postUserCreate(username: String, userpw: String, useremail: String, userbirth: String, usergender: String, userbrand1: Int, userbrand2: Int) {
+        //userData에 값 넣기
+        userData = UserData(useremail, userpw, usergender, username, userbrand1, userbrand2, userbirth)
+        if (overlapNetWorking == "") {
+            overlapNetWorking = "networking"
 
-                    override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
+            var userCreateResponse = networkservice.postSignUpResponse(userData)
+            userCreateResponse!!.enqueue(object : Callback<PostSignUpResponse> {
+                override fun onFailure(call: Call<PostSignUpResponse>, t: Throwable) {
+                    Log.v("Error LoginActivity : ", t.message)
+                    overlapNetWorking = ""
+                }
 
-                        response?.let {
-                            when (it.body()!!.status) {
-                                201 -> {
-                                    SharedPreferenceController.instance!!.setPrefData("jwt", response.headers().value(0))
-                                    Log.v("success", response.headers().toString())
-                                    Log.v("success", response.message().toString())
-                                    startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
-                                    finish()
-                                }
-                                400 -> {
-                                    Log.v("400 error", response.message())
-                                    Log.v("400 error", response.errorBody().toString())
-                                    toast("서버 에러")
-                                }
-                                401 -> {
+                override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
 
-                                }
-                                500 -> {
-
-                                }
-                                else -> {
-                                    toast("Error")
-                                }
+                    response?.let {
+                        when (it.body()!!.status) {
+                            201 -> {
+                                //SharedPreferenceController.instance!!.setPrefData("jwt", response.headers().value(0))
+                                Log.v("success", response.headers().toString())
+                                Log.v("success", response.message().toString())
+                                startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
+                                finish()
                             }
-                        }?.also {
-                            overlapNetWorking = " "
+                            400 -> {
+                                Log.v("400 error", response.message())
+                                Log.v("400 error", response.errorBody().toString())
+                                toast("서버 에러")
+                            }
+                            401 -> {
+
+                            }
+                            500 -> {
+
+                            }
+                            else -> {
+                                toast("Error")
+                            }
                         }
+                    }?.also {
+                        overlapNetWorking = " "
                     }
-                })
+                }
+            })
+        }
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sign_up)
+
+
+        tv_sign_up_overlap.visibility = View.INVISIBLE
+        adapter = ArrayAdapter(this@SignUpActivity, android.R.layout.simple_spinner_item)
+
+        init()
+
+        btn_sign_up_select_bithday.setOnClickListener() {
+            if (datepickerStatus == 0) {
+                datepickerStatus = 1
+                date_picker.visibility = View.VISIBLE
+                btn_sign_up_select_confirm.visibility = View.VISIBLE
+                lo_sign_up_total.visibility = View.INVISIBLE
             }
+
+
         }
 
-
-
-            override fun onCreate(savedInstanceState: Bundle?) {
-                super.onCreate(savedInstanceState)
-                setContentView(R.layout.activity_sign_up)
-
-                tv_sign_up_overlap.visibility = View.INVISIBLE
-                adapter = ArrayAdapter(this@SignUpActivity, android.R.layout.simple_spinner_item)
-
-                init()
-
-                btn_sign_up_select_bithday.setOnClickListener() {
-                    if (datepickerStatus == 0) {
-                        datepickerStatus = 1
-                        date_picker.visibility = View.VISIBLE
-                        btn_sign_up_select_confirm.visibility = View.VISIBLE
-                        lo_sign_up_total.visibility = View.INVISIBLE
-                    }
-
-
-                }
-
-                btn_sign_up_select_confirm.setOnClickListener() {
-                    if (datepickerStatus == 1) {
-                        datepickerStatus = 0
-                        date_picker.visibility = View.INVISIBLE
-                        btn_sign_up_select_confirm.visibility = View.INVISIBLE
-                        lo_sign_up_total.visibility = View.VISIBLE
-                    }
-                }
-                val dateChangeListener = DatePicker.OnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-                    tv_sign_up_select_year.text = String.format(
-                            Locale.KOREA, "%d-%d-%d",
-                            year, monthOfYear + 1, dayOfMonth
-                    )
-                }
-
-                date_picker.init(
-                        date_picker.year,
-                        date_picker.month,
-                        date_picker.dayOfMonth,
-                        dateChangeListener)
-
-
+        btn_sign_up_select_confirm.setOnClickListener() {
+            if (datepickerStatus == 1) {
+                datepickerStatus = 0
+                date_picker.visibility = View.INVISIBLE
+                btn_sign_up_select_confirm.visibility = View.INVISIBLE
+                lo_sign_up_total.visibility = View.VISIBLE
             }
         }
+        val dateChangeListener = DatePicker.OnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
+            tv_sign_up_select_year.text = String.format(
+                    Locale.KOREA, "%d-%d-%d",
+                    year, monthOfYear + 1, dayOfMonth
+            )
+        }
+
+        date_picker.init(
+                date_picker.year,
+                date_picker.month,
+                date_picker.dayOfMonth,
+                dateChangeListener)
+    }
+
+}
 
 
