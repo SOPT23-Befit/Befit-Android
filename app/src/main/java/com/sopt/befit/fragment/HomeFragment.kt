@@ -183,28 +183,28 @@ class HomeFragment: Fragment(){
         vp_aaa_main_home_fragment.offscreenPageLimit = 3
         lo_tab_aaa_main_home_fragment.setupWithViewPager(vp_aaa_main_home_fragment)
 //TabLayout에 붙일 layout을 찾아준 다음
-        val bottomNaviLayout : View = this.layoutInflater.inflate(R.layout.tab_bar, null, false)
+        val brandNaviLayout : View = this.layoutInflater.inflate(R.layout.main_brand_tab_bar, null, false)
 //탭 하나하나 TabLayout에 연결시켜줍니다.
-        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.iv_home_fragment_first) as ImageView
-        lo_tab_aaa_main_home_fragment.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.iv_home_fragment_second) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.customView = brandNaviLayout.findViewById(R.id.iv_home_fragment_first) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(1)!!.customView = brandNaviLayout.findViewById(R.id.iv_home_fragment_second) as ImageView
 
-        lo_tab_aaa_main_home_fragment.getTabAt(2)!!.customView = bottomNaviLayout.findViewById(R.id.iv_home_fragment_third) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(2)!!.customView = brandNaviLayout.findViewById(R.id.iv_home_fragment_third) as ImageView
 
         lo_tab_aaa_main_home_fragment.getTabAt(0)!!.select()
 
     }
     private fun configureBannerNavigation()
     {
-        vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(fragmentManager!!, 3)
+        vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(fragmentManager!!,3)
         vp_aaa_main_banner.offscreenPageLimit = 3
         lo_tab_aaa_main_home_fragment.setupWithViewPager(vp_aaa_main_banner)
 //TabLayout에 붙일 layout을 찾아준 다음
-        val bottomNaviLayout : View = this.layoutInflater.inflate(R.layout.tab_bar, null, false)
+        val bannerNaviLayout : View = this.layoutInflater.inflate(R.layout.main_brand_tab_bar, null, false)
 //탭 하나하나 TabLayout에 연결시켜줍니다.
-        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.iv_home_fragment_banner_1) as ImageView
-        lo_tab_aaa_main_home_fragment.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.iv_home_fragment_banner_2) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_1) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(1)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_2) as ImageView
 
-        lo_tab_aaa_main_home_fragment.getTabAt(2)!!.customView = bottomNaviLayout.findViewById(R.id.iv_home_fragment_banner_3) as ImageView
+        lo_tab_aaa_main_home_fragment.getTabAt(2)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_3) as ImageView
 
 
         lo_tab_aaa_main_home_fragment.getTabAt(0)!!.select()
