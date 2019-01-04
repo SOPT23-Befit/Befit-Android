@@ -2,35 +2,59 @@ package com.sopt.befit.activity
 
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
+import android.support.v4.app.FragmentManager
 import kotlinx.android.synthetic.main.activity_product_content_view.*
 import com.sopt.befit.R
+import com.sopt.befit.data.ClosetData
+import com.sopt.befit.fragment.SizeCheckAddClothDialog
+import kotlinx.android.synthetic.main.dl_size_check_no_compare_product.*
 
 
 class ProductContentViewActivity(val ctx : Context) : AppCompatActivity() {
 
+
+
+    val BACK_CODE_PRODUCT_CONTENT_ACTIVITY = 7777
+    var closetlist : ArrayList<ClosetData> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_content_view)
-        setViewClickListener()
-        //윤환이형 답
-//        val sizecheckloginDialog : DialogFragment = SizeCheckLoginDialogFragment()
+
+
+        btn_activity_product_contentview_cancel.setOnClickListener {
+            finish()
+        }
+        val fm : FragmentManager = supportFragmentManager
+
+
+        // 옷정보가 없다면
+           val sizecheckDialog : DialogFragment = SizeCheckAddClothDialog()
+        //옷정보가 없다면
+        // val ----
+
+        if (closetlist.isEmpty()){
+
+            btn_activity_product_contentview_size_check.setOnClickListener {
+                sizecheckDialog.show(fm,"Can't compare with anything")
+            }
+        }else{
+            btn_activity_product_contentview_size_check.setOnClickListener {
+                //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
+
+            }
+        }
+
 //        sizecheckloginDialog.show(supportFragmentManager,"loginDialog")
 //        btn_dl_size_check_login.setOnClickListener {
     }
 
 
-    private fun setViewClickListener() {
 
-        //login dialog 창 띄우기
-        btn_activity_size_check.setOnClickListener {
-            if (ctx is ProductContentViewActivity) {
-                //dialog 에서 실행해야할 함수 선언 ctx.function
-                //대신 밑에서 함수 만들어두기
-            }
-        }
-    }
 }
 
 

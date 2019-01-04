@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.sopt.befit.R
-import com.sopt.befit.R.id.activity_my_size_add
+import com.sopt.befit.R.id.*
 
 import com.sopt.befit.activity.AddMySizeBrandPageActivity
 import com.sopt.befit.activity.AddMySizeGoodsPageActivity
