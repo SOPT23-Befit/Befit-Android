@@ -1,31 +1,29 @@
-package com.sopt.befit.activity
+package com.sopt.befit.fragment
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.KeyEvent
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.sopt.befit.R
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
-import com.sopt.befit.fragment.SBrandFragment
-import com.sopt.befit.fragment.SProductFragment
-import kotlinx.android.synthetic.main.activity_search_product.*
-import android.view.inputmethod.EditorInfo
 import com.sopt.befit.data.SearchProductData
+import kotlinx.android.synthetic.main.fragment_search_product.*
 
-
-class SearchProductActivity : AppCompatActivity() , TextView.OnEditorActionListener{
-
+class SearchProductFragment : Fragment(), TextView.OnEditorActionListener{
     lateinit var searchProductImageRecyclerViewAdapter: SearchProductImageRecyclerViewAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_product)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater!!.inflate(R.layout.fragment_search_product, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         setRecyclerView()
 
@@ -43,6 +41,7 @@ class SearchProductActivity : AppCompatActivity() , TextView.OnEditorActionListe
                 tv_search_product_new.setChecked(true)
             }
         }
+
         tv_search_product_popular.setOnClickListener {
             //리사이클러 뷰 재통신
             if(tv_search_product_new.isChecked){
@@ -89,13 +88,13 @@ class SearchProductActivity : AppCompatActivity() , TextView.OnEditorActionListe
     }
 
     private fun addFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        val transaction: FragmentTransaction = childFragmentManager.beginTransaction()
         transaction.add(R.id.fl_search_product_fragment_block, fragment)
         transaction.commit()
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        val transaction: FragmentTransaction = childFragmentManager.beginTransaction()
         transaction.replace(R.id.fl_search_product_fragment_block, fragment)
         transaction.commit()
     }
@@ -107,9 +106,9 @@ class SearchProductActivity : AppCompatActivity() , TextView.OnEditorActionListe
         dataList.add(SearchProductData("각 이미지 링크를 주고 그래들을 사용해서", "","","","","","",""))
         dataList.add(SearchProductData("각 이미지들을 띄우자", "","","","","","",""))
 
-        searchProductImageRecyclerViewAdapter = SearchProductImageRecyclerViewAdapter(this, dataList)
+        searchProductImageRecyclerViewAdapter = SearchProductImageRecyclerViewAdapter(activity!!, dataList)
         rv_search_product_top.adapter = searchProductImageRecyclerViewAdapter
-        rv_search_product_top.layoutManager = LinearLayoutManager(this)
+        rv_search_product_top.layoutManager = LinearLayoutManager(activity!!)
     }
 
     override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
