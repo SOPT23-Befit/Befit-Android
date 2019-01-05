@@ -20,14 +20,8 @@
         <activity android:name=".activity.InputInfo" />
         <activity android:name=".activity.JjimActivity" />
         <activity android:name=".activity.KakaoAddressActivity" />
-        <activity android:name=".activity.LogInActivity" />  
-        <activity android:name=".activity.MainActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".activity.LogInActivity" />
+        <activity android:name=".activity.MainActivity"></activity>
         <activity android:name=".activity.MyPageAccountSettingActivity" />
         <activity android:name=".activity.MyPageTotalUserInfoManage" />
         <activity android:name=".activity.MySizeLookupActivity" />
@@ -37,12 +31,18 @@
         <activity android:name=".activity.SearchPasswordActivity" />
         <activity
             android:name=".activity.SearchProductActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activity.SelectBrandActivity" />
-        <activity android:name=".activity.SelectBrandGoodsWindowActivity"></activity>
+        <activity android:name=".activity.SelectBrandGoodsWindowActivity" />
         <activity android:name=".activity.SelectGenderActivity" />
-        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.SignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.CheckMyBrandPreferenceActivity"></activity>
     </application>
 
 </manifest>

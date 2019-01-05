@@ -1,4 +1,4 @@
-package com.sopt.befit.Fragment
+package com.sopt.befit.fragment
 
 import android.R
 import android.os.Bundle

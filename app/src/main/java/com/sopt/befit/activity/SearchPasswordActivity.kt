@@ -97,23 +97,31 @@ class SearchPasswordActivity : AppCompatActivity() {
         }
 
         btn_activity_search_pw_bithday.setOnClickListener(){
-            lo_search_pw_total.visibility= View.INVISIBLE
+            lo_search_pw_total.visibility= View.GONE
             date_picker_search_pw.visibility=View.VISIBLE
             btn_search_pw_date_picker_ok.visibility=View.VISIBLE
         }
         btn_search_pw_date_picker_ok.setOnClickListener(){
             lo_search_pw_total.visibility= View.VISIBLE
-            date_picker_search_pw.visibility=View.INVISIBLE
-            btn_search_pw_date_picker_ok.visibility=View.INVISIBLE
+            date_picker_search_pw.visibility=View.GONE
+            btn_search_pw_date_picker_ok.visibility=View.GONE
         }
 
 
 
         val dateChangeListener = DatePicker.OnDateChangedListener{
             view, year, monthOfYear, dayOfMonth ->
-            tv_activity_search_pw_year.text = String.format(
-                    Locale.KOREA,"%d년 %d월 %d일",
-                    year,monthOfYear+1,dayOfMonth
+            tv_sign_up_select_year.text = String.format(
+                    Locale.KOREA, "%d",
+                    year
+            )
+            tv_sign_up_select_month.text = String.format(
+                    Locale.KOREA, "%d",
+                    monthOfYear + 1
+            )
+            tv_sign_up_select_day.text = String.format(
+                    Locale.KOREA, "%d",
+                    dayOfMonth
             )
         }
 
