@@ -7,20 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
+import com.sopt.befit.adapter.BrandRankingRecyclerViewAdapter
 import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
+import com.sopt.befit.data.BrandRankingData
 import com.sopt.befit.data.JjimBrandData
 import kotlinx.android.synthetic.main.fragment_brand.*
+import kotlinx.android.synthetic.main.fragment_main_brand_1.*
+import kotlinx.android.synthetic.main.fragment_ranking.*
+import kotlinx.android.synthetic.main.tab_bar.*
 
 class BrandRankingFragment :Fragment(){
-    lateinit var jjimBrandRecyclerViewAdapter: JjimBrandRecyclerViewAdapter
+    lateinit var brandRankingRecyclerViewAdapter: BrandRankingRecyclerViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val brandFragmentView: View = inflater!!.inflate(R.layout.fragment_brand, container, false)
-        return brandFragmentView
+        val brandRankingFragmentView: View = inflater!!.inflate(R.layout.fragment_ranking, container, false)
+        return brandRankingFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
 
         setRecyclerView()
     }
@@ -29,16 +35,14 @@ class BrandRankingFragment :Fragment(){
 
         //내가 좋아하는
 
-        val dataList : ArrayList<JjimBrandData> = ArrayList()
-        dataList.add(JjimBrandData("유니클로", true))
-        dataList.add(JjimBrandData("서브웨이", true))
-        dataList.add(JjimBrandData("프링글스", true))
-        dataList.add(JjimBrandData("유니클로", false))
-        dataList.add(JjimBrandData("서브웨이", true))
-        dataList.add(JjimBrandData("프링글스", false))
 
-        jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList)
-        rv_frag_brand_list.adapter = jjimBrandRecyclerViewAdapter
-        rv_frag_brand_list.layoutManager = LinearLayoutManager(activity)
+        val dataList2 : ArrayList<BrandRankingData> = ArrayList()
+        dataList2.add(BrandRankingData("1","","유니클로"))
+
+
+        brandRankingRecyclerViewAdapter = BrandRankingRecyclerViewAdapter(activity!!, dataList2)
+        rv_brand_ranking_list.adapter = brandRankingRecyclerViewAdapter
+        rv_brand_ranking_list.layoutManager = LinearLayoutManager(activity)
+
     }
 }
