@@ -53,6 +53,8 @@ class SearchPasswordActivity : AppCompatActivity() {
                         response?.let {
                                 when(it.body()!!.status){
                                     201->{
+                                        // 이 아래 줄 수정 필요
+                                        //SharedPreferenceController.instance!!.setPrefData("user_idx",response.body().toString())
 
                                         var user_idx = response.body()!!.data.toString()
                                         //Parsing 물어보기
