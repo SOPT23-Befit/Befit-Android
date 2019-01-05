@@ -2,15 +2,11 @@ package com.sopt.befit.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimProductRecyclerViewAdapter
 import com.sopt.befit.data.JjimProductData
-import com.sopt.befit.fragment.BrandFragment
-import kotlinx.android.synthetic.main.activity_brand_main.*
 import kotlinx.android.synthetic.main.activity_category.*
-import org.jetbrains.anko.textColor
 
 class CategoryActivity : AppCompatActivity() {
 
@@ -19,8 +15,6 @@ class CategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
-
-        tv_category_new.setSelectAllOnFocus(true)
 
         setRecyclerView()
 
