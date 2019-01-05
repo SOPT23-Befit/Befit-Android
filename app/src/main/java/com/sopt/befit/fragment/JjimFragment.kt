@@ -1,26 +1,26 @@
-package com.sopt.befit.activity
+package com.sopt.befit.fragment
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.content.ContextCompat
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.CheckBox
+import android.view.ViewGroup
 import com.sopt.befit.R
-import kotlinx.android.synthetic.main.activity_jjim.*
-import android.view.MotionEvent
-import android.view.View.OnTouchListener
-import com.sopt.befit.fragment.BrandFragment
-import com.sopt.befit.fragment.ProductFragment
+import com.sopt.befit.activity.BrandMainActivity
+import kotlinx.android.synthetic.main.fragment_jjim.*
 
+class JjimFragment : Fragment(), View.OnClickListener{
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val jjimFragmentView: View = inflater!!.inflate(R.layout.fragment_jjim, container, false)
+        return jjimFragmentView
+    }
 
-
-class JjimActivity : AppCompatActivity() , View.OnClickListener{
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jjim)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         addFragment(ProductFragment())
 
@@ -48,13 +48,13 @@ class JjimActivity : AppCompatActivity() , View.OnClickListener{
     }
 
     private fun addFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        val transaction: FragmentTransaction = childFragmentManager.beginTransaction()
         transaction.add(R.id.fl_main_act_fragment_block, fragment)
         transaction.commit()
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        val transaction: FragmentTransaction = childFragmentManager.beginTransaction()
         transaction.replace(R.id.fl_main_act_fragment_block, fragment)
         transaction.commit()
     }

@@ -1,6 +1,5 @@
 package com.sopt.befit.fragment
 
-import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,15 +11,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
-import com.sopt.befit.activity.JjimActivity
 import com.sopt.befit.adapter.*
 import com.sopt.befit.data.JjimProductData
-import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_group.*
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.toast
-import org.jetbrains.anko.toast
 
 class HomeFragment: Fragment(){
     lateinit var HomefragmentAdapter: JjimProductRecyclerViewAdapter
@@ -37,8 +32,8 @@ class HomeFragment: Fragment(){
 
         setcategory()
         setRecyclerView()
-        configureBannerNavigation()
-        configureHomeBrandNavigation()
+       // configureBannerNavigation()
+        //configureHomeBrandNavigation()
 
         ibtn_menu_open.setOnClickListener(){
             ibtn_menu_open.visibility=View.INVISIBLE
