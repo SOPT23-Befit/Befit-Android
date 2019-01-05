@@ -1,15 +1,15 @@
 package com.sopt.befit.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.ToggleButton
+import android.widget.*
 import com.sopt.befit.R
+import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.JjimBrandData
 
 class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<JjimBrandData>) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
@@ -31,17 +31,19 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
 
         }
 
-        holder.item_btn.setOnClickListener{
-            //프로덕트의 상세페이지로 넘어간다
+        holder.item_btn.setOnClickListener {
+            val intent: Intent = Intent(ctx, BrandMainActivity::class.java)
+            intent.putExtra("b_name", dataList[position].b_name)
+            ctx.startActivity(intent)
         }
 
-        holder.heart.setOnClickListener{
-            dataList[position].b_like=!dataList[position].b_like
+        holder.heart.setOnClickListener {
+            dataList[position].b_like = !dataList[position].b_like
             if (dataList[position].b_like) {
-                dataList[position].b_like=false
+                dataList[position].b_like = false
                 //서버에 전달
             } else {
-                dataList[position].b_like=true
+                dataList[position].b_like = true
             }
         }
     }

@@ -20,6 +20,8 @@ class BrandMainActivity : AppCompatActivity() {
 
         setViewClickListener()
 
+        tv_brand_main_b_name_kor.setText(intent.getStringExtra("b_name"))
+
         /*
         refresh_brand_main_act.setOnRefresh {
             toast("새로 고침!")
