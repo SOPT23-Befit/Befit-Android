@@ -130,12 +130,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="353.8dp"
             android:layout_marginLeft="251.7dp"
+            android:layout_marginTop="353.8dp"
 
             android:background="@null"
-            android:src="@drawable/woman_more_or_less"
-       />
+            android:src="@drawable/woman_more_or_less" />
 
     </RelativeLayout>
 
