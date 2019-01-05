@@ -13,6 +13,7 @@ import com.sopt.befit.data.ForPwUserData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostForPwFindUserResponse
+import com.sopt.befit.post.UserIdxData
 import kotlinx.android.synthetic.main.activity_search_password.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.networkStatsManager
@@ -26,14 +27,16 @@ import java.util.*
 class SearchPasswordActivity : AppCompatActivity() {
         lateinit var ForPwuserData : ForPwUserData
         lateinit var networkservice : NetworkService
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_password)
-
+        tv_activity_overlap_user.visibility = View.INVISIBLE
 
         btn_activity_search_pw_ok.setOnClickListener {
             val intent: Intent = Intent()
-            tv_sign_up_overlap.visibility = View.INVISIBLE
+
             val name = et_activity_search_pw_name.text.toString()
             val email = et_activity_search_pw_email.text.toString()
             val birthday = tv_activity_search_pw_year.text.toString()
@@ -52,6 +55,10 @@ class SearchPasswordActivity : AppCompatActivity() {
                                     201->{
                                         // 이 아래 줄 수정 필요
                                         //SharedPreferenceController.instance!!.setPrefData("user_idx",response.body().toString())
+
+                                        var user_idx = response.body()!!.data.toString()
+                                        //Parsing 물어보기
+                                        //SharedPreferenceController.getUserIDX(this@SearchPasswordActivity,user_idx.toInt())
                                         Log.v("success",response.headers().toString())
                                         Log.v("exist user",response.message().toString())
                                         startActivity(Intent(this@SearchPasswordActivity,ResetPasswordActivity::class.java))
@@ -63,7 +70,7 @@ class SearchPasswordActivity : AppCompatActivity() {
                                     }
 
                                     404->{
-                                        tv_sign_up_overlap.visibility = View.VISIBLE
+                                        tv_activity_overlap_user.visibility = View.VISIBLE
                                         Log.v("Not Exist User about information",response.message())
                                         Log.v("error",response.errorBody().toString())
                                         toast("Not Exist User about this info")
