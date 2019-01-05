@@ -6,23 +6,21 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.sopt.befit.fragment.*
 
 
-class MyFragmentStatePagerAdapter(fm : FragmentManager,val FragmentCount : Int) : FragmentStatePagerAdapter(fm){
+class MyFragmentStatePagerAdapter(fm: FragmentManager, val FragmentCount: Int) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment? {
-        when(position)
-        {
-            0->return HomeFragment()
-            1->return HomeFragment()//SearchFragment()
-            2->return BrandRankingFragment()
-            3->return JJimFragment()
-            4->return MypageFragment()
+        when (position) {
+            0 -> return HomeFragment()
+            1 -> return SearchProductFragment()
+            2 -> return BrandRankingFragment()
+            3 -> return JjimFragment()
+            4 -> return MypageFragment()
 
-            else->return null
+            else -> return null
         }
     }
 
     override fun getCount(): Int = FragmentCount
-
 
 
 }
