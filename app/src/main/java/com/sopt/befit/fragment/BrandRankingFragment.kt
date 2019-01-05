@@ -35,6 +35,7 @@ class BrandRankingFragment :Fragment(){
 
         //내가 좋아하는
 
+
         val dataList2 : ArrayList<BrandRankingData> = ArrayList()
         dataList2.add(BrandRankingData("1","","유니클로"))
 
@@ -42,5 +43,6 @@ class BrandRankingFragment :Fragment(){
         brandRankingRecyclerViewAdapter = BrandRankingRecyclerViewAdapter(activity!!, dataList2)
         rv_brand_ranking_list.adapter = brandRankingRecyclerViewAdapter
         rv_brand_ranking_list.layoutManager = LinearLayoutManager(activity)
+
     }
 }
