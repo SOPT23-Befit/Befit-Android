@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
-import com.sopt.befit.Fragment.CompareSizeDialog
+import com.sopt.befit.fragment.CompareSizeDialog
 import kotlinx.android.synthetic.main.activity_product_content_view.*
 import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData

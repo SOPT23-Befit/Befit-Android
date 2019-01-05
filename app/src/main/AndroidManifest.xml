@@ -15,7 +15,8 @@
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" />
         <activity android:name=".activity.BrandPreferenceWomanActivity" />
-        <activity android:name=".activity.BrandPreferenceManActivity" />
+        <activity android:name=".activity.BrandPreferenceManActivity" >
+        </activity>
         <activity android:name=".activity.CategoryActivity" />
         <activity android:name=".activity.InputInfo" />
         <activity android:name=".activity.JjimActivity" />
@@ -28,23 +29,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MyPageAccountSettingActivity" >
-        </activity>
-        <activity android:name=".activity.MyPageAccountSettingActivity" />
+        <activity android:name=".activity.MyPageAccountSettingActivity"></activity>
         <activity android:name=".activity.MyPageTotalUserInfoManage" />
         <activity android:name=".activity.MySizeLookupActivity" />
-        <activity android:name=".activity.ProductContentViewActivity" />
+        <activity android:name=".activity.ProductContentViewActivity">
+        </activity>
         <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".activity.SearchEmailActivity" />
         <activity android:name=".activity.SearchPasswordActivity" />
         <activity
             android:name=".activity.SearchProductActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activity.SelectBrandActivity" />
-        <activity android:name=".activity.SelectBrandGoodsWindowActivity"></activity>
+        <activity android:name=".activity.SelectBrandGoodsWindowActivity" />
         <activity android:name=".activity.SelectGenderActivity" />
         <activity android:name=".activity.SignUpActivity" />
-
+        <activity android:name=".activity.SizeCheckPageActivity">
+        </activity>
     </application>
 
 </manifest>
