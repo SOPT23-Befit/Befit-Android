@@ -82,7 +82,7 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener  {
     fun init() {
         btn_sign_up_next_page.setOnClickListener() {
             networkservice = ApplicationController.instance.networkService
-            SharedPreferenceController.instance!!.load(this)
+            //SharedPreferenceController.instance!!.load(this)
 
 
             startActivity<AAAAMainActivity>("email" to "email")//로그인 상태로 즉 회원 정보 보내야함
@@ -106,7 +106,7 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener  {
                         response?.let {
                             when (it.body()!!.status) {
                                 201 -> {
-                                    SharedPreferenceController.instance!!.setPrefData("jwt", response.headers().value(0))
+                                    //SharedPreferenceController.instance!!.setPrefData("jwt", response.headers().value(0))
                                     Log.v("success", response.headers().toString())
                                     Log.v("success", response.message().toString())
                                     startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
