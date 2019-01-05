@@ -83,6 +83,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
+    fun init() {
+        btn_sign_up_next_page.setOnClickListener() {
+            networkservice = ApplicationController.instance.networkService
+            //SharedPreferenceController.instance!!.load(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -91,6 +95,37 @@ class SignUpActivity : AppCompatActivity() {
         tv_sign_up_overlap.visibility = View.INVISIBLE
         adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item)
 
+                    override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
+
+                        response?.let {
+                            when (it.body()!!.status) {
+                                201 -> {
+                                    //SharedPreferenceController.instance!!.setPrefData("jwt", response.headers().value(0))
+                                    Log.v("success", response.headers().toString())
+                                    Log.v("success", response.message().toString())
+                                    startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
+                                    finish()
+                                }
+                                400 -> {
+                                    Log.v("400 error", response.message())
+                                    Log.v("400 error", response.errorBody().toString())
+                                    toast("서버 에러")
+                                }
+                                401 -> {
+
+                                }
+                                500 -> {
+
+                                }
+                                else -> {
+                                    toast("Error")
+                                }
+                            }
+                        }?.also {
+                            overlapNetWorking = " "
+                        }
+                    }
+                })
         btn_sign_up_select_bithday.setOnClickListener() {
             if (datepickerStatus == 0) {
                 datepickerStatus = 1
