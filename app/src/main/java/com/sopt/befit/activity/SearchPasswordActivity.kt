@@ -72,7 +72,7 @@ class SearchPasswordActivity : AppCompatActivity() {
                                     404->{
                                         tv_activity_overlap_user.visibility = View.VISIBLE
                                         Log.v("Not Exist User about information",response.message())
-                                        Log.v("error",response.errorBody().toString())
+                                        Log.v("communication success",response.errorBody().toString())
                                         toast("Not Exist User about this info")
                                     }
 

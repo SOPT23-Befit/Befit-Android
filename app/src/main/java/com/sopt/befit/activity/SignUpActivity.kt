@@ -57,9 +57,6 @@ class SignUpActivity : AppCompatActivity() {
                     response?.let {
                         when (it.body()!!.status) {
                             201 -> {
-                                SharedPreferenceController.setUserID(this@SignUpActivity,useremail)
-                                SharedPreferenceController.setUserPW(this@SignUpActivity,userpw)
-                                Log.v("success", response.headers().toString())
                                 Log.v("success", response.message().toString())
                                 startActivity<LogInActivity>()
                                 finish()
@@ -71,6 +68,11 @@ class SignUpActivity : AppCompatActivity() {
                             }
                             401 -> {
 
+                            }
+                            409 ->{
+                                Log.v("409 error",response.message())
+                                Log.v("conflict",response.errorBody().toString())
+                                toast("충돌 발생")
                             }
                             500 -> {
 
@@ -88,7 +90,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
-    //비밀번호 실시간 체크
+    //비밀번호 형식 실시간 체크
      var pwTextWatcher = object :  TextWatcher {
         override fun afterTextChanged(s: Editable?) {
 
@@ -109,13 +111,32 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
+    //비번 과 재비번 이 같은지 실시간 체크
+    var repwTextWatcher = object : TextWatcher{
+        override fun afterTextChanged(s: Editable?) {
+
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            tv_sign_up_check.visibility = View.VISIBLE
+            if(et_sign_up_password.text.toString().equals(et_sign_up_password_check.text.toString())){
+                tv_sign_up_check.text = "비밀번호 확인이 일치합니다."
+            }else{
+
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
 
-        tv_sign_up_overlap.visibility = View.INVISIBLE
+        tv_sign_up_check.visibility = View.INVISIBLE
         adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item)
 
         btn_sign_up_select_bithday.setOnClickListener() {
@@ -153,7 +174,7 @@ class SignUpActivity : AppCompatActivity() {
 
         //실시간 비밀번호 유효성 검사
         et_sign_up_password.addTextChangedListener(pwTextWatcher)
-
+        et_sign_up_password_check.addTextChangedListener(repwTextWatcher)
         val intent = Intent(this, SelectBrandActivity::class.java)
 
         var name = et_sign_up_name.text.toString()
@@ -166,7 +187,7 @@ class SignUpActivity : AppCompatActivity() {
         var birth = tv_activity_search_pw_year.toString()
 
 
-        if (email.length > 0 && password.length > 0 && passwordcheck.length > 0 && name.length > 0) {
+        if (name.length>0 && birth.length >0 && email.length > 0 && password.length > 0 && passwordcheck.length > 0 && name.length > 0) {
             if (password.equals(passwordcheck)) { //서로 같은지
 
                 btn_sign_up_next_page.isClickable=true
@@ -176,7 +197,6 @@ class SignUpActivity : AppCompatActivity() {
 
             } else {
                 toast("비밀번호 확인과 비밀번호가 일치하지 않습니다.")
-                tv_sign_up_overlap.visibility = View.VISIBLE
             }
             //유효성 검사
         } else {

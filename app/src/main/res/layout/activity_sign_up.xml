@@ -259,21 +259,18 @@
                 android:id="@+id/et_sign_up_password_check"
 
                 />
-            <TextView
-                android:id="@+id/tv_sign_up_overlap"
-                android:layout_width="78dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@null"
-                android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:text="불일치"
-                android:textColor="#bf5ce5"
-                android:textSize="14dp" />
+            
+            
 
         </RelativeLayout>
-
+        <TextView
+            android:id="@+id/tv_sign_up_check"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="비밀번호 확인이 일치하지 않습니다."
+            android:textSize="10sp"
+            android:textColor="#7a36e4"
+            />
         <LinearLayout
             android:background="#80707070"
             android:layout_marginTop="40dp"
