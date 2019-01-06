@@ -47,7 +47,7 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<In
                 ctx.finish()
          
 
-                //intent ("brand_idx",  dataList[position].idx)
+               // intent ("brand_idx",  dataList[position].idx)
 
             }
         }

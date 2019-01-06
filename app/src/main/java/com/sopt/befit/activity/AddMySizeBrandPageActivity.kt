@@ -25,7 +25,7 @@ import retrofit2.http.Path
 class AddMySizeBrandPageActivity : AppCompatActivity() {
 
     val BRAND_INITAIL_REQUEST_CODE = 1000
-    lateinit var brandBrandsRecyclerViewAdapter: BrandGoodsRecyclerViewAdapter
+    lateinit var BrandsRecyclerViewAdapter: BrandGoodsRecyclerViewAdapter
     val dataList: ArrayList<InitialBrand> by lazy {
         ArrayList<InitialBrand>()
     }
@@ -35,8 +35,7 @@ class AddMySizeBrandPageActivity : AppCompatActivity() {
 
     var alphabet: ArrayList<ImageView> = ArrayList()
     lateinit var select: ImageView
-  
-    lateinit var brandBrandsRecyclerViewAdapter: BrandGoodsRecyclerViewAdapter
+
 
 
     //var clicked;
@@ -247,8 +246,8 @@ brandList.add(BrandData("유니클로"))
          */
 
 
-        brandBrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this, brandList)
-        rv_add_my_size_brand_list.adapter = brandBrandsRecyclerViewAdapter
+        BrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this, brandList)
+        rv_add_my_size_brand_list.adapter = BrandsRecyclerViewAdapter
         rv_add_my_size_brand_list.layoutManager = LinearLayoutManager(this)
 
     }
@@ -270,9 +269,9 @@ brandList.add(BrandData("유니클로"))
 //                        brandBrandsRecyclerViewAdapter.notifyItemInserted(position)
 
 
-                        brandBrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(applicationContext, temp)
+                        BrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(applicationContext, temp)
                         rv_add_my_size_brand_list.layoutManager = LinearLayoutManager(applicationContext)
-                        rv_add_my_size_brand_list.adapter = brandBrandsRecyclerViewAdapter
+                        rv_add_my_size_brand_list.adapter = BrandsRecyclerViewAdapter
 
                     }
                 }

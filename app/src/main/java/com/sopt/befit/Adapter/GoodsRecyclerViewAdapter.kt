@@ -54,6 +54,8 @@ class GoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Initial
         Glide.with(ctx)
                 .setDefaultRequestOptions(requestOptions)
                 .load(dataList[position].image_url)
+                .thumbnail(0.5f)
+              //  .into(holder.logo)
 
     }
 
