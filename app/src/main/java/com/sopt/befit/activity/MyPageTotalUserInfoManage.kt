@@ -32,6 +32,9 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
     lateinit var networkService: NetworkService
     lateinit var combineFormData: CombineFormData
 
+    var name = intent.getStringExtra("name")
+    var birth = intent.getStringExtra("birth")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page_total_user_info_manage)
@@ -135,13 +138,9 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
             override fun onResponse(call: retrofit2.Call<PostTotalUserDataResponse>, response: Response<PostTotalUserDataResponse>) {
                 response?.let {
                     when(it.body()!!.status){
-                        201 ->{ //api에는200으로 되어있어서 수정 바란다 말할것
+                        200 ->{
                             Log.v("success",response.message().toString())
                             finish()
-                        }
-                        204 ->{
-                            Log.v("Fail",response.message().toString())
-                                toast("회원 수정 정보가 잘못되었습니다.")
                         }
                         401 ->{
                             Log.v("Authorization fail",response.message().toString())
