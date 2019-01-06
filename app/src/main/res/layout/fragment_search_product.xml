@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.SearchProductActivity"
-    android:windowSoftInputMode="stateHidden|adjustPan">
+    android:windowSoftInputMode="stateHidden|adjustPan"
+    android:background="#ffffff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,10 +30,10 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:cursorVisible="false"
+                android:hint="찾고 계신 상품이 무엇인가요?"
                 android:inputType="textPersonName"
                 android:lineSpacingExtra="30sp"
                 android:paddingLeft="34dp"
-                android:hint="찾고 계신 상품이 무엇인가요?"
                 android:textColor="#848484"
                 android:textSize="12sp" />
 
@@ -65,10 +65,9 @@
         android:id="@+id/rv_search_product_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:background="#ebebeb"
-        android:padding="0.5dp"
-        ></android.support.v7.widget.RecyclerView>
+        android:gravity="center"
+        android:padding="0.5dp"></android.support.v7.widget.RecyclerView>
 
     <LinearLayout
         android:id="@+id/layout_search_product_bottom"

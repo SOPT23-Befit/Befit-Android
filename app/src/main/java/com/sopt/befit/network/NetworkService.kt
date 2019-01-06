@@ -2,16 +2,14 @@ package com.sopt.befit.network
 
 import com.google.gson.JsonObject
 import com.sopt.befit.data.*
+import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.post.PostForPwFindUserResponse
 import com.sopt.befit.post.PostLoginResponse
 import com.sopt.befit.post.PostSignUpResponse
 import com.sopt.befit.post.PostTotalUserDataResponse
 import com.sopt.befit.put.PutModifyPwResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface NetworkService {
 
@@ -51,4 +49,11 @@ interface NetworkService {
         @Header ("Content-Type: application/json")
         @Body combineFormData: CombineFormData
     ): Call<PostTotalUserDataResponse>
+
+    @GET("/user")
+    fun getUserDataResponse(
+            @Header("Content-Type") content_type : String,
+            @Header("Authorization") token : String,
+            @Body userData : UserTotalData
+    ) : Call<GetUserDataResponse>
 }

@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
-import com.sopt.befit.activity.CheckMyBrandPreferenceActivity
-import com.sopt.befit.activity.CheckMySizeInfoActivity
-import com.sopt.befit.activity.MyPageTotalUserInfoManage
+import com.sopt.befit.activity.*
 import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -19,6 +17,15 @@ import org.jetbrains.anko.support.v4.toast
 class MypageFragment :Fragment(){
     val header :MutableList<String> = ArrayList()
     val body : MutableList<MutableList<String>> = ArrayList()
+
+    var gender=AAAAMainActivity.instance.usertotalData.gender
+    var brand1 = AAAAMainActivity.instance.usertotalData.brand1_idx
+    var brand2 = AAAAMainActivity.instance.usertotalData.brand2_idx
+
+    var name = AAAAMainActivity.instance.usertotalData.name
+    var email = AAAAMainActivity.instance.usertotalData.email
+
+    var birth = AAAAMainActivity.instance.usertotalData.birthday
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mypage, container, false)
@@ -30,7 +37,14 @@ class MypageFragment :Fragment(){
         setlistview()
 
 
+        tv_my_page_name.text=name
+        tv_my_page_email.text=email
+
+
+
     }
+
+
 
     fun setlistview(){
 
@@ -75,20 +89,24 @@ class MypageFragment :Fragment(){
             if(gpos==0)
             {
 
-                startActivity<CheckMyBrandPreferenceActivity>("token" to "token")
+                if(gender=="남성") {
 
+
+                    startActivity<CheckMyBrandPreferenceActivity>("brand1" to "$brand1", "brand2" to "$brand2")
+                }
             }
             if(gpos==1)
             {
 
-                startActivity<CheckMySizeInfoActivity>()
-
+              if(gender=="여성") {
+                    startActivity<CheckMyBrandPreferenceWomanActivity>("brand1" to "$brand1", "brand2" to "$brand2")
+                }
             }
 
 
             if(gpos==2)
             {
-                startActivity<MyPageTotalUserInfoManage>()
+                startActivity<MyPageTotalUserInfoManage>("name" to "$name", "birthday" to "$birth", "email" to "$email","gender" to "$gender")
             }
 
             if(gpos==3&&cpos==0)

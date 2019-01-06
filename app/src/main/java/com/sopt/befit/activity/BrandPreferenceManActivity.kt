@@ -13,6 +13,7 @@ class BrandPreferenceManActivity : AppCompatActivity() {
     var preferenceCnt = 0
     lateinit var brand1 : String
     lateinit var brand2 : String
+    //thisis=1,romantic=2,ist=3,liber=4,cover=5,andersson=6,isilense=7,critic=8
     var toggle : Int =0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,149 +23,165 @@ class BrandPreferenceManActivity : AppCompatActivity() {
         var gender : String = intent.getStringExtra("gender")
 
 
-        ibtn_thisisne.setOnClickListener() {
+        ibtn_activity_brand_preference_man_thisisneverthat.setOnClickListener() {
             if (toggle == 0) {
                 if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "thisisneverthat"
+                    brand1 = "1"
                     toggle = 1
-                    ibtn_thisisne.setImageResource(R.drawable.man_select_thisisneverthat)
+                    ibtn_activity_brand_preference_man_thisisneverthat.setImageResource(R.drawable.man_select_thisisneverthat)
                 } else if (brand2.isEmpty()) {
-                    brand2 = "thisisneverthat"
+                    brand2 = "1"
                     toggle = 1
-                    ibtn_thisisne.setImageResource(R.drawable.man_select_thisisneverthat)
+                    ibtn_activity_brand_preference_man_thisisneverthat.setImageResource(R.drawable.man_select_thisisneverthat)
                 } else
                     toast("최대 두개까지만 선택 가능합니다.")
             }
             else if (toggle == 1) {
-                ibtn_thisisne.setImageResource(R.drawable.man_thisisneverthat_brand_select)
+                toggle=0
+
+                ibtn_activity_brand_preference_man_thisisneverthat.setImageResource(R.drawable.man_thisisneverthat_brand_select)
             }
         }
 
-        ibtn_andersson_bell_man.setOnClickListener(){
+        ibtn_activity_brand_preference_man_Andersson_Bell.setOnClickListener(){
             if (toggle == 0) {
                 if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "andersonbell"
+                    brand1 = "6"
                     toggle = 1
-                    ibtn_andersson_bell_man.setImageResource(R.drawable.man_select_anderssonbell)
+                    ibtn_activity_brand_preference_man_Andersson_Bell.setImageResource(R.drawable.man_select_anderssonbell)
                 } else if (brand2.isEmpty()) {
-                    brand2 = "andersonbell"
+                    brand2 = "6"
                     toggle = 1
-                    ibtn_andersson_bell_man.setImageResource(R.drawable.man_select_anderssonbell)
+                    ibtn_activity_brand_preference_man_Andersson_Bell.setImageResource(R.drawable.man_select_anderssonbell)
                 } else
                     toast("최대 두개까지만 선택 가능합니다.")
             }
             else if (toggle == 1) {
-                ibtn_andersson_bell_man.setImageResource(R.drawable.man_anderssonbell_brand_select)
-            }
-        }
+                toggle=0
 
-
-        ibtn_critic_man.setOnClickListener(){
-            if (toggle == 0) {
-                if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "critic"
-                    toggle = 1
-                    ibtn_critic_man.setImageResource(R.drawable.man_select_critic)
-                } else if (brand2.isEmpty()) {
-                    brand2 = "critic"
-                    toggle = 1
-                    ibtn_critic_man.setImageResource(R.drawable.man_select_critic)
-                } else
-                    toast("최대 두개까지만 선택 가능합니다.")
-            }
-            else if (toggle == 1) {
-                ibtn_critic_man.setImageResource(R.drawable.man_critic_brand_select)
-            }
-        }
-
-        ibtn_insilence_man.setOnClickListener(){
-            if (toggle == 0) {
-                if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "insilence"
-                    toggle = 1
-                    ibtn_insilence_man.setImageResource(R.drawable.man_select_insilence)
-                } else if (brand2.isEmpty()) {
-                    brand2 = "insilence"
-                    toggle = 1
-                    ibtn_insilence_man.setImageResource(R.drawable.man_select_insilence)
-                } else
-                    toast("최대 두개까지만 선택 가능합니다.")
-            }
-            else if (toggle == 1) {
-                ibtn_insilence_man.setImageResource(R.drawable.man_insilence_brand_select)
-            }
-        }
-
-        ibtn_covernat_man.setOnClickListener(){
-            if (toggle == 0) {
-                if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "covernat"
-                    toggle = 1
-                    ibtn_covernat_man.setImageResource(R.drawable.man_select_covernat)
-                } else if (brand2.isEmpty()) {
-                    brand2 = "covernat"
-                    toggle = 1
-                    ibtn_covernat_man.setImageResource(R.drawable.man_select_covernat)
-                } else
-                    toast("최대 두개까지만 선택 가능합니다.")
-            }
-            else if (toggle == 1) {
-                ibtn_covernat_man.setImageResource(R.drawable.man_covernat_brand_select)
+                ibtn_activity_brand_preference_man_Andersson_Bell.setImageResource(R.drawable.man_anderssonbell_brand_select)
             }
         }
 
 
-        ibtn_istkunst_man.setOnClickListener(){
+        ibtn_activity_brand_preference_man_Critic.setOnClickListener(){
             if (toggle == 0) {
                 if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "istkunst"
+                    brand1 = "8"
                     toggle = 1
-                    ibtn_istkunst_man.setImageResource(R.drawable.man_select_istkunst)
+                    ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_select_critic)
                 } else if (brand2.isEmpty()) {
-                    brand2 = "istkunst"
+                    brand2 = "8"
                     toggle = 1
-                    ibtn_istkunst_man.setImageResource(R.drawable.man_select_istkunst)
+                    ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_select_critic)
                 } else
                     toast("최대 두개까지만 선택 가능합니다.")
             }
             else if (toggle == 1) {
-                ibtn_istkunst_man.setImageResource(R.drawable.man_istkunst_brand_secet)
+                toggle=0
+
+                ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_critic_brand_select)
             }
         }
 
-        ibtn_liberteng_man.setOnClickListener(){
+        ibtn_activity_brand_preference_man_Insilence.setOnClickListener(){
             if (toggle == 0) {
                 if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "liberteng"
+                    brand1 = "7"
                     toggle = 1
-                    ibtn_liberteng_man.setImageResource(R.drawable.man_select_liberteng)
+                    ibtn_activity_brand_preference_man_Insilence.setImageResource(R.drawable.man_select_insilence)
                 } else if (brand2.isEmpty()) {
-                    brand2 = "liberteng"
+                    brand2 = "7"
                     toggle = 1
-                    ibtn_liberteng_man.setImageResource(R.drawable.man_select_liberteng)
+                    ibtn_activity_brand_preference_man_Insilence.setImageResource(R.drawable.man_select_insilence)
                 } else
                     toast("최대 두개까지만 선택 가능합니다.")
             }
             else if (toggle == 1) {
-                ibtn_liberteng_man.setImageResource(R.drawable.man_liberteng_brand_select)
+                toggle=0
+
+                ibtn_activity_brand_preference_man_Insilence.setImageResource(R.drawable.man_insilence_brand_select)
             }
         }
 
-        ibtn_romantic_crown.setOnClickListener(){
+        ibtn_activity_brand_preference_man_Covernat.setOnClickListener(){
             if (toggle == 0) {
                 if (brand1.isEmpty() && brand2.isEmpty()) {
-                    brand1 = "romanticcrown"
+                    brand1 = "5"
                     toggle = 1
-                    ibtn_romantic_crown.setImageResource(R.drawable.man_select_romanticcrown)
+                    ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_select_covernat)
                 } else if (brand2.isEmpty()) {
-                    brand2 = "andersonbell"
+                    brand2 = "5"
                     toggle = 1
-                    ibtn_romantic_crown.setImageResource(R.drawable.man_select_romanticcrown)
+                    ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_select_covernat)
                 } else
                     toast("최대 두개까지만 선택 가능합니다.")
             }
             else if (toggle == 1) {
-                ibtn_romantic_crown.setImageResource(R.drawable.man_romanticcrown_brand_select)
+                toggle=0
+
+                ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_covernat_brand_select)
+            }
+        }
+
+
+        ibtn_activity_brand_preference_man_Ist_Kunst.setOnClickListener(){
+            if (toggle == 0) {
+                if (brand1.isEmpty() && brand2.isEmpty()) {
+                    brand1 = "3"
+                    toggle = 1
+                    ibtn_activity_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_select_istkunst)
+                } else if (brand2.isEmpty()) {
+                    brand2 = "3"
+                    toggle = 1
+                    ibtn_activity_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_select_istkunst)
+                } else
+                    toast("최대 두개까지만 선택 가능합니다.")
+            }
+            else if (toggle == 1) {
+                toggle=0
+
+                ibtn_activity_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_istkunst_brand_secet)
+            }
+        }
+
+        ibtn_activity_brand_preference_man_Liberteng.setOnClickListener(){
+            if (toggle == 0) {
+                if (brand1.isEmpty() && brand2.isEmpty()) {
+                    brand1 = "4"
+                    toggle = 1
+                    ibtn_activity_brand_preference_man_Liberteng.setImageResource(R.drawable.man_select_liberteng)
+                } else if (brand2.isEmpty()) {
+                    brand2 = "4"
+                    toggle = 1
+                    ibtn_activity_brand_preference_man_Liberteng.setImageResource(R.drawable.man_select_liberteng)
+                } else
+                    toast("최대 두개까지만 선택 가능합니다.")
+            }
+            else if (toggle == 1) {
+                toggle=0
+
+                ibtn_activity_brand_preference_man_Liberteng.setImageResource(R.drawable.man_liberteng_brand_select)
+            }
+        }
+
+        ibtn_activity_brand_preference_man_Romantic_crown.setOnClickListener(){
+            if (toggle == 0) {
+                if (brand1.isEmpty() && brand2.isEmpty()) {
+                    brand1 = "2"
+                    toggle = 1
+                    ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_select_romanticcrown)
+                } else if (brand2.isEmpty()) {
+                    brand2 = "2"
+                    toggle = 1
+                    ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_select_romanticcrown)
+                } else
+                    toast("최대 두개까지만 선택 가능합니다.")
+            }
+            else if (toggle == 1) {
+                toggle=0
+
+                ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_romanticcrown_brand_select)
             }
         }
 
