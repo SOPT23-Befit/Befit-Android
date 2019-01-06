@@ -60,8 +60,11 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
     private fun setRecyclerView() {
 
         var goodsList : ArrayList<BrandData> = ArrayList()
+        /*
         goodsList.add(BrandData("유니클로 가디건"))
         goodsList.add(BrandData("스파오 패딩"))
+         */
+
 
 
         brandGoodsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this,goodsList)

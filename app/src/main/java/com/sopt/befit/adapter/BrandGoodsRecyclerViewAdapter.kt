@@ -32,15 +32,15 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.name.text = dataList[position].name
+        holder.name.text = dataList[position].name_korean
 
         holder.brandbtn.setOnClickListener {
             //Log.d("aaaa", dataList.get(position).name)
             if(ctx is AddMySizeBrandPageActivity){
-                SelectBrandGoodsWindowActivity.brandgoodsinstance.brandBoxVisibleController(dataList.get(position).name)
+                SelectBrandGoodsWindowActivity.brandgoodsinstance.brandBoxVisibleController(dataList.get(position).name_english)
                 ctx.finish()
             } else if(ctx is AddMySizeGoodsPageActivity){
-                SelectBrandGoodsWindowActivity.brandgoodsinstance.goodsBoxVisibleController(dataList.get(position).name)
+                SelectBrandGoodsWindowActivity.brandgoodsinstance.goodsBoxVisibleController(dataList.get(position).name_english)
                 ctx.finish()
 
 

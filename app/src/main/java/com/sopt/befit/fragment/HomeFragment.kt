@@ -164,7 +164,7 @@ class HomeFragment: Fragment(){
     private fun setRecyclerView(){
 
         var dataList: ArrayList<JjimProductData> = ArrayList()
-        dataList.add(JjimProductData("","","",false))
+        //dataList.add(JjimProductData("","","",false))
 
         HomefragmentAdapter = JjimProductRecyclerViewAdapter(activity!!, dataList)
         rv_my_rec_item_list.adapter=HomefragmentAdapter
