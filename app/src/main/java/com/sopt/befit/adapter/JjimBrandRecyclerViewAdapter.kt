@@ -1,18 +1,31 @@
 package com.sopt.befit.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.ToggleButton
+import android.widget.*
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
+import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.JjimBrandData
+import com.sopt.befit.network.ApplicationController
+import com.sopt.befit.network.NetworkService
+import com.sopt.befit.post.PostBrandLikeResponse
+import com.sopt.befit.post.PostBrandUnlikeResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<JjimBrandData>) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_jjim_brand, parent, false)
@@ -23,25 +36,34 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //메인 사진 띄우기
-        holder.b_name.text = dataList[position].b_name
+        holder.b_name.text = dataList[position].name_english
 
-        if (dataList[position].b_like) {
+        if (dataList[position].likeFlag==1) {
             holder.heart.setChecked(true)
-        } else {
-
         }
 
-        holder.item_btn.setOnClickListener{
-            //프로덕트의 상세페이지로 넘어간다
+        val requestOptions = RequestOptions()
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].logo_url)
+                .thumbnail(0.5f)
+                .into(holder.logo)
+
+        holder.item_btn.setOnClickListener {
+            val intent: Intent = Intent(ctx, BrandMainActivity::class.java)
+            intent.putExtra("idx", dataList[position].idx)
+            ctx.startActivity(intent)
         }
 
-        holder.heart.setOnClickListener{
-            dataList[position].b_like=!dataList[position].b_like
-            if (dataList[position].b_like) {
-                dataList[position].b_like=false
-                //서버에 전달
+        holder.heart.setOnClickListener {
+            if (dataList[position].likeFlag == 1) {
+                //좋아요 상태면 싫어요를 한다
+                postJjimBrandUnlikeResponse(position)
+                dataList[position].likeFlag = 0
             } else {
-                dataList[position].b_like=true
+                postJjimBrandLikeResponse(position)
+                dataList[position].likeFlag = 1
             }
         }
     }
@@ -54,5 +76,37 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
         val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_brand_b_name) as TextView
 
         val item_btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_item_jjim_brand) as RelativeLayout
+    }
+
+    private fun postJjimBrandLikeResponse(p: Int) {
+        val postJjimBrandLikeResponse = networkService.postJjimBrandLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+                dataList[p].idx)
+        postJjimBrandLikeResponse.enqueue(object : Callback<PostBrandLikeResponse> {
+            override fun onFailure(call: Call<PostBrandLikeResponse>, t: Throwable) {
+                Log.e("jjim brand like fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostBrandLikeResponse>, response: Response<PostBrandLikeResponse>) {
+                if (response.isSuccessful) {
+
+                }
+            }
+        })
+    }
+
+    private fun postJjimBrandUnlikeResponse(p: Int) {
+        val postJjimBrandUnlikeResponse = networkService.postJjimBrandUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+                dataList[p].idx)
+        postJjimBrandUnlikeResponse.enqueue(object : Callback<PostBrandUnlikeResponse> {
+            override fun onFailure(call: Call<PostBrandUnlikeResponse>, t: Throwable) {
+                Log.e("jjim brand like fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostBrandUnlikeResponse>, response: Response<PostBrandUnlikeResponse>) {
+                if (response.isSuccessful) {
+
+                }
+            }
+        })
     }
 }

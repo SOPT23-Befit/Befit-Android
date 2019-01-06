@@ -19,24 +19,23 @@ class JjimFragment : Fragment(), View.OnClickListener{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        addFragment(ProductFragment())
+        addFragment(JjimProductFragment())
 
         setViewClickListener()
     }
 
     private fun setViewClickListener() {
         img_jjim_product.setOnClickListener {
-            replaceFragment(ProductFragment())
             if(img_jjim_brand.isChecked){
+                replaceFragment(JjimProductFragment())
                 img_jjim_brand.setChecked(false)
             }else{
                 img_jjim_product.setChecked(true)
             }
         }
         img_jjim_brand.setOnClickListener {
-            replaceFragment(BrandFragment())
-            img_jjim_product.setChecked(false)
             if(img_jjim_product.isChecked){
+                replaceFragment(JjimBrandFragment())
                 img_jjim_product.setChecked(false)
             }else{
                 img_jjim_brand.setChecked(true)

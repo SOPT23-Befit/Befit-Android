@@ -13,6 +13,7 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_brand_preference_woman)
 
+        var gender : String = intent.getStringExtra("gender")
 
     }
 }

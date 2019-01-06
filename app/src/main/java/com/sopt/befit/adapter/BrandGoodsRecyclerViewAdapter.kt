@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.R.id.*
 
@@ -18,10 +20,12 @@ import com.sopt.befit.activity.AddMySizeGoodsPageActivity
 import com.sopt.befit.activity.SelectBrandGoodsWindowActivity
 
 import com.sopt.befit.data.BrandData
+import com.sopt.befit.get.InitialBrand
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
+import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.startActivity
 
-class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<BrandGoodsRecyclerViewAdapter.Holder>() {
+class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<InitialBrand>) : RecyclerView.Adapter<BrandGoodsRecyclerViewAdapter.Holder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -32,17 +36,18 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Br
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.name.text = dataList[position].name
+
+        holder.name.text = dataList[position].name_korean
+
 
         holder.brandbtn.setOnClickListener {
             //Log.d("aaaa", dataList.get(position).name)
             if(ctx is AddMySizeBrandPageActivity){
-                SelectBrandGoodsWindowActivity.brandgoodsinstance.brandBoxVisibleController(dataList.get(position).name)
+                SelectBrandGoodsWindowActivity.brandgoodsinstance.brandBoxVisibleController(dataList.get(position).name_english)
                 ctx.finish()
-            } else if(ctx is AddMySizeGoodsPageActivity){
-                SelectBrandGoodsWindowActivity.brandgoodsinstance.goodsBoxVisibleController(dataList.get(position).name)
-                ctx.finish()
+         
 
+                //intent ("brand_idx",  dataList[position].idx)
 
             }
         }
