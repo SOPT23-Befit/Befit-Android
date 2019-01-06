@@ -8,18 +8,11 @@
     android:background="#ffffff">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="26dp">
-
-        <ImageView
-            android:id="@+id/img_rv_item_jjim_brand_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            />
 
         <ImageView
             android:id="@+id/img_rv_item_jjim_brand_circle"
@@ -27,6 +20,14 @@
             android:layout_height="48dp"
             android:layout_centerInParent="true"
             android:src="@drawable/brandoutlinecircle" />
+
+        <ImageView
+            android:id="@+id/img_rv_item_jjim_brand_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            />
     </RelativeLayout>
 
 

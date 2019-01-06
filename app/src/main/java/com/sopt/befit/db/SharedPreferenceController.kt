@@ -16,6 +16,7 @@ object SharedPreferenceController {
     private val USER_IDX : String = "user_idx"
     private val USER_ID: String = "user_id"
     private val USER_PW: String = "user_pw"
+    private val USER_TOKEN : String = "my_token"
 
     private var pref: SharedPreferences? = null
 

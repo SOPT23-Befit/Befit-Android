@@ -2,6 +2,7 @@ package com.sopt.befit.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.util.Log
 import android.view.View
 import com.sopt.befit.R
 import com.sopt.befit.data.ModifyPWData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.put.PutModifyPwResponse
 import kotlinx.android.synthetic.main.activity_reset_password.*
@@ -50,7 +52,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                         when(it.body()!!.status){
                             201 ->{
                                 Log.v("success",response.message().toString())
-                                startActivity(Intent(this@ResetPasswordActivity,LogInActivity::class.java))
+                               toast("성공적으로 수정되었습니다.")
                                 finish()
                             }
                             400 ->{
@@ -80,8 +82,8 @@ class ResetPasswordActivity : AppCompatActivity() {
             })
         }
     }
-
-    var pwTextWatcher = object : TextWatcher{
+//비밀번호 랑 확인이랑 일치하는지 확인하기
+    var repwTextWatcher = object : TextWatcher{
         override fun afterTextChanged(s: Editable?) {
 
         }
@@ -91,22 +93,44 @@ class ResetPasswordActivity : AppCompatActivity() {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            tv_check_new_pw.visibility = View.VISIBLE
-            if(et_activity_reset_pw_input_new_pw_1.equals(et_activity_reset_pw_input_new_pw_2)){
-                tv_check_new_pw.setTextColor((ContextCompat.getColor(this@ResetPasswordActivity,R.color.colorAccent)))
-                tv_check_new_pw.text = "일치"
+            tv_activity_reset_pw_compare_check.visibility = View.VISIBLE
+            if(et_activity_reset_pw_input_new_pw_1.text.toString().equals(et_activity_reset_pw_input_new_pw_2.text.toString())){
+                tv_activity_reset_pw_compare_check.text = "일치합니다"
             }else{
-                tv_check_new_pw.setTextColor(Color.parseColor("#7a36e4"))
-                tv_check_new_pw.text = "불일치"
+
             }
         }
+    }
+
+    //비밀번호 형식 일치하는지 확인
+    var pwTextWatcher = object :  TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if(!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", s)) {
+                tv_reset_pw_notice.setTextColor(Color.parseColor("#7a36e4"))
+                tv_reset_pw_notice.text = "특수문자,영문,숫자를 포함해주세요"
+            }else{
+                tv_reset_pw_notice.text = "유효한 비밀번호 입니다."
+            }
+        }
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_reset_password)
-        tv_check_new_pw.visibility = View.INVISIBLE
-        et_activity_reset_pw_input_new_pw_2.addTextChangedListener(pwTextWatcher)
+        tv_activity_reset_pw_compare_check.visibility = View.INVISIBLE
+
+        et_activity_reset_pw_input_new_pw_1.addTextChangedListener(pwTextWatcher)
+        et_activity_reset_pw_input_new_pw_2.addTextChangedListener(repwTextWatcher)
+
         btn_activity_reset_pw_ok.setOnClickListener {
             //버튼을 눌렀을 때
             val rePW = et_activity_reset_pw_input_new_pw_1.text.toString()
@@ -115,6 +139,7 @@ class ResetPasswordActivity : AppCompatActivity() {
             if(rePW.length > 0 &&rePWcheck.length> 0){
                 if(Pattern.matches("^(?=.*\\d)(?=.*[.!@#$%])(?=.*[a-zA-Z]).{8,20}$", rePW)){
                     if(rePW.equals(rePWcheck)){
+                        SharedPreferenceController.setUserPW(this,rePW)
                         putPasswordModify(userIdx ,rePW)
                     }else{
                         toast("두 입력이 일치하지 않습니다.")

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="328dp"
+    android:layout_height="495dp"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="52dp">
@@ -71,7 +70,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="29dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,17 +85,17 @@
     <RelativeLayout
         android:layout_width="288.6dp"
         android:layout_height="1dp"
-        android:layout_marginLeft="60.2dp"
+        android:layout_marginLeft="20.2dp"
         android:background="#707070"></RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp">
+        android:layout_height="28dp">
 
         <TableLayout
             android:id="@+id/layout_my_size_add_display_tvs"
             android:layout_width="288.6dp"
-            android:layout_height="31dp"
+            android:layout_height="28dp"
             android:layout_centerHorizontal="true">
 
             <TableRow
@@ -160,22 +159,16 @@
     <RelativeLayout
         android:layout_width="288.6dp"
         android:layout_height="1dp"
-        android:layout_marginLeft="60.2dp"
-        android:background="#dcdcdc"></RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="288.6dp"
-        android:layout_height="1dp"
-        android:layout_marginLeft="60.2dp"
+        android:layout_marginLeft="20.2dp"
         android:background="#dcdcdc"></RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp">
+        android:layout_height="28dp">
 
         <TableLayout
             android:layout_width="288.6dp"
-            android:layout_height="31dp"
+            android:layout_height="28dp"
             android:layout_centerHorizontal="true">
 
             <TableRow
@@ -241,12 +234,18 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_width="288.6dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20.2dp"
+        android:background="#dcdcdc"></RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp">
+        android:layout_height="28dp">
 
         <TableLayout
             android:layout_width="288.6dp"
-            android:layout_height="31dp"
+            android:layout_height="28dp"
             android:layout_centerHorizontal="true">
 
             <TableRow
@@ -314,34 +313,7 @@
     <RelativeLayout
         android:layout_width="288.6dp"
         android:layout_height="1dp"
-        android:layout_marginLeft="60.2dp"
+        android:layout_marginLeft="20.2dp"
         android:background="#707070"></RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="41.5dp">
-        <ImageView
-            android:id="@+id/compare_size_number1"
-            android:layout_width="7.5dp"
-            android:layout_height="7.5dp"
-            android:layout_marginLeft="180dp"
-            android:layout_marginTop="20.5dp"
-            android:src="@drawable/oval_shape_white"/>
-        <ImageView
-            android:id="@+id/compare_size_number2"
-            android:layout_width="7.5dp"
-            android:layout_height="7.5dp"
-            android:layout_toRightOf="@+id/compare_size_number1"
-            android:layout_marginLeft="7.5dp"
-            android:layout_marginTop="20.5dp"
-            android:src="@drawable/oval_shape_black"/>
-        <ImageView
-            android:id="@+id/compare_size_number3"
-            android:layout_width="7.5dp"
-            android:layout_height="7.5dp"
-            android:layout_toRightOf="@+id/compare_size_number2"
-            android:layout_marginLeft="7.5dp"
-            android:layout_marginTop="20.5dp"
-            android:src="@drawable/oval_shape_white"/>
-    </RelativeLayout>
 
 </LinearLayout>

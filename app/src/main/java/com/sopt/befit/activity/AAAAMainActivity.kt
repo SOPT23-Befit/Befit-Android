@@ -12,10 +12,18 @@ import android.widget.ImageView
 import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MyFragmentStatePagerAdapter
+import com.sopt.befit.data.UserData
+import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.get.GetUserDataResponse
+import com.sopt.befit.network.NetworkService
+import com.sopt.befit.post.PostSignUpResponse
 import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.tab_bar.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AAAAMainActivity : AppCompatActivity() {
 
@@ -23,6 +31,48 @@ class AAAAMainActivity : AppCompatActivity() {
     companion object {
         lateinit var instance: AAAAMainActivity
     }
+    lateinit var networkService: NetworkService
+    lateinit var usertotalData: UserTotalData
+
+    private fun getUserDataResponse(){
+        val getUserDataResponse = networkService.getUserDataResponse("application/json" ,"token",usertotalData)
+        getUserDataResponse.enqueue(object : Callback<GetUserDataResponse>{
+            override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) { Log.e("board list fail", t.toString())
+            }
+            override fun onResponse(call: Call<GetUserDataResponse>, response: Response<GetUserDataResponse>) {
+                response?.let {
+                    when (it.body()!!.status) {
+                        201 -> {
+                            Log.v("success", response.message().toString())
+                            startActivity<LogInActivity>()
+                            finish()
+                        }
+
+                        401 -> {
+                            Log.v("fail",response.message())
+                            Log.v("fail",response.errorBody().toString())
+                            toast("로그인 실패")
+                        }
+
+                        500 -> {
+
+                            Log.v("409 error",response.message())
+                            Log.v("server error",response.errorBody().toString())
+                            toast("서버 내부 에러")
+                        }
+                        600->{
+                            Log.v("600 error",response.message())
+                            Log.v("database error",response.errorBody().toString())
+                            toast("데이터베이스 에러")
+                        }
+                        else -> {
+                            toast("Error")
+                        }
+                    }
+                }
+            } })
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +83,10 @@ class AAAAMainActivity : AppCompatActivity() {
         Log.d("aaaaaa", "onCreate")
 
         instance = this
+
+        ibtn_AAAA_main_act_mypage.setOnClickListener(){
+            getUserDataResponse()
+        }
 
     }
 

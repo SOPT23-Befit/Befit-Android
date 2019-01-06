@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApplicationController : Application(){
-    private val baseURL =  "http://bghgu.tk:8080/"
+    private val baseURL =  "http://13.209.168.93:8080"
     lateinit var networkService: NetworkService
 
     companion object {
@@ -24,6 +24,5 @@ class ApplicationController : Application(){
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         networkService = retrofit.create(NetworkService::class.java)
-
     }
 }

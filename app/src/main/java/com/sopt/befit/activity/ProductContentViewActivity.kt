@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
+
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.sopt.befit.Fragment.CompareSizeDialog
+
 import kotlinx.android.synthetic.main.activity_product_content_view.*
 import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData

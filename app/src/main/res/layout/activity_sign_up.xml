@@ -121,6 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:ems="10"
+                android:lines="1"
                 android:background="@null"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="8dp"
@@ -153,9 +154,45 @@
                 android:id="@+id/tv_sign_up_select_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:text="                   년               월              일"
+
+                android:text=""
+
+
                 android:layout_marginLeft="30dp"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="년"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/tv_sign_up_select_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="30dp"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/tv_sign_up_select_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="30dp"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일"
                 android:textSize="14sp"
                 />
 
@@ -187,6 +224,7 @@
                 android:layout_toRightOf="@id/tv_sign_up_email"
                 android:background="@null"
                 android:ems="10"
+                android:lines="1"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="8dp"
                 android:textColor="#b8191919"
@@ -217,6 +255,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:ems="10"
+                android:lines="1"
                 android:textColor="#b8191919"
                 android:textSize="14sp"
                 android:layout_gravity="center"/>
@@ -256,24 +295,22 @@
                 android:layout_toRightOf="@id/tv_sign_up_password_check"
                 android:background="@null"
                 android:ems="10"
+                android:lines="1"
                 android:id="@+id/et_sign_up_password_check"
 
                 />
-            <TextView
-                android:id="@+id/tv_sign_up_overlap"
-                android:layout_width="78dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@null"
-                android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:text="불일치"
-                android:textColor="#bf5ce5"
-                android:textSize="14dp" />
+            
+            
 
         </RelativeLayout>
-
+        <TextView
+            android:id="@+id/tv_sign_up_check"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="비밀번호 확인이 일치하지 않습니다."
+            android:textSize="10sp"
+            android:textColor="#7a36e4"
+            />
         <LinearLayout
             android:background="#80707070"
             android:layout_marginTop="40dp"
@@ -308,7 +345,13 @@
     </LinearLayout>
 
 </LinearLayout>
-
+<RelativeLayout
+    android:id="@+id/lo_sign_up_date_picker"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:visibility="gone"
+    android:background="#ffffff">
     <DatePicker
         android:id="@+id/date_picker"
         android:layout_width="wrap_content"
@@ -316,16 +359,28 @@
         android:layout_centerInParent="true"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
-        android:visibility="invisible">
+        >
 
     </DatePicker>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_sign_up_select_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="확인"
+        android:src="@drawable/bt_ok"
+        android:layout_marginTop="30dp"
+        android:background="@null"
         android:layout_below="@id/date_picker"
         android:layout_centerHorizontal="true"
-        android:visibility="invisible"/>
+        />
+</RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_sign_up_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/alpha"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 </RelativeLayout>
