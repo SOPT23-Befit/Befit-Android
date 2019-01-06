@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.EachBrandRecyclerViewAdapter
-import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
-import com.sopt.befit.data.JjimBrandData
+import com.sopt.befit.data.BrandData
 import kotlinx.android.synthetic.main.fragment_s_brand.*
 
 class SBrandFragment : Fragment() {
@@ -28,7 +27,7 @@ class SBrandFragment : Fragment() {
 
     private fun setRecyclerView() {
 
-        val dataList : ArrayList<JjimBrandData> = ArrayList()
+        val dataList : ArrayList<BrandData> = ArrayList()
 
         eachBrandRecyclerViewAdapter = EachBrandRecyclerViewAdapter(activity!!, dataList)
         rv_frag_s_brand_list.adapter = eachBrandRecyclerViewAdapter

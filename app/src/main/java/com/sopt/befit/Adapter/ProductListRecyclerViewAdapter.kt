@@ -10,7 +10,10 @@ import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
-import com.sopt.befit.data.JjimProductData
+import com.sopt.befit.R.id.tv_brand_main_product_count
+import com.sopt.befit.R.id.tv_fragment_jjim_product_count
+import com.sopt.befit.activity.BrandMainActivity
+import com.sopt.befit.data.ProductData
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostProductLikeResponse
@@ -19,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<JjimProductData>) : RecyclerView.Adapter<JjimProductRecyclerViewAdapter.Holder>() {
+class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<ProductData>) : RecyclerView.Adapter<ProductListRecyclerViewAdapter.Holder>() {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -45,6 +48,12 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
 
         if (dataList[position].product_like == 1) {
             holder.heart.setChecked(true)
+        }
+
+        if(ctx is BrandMainActivity) {
+            //holder.count.text = "PRODUCT (" + getItemCount() + ")"
+        }else{
+
         }
 
         val requestOptions = RequestOptions()
@@ -85,7 +94,7 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
     }
 
     private fun postJjimProductLikeResponse(p: Int) {
-        val postJjimProductLikeResponse = networkService.postJjimProductLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postJjimProductLikeResponse = networkService.postProductLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
                 dataList[p].idx)
         postJjimProductLikeResponse.enqueue(object : Callback<PostProductLikeResponse> {
             override fun onFailure(call: Call<PostProductLikeResponse>, t: Throwable) {
@@ -101,7 +110,7 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
     }
 
     private fun postJjimProductUnlikeResponse(p: Int) {
-        val postJjimProductUnlikeResponse = networkService.postJjimProductUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postJjimProductUnlikeResponse = networkService.postProductUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
                 dataList[p].idx)
         postJjimProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
             override fun onFailure(call: Call<PostProductUnlikeResponse>, t: Throwable) {

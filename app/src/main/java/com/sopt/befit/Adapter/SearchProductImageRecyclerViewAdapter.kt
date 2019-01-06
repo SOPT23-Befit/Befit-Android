@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import com.sopt.befit.R
 import com.sopt.befit.data.SearchProductData
 
@@ -43,7 +42,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val mainImage1: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main1) as ImageView
+        val mainImage1: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main8) as ImageView
         val mainImage2: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main2) as ImageView
         val mainImage3: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main3) as ImageView
         val mainImage4: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main4) as ImageView

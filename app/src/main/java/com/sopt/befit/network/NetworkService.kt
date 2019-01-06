@@ -84,14 +84,16 @@ interface NetworkService {
             @Header("Authorization") authorization: String
     ): Call<GetProductListResponse>
 
+    //상품 좋아요
     @POST("/likes/products/{product_idx}")
-    fun postJjimProductLikeResponse(
+    fun postProductLikeResponse(
             @Header("Authorization") authorization: String,
             @Path("product_idx") product_idx: Int
     ): Call<PostProductLikeResponse>
 
+    //상품 좋아요 취소
     @DELETE("/likes/products/{product_idx}")
-    fun postJjimProductUnlikeResponse(
+    fun postProductUnlikeResponse(
             @Header("Authorization") authorization: String,
             @Path("product_idx") product_idx: Int
     ): Call<PostProductUnlikeResponse>
@@ -102,14 +104,16 @@ interface NetworkService {
             @Header("Authorization") authorization: String
     ): Call<GetJjimBrandListResponse>
 
+    //브랜드 좋아요
     @POST("/likes/brands/{brand_idx}")
-    fun postJjimBrandLikeResponse(
+    fun postBrandLikeResponse(
             @Header("Authorization") authorization: String,
             @Path("brand_idx") brand_idx: Int
     ): Call<PostBrandLikeResponse>
 
+    //브랜드 좋아요 취소
     @DELETE("/likes/brands/{brand_idx}")
-    fun postJjimBrandUnlikeResponse(
+    fun postBrandUnlikeResponse(
             @Header("Authorization") authorization: String,
             @Path("brand_idx") brand_idx: Int
     ): Call<PostBrandUnlikeResponse>

@@ -12,5 +12,5 @@ data class BrandData(
         val logo_url: String,
         val mainpage_url: String,
         val mainfeed_url: String,
-        var likeFlag : Int
+        var likeFlag: Int
 )

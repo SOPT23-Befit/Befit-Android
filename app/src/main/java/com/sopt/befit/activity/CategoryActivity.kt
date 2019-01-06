@@ -4,13 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.sopt.befit.R
-import com.sopt.befit.adapter.JjimProductRecyclerViewAdapter
-import com.sopt.befit.data.JjimProductData
+import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
+import com.sopt.befit.data.ProductData
 import kotlinx.android.synthetic.main.activity_category.*
 
 class CategoryActivity : AppCompatActivity() {
 
-    lateinit var jjimProductRecyclerViewAdapter: JjimProductRecyclerViewAdapter
+    lateinit var productListRecyclerViewAdapter: ProductListRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +40,10 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun setRecyclerView() {
 
-        var dataList: ArrayList<JjimProductData> = ArrayList()
+        var dataList: ArrayList<ProductData> = ArrayList()
 
-        jjimProductRecyclerViewAdapter = JjimProductRecyclerViewAdapter(this, dataList)
-        rv_category_product_list.adapter = jjimProductRecyclerViewAdapter
+        productListRecyclerViewAdapter = ProductListRecyclerViewAdapter(this, dataList)
+        rv_category_product_list.adapter = productListRecyclerViewAdapter
         rv_category_product_list.layoutManager = GridLayoutManager(this, 2)
     }
 }

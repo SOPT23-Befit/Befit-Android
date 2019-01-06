@@ -12,13 +12,13 @@ import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
 import com.sopt.befit.adapter.*
-import com.sopt.befit.data.JjimProductData
+import com.sopt.befit.data.ProductData
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_group.*
 import org.jetbrains.anko.support.v4.toast
 
 class HomeFragment: Fragment(){
-    lateinit var HomefragmentAdapter: JjimProductRecyclerViewAdapter
+    lateinit var homefragmentAdapterList: ProductListRecyclerViewAdapter
 
     val header :MutableList<String> = ArrayList()
 
@@ -163,11 +163,11 @@ class HomeFragment: Fragment(){
     }
     private fun setRecyclerView(){
 
-        var dataList: ArrayList<JjimProductData> = ArrayList()
-        //dataList.add(JjimProductData("","","",false))
+        var dataList: ArrayList<ProductData> = ArrayList()
+        //dataList.add(ProductData("","","",false))
 
-        HomefragmentAdapter = JjimProductRecyclerViewAdapter(activity!!, dataList)
-        rv_my_rec_item_list.adapter=HomefragmentAdapter
+        homefragmentAdapterList = ProductListRecyclerViewAdapter(activity!!, dataList)
+        rv_my_rec_item_list.adapter=homefragmentAdapterList
         rv_my_rec_item_list.layoutManager= GridLayoutManager(activity,2)
 
     }

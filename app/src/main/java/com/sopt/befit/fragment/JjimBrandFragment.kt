@@ -9,11 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
-import com.sopt.befit.data.JjimBrandData
+import com.sopt.befit.data.BrandData
 import com.sopt.befit.get.GetJjimBrandListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_brand.*
+import kotlinx.android.synthetic.main.fragment_jjim.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,8 +27,8 @@ class JjimBrandFragment : Fragment() {
         ApplicationController.instance.networkService
     }
 
-    val dataList: ArrayList<JjimBrandData> by lazy {
-        ArrayList<JjimBrandData>()
+    val dataList: ArrayList<BrandData> by lazy {
+        ArrayList<BrandData>()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -65,8 +66,9 @@ class JjimBrandFragment : Fragment() {
             override fun onResponse(call: Call<GetJjimBrandListResponse>, response: Response<GetJjimBrandListResponse>) {
                 if (response.isSuccessful) {
                     if(response.body()!=null){
-                        val temp: ArrayList<JjimBrandData> = response.body()!!.data
+                        val temp: ArrayList<BrandData> = response.body()!!.data
                         if (temp.size > 0) {
+                            tv_fragment_jjim_brand_count.text="찜한 브랜드"+ temp.size.toString()
                             val position = jjimBrandRecyclerViewAdapter.itemCount
                             jjimBrandRecyclerViewAdapter.dataList.addAll(temp)
                             jjimBrandRecyclerViewAdapter.notifyItemInserted(position)

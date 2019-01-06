@@ -2,9 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/tv_fragment_jjim_brand_rl"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="#ebebeb"
+        >
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="11.3dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26dp"
+            android:src="@drawable/fav" />
+
+        <TextView
+            android:id="@+id/tv_fragment_jjim_brand_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="43dp"
+            android:text="" />
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_frag_brand_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_fragment_jjim_brand_rl"
+        ></android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
