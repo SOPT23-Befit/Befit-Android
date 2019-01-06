@@ -32,6 +32,9 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
     lateinit var networkService: NetworkService
     lateinit var combineFormData: CombineFormData
 
+    var name = intent.getStringExtra("name")
+    var birth = intent.getStringExtra()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page_total_user_info_manage)

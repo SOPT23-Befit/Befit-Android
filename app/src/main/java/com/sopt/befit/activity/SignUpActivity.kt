@@ -38,6 +38,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var userData: UserData
     private var overlapNetWorking: String = ""
 
+
     //완료 btn 누른 후 통신 로직
     fun postUserCreate(username: String, userpw: String, useremail: String, userbirth: String, usergender: String, userbrand1: Int, userbrand2: Int) {
         //userData에 값 넣기
@@ -194,11 +195,11 @@ class SignUpActivity : AppCompatActivity() {
         var passwordcheck = et_sign_up_password_check.text.toString()
         var email = et_sign_up_email.text.toString()
         //var gender: String = intent.getStringExtra("gender")
-        var gender ="여성"
-        var brand1: Int = intent.getIntExtra("brand1", 0)
-        var brand2: Int = intent.getIntExtra("brand2", 1)
+        var gender = intent.getStringExtra("gender")
+        var brand1 = intent.getStringExtra("brand1").toInt()
+        var brand2 = intent.getStringExtra("brand2").toInt()
 
-        var birth = tv_sign_up_select_year.toString()
+        var birth = tv_sign_up_select_year.toString() + tv_sign_up_select_month.toString() + tv_sign_up_select_day.toString()
 
 
 

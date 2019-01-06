@@ -1,8 +1,12 @@
 package com.sopt.befit.network
 
 import com.sopt.befit.data.*
+
+import com.sopt.befit.get.GetUserDataResponse
+
 import com.sopt.befit.get.GetInitialBrandResponse
 import com.sopt.befit.get.GetInitialGoodsResponse
+
 import com.sopt.befit.post.PostForPwFindUserResponse
 import com.sopt.befit.post.PostLoginResponse
 import com.sopt.befit.post.PostSignUpResponse
@@ -53,6 +57,13 @@ interface NetworkService {
             @Header("Content-Type: application/json")
             @Body combineFormData: CombineFormData
     ): Call<PostTotalUserDataResponse>
+
+    @GET("/user")
+    fun getUserDataResponse(
+            @Header("Content-Type") content_type : String,
+            @Header("Authorization") token : String,
+            @Body userData : UserTotalData
+    ) : Call<GetUserDataResponse>
 
     @GET("/brands")
     fun getBrandsByInitialResponse(
@@ -143,4 +154,5 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Path("brand_idx") brand_idx: Int
     ): Call<GetProductListResponse>
+
 }

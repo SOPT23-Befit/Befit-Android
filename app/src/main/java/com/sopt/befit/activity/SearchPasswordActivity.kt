@@ -39,7 +39,7 @@ class SearchPasswordActivity : AppCompatActivity() {
 
             val name = et_activity_search_pw_name.text.toString()
             val email = et_activity_search_pw_email.text.toString()
-            val birthday = tv_activity_search_pw_year.text.toString()
+            val birthday = tv_activity_search_pw_year.toString()+tv_search_pw_select_month.toString()+tv_search_pw_select_day.toString()
             if(name.length> 0&& email.length>0 && birthday.length == 8){
                     //회원 정보 있는지 통신하기
                     ForPwuserData =  ForPwUserData(email, name,birthday)
