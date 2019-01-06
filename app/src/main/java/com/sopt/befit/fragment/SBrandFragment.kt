@@ -29,12 +29,6 @@ class SBrandFragment : Fragment() {
     private fun setRecyclerView() {
 
         val dataList : ArrayList<JjimBrandData> = ArrayList()
-        dataList.add(JjimBrandData("유니클로", true))
-        dataList.add(JjimBrandData("서브웨이", true))
-        dataList.add(JjimBrandData("프링글스", true))
-        dataList.add(JjimBrandData("유니클로", false))
-        dataList.add(JjimBrandData("서브웨이", false))
-        dataList.add(JjimBrandData("프링글스", false))
 
         eachBrandRecyclerViewAdapter = EachBrandRecyclerViewAdapter(activity!!, dataList)
         rv_frag_s_brand_list.adapter = eachBrandRecyclerViewAdapter

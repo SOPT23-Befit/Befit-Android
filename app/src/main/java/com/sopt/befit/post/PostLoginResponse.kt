@@ -1,11 +1,11 @@
 package com.sopt.befit.post
 
-data class PostLoginResponse(
+data class PostLoginResponse(//응답바디데이타
         val status : Int,
         val message : String,
-        val data : LoginData
+        val data : LoginresponseData
 )
 
-data class LoginData(
+data class LoginresponseData(
         val token : String
 )
