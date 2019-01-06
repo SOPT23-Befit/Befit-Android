@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.adapter.Expandable
-import com.sopt.befit.R
+import com.sopt.befit.R=
+import com.sopt.befit.activity.CheckMyBrandPreferenceActivity
+import com.sopt.befit.activity.CheckMySizeInfoActivity
 import com.sopt.befit.activity.MyPageTotalUserInfoManage
 import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
@@ -73,20 +75,20 @@ class MypageFragment :Fragment(){
             if(gpos==0)
             {
 
-                //선호브랜드페이지
+                startActivity<CheckMyBrandPreferenceActivity>("token" to "token")
 
             }
             if(gpos==1)
             {
 
-                //나의 사이즈 정보페이지
+                startActivity<CheckMySizeInfoActivity>()
 
             }
 
 
             if(gpos==2)
             {
-
+              
             }
 
             if(gpos==3&&cpos==0)
