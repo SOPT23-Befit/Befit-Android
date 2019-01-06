@@ -8,13 +8,9 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
 import com.sopt.befit.R
-import com.sopt.befit.R.id.activity_select_brand_goods_window_size
 import com.sopt.befit.get.GetInitialBrandResponse
-import com.sopt.befit.network.ApplicationController
-import com.sopt.befit.network.NetworkService
+import com.sopt.befit.get.InitialBrand
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
 import okhttp3.Response
 import org.jetbrains.anko.startActivity
@@ -27,6 +23,8 @@ import retrofit2.Callback
 class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
+    var category_idx : Int = 0
+
     companion object {
         lateinit var brandgoodsinstance: SelectBrandGoodsWindowActivity
     }
@@ -35,13 +33,17 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_brand_goods_window)
+
+        intent.getIntExtra("brand_idx",0)             //브랜드 idx값 가져오기.
+        intent.getIntExtra("categpry_idx",0)          //카테고리 idx 값 가져오기.
+
         setSpinner()
         setBrandBtnOnClick()
         setGoodsBtnOnClick()
         addButtonOnClick()
         btn_activity_select_brand_goods_window_add.visibility = View.GONE               //제품상세 페이지
         activity_my_size_add.visibility = View.GONE                                     //추가버튼
-        activity_select_brand_goods_window_size.visibility = View.GONE                    //사이즈상세 레이아웃
+        activity_select_brand_goods_window_size.visibility = View.GONE                  //사이즈상세 레이아웃
         btn_activity_select_brand_goods_window_goods.setTextColor(Color.parseColor("#848484"))
         btn_activity_select_brand_goods_window_arrow.setImageResource(R.drawable.ic_left_arrow_wh_notactivated)
         brandgoodsinstance = this
@@ -114,6 +116,8 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
     fun goodsBoxVisibleController(brandName: String) {
         activity_my_size_add.visibility = View.VISIBLE
         activity_add_my_size_goods_name.text = brandName
+
+        intent.getIntExtra("name",0)
     }
 
 }
