@@ -35,6 +35,8 @@ class AddMySizeBrandPageActivity : AppCompatActivity() {
 
     var alphabet: ArrayList<ImageView> = ArrayList()
     lateinit var select: ImageView
+  
+    lateinit var brandBrandsRecyclerViewAdapter: BrandGoodsRecyclerViewAdapter
 
 
     //var clicked;
@@ -237,12 +239,18 @@ class AddMySizeBrandPageActivity : AppCompatActivity() {
 
     private fun setRecyclerView() {
         var brandList: ArrayList<InitialBrand> = ArrayList()
+        
+        /*
+brandList.add(BrandData("유니클로"))
+        brandList.add(BrandData("스파오"))
+        brandList.add(BrandData("지오다노"))
+         */
 
 
-//        brandList = 통신했을때 준 어레이리스트
-       //   brandBrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this, InitialBrand)
-//        rv_add_my_size_brand_list.adapter = brandBrandsRecyclerViewAdapter
-//        rv_add _my_size_brand_list.layoutManager = LinearLayoutManager(this)
+        brandBrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this, brandList)
+        rv_add_my_size_brand_list.adapter = brandBrandsRecyclerViewAdapter
+        rv_add_my_size_brand_list.layoutManager = LinearLayoutManager(this)
+
     }
 
     private fun getBrandInitial(initial : Char) {
@@ -261,6 +269,7 @@ class AddMySizeBrandPageActivity : AppCompatActivity() {
   //                      brandBrandsRecyclerViewAdapter.dataList.addAll(temp)
 //                        brandBrandsRecyclerViewAdapter.notifyItemInserted(position)
 
+
                         brandBrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(applicationContext, temp)
                         rv_add_my_size_brand_list.layoutManager = LinearLayoutManager(applicationContext)
                         rv_add_my_size_brand_list.adapter = brandBrandsRecyclerViewAdapter
@@ -278,5 +287,6 @@ class AddMySizeBrandPageActivity : AppCompatActivity() {
             }
         }
     }
+
 
 }

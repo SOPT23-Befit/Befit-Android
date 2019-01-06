@@ -1,15 +1,12 @@
 package com.sopt.befit.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
-import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
-import com.sopt.befit.activity.BrandMainActivity
 import kotlinx.android.synthetic.main.fragment_jjim.*
 
 class JjimFragment : Fragment(), View.OnClickListener{
@@ -22,24 +19,23 @@ class JjimFragment : Fragment(), View.OnClickListener{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        addFragment(ProductFragment())
+        addFragment(JjimProductFragment())
 
         setViewClickListener()
     }
 
     private fun setViewClickListener() {
         img_jjim_product.setOnClickListener {
-            replaceFragment(ProductFragment())
             if(img_jjim_brand.isChecked){
+                replaceFragment(JjimProductFragment())
                 img_jjim_brand.setChecked(false)
             }else{
                 img_jjim_product.setChecked(true)
             }
         }
         img_jjim_brand.setOnClickListener {
-            replaceFragment(BrandFragment())
-            img_jjim_product.setChecked(false)
             if(img_jjim_product.isChecked){
+                replaceFragment(JjimBrandFragment())
                 img_jjim_product.setChecked(false)
             }else{
                 img_jjim_brand.setChecked(true)

@@ -23,7 +23,7 @@ class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //메인 사진 띄우기
-        holder.b_name.text = dataList[position].b_name
+        holder.b_name.text = dataList[position].name_english
 
         holder.item_btn.setOnClickListener{
             //프로덕트의 상세페이지로 넘어간다

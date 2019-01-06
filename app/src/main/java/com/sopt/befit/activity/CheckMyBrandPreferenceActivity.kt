@@ -4,16 +4,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.sopt.befit.R
 
-
-
-class BrandPreferenceWomanActivity : AppCompatActivity() {
+class CheckMyBrandPreferenceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_brand_preference_woman)
-
-        var gender : String = intent.getStringExtra("gender")
-
+        setContentView(R.layout.activity_check_my_brand_preference)
     }
 }

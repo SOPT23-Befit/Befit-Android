@@ -41,12 +41,6 @@ class CategoryActivity : AppCompatActivity() {
     private fun setRecyclerView() {
 
         var dataList: ArrayList<JjimProductData> = ArrayList()
-        dataList.add(JjimProductData("유니클로", "후리스", "29800원", true))
-        dataList.add(JjimProductData("유니클로", "집업", "35000원", false))
-        dataList.add(JjimProductData("유니클로", "히트택", "19000원", true))
-        dataList.add(JjimProductData("유니클로", "양말", "200원", true))
-        dataList.add(JjimProductData("유니클로", "뽀글이", "25000원", false))
-        dataList.add(JjimProductData("유니클로", "레깅스", "9000원", true))
 
         jjimProductRecyclerViewAdapter = JjimProductRecyclerViewAdapter(this, dataList)
         rv_category_product_list.adapter = jjimProductRecyclerViewAdapter

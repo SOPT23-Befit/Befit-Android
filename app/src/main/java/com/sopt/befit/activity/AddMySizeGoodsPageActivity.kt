@@ -81,6 +81,8 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
 
         var goodsList: ArrayList<InitialBrand> = ArrayList()
 
+        
+
 
         //brandGoodsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this,goodsList)
         //rv_add_my_size_goods_list.adapter = brandGoodsRecyclerViewAdapter

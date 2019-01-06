@@ -142,9 +142,10 @@ class SignUpActivity : AppCompatActivity() {
         btn_sign_up_select_bithday.setOnClickListener() {
             if (datepickerStatus == 0) {
                 datepickerStatus = 1
-                date_picker.visibility = View.VISIBLE
-                btn_sign_up_select_confirm.visibility = View.VISIBLE
-                lo_sign_up_total.visibility = View.INVISIBLE
+                lo_sign_up_date_picker.visibility=View.VISIBLE
+                iv_sign_up_background.visibility=View.VISIBLE
+
+                lo_sign_up_total.visibility=View.GONE
             }
 
 
@@ -153,15 +154,25 @@ class SignUpActivity : AppCompatActivity() {
         btn_sign_up_select_confirm.setOnClickListener() {
             if (datepickerStatus == 1) {
                 datepickerStatus = 0
-                date_picker.visibility = View.INVISIBLE
-                btn_sign_up_select_confirm.visibility = View.INVISIBLE
+                lo_sign_up_date_picker.visibility=View.GONE
+                iv_sign_up_background.visibility=View.GONE
                 lo_sign_up_total.visibility = View.VISIBLE
             }
         }
         val dateChangeListener = DatePicker.OnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             tv_sign_up_select_year.text = String.format(
-                    Locale.KOREA, "%d/%d/%d",
-                    year, monthOfYear + 1, dayOfMonth
+
+                    Locale.KOREA, "%d",
+                    year
+            )
+            tv_sign_up_select_month.text = String.format(
+                    Locale.KOREA, "%d",
+                    monthOfYear + 1
+            )
+            tv_sign_up_select_day.text = String.format(
+                    Locale.KOREA, "%d",
+                    dayOfMonth
+
             )
         }
 
@@ -175,16 +186,20 @@ class SignUpActivity : AppCompatActivity() {
         //실시간 비밀번호 유효성 검사
         et_sign_up_password.addTextChangedListener(pwTextWatcher)
         et_sign_up_password_check.addTextChangedListener(repwTextWatcher)
+
         val intent = Intent(this, SelectBrandActivity::class.java)
 
         var name = et_sign_up_name.text.toString()
         var password = et_sign_up_password.text.toString()
         var passwordcheck = et_sign_up_password_check.text.toString()
         var email = et_sign_up_email.text.toString()
-        var gender: String = intent.getStringExtra("gender")
+        //var gender: String = intent.getStringExtra("gender")
+        var gender ="여성"
         var brand1: Int = intent.getIntExtra("brand1", 0)
         var brand2: Int = intent.getIntExtra("brand2", 1)
-        var birth = tv_activity_search_pw_year.toString()
+
+        var birth = tv_sign_up_select_year.toString()
+
 
 
         if (name.length>0 && birth.length >0 && email.length > 0 && password.length > 0 && passwordcheck.length > 0 && name.length > 0) {
