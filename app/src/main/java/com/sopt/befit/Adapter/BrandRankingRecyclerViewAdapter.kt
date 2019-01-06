@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import com.sopt.befit.R
 import com.sopt.befit.data.BrandRankingData
-import com.sopt.befit.data.JjimBrandData
 
 class BrandRankingRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandRankingData>) : RecyclerView.Adapter<BrandRankingRecyclerViewAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

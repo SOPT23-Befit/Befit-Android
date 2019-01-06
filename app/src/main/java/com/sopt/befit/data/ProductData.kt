@@ -1,6 +1,6 @@
 package com.sopt.befit.data
 
-data class JjimProductData(
+data class ProductData(
         val idx : Int,
         val name : String,
         val price : String,

@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.activity.BrandMainActivity
-import com.sopt.befit.data.JjimBrandData
+import com.sopt.befit.data.BrandData
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostBrandLikeResponse
@@ -21,7 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<JjimBrandData>) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
+class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -79,7 +79,7 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
     }
 
     private fun postJjimBrandLikeResponse(p: Int) {
-        val postJjimBrandLikeResponse = networkService.postJjimBrandLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postJjimBrandLikeResponse = networkService.postBrandLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
                 dataList[p].idx)
         postJjimBrandLikeResponse.enqueue(object : Callback<PostBrandLikeResponse> {
             override fun onFailure(call: Call<PostBrandLikeResponse>, t: Throwable) {
@@ -95,7 +95,7 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Jji
     }
 
     private fun postJjimBrandUnlikeResponse(p: Int) {
-        val postJjimBrandUnlikeResponse = networkService.postJjimBrandUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postJjimBrandUnlikeResponse = networkService.postBrandUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
                 dataList[p].idx)
         postJjimBrandUnlikeResponse.enqueue(object : Callback<PostBrandUnlikeResponse> {
             override fun onFailure(call: Call<PostBrandUnlikeResponse>, t: Throwable) {

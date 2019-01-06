@@ -8,13 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.BrandRankingRecyclerViewAdapter
-import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
 import com.sopt.befit.data.BrandRankingData
-import com.sopt.befit.data.JjimBrandData
-import kotlinx.android.synthetic.main.fragment_brand.*
-import kotlinx.android.synthetic.main.fragment_main_brand_1.*
 import kotlinx.android.synthetic.main.fragment_ranking.*
-import kotlinx.android.synthetic.main.tab_bar.*
 
 class BrandRankingFragment :Fragment(){
     lateinit var brandRankingRecyclerViewAdapter: BrandRankingRecyclerViewAdapter

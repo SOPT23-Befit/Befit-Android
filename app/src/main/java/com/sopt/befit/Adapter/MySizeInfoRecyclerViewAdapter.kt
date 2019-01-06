@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import com.sopt.befit.R
-import com.sopt.befit.data.BrandRankingData
 import com.sopt.befit.data.CheckMySizeData
-import com.sopt.befit.data.JjimBrandData
 
 class MySizeInfoRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<CheckMySizeData>) : RecyclerView.Adapter<MySizeInfoRecyclerViewAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
