@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.AAAAMainActivity"></activity>
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
+
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity"></activity>
         <activity android:name=".activity.BrandPreferenceWomanActivity" />

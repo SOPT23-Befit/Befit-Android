@@ -106,7 +106,9 @@ class MypageFragment :Fragment(){
 
             if(gpos==2)
             {
+
                 startActivity<MyPageTotalUserInfoManage>("name" to "$name", "birthday" to "$birth", "email" to "$email","gender" to "$gender")
+
             }
 
             if(gpos==3&&cpos==0)

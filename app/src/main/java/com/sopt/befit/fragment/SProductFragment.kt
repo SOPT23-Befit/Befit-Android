@@ -30,12 +30,17 @@ class SProductFragment : Fragment() {
         //내가 선호하는 프로덕션만 출력
 
         var dataList : ArrayList<JjimProductData> = ArrayList()
+
+        /*
+
         dataList.add(JjimProductData("유니클로", "후리스", "29800원", true))
         dataList.add(JjimProductData("후아유", "집업", "35000원", false))
         dataList.add(JjimProductData("오아이오아이", "핸드폰케이스", "19000원", true))
         dataList.add(JjimProductData("휠라", "신발", "29800원", true))
         dataList.add(JjimProductData("아디다스", "패딩", "35000원", false))
         dataList.add(JjimProductData("나이키", "양말", "19000원", true))
+
+         */
 
         jjimProductRecyclerViewAdapter = JjimProductRecyclerViewAdapter(activity!!, dataList)
         rv_frag_s_product_list.adapter = jjimProductRecyclerViewAdapter

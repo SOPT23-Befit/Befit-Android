@@ -21,11 +21,12 @@ import com.sopt.befit.activity.SelectBrandGoodsWindowActivity
 
 import com.sopt.befit.data.BrandData
 import com.sopt.befit.get.InitialBrand
+import com.sopt.befit.get.InitialGoods
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
 import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.startActivity
 
-class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<InitialBrand>) : RecyclerView.Adapter<BrandGoodsRecyclerViewAdapter.Holder>() {
+class GoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<InitialGoods>) : RecyclerView.Adapter<GoodsRecyclerViewAdapter.Holder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -36,21 +37,23 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<In
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-
-        holder.name.text = dataList[position].name_korean
-
+        holder.name.text = dataList[position].name
 
         holder.brandbtn.setOnClickListener {
-            //Log.d("aaaa", dataList.get(position).name)
-            if(ctx is AddMySizeBrandPageActivity){
-                SelectBrandGoodsWindowActivity.brandgoodsinstance.brandBoxVisibleController(dataList.get(position).name_english)
+            if (ctx is AddMySizeGoodsPageActivity) {
+                SelectBrandGoodsWindowActivity.brandgoodsinstance.goodsBoxVisibleController(dataList.get(position).name)
                 ctx.finish()
-         
-
-                //intent ("brand_idx",  dataList[position].idx)
 
             }
         }
+
+        val requestOptions = RequestOptions()
+        //        requestOptions.placeholder(R.drawable.기본적으로 띄울 이미지)
+        //        requestOptions.error(R.drawable.에러시 띄울 이미지)
+        //        requestOptions.override(150)
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].image_url)
 
     }
 
