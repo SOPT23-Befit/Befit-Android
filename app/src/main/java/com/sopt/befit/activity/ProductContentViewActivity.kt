@@ -11,7 +11,7 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.sopt.befit.Fragment.CompareSizeDialog
+import com.sopt.befit.fragment.CompareSizeDialog
 
 import kotlinx.android.synthetic.main.activity_product_content_view.*
 import com.sopt.befit.R
