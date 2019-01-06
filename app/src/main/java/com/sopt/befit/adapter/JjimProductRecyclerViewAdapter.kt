@@ -12,7 +12,7 @@ import com.sopt.befit.data.JjimProductData
 class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<JjimProductData>) : RecyclerView.Adapter<JjimProductRecyclerViewAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_jjim_product, parent, false)
+        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_each_product, parent, false)
         return Holder(view)
     }
 
@@ -30,7 +30,7 @@ class JjimProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<J
         }
 
         holder.item_btn.setOnClickListener{
-            //프로덕트의 상세페이지로 넘어간다
+            Toast.makeText(ctx, "상세 상품 정보로 넘어가기", Toast.LENGTH_SHORT).show();
         }
 
         holder.heart.setOnClickListener{

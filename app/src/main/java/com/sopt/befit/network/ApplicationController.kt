@@ -24,6 +24,5 @@ class ApplicationController : Application(){
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         networkService = retrofit.create(NetworkService::class.java)
-
     }
 }
