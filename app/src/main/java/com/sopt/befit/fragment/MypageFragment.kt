@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.adapter.Expandable
-import com.sopt.befit.R=
+import com.sopt.befit.R
 import com.sopt.befit.activity.CheckMyBrandPreferenceActivity
 import com.sopt.befit.activity.CheckMySizeInfoActivity
 import com.sopt.befit.activity.MyPageTotalUserInfoManage
