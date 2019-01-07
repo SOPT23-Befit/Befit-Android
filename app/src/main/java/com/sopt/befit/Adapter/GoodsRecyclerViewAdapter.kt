@@ -65,6 +65,7 @@ class GoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Initial
                 val category_Idx= ctx.intent.getIntExtra("catefory_idx",1)
 
                 SelectBrandGoodsWindowActivity.brandgoodsinstance.goodsBoxVisibleController(dataList.get(position).name)
+
                 ctx.getgoodsInitial(brand_Idx, category_Idx)
                 ctx.finish()
 

@@ -13,7 +13,7 @@ import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
 import com.sopt.befit.adapter.*
 
-import com.sopt.befit.data.JjimProductData
+import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetUserDataResponse
