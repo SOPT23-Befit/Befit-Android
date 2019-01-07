@@ -20,8 +20,8 @@ interface NetworkService {
 
     //회원 가입
     @POST("/user")
+    @Headers("Content-Type: application/json")
     fun postSignUpResponse(
-            @Header("Content-Type: application/json")
             @Body userData: UserData
     ): Call<PostSignUpResponse>
 
