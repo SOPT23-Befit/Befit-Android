@@ -2,19 +2,12 @@ package com.sopt.befit.network
 
 import com.sopt.befit.data.*
 
-import com.sopt.befit.get.GetUserDataResponse
-
-import com.sopt.befit.get.GetInitialBrandResponse
-import com.sopt.befit.get.GetInitialGoodsResponse
-
 import com.sopt.befit.post.PostForPwFindUserResponse
 import com.sopt.befit.post.PostLoginResponse
 import com.sopt.befit.post.PostSignUpResponse
 import com.sopt.befit.post.PostTotalUserDataResponse
 import com.sopt.befit.data.LoginData
-import com.sopt.befit.get.GetBrandResponse
-import com.sopt.befit.get.GetJjimBrandListResponse
-import com.sopt.befit.get.GetProductListResponse
+import com.sopt.befit.get.*
 import com.sopt.befit.post.*
 import com.sopt.befit.put.PutModifyPwResponse
 import retrofit2.Call
@@ -156,5 +149,14 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Path("brand_idx") brand_idx: Int
     ): Call<GetProductListResponse>
+
+    //상품 사이즈 비교
+    @GET("/closet/{closet_idx}/compare/{product_idx}?product_size={product_size}")
+    fun getCompareSizeResponse(
+            @Header("Authorization") authorization: String,
+            @Path("closet_idx") closet_idx: Int,
+            @Path("product_idx") product_idx: Int,
+            @Query("product_size") product_size: String
+    ): Call<GetCompareSizeResponse>
 
 }

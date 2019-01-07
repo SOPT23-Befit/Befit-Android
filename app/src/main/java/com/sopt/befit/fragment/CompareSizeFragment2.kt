@@ -30,7 +30,7 @@ class CompareSizeFragment2 : Fragment(){
         //sp_my_size_add_select_size.adapter = SelectSizeSpinnerAdapterval(this, dataList)
         sp_compare_size.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                toast("선택된 아이템 : " + sp_my_size_add_select_size.getItemAtPosition((position)))
+                //toast("선택된 아이템 : " + sp_compare_size.getItemAtPosition((position)))
                 //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
 
             }
@@ -43,7 +43,10 @@ class CompareSizeFragment2 : Fragment(){
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSpinner()
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setSpinner()
+    }
 }
