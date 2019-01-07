@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
-    <TextView
+    <CheckedTextView
         android:id="@+id/tv_listview_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
         android:checkMark="@color/colorViolet"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="9"/>
     <ImageView
         android:id="@+id/iv_listview_arrow"

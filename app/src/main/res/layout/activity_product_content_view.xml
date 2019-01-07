@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.ProductContentViewActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp">
@@ -43,12 +44,12 @@
     </RelativeLayout>
 
 
-    <WebView
-        android:id="@+id/wv_activity_product_content_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<WebView-->
+    <!--android:id="@+id/wv_activity_product_content_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
 
 
-    </WebView>
+    <!--</WebView>-->
 
 </LinearLayout>
