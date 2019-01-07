@@ -20,7 +20,7 @@ import com.sopt.befit.fragment.SizeCheckAddClothDialog
 import org.jetbrains.anko.webView
 
 
-class ProductContentViewActivity(val ctx: Context) : AppCompatActivity() {
+class ProductContentViewActivity : AppCompatActivity() {
 
     var mywebview : WebView? = null
     val BACK_CODE_PRODUCT_CONTENT_ACTIVITY = 7777
@@ -32,16 +32,16 @@ class ProductContentViewActivity(val ctx: Context) : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_content_view)
-        mywebview = findViewById(R.id.wv_activity_product_content_view)
-
-
-        mywebview!!.webViewClient = object : WebViewClient(){
-            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                view?.loadUrl(url)
-                return true
-            }
-        }
-        mywebview!!.loadUrl("")
+//        mywebview = findViewById(R.id.wv_activity_product_content_view)
+//
+//
+//        mywebview!!.webViewClient = object : WebViewClient(){
+//            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+//                view?.loadUrl(url)
+//                return true
+//            }
+//        }
+//        mywebview!!.loadUrl("")
         btn_activity_product_contentview_cancel.setOnClickListener {
             finish()
         }
@@ -57,6 +57,7 @@ class ProductContentViewActivity(val ctx: Context) : AppCompatActivity() {
 
             btn_activity_product_contentview_size_check.setOnClickListener {
                 sizecheckDialog.show(fm, "Can't compare with anything")
+               // compareSizeDialog.show(supportFragmentManager,"compare size")
             }
         } else {
             btn_activity_product_contentview_size_check.setOnClickListener {
@@ -70,15 +71,15 @@ class ProductContentViewActivity(val ctx: Context) : AppCompatActivity() {
 //        btn_dl_size_check_login.setOnClickListener {
     }
 
-    fun init_webView(){
-        webView =  findViewById(R.id.wv_activity_product_content_view)
-        webView!!.settings.javaScriptEnabled = true
-
-        webView!!.loadUrl(url)
-        webView!!.webChromeClient =WebChromeClient()
-
-
-    }
+//    fun init_webView(){
+//        webView =  findViewById(R.id.wv_activity_product_content_view)
+//        webView!!.settings.javaScriptEnabled = true
+//
+//        webView!!.loadUrl(url)
+//        webView!!.webChromeClient =WebChromeClient()
+//
+//
+//    }
 
 }
 
