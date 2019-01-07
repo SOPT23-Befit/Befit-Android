@@ -12,10 +12,18 @@ import android.widget.ImageView
 import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MyFragmentStatePagerAdapter
+import com.sopt.befit.data.UserData
+import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.get.GetUserDataResponse
+import com.sopt.befit.network.NetworkService
+import com.sopt.befit.post.PostSignUpResponse
 import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.tab_bar.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AAAAMainActivity : AppCompatActivity() {
 
@@ -23,6 +31,10 @@ class AAAAMainActivity : AppCompatActivity() {
     companion object {
         lateinit var instance: AAAAMainActivity
     }
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +45,8 @@ class AAAAMainActivity : AppCompatActivity() {
         Log.d("aaaaaa", "onCreate")
 
         instance = this
+
+
 
     }
 
@@ -62,12 +76,12 @@ class AAAAMainActivity : AppCompatActivity() {
 
 
     fun tabvisible() {
-        if (tl_bottom_navi_act_bottom_menu.visibility == View.INVISIBLE) {
+        if (tl_bottom_navi_act_bottom_menu.visibility == View.GONE) {
             Log.d("aaaa", "toVisible")
             tl_bottom_navi_act_bottom_menu.visibility = View.VISIBLE
         } else if (tl_bottom_navi_act_bottom_menu.visibility == View.VISIBLE) {
             Log.d("aaaa", "toInvisible")
-            tl_bottom_navi_act_bottom_menu.visibility = View.INVISIBLE
+            tl_bottom_navi_act_bottom_menu.visibility = View.GONE
         }
     }
 }

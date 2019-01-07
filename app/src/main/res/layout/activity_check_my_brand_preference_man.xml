@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageButton
-                android:id="@+id/ibtn_check_brand_back"
+                android:id="@+id/ibtn_check_brand_man_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -72,64 +72,66 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_thisisneverthat"
+                android:id="@+id/ibtn_check_brand_preference_man_thisisneverthat"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginLeft="81.7dp"
-                android:src="@drawable/woman_thisisneverthat"/>
+                android:src="@drawable/man_thisisneverthat_brand_select"/>
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_Romantic_crown"
+                android:id="@+id/ibtn_check_brand_preference_man_Romantic_crown"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="240.3dp"
                 android:layout_marginTop="46.7dp"
-                android:src="@drawable/woman_romantic_crwon"/>
+                android:src="@drawable/man_romanticcrown_brand_select"/>
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_Minav"
+                android:id="@+id/ibtn_check_brand_preference_man_Ist_Kunst"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="-10dp"
                 android:layout_marginTop="121.9dp"
-                android:src="@drawable/woman_minav"/>
+                android:src="@drawable/man_istkunst_brand_secet"/>
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_Lafudgestore"
+                android:id="@+id/ibtn_check_brand_preference_man_Liberteng"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="140.0dp"
                 android:layout_marginTop="153.4dp"
-                android:src="@drawable/woman_lafudgestore"/>
+                android:src="@drawable/man_liberteng_brand_select"/>
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_More_or_Less"
+                android:id="@+id/ibtn_check_brand_preference_man_Covernat"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="-10dp"
                 android:layout_marginTop="180.7dp"
-                android:src="@drawable/woman_more_or_less"/>
+                android:src="@drawable/man_covernat_brand_select"/>
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_Anderson_Bell"
+                android:id="@+id/ibtn_check_brand_preference_man_Andersson_Bell"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="256.3dp"
-                android:src="@drawable/woman_andersson_bell"/>
+                android:src="@drawable/man_anderssonbell_brand_select"/>
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_OIOI"
+                android:id="@+id/ibtn_check_brand_preference_man_Insilence"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="200.9dp"
                 android:layout_marginTop="290dp"
-                android:src="@drawable/woman_oioi"/>
+                android:src="@drawable/man_insilence_brand_select"/>
 
             <ImageView
-                android:id="@+id/ibtn_check_brand_preference_woman_Critic"
+                android:id="@+id/ibtn_check_brand_preference_man_Critic"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="95dp"
                 android:layout_marginTop="390.4dp"
                 android:layout_marginBottom="58dp"
-                android:src="@drawable/woman_critic" />
+                android:src="@drawable/man_critic_brand_select" />
+
+
         </RelativeLayout>
 
 

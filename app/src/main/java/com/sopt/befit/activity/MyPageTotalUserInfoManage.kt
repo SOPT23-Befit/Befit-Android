@@ -32,13 +32,32 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
     lateinit var networkService: NetworkService
     lateinit var combineFormData: CombineFormData
 
+
+    lateinit var name : String
+    lateinit var birth : String
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page_total_user_info_manage)
 
 
+        var name = intent.getStringExtra("name")
+        var birth = intent.getStringExtra("birthday")
+
+        var email =intent.getStringExtra("email")
+
+        var gender = intent.getStringExtra("gender")
+        tv_activity_total_user_name.text=name
+        tv_activity_total_user_email.text=email
+        tv_activity_total_user_birth.text=birth
+        tv_activity_total_user_gender.text=gender
+        tv_activity_total_user_pw.text="********"
+
+
+
+
         btn_activity_total_user_back.setOnClickListener {
-            startActivity<MainActivity>()
             finish()
         }
         //완료 버튼 클릭 못하게
@@ -135,13 +154,9 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
             override fun onResponse(call: retrofit2.Call<PostTotalUserDataResponse>, response: Response<PostTotalUserDataResponse>) {
                 response?.let {
                     when(it.body()!!.status){
-                        201 ->{ //api에는200으로 되어있어서 수정 바란다 말할것
+                        200 ->{
                             Log.v("success",response.message().toString())
                             finish()
-                        }
-                        204 ->{
-                            Log.v("Fail",response.message().toString())
-                                toast("회원 수정 정보가 잘못되었습니다.")
                         }
                         401 ->{
                             Log.v("Authorization fail",response.message().toString())

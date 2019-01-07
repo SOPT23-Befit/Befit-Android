@@ -1,10 +1,16 @@
 package com.sopt.befit.network
 
 import com.sopt.befit.data.*
+
+import com.sopt.befit.post.PostForPwFindUserResponse
+import com.sopt.befit.post.PostLoginResponse
+import com.sopt.befit.post.PostSignUpResponse
+import com.sopt.befit.post.PostTotalUserDataResponse
 import com.sopt.befit.data.LoginData
 import com.sopt.befit.get.GetBrandResponse
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.get.GetProductListResponse
+import com.sopt.befit.get.*
 import com.sopt.befit.post.*
 import com.sopt.befit.put.PutModifyPwResponse
 import retrofit2.Call
@@ -28,8 +34,8 @@ interface NetworkService {
 
     //pw 재설정
     @PUT("/user")
+    @Headers("Content-Type: application/json")
     fun putModifyPWResponse(
-            @Header("Content-Type: application/json")
             @Body modifyPWData: ModifyPWData
     ): Call<PutModifyPwResponse>
 
@@ -38,7 +44,7 @@ interface NetworkService {
 
     @POST("/user/passwordFind")
     fun ForPwUserDataResponse(
-            @Header("Content-Type: application/json")
+            @Header("Content-Type") type : String,
             @Body forPwUserData: ForPwUserData
     ): Call<PostForPwFindUserResponse>
 
@@ -47,6 +53,24 @@ interface NetworkService {
             @Header("Content-Type: application/json")
             @Body combineFormData: CombineFormData
     ): Call<PostTotalUserDataResponse>
+
+    @GET("/user")
+    fun getUserDataResponse(
+            @Header("Authorization") token : String
+    ) : Call<GetUserDataResponse>
+
+    @GET("/brands")
+    fun getBrandsByInitialResponse(
+            @Header("Authorization") authorization: String,
+            @Query("initial") initial : Char
+    ) : Call<GetInitialBrandResponse>
+
+    @GET("/closet/brands/{brand_idx}/category/{category_idx}")
+    fun getGoodsByInitialResponse(
+            @Header("Authorization") authorization: String,
+            @Path("brand_idx") brand_idx : Int,
+            @Path("category_idx") category_idx : Int
+    ) : Call<GetInitialGoodsResponse>
 
     //좋아요한 물품 보기
     @GET("/likes/products")
@@ -162,4 +186,14 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Path("product_idx") brand_idx: Int
     ): Call<GetProductListResponse>
+  
+    //상품 사이즈 비교
+    @GET("/closet/{closet_idx}/compare/{product_idx}?product_size={product_size}")
+    fun getCompareSizeResponse(
+            @Header("Authorization") authorization: String,
+            @Path("closet_idx") closet_idx: Int,
+            @Path("product_idx") product_idx: Int,
+            @Query("product_size")
+      product_size: String
+    ): Call<GetCompareSizeResponse>
 }

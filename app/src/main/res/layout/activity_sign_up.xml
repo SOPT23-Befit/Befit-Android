@@ -121,6 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:ems="10"
+                android:lines="1"
                 android:background="@null"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="8dp"
@@ -223,6 +224,7 @@
                 android:layout_toRightOf="@id/tv_sign_up_email"
                 android:background="@null"
                 android:ems="10"
+                android:lines="1"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="8dp"
                 android:textColor="#b8191919"
@@ -253,6 +255,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:ems="10"
+                android:lines="1"
                 android:textColor="#b8191919"
                 android:textSize="14sp"
                 android:layout_gravity="center"/>
@@ -292,6 +295,7 @@
                 android:layout_toRightOf="@id/tv_sign_up_password_check"
                 android:background="@null"
                 android:ems="10"
+                android:lines="1"
                 android:id="@+id/et_sign_up_password_check"
 
                 />

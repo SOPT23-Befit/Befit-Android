@@ -1,5 +1,6 @@
 package com.sopt.befit.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -8,17 +9,34 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
-import com.sopt.befit.activity.CheckMyBrandPreferenceActivity
-import com.sopt.befit.activity.CheckMySizeInfoActivity
-import com.sopt.befit.activity.MyPageTotalUserInfoManage
-import kotlinx.android.synthetic.main.activity_aaaamain.*
+import com.sopt.befit.activity.*
+import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
+import com.sopt.befit.get.GetUserDataResponse
+import com.sopt.befit.network.ApplicationController
+import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MypageFragment :Fragment(){
     val header :MutableList<String> = ArrayList()
     val body : MutableList<MutableList<String>> = ArrayList()
+    lateinit var networkService: NetworkService
+    lateinit var usertotalData: UserTotalData
+    lateinit var temp : UserTotalData
+
+
+
+
+
+
+
+
+    //   var birth = AAAAMainActivity.instance.usertotalData.birthday
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_mypage, container, false)
@@ -27,18 +45,30 @@ class MypageFragment :Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        setlistview()
+        getUserDataResponse()
+
+
+
+
 
 
     }
 
+
+
     fun setlistview(){
 
-        val fashion : MutableList<String> = ArrayList()
-        val mysize : MutableList<String> = ArrayList()
-        val set : MutableList<String> = ArrayList()
+
 
         val cus : MutableList<String> = ArrayList()
+
+        var name = temp.name
+        var email = temp.email
+        var gender = temp.gender
+        var brand1 = temp.brand1_idx
+        var brand2 = temp.brand2_idx
+        var birth = temp.birthday
+
         cus.add("1:1 문의내역")
         cus.add("상품 QnA 내역")
         cus.add("공지사항")
@@ -46,21 +76,51 @@ class MypageFragment :Fragment(){
 
 
 
-        header.add("나의 패션 취향")
-        header.add("나의 사이즈 정보")
-        header.add("통합 계정 설정")
+
         header.add("고객센터")
 
 
-        body.add(fashion)
-        body.add(mysize)
-        body.add(set)
+
         body.add(cus)
 
 
         elv_my_page_list.setAdapter(Expandable(activity!!,header,body))
 
+        tv_mypage_fragment_preference.setOnClickListener(){
+
+            // tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
+            if(gender.equals("남성")) {
+
+                startActivity<CheckMyBrandPreferenceManActivity>("brand1" to "$brand1", "brand2" to "$brand2")
+            }
+            else if(gender.equals("여성")){
+                startActivity<CheckMyBrandPreferenceActivity>("brand1" to "$brand1", "brand2" to "$brand2")
+
+            }
+        }
+        tv_mypage_fragment_size.setOnClickListener(){
+            //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
+
+            //사이즈 확인하기로
+        }
+
+        tv_mypage_fragment_total.setOnClickListener(){
+            //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
+
+
+            startActivity<MyPageTotalUserInfoManage>("name" to "$name", "birthday" to "$birth", "email" to "$email","gender" to "$gender")
+
+        }
+
+
         elv_my_page_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+
+            var name = temp.name
+            var email = temp.email
+            var gender = temp.gender
+            var brand1 = temp.brand1_idx
+            var brand2 = temp.brand2_idx
+            var birth = temp.birthday
 
 
             Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
@@ -71,27 +131,12 @@ class MypageFragment :Fragment(){
             var gpos = groupPosition
             var cpos = childPosition
 
-
-            if(gpos==0)
-            {
-
-                startActivity<CheckMyBrandPreferenceActivity>("token" to "token")
-
-            }
-            if(gpos==1)
-            {
-
-                startActivity<CheckMySizeInfoActivity>()
-
-            }
+            Log.d("ssss","$gpos,$cpos")
 
 
-            if(gpos==2)
-            {
-              
-            }
 
-            if(gpos==3&&cpos==0)
+
+            if(gpos==0&&cpos==0)
             {
                 toast("1:1 문의 내역")
             }
@@ -101,6 +146,56 @@ class MypageFragment :Fragment(){
         }
 
 
+    }
+    private fun getUserDataResponse(){
+        Log.d("aaaaaaa","aaaaaa")
+        networkService = ApplicationController.instance!!.networkService
+        //val token = SharedPreferenceController.getAuthorization(activity!!)
+        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        val getUserDataResponse = networkService.getUserDataResponse(token)
+        getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
+            override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) { Log.e("board list fail", t.toString())
+            }
+            override fun onResponse(call: Call<GetUserDataResponse>, response: Response<GetUserDataResponse>) {
+                response?.let {
+                    when (it.body()!!.status) {
+                        200 -> {
+                            Log.v("success", response.message().toString())
+                            temp  = response.body()!!.data
+
+
+                            tv_my_page_email.text=temp.email
+                            tv_my_page_name.text=temp.name
+
+                            setlistview()
+
+
+
+                        }
+
+                        400 -> {
+                            Log.v("fail",response.message())
+                            Log.v("fail",response.errorBody().toString())
+                            toast("로그인 실패")
+                        }
+
+                        500 -> {
+
+                            Log.v("409 error",response.message())
+                            Log.v("server error",response.errorBody().toString())
+                            toast("서버 내부 에러")
+                        }
+                        600->{
+                            Log.v("600 error",response.message())
+                            Log.v("database error",response.errorBody().toString())
+                            toast("데이터베이스 에러")
+                        }
+                        else -> {
+                            toast("Error")
+                        }
+                    }
+                }
+            } })
     }
 
 }
