@@ -123,6 +123,5 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 }
             }
         })
-
     }
 }
