@@ -37,6 +37,12 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var networkservice: NetworkService
     lateinit var userData: UserData
     private var overlapNetWorking: String = ""
+    private var name : String = ""
+    private var birth : String = ""
+    private var email : String = ""
+    private var password : String =""
+    private var passwordcheck : String =""
+
 
 
     //완료 btn 누른 후 통신 로직
@@ -45,7 +51,7 @@ class SignUpActivity : AppCompatActivity() {
         userData = UserData(useremail, userpw, usergender, username, userbrand1, userbrand2, userbirth)
         if (overlapNetWorking == "") {
             overlapNetWorking = "networking"
-
+            networkservice = ApplicationController.instance.networkService
             var userCreateResponse = networkservice.postSignUpResponse(userData)
             userCreateResponse!!.enqueue(object : Callback<PostSignUpResponse> {
                 override fun onFailure(call: Call<PostSignUpResponse>, t: Throwable) {
@@ -66,9 +72,6 @@ class SignUpActivity : AppCompatActivity() {
                                 Log.v("400 error", response.message())
                                 Log.v("400 error", response.errorBody().toString())
                                 toast("서버 에러")
-                            }
-                            401 -> {
-
                             }
                             409 ->{
                                 Log.v("409 error",response.message())
@@ -94,7 +97,11 @@ class SignUpActivity : AppCompatActivity() {
     //비밀번호 형식 실시간 체크
      var pwTextWatcher = object :  TextWatcher {
         override fun afterTextChanged(s: Editable?) {
-
+            if(et_sign_up_name.text.isNotEmpty() &&  et_sign_up_email.text.isNotEmpty() && et_sign_up_password.text.isNotEmpty() && et_sign_up_password_check.text.isNotEmpty()){
+                Log.v("pw1","ssssss")
+                btn_sign_up_next_page.setImageResource(R.drawable.ic_purplearrow)
+                btn_sign_up_next_page.isClickable =  true
+            }
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -115,7 +122,11 @@ class SignUpActivity : AppCompatActivity() {
     //비번 과 재비번 이 같은지 실시간 체크
     var repwTextWatcher = object : TextWatcher{
         override fun afterTextChanged(s: Editable?) {
-
+            if(et_sign_up_name.text.isNotEmpty() &&  et_sign_up_email.text.isNotEmpty() && et_sign_up_password.text.isNotEmpty() && et_sign_up_password_check.text.isNotEmpty()){
+                Log.v("repw1","ssssss")
+                btn_sign_up_next_page.setImageResource(R.drawable.ic_purplearrow)
+                btn_sign_up_next_page.isClickable =  true
+            }
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -126,9 +137,53 @@ class SignUpActivity : AppCompatActivity() {
             tv_sign_up_check.visibility = View.VISIBLE
             if(et_sign_up_password.text.toString().equals(et_sign_up_password_check.text.toString())){
                 tv_sign_up_check.text = "비밀번호 확인이 일치합니다."
+                if(et_sign_up_name.text.isNotEmpty() &&  et_sign_up_email.text.isNotEmpty() && et_sign_up_password.text.isNotEmpty() && et_sign_up_password_check.text.isNotEmpty()){
+                    Log.v("repw1","ssssss")
+                    btn_sign_up_next_page.setImageResource(R.drawable.ic_purplearrow)
+                    btn_sign_up_next_page.isClickable =  true
+                }
             }else{
 
             }
+        }
+    }
+
+    var emailWatcher = object : TextWatcher{
+        override fun afterTextChanged(s: Editable?) {
+            if(et_sign_up_name.text.isNotEmpty() &&  et_sign_up_email.text.isNotEmpty() && et_sign_up_password.text.isNotEmpty() && et_sign_up_password_check.text.isNotEmpty()){
+                Log.v("email1","ssss")
+                btn_sign_up_next_page.setImageResource(R.drawable.ic_purplearrow)
+                btn_sign_up_next_page.isClickable =  true
+            }
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            tv_activity_sign_up_check_email.visibility = View.VISIBLE
+            if(android.util.Patterns.EMAIL_ADDRESS.matcher(s).matches()){
+                tv_activity_sign_up_check_email.text= "유효한 이메일 입니다."
+            }
+        }
+    }
+
+    var nameWatcher =  object  : TextWatcher{
+        override fun afterTextChanged(s: Editable?) {
+            if(et_sign_up_name.text.isNotEmpty() &&  et_sign_up_email.text.isNotEmpty() && et_sign_up_password.text.isNotEmpty() && et_sign_up_password_check.text.isNotEmpty()){
+                    Log.v("name1","sssss")
+                btn_sign_up_next_page.setImageResource(R.drawable.ic_purplearrow)
+                btn_sign_up_next_page.isClickable =  true
+            }
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
         }
     }
 
@@ -185,38 +240,14 @@ class SignUpActivity : AppCompatActivity() {
 
 
         //실시간 비밀번호 유효성 검사
+        et_sign_up_name.addTextChangedListener(nameWatcher)
         et_sign_up_password.addTextChangedListener(pwTextWatcher)
         et_sign_up_password_check.addTextChangedListener(repwTextWatcher)
-
-        val intent = Intent(this, SelectBrandActivity::class.java)
-
-        var name = et_sign_up_name.text.toString()
-        var password = et_sign_up_password.text.toString()
-        var passwordcheck = et_sign_up_password_check.text.toString()
-        var email = et_sign_up_email.text.toString()
-        //var gender: String = intent.getStringExtra("gender")
-        var gender = intent.getStringExtra("gender")
-        var brand1 = intent.getStringExtra("brand1").toInt()
-        var brand2 = intent.getStringExtra("brand2").toInt()
-
-        var birth = tv_sign_up_select_year.toString() + tv_sign_up_select_month.toString() + tv_sign_up_select_day.toString()
+        et_sign_up_email.addTextChangedListener(emailWatcher)
 
 
-
-        if (name.length>0 && birth.length >0 && email.length > 0 && password.length > 0 && passwordcheck.length > 0 && name.length > 0) {
-            if (password.equals(passwordcheck)) { //서로 같은지
-
-                btn_sign_up_next_page.isClickable=true
-                btn_sign_up_next_page.setImageResource(R.drawable.ic_purplearrow)
-                btn_sign_up_next_page.setOnClickListener {
-                    postUserCreate(name, password, email, birth, gender, brand1, brand2) }
-
-            } else {
-                toast("비밀번호 확인과 비밀번호가 일치하지 않습니다.")
-            }
-            //유효성 검사
-        } else {
-            toast("정보를 정확히 입력해주세요")
+        btn_sign_up_next_page.setOnClickListener {
+            possible_btn()
         }
 
 
@@ -225,6 +256,52 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+
+
+    fun possible_btn(){
+        var name = et_sign_up_name.text.toString()
+        var password = et_sign_up_password.text.toString()
+        var passwordcheck = et_sign_up_password_check.text.toString()
+        var email = et_sign_up_email.text.toString()
+        var gender = "남성"
+        var brand1 = "1"
+        var brand2=  "2"
+       // var gender = intent!!.getStringExtra("gender")
+        //var brand1 = intent!!.getStringExtra("brand1")
+        //var brand2 = intent!!.getStringExtra("brand2")
+        var month: String = ""
+        var day: String = ""
+        month = tv_sign_up_select_month.text.toString()
+        day = tv_sign_up_select_day.text.toString()
+        if (tv_sign_up_select_month.text.length == 1) {
+            Log.v("asasss",month)
+            month = "0" + tv_sign_up_select_month.text
+        }
+        if (tv_sign_up_select_day.text.length == 1) {
+            day = "0" + tv_sign_up_select_day.text
+        }
+        val birth = tv_sign_up_select_year.text.toString() + "/" + month + "/" + day
+
+        //무조건 통신
+        if (password.equals(passwordcheck)) {
+
+            if (name.length>0 && birth.length >0 && email.length > 0 && password.length > 0 && passwordcheck.length > 0) { //서로 같은지
+
+                Log.v("zzzz",gender)
+                Log.v("zzzz",brand1)
+                Log.v("zzzz",brand2)
+                postUserCreate(name, password, email, birth, gender, brand1.toInt(), brand2.toInt())
+
+
+            } else {
+                toast("정보를 다 입력해주세요 ").show()
+            }
+            //유효성 검사
+        }else{
+            toast("비밀번호가 일치 하지 않습니다").show()
+        }
+
+    }
 }
 
 
