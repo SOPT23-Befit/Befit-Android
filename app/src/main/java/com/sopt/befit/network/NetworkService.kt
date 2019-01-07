@@ -7,6 +7,9 @@ import com.sopt.befit.post.PostLoginResponse
 import com.sopt.befit.post.PostSignUpResponse
 import com.sopt.befit.post.PostTotalUserDataResponse
 import com.sopt.befit.data.LoginData
+import com.sopt.befit.get.GetBrandResponse
+import com.sopt.befit.get.GetBrandListResponse
+import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.get.*
 import com.sopt.befit.post.*
 import com.sopt.befit.put.PutModifyPwResponse
@@ -31,8 +34,8 @@ interface NetworkService {
 
     //pw 재설정
     @PUT("/user")
+    @Headers("Content-Type: application/json")
     fun putModifyPWResponse(
-            @Header("Content-Type: application/json")
             @Body modifyPWData: ModifyPWData
     ): Call<PutModifyPwResponse>
 
@@ -41,7 +44,7 @@ interface NetworkService {
 
     @POST("/user/passwordFind")
     fun ForPwUserDataResponse(
-            @Header("Content-Type: application/json")
+            @Header("Content-Type") type : String,
             @Body forPwUserData: ForPwUserData
     ): Call<PostForPwFindUserResponse>
 
@@ -93,7 +96,7 @@ interface NetworkService {
     @GET("/likes/brands")
     fun getJjimBrandListResponse(
             @Header("Authorization") authorization: String
-    ): Call<GetJjimBrandListResponse>
+    ): Call<GetBrandListResponse>
 
     //브랜드 좋아요
     @POST("/likes/brands/{brand_idx}")
@@ -150,13 +153,48 @@ interface NetworkService {
             @Path("brand_idx") brand_idx: Int
     ): Call<GetProductListResponse>
 
+    //상품 검색 초기 페이지
+    @GET("/search/firstSearchPage")
+    fun getSearchInitalListResponse(
+            @Header("Authorization") authorization: String
+    ): Call<GetProductListResponse>
+
+    //상품 검색 신상순
+    @GET("/search/products/new")
+    fun getSearchNewProductResponse(
+            @Header("Authorization") authorization: String,
+            @Query("name") name : String
+    ): Call<GetProductListResponse>
+
+    //상품 검색 인기순
+    @GET("/search/products/popular")
+    fun getSearchPopularProductResponse(
+            @Header("Authorization") authorization: String,
+            @Query("name") name : String
+    ): Call<GetProductListResponse>
+
+    //브랜드 검색
+    @GET("/search/brands")
+    fun getSearchBrandResponse(
+            @Header("Authorization") authorization: String,
+            @Query("name") name : String
+    ): Call<GetBrandListResponse>
+
+    //특정 상품 정보 조회
+    @GET("/products/{product_idx}")
+    fun getEachProductListResponse(
+            @Header("Authorization") authorization: String,
+            @Path("product_idx") brand_idx: Int
+    ): Call<GetProductListResponse>
+  
     //상품 사이즈 비교
     @GET("/closet/{closet_idx}/compare/{product_idx}?product_size={product_size}")
     fun getCompareSizeResponse(
             @Header("Authorization") authorization: String,
             @Path("closet_idx") closet_idx: Int,
             @Path("product_idx") product_idx: Int,
-            @Query("product_size") product_size: String
+            @Query("product_size")
+      product_size: String
     ): Call<GetCompareSizeResponse>
 
     //나의 옷장 리스트
