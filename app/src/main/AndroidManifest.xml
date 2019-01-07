@@ -46,10 +46,11 @@
 
         </activity>
         <activity android:name=".activity.SelectBrandActivity" />
-        <activity android:name=".activity.SelectBrandGoodsWindowActivity" />
+        <activity android:name=".activity.SelectBrandGoodsWindowActivity" >
+        </activity>
         <activity android:name=".activity.SelectGenderActivity" />
         <activity android:name=".activity.SignUpActivity"></activity>
-        <activity android:name=".activity.CheckMyBrandPreferenceActivity" />
+=        <activity android:name=".activity.CheckMyBrandPreferenceActivity" />
         <activity android:name=".activity.SizeCheckPageActivity"></activity>
         <activity android:name=".activity.CheckMyBrandPreferenceManActivity"></activity>
     </application>

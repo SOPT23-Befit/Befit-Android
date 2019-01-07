@@ -1,108 +1,111 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/btn_rv_item_search_image"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="W,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guide_0.6666"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6666"
+        android:id="@+id/guide_0.6666"/>
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main1"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:src="@mipmap/ic_launcher" />
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="W,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/guide_0.6666"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main2"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:layout_toRightOf="@id/img_rv_item_search_image_main1"
-            android:src="@mipmap/ic_launcher" />
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="W,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/guide_0.6666"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main2"/>
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main3"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_below="@id/img_rv_item_search_image_main2"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:layout_toRightOf="@id/img_rv_item_search_image_main1"
-            android:src="@mipmap/ic_launcher" />
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="W,1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guide_0.3333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main8" />
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main4"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_below="@id/img_rv_item_search_image_main1"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:src="@mipmap/ic_launcher" />
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="W,1:1"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/guide_0.6666"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main8"
+        app:layout_constraintStart_toStartOf="@+id/guide_0.3333"
+        />
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main5"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_below="@id/img_rv_item_search_image_main1"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:layout_toRightOf="@id/img_rv_item_search_image_main4"
-            android:src="@mipmap/ic_launcher" />
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="W,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/img_rv_item_search_image_main5"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main3"/>
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main6"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_below="@id/img_rv_item_search_image_main1"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:layout_toRightOf="@id/img_rv_item_search_image_main5"
-            android:src="@mipmap/ic_launcher" />
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guide_0.3333"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3333"/>
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main7"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_below="@id/img_rv_item_search_image_main4"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:src="@mipmap/ic_launcher" />
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guide_0.5"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
 
-        <ImageView
-            android:id="@+id/img_rv_item_search_image_main8"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_below="@id/img_rv_item_search_image_main4"
-            android:layout_marginStart="0.5dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="0.5dp"
-            android:layout_marginBottom="0.5dp"
-            android:layout_toRightOf="@id/img_rv_item_search_image_main7"
-            android:src="@mipmap/ic_launcher" />
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="W,1:1"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guide_0.5"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main5"/>
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/img_rv_item_search_image_main8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="W,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/img_rv_item_search_image_main7"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main6" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -34,7 +34,7 @@ class AddMySizeBrandPageActivity : AppCompatActivity() {
     }
 
     var alphabet: ArrayList<ImageView> = ArrayList()
-    lateinit var select: ImageView
+    //lateinit var select: ImageView
 
 
 
@@ -48,7 +48,7 @@ class AddMySizeBrandPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_my_size)
         rv_add_my_size_brand_list.visibility = View.GONE
-       // setRecyclerView()
+        setRecyclerView()
         setBtnClickListener()
         brandinstance = this
     }
@@ -264,14 +264,14 @@ brandList.add(BrandData("유니클로"))
                 if (response.isSuccessful) {
                     val temp: ArrayList<InitialBrand> = response.body()!!.data
                     if (temp.size > 0) {
-    //                    val position = brandBrandsRecyclerViewAdapter.itemCount
-  //                      brandBrandsRecyclerViewAdapter.dataList.addAll(temp)
-//                        brandBrandsRecyclerViewAdapter.notifyItemInserted(position)
+                        val position = BrandsRecyclerViewAdapter.itemCount
+                        BrandsRecyclerViewAdapter.dataList.addAll(temp)
+                        BrandsRecyclerViewAdapter.notifyItemInserted(position)
 
 
-                        BrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(applicationContext, temp)
-                        rv_add_my_size_brand_list.layoutManager = LinearLayoutManager(applicationContext)
-                        rv_add_my_size_brand_list.adapter = BrandsRecyclerViewAdapter
+                       // BrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(applicationContext, temp)
+                        //rv_add_my_size_brand_list.layoutManager = LinearLayoutManager(applicationContext)
+                        //rv_add_my_size_brand_list.adapter = BrandsRecyclerViewAdapter
 
                     }
                 }
