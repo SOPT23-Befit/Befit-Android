@@ -25,8 +25,8 @@ import retrofit2.Response
 import java.util.*
 
 class SearchPasswordActivity : AppCompatActivity() {
-        lateinit var ForPwuserData : ForPwUserData
-        lateinit var networkservice : NetworkService
+    lateinit var ForPwuserData : ForPwUserData
+    lateinit var networkservice : NetworkService
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,9 +40,9 @@ class SearchPasswordActivity : AppCompatActivity() {
             val name = et_activity_search_pw_name.text.toString()
             val email = et_activity_search_pw_email.text.toString()
             val birthday = tv_activity_search_pw_year.toString()+tv_search_pw_select_month.toString()+tv_search_pw_select_day.toString()
-            if(name.length> 0&& email.length>0 && birthday.length == 8){
-                    //회원 정보 있는지 통신하기
-                    ForPwuserData =  ForPwUserData(email, name,birthday)
+            if(name.length> 0&& email.length>0 && birthday.length > 0){
+                //회원 정보 있는지 통신하기
+                ForPwuserData =  ForPwUserData(email,name,birthday)
                 var searchUserResponse = networkservice.ForPwUserDataResponse(ForPwuserData)
                 searchUserResponse!!.enqueue(object : Callback<PostForPwFindUserResponse>{
                     override fun onFailure(call: Call<PostForPwFindUserResponse>, t: Throwable) {
@@ -51,44 +51,43 @@ class SearchPasswordActivity : AppCompatActivity() {
 
                     override fun onResponse(call: Call<PostForPwFindUserResponse>, response: Response<PostForPwFindUserResponse>) {
                         response?.let {
-                                when(it.body()!!.status){
-                                    201->{
-                                        // 이 아래 줄 수정 필요
-                                        //SharedPreferenceController.instance!!.setPrefData("user_idx",response.body().toString())
+                            when(it.body()!!.status){
+                                200->{
 
-                                        var user_idx = response.body()!!.data.toString()
-                                        //Parsing 물어보기
-                                        //SharedPreferenceController.getUserIDX(this@SearchPasswordActivity,user_idx.toInt())
-                                        Log.v("success",response.headers().toString())
-                                        Log.v("exist user",response.message().toString())
-                                        startActivity(Intent(this@SearchPasswordActivity,ResetPasswordActivity::class.java))
-                                    }
-                                    400->{
-                                        Log.v("400 error ",response.message())
-                                        Log.v("400 error",response.errorBody().toString())
-                                        toast("서버에러")
-                                    }
 
-                                    404->{
-                                        tv_activity_overlap_user.visibility = View.VISIBLE
-                                        Log.v("Not Exist User about information",response.message())
-                                        Log.v("communication success",response.errorBody().toString())
-                                        toast("Not Exist User about this info")
-                                    }
+                                    var user_idx = response.body()!!.data.idx
 
-                                    500 ->{
-                                        Log.v("server error",response.message())
-                                        Log.v("Server error",response.errorBody().toString())
-                                        toast("Server error")
-                                    }
-                                    600 ->{
-                                        Log.v("Database Error",response.message())
-                                        Log.v("Database Error",response.errorBody().toString())
-                                    }
-                                    else->{
-                                        toast("Error")
-                                    }
+                                    SharedPreferenceController.setUserIDX(this@SearchPasswordActivity,user_idx)
+                                    Log.v("success",response.headers().toString())
+                                    Log.v("exist user",response.message().toString())
+                                    startActivity(Intent(this@SearchPasswordActivity,ResetPasswordActivity::class.java))
                                 }
+                                400->{
+                                    Log.v("400 error ",response.message())
+                                    Log.v("400 error",response.errorBody().toString())
+                                    toast("서버에러")
+                                }
+
+                                404->{
+                                    tv_activity_overlap_user.visibility = View.VISIBLE
+                                    Log.v("Not Exist User about information",response.message())
+                                    Log.v("communication success",response.errorBody().toString())
+                                    toast("Not Exist User about this info")
+                                }
+
+                                500 ->{
+                                    Log.v("server error",response.message())
+                                    Log.v("Server error",response.errorBody().toString())
+                                    toast("Server error")
+                                }
+                                600 ->{
+                                    Log.v("Database Error",response.message())
+                                    Log.v("Database Error",response.errorBody().toString())
+                                }
+                                else->{
+                                    toast("Error")
+                                }
+                            }
                         }
                     }
                 })
@@ -99,14 +98,14 @@ class SearchPasswordActivity : AppCompatActivity() {
         }
 
         btn_activity_search_pw_bithday.setOnClickListener(){
-            lo_search_pw_total.visibility= View.GONE
-            date_picker_search_pw.visibility=View.VISIBLE
-            btn_search_pw_date_picker_ok.visibility=View.VISIBLE
+            lo_search_pw_total.visibility= View.INVISIBLE
+            lo_search_pw_date_picker_total.visibility=View.VISIBLE
+
         }
         btn_search_pw_date_picker_ok.setOnClickListener(){
             lo_search_pw_total.visibility= View.VISIBLE
-            date_picker_search_pw.visibility=View.GONE
-            btn_search_pw_date_picker_ok.visibility=View.GONE
+            lo_search_pw_date_picker_total.visibility=View.GONE
+
         }
 
 
@@ -127,7 +126,7 @@ class SearchPasswordActivity : AppCompatActivity() {
             )
         }
 
-        date_picker.init(
+        date_picker_search_pw.init(
                 date_picker_search_pw.year,
                 date_picker_search_pw.month,
                 date_picker_search_pw.dayOfMonth,
@@ -140,4 +139,3 @@ class SearchPasswordActivity : AppCompatActivity() {
 
     }
 }
-
