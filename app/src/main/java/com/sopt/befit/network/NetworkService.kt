@@ -31,8 +31,8 @@ interface NetworkService {
 
     //pw 재설정
     @PUT("/user")
+    @Headers("Content-Type: application/json")
     fun putModifyPWResponse(
-            @Header("Content-Type: application/json")
             @Body modifyPWData: ModifyPWData
     ): Call<PutModifyPwResponse>
 
@@ -41,7 +41,7 @@ interface NetworkService {
 
     @POST("/user/passwordFind")
     fun ForPwUserDataResponse(
-            @Header("Content-Type: application/json")
+            @Header("Content-Type") type : String,
             @Body forPwUserData: ForPwUserData
     ): Call<PostForPwFindUserResponse>
 
