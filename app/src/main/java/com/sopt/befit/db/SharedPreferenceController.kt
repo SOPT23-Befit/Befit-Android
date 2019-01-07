@@ -105,7 +105,12 @@ object SharedPreferenceController {
         val preferences : SharedPreferences = ctx.getSharedPreferences(USER_IDX, Context.MODE_PRIVATE)
         return preferences.getInt(USER_IDX, -1)
     }
-
+    fun setUserIDX(ctx: Context, input_idx : Int)  {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(USER_IDX,Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = preferences.edit()
+        editor.putInt(USER_IDX, input_idx)
+        editor.commit()
+    }
     fun clearUserSharedPreferences(ctx: Context) {
         val preference: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context. MODE_PRIVATE )
         val editor: SharedPreferences.Editor = preference.edit()
