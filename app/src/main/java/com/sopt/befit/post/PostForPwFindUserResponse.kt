@@ -8,5 +8,5 @@ data class PostForPwFindUserResponse(
 )
 
 data class UserIdxData(
-        val userIdx : Int
+        val idx : Int
 )

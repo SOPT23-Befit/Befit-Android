@@ -32,8 +32,9 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
     lateinit var networkService: NetworkService
     lateinit var combineFormData: CombineFormData
 
-    var name = intent.getStringExtra("name")
-    var birth = intent.getStringExtra("birth")
+
+    lateinit var name : String
+    lateinit var birth : String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +42,22 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
         setContentView(R.layout.activity_my_page_total_user_info_manage)
 
 
+        var name = intent.getStringExtra("name")
+        var birth = intent.getStringExtra("birthday")
+
+        var email =intent.getStringExtra("email")
+
+        var gender = intent.getStringExtra("gender")
+        tv_activity_total_user_name.text=name
+        tv_activity_total_user_email.text=email
+        tv_activity_total_user_birth.text=birth
+        tv_activity_total_user_gender.text=gender
+        tv_activity_total_user_pw.text="********"
+
+
+
+
         btn_activity_total_user_back.setOnClickListener {
-            startActivity<MainActivity>()
             finish()
         }
         //완료 버튼 클릭 못하게

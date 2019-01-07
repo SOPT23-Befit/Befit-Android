@@ -60,9 +60,7 @@ interface NetworkService {
 
     @GET("/user")
     fun getUserDataResponse(
-            @Header("Content-Type") content_type : String,
-            @Header("Authorization") token : String,
-            @Body userData : UserTotalData
+            @Header("Authorization") token : String
     ) : Call<GetUserDataResponse>
 
     @GET("/brands")
