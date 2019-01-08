@@ -14,9 +14,11 @@ import android.view.View
 import com.sopt.befit.R
 import com.sopt.befit.data.ModifyPWData
 import com.sopt.befit.db.SharedPreferenceController
+import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.put.PutModifyPwResponse
 import kotlinx.android.synthetic.main.activity_reset_password.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import retrofit2.Call
@@ -41,6 +43,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         if(overlapNetWorking == ""){
             overlapNetWorking= "networking"
 
+            networkservice = ApplicationController.instance.networkService
             var modifypwResponse= networkservice.putModifyPWResponse(modifypwData)
             modifypwResponse!!.enqueue(object : Callback<PutModifyPwResponse>{
                 override fun onFailure(call: Call<PutModifyPwResponse>, t: Throwable) {
@@ -48,36 +51,37 @@ class ResetPasswordActivity : AppCompatActivity() {
                     overlapNetWorking= ""
                 }
                 override fun onResponse(call: Call<PutModifyPwResponse>, response: Response<PutModifyPwResponse>) {
-                    response?.let {
-                        when(it.body()!!.status){
-                            201 ->{
-                                Log.v("success",response.message().toString())
-                               toast("성공적으로 수정되었습니다.")
-                                finish()
-                            }
-                            400 ->{
-                                Log.v("Fail",response.message())
+                        if (response.isSuccessful) {
+                            Log.v("aaaa",response.body()!!.status.toString())
+                            when (response.body()!!.status) {
+                                200 -> {
+                                    Log.v("success", response.body().toString())
+                                    toast("성공적으로 수정되었습니다.").show()
+                                    startActivity<LogInActivity>()
+                                }
+                                204 -> {
+                                    Log.v("회원 수정 정보가 잘못되었습니다.", response.body().toString())
+                                    toast("회원 수정 정보가 잘못되었습니다.").show()
+                                }
+                                500 -> {
 
-                            }
-                            404 ->{
-                                    Log.v("Not found user",response.message())
-                            }
-                            204 ->{
-                                Log.v("회원 수정 정보가 잘못되었습니다.",response.message())
+                                    Log.v("서버 내부 에러", response.body().toString())
+                                    toast("서버 에러 .").show()
+                                }
+                                600 -> {
 
+
+                                    Log.v("DB 에러", response.body().toString())
+                                    toast("디비에러 .").show()
+                                }
+                                else -> {
+                                    Log.v("zzz","zz")
+                                    toast("Error").show()
+                                }
                             }
-                            500 ->{
-                                Log.v("서버 내부 에러",response.message())
-                            }
-                            600 -> {
-                                    Log.v("DB 에러",response.message())
-                            }else -> {
-                            toast("Error")
                         }
-                        }
-                    }?.also {
-                        overlapNetWorking = ""
-                    }
+
+
                 }
             })
         }
@@ -130,7 +134,7 @@ class ResetPasswordActivity : AppCompatActivity() {
 
         et_activity_reset_pw_input_new_pw_1.addTextChangedListener(pwTextWatcher)
         et_activity_reset_pw_input_new_pw_2.addTextChangedListener(repwTextWatcher)
-
+        userIdx = SharedPreferenceController.getUserIDX(this)
         btn_activity_reset_pw_ok.setOnClickListener {
             //버튼을 눌렀을 때
             val rePW = et_activity_reset_pw_input_new_pw_1.text.toString()
@@ -154,7 +158,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         }
         //x버튼 눌렀을 때
         btn_activity_reset_pw_back.setOnClickListener {
-            startActivityForResult<LogInActivity>(BACK_CODE_LOGIN_ACTIVITY,"message" to "return to Login")
+            startActivityForResult<SearchPasswordActivity>(BACK_CODE_LOGIN_ACTIVITY,"message" to "return to searchpw")
         }
 
 

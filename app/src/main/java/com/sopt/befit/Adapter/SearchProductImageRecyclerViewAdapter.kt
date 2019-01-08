@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.data.SearchProductData
 
@@ -19,30 +22,84 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        //holder.mainImage.setImageDrawable()
+        val requestOptions = RequestOptions()
 
-        // holder.mainImage1 = dataList[position].p_link1 그래들 써서 하나하나 이미지 달아주기
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick1)
+                .thumbnail(0.5f)
+                .into(holder.mainImage1)
 
-        //그래들써서 이미지 띄우기
-        when (position % 8) {
-            0 -> holder.mainImage1.setImageResource(R.drawable.button_fav)
-            1 -> holder.mainImage2.setImageResource(R.drawable.button_fav)
-            2 -> holder.mainImage3.setImageResource(R.drawable.button_fav)
-            3 -> holder.mainImage4.setImageResource(R.drawable.button_fav)
-            4 -> holder.mainImage5.setImageResource(R.drawable.button_fav)
-            5 -> holder.mainImage6.setImageResource(R.drawable.button_fav)
-            6 -> holder.mainImage7.setImageResource(R.drawable.button_fav)
-            7 -> holder.mainImage8.setImageResource(R.drawable.button_fav)
-            else -> holder.mainImage1.setImageResource(R.drawable.button_notfav)
-        }
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick2)
+                .thumbnail(0.5f)
+                .into(holder.mainImage2)
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick3)
+                .thumbnail(0.5f)
+                .into(holder.mainImage3)
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick4)
+                .thumbnail(0.5f)
+                .into(holder.mainImage4)
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick5)
+                .thumbnail(0.5f)
+                .into(holder.mainImage5)
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick6)
+                .thumbnail(0.5f)
+                .into(holder.mainImage6)
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick7)
+                .thumbnail(0.5f)
+                .into(holder.mainImage7)
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].p_lick8)
+                .thumbnail(0.5f)
+                .into(holder.mainImage8)
 
         holder.mainImage1.setOnClickListener {
-            //이미지 프로덕트 아이디를 넘겨 상세페이지로 들어감
+            Toast.makeText(ctx, dataList[position].p_idx1.toString(), Toast.LENGTH_SHORT).show();
+        }
+        holder.mainImage2.setOnClickListener {
+            Toast.makeText(ctx, "2", Toast.LENGTH_SHORT).show();
+        }
+        holder.mainImage3.setOnClickListener {
+            Toast.makeText(ctx, "3", Toast.LENGTH_SHORT).show();
+        }
+        holder.mainImage4.setOnClickListener {
+            Toast.makeText(ctx, "4", Toast.LENGTH_SHORT).show();
+        }
+        holder.mainImage5.setOnClickListener {
+            Toast.makeText(ctx, "5", Toast.LENGTH_SHORT).show();
+        }
+        holder.mainImage6.setOnClickListener {
+            Toast.makeText(ctx, "6", Toast.LENGTH_SHORT).show();
+        }
+        holder.mainImage7.setOnClickListener {
+            Toast.makeText(ctx, "7", Toast.LENGTH_SHORT).show();
+        }
+        holder.mainImage8.setOnClickListener {
+            Toast.makeText(ctx, "8", Toast.LENGTH_SHORT).show();
         }
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val mainImage1: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main8) as ImageView
+        val mainImage1: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main1) as ImageView
         val mainImage2: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main2) as ImageView
         val mainImage3: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main3) as ImageView
         val mainImage4: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main4) as ImageView

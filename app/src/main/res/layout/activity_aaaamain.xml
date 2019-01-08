@@ -19,7 +19,7 @@
             android:id="@+id/tl_bottom_navi_act_bottom_menu"
             android:elevation="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_alignParentBottom="true"
             android:visibility="visible"
             android:background="#f4f4f4">

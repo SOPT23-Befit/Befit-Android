@@ -77,6 +77,10 @@ class BrandMainActivity : AppCompatActivity() {
                 getBrandPopularProductListResponse()
             }
         }
+
+        img_brand_main_back.setOnClickListener{
+            finish()
+        }
     }
 
     private fun setRecyclerView() {
