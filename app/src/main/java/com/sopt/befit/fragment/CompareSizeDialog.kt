@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
-import com.sopt.befit.Adapter.CompareSizeAdapter
+import com.sopt.befit.adapter.CompareSizeAdapter
 
 import com.sopt.befit.R
 import com.sopt.befit.activity.ProductContentViewActivity

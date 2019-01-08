@@ -115,12 +115,6 @@ class MypageFragment :Fragment(){
 
         elv_my_page_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
 
-            var name = temp.name
-            var email = temp.email
-            var gender = temp.gender
-            var brand1 = temp.brand1_idx
-            var brand2 = temp.brand2_idx
-            var birth = temp.birthday
 
 
             Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")

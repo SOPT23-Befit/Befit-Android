@@ -6,8 +6,9 @@
     android:gravity="center">
     <ImageView
         android:id="@+id/iv_main_brand_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="288dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/woman_critic"
         android:layout_gravity="center"/>
 
@@ -17,7 +18,8 @@
         android:layout_height="wrap_content"
         android:text="브랜드명"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:layout_marginTop="16.5dp"
         android:layout_marginBottom="6dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -31,11 +33,13 @@
             android:layout_marginBottom="20dp">
             <ImageView
                 android:id="@+id/iv_main_brand_3_product_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
                 android:src="@drawable/woman_critic"
+                android:scaleType="centerCrop"
                 android:layout_marginBottom="6dp"/>
             <TextView
+                android:id="@+id/tv_aaa_main_brand3_recommend_p_name1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_main_brand_3_product_1"
@@ -51,11 +55,13 @@
             android:layout_marginBottom="20dp">
             <ImageView
                 android:id="@+id/iv_main_brand_3_product_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/woman_critic"
                 android:layout_marginBottom="6dp"/>
             <TextView
+                android:id="@+id/tv_aaa_main_brand3_recommend_p_name2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_main_brand_3_product_2"
@@ -69,11 +75,13 @@
             android:layout_marginBottom="20dp">
             <ImageView
                 android:id="@+id/iv_main_brand_3_product_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
                 android:src="@drawable/woman_critic"
+                android:scaleType="centerCrop"
                 android:layout_marginBottom="6dp"/>
             <TextView
+                android:id="@+id/tv_aaa_main_brand3_recommend_p_name3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_main_brand_3_product_3"
