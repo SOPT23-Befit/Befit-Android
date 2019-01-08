@@ -142,7 +142,5 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
         tl_search_product_brand_navi_act_top_menu.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_navi_product_tap) as ImageView
         tl_search_product_brand_navi_act_top_menu.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_navi_brand_tap) as ImageView
 
-
-
     }
 }

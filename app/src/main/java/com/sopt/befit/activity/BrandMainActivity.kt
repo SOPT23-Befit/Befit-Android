@@ -147,12 +147,14 @@ class BrandMainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    val temp: ArrayList<ProductData> = response.body()!!.data
-                    if (temp.size > 0) {
-                        tv_brand_main_product_count.text="PRODUCT ("+temp.size+")"
-                        val position = brandProductListRecyclerViewAdapter.itemCount
-                        brandProductListRecyclerViewAdapter.dataList.addAll(temp)
-                        brandProductListRecyclerViewAdapter.notifyDataSetChanged()
+                    if(response.body()?.data!=null){
+                        val temp: ArrayList<ProductData> = response.body()!!.data
+                        if (temp.size > 0) {
+                            tv_brand_main_product_count.text="PRODUCT ("+temp.size+")"
+                            val position = brandProductListRecyclerViewAdapter.itemCount
+                            brandProductListRecyclerViewAdapter.dataList.addAll(temp)
+                            brandProductListRecyclerViewAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }
@@ -168,11 +170,13 @@ class BrandMainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    val temp: ArrayList<ProductData> = response.body()!!.data
-                    if (temp.size > 0) {
-                        val position = brandProductListRecyclerViewAdapter.itemCount
-                        brandProductListRecyclerViewAdapter.dataList.addAll(temp)
-                        brandProductListRecyclerViewAdapter.notifyDataSetChanged()
+                    if(response.body()?.data!=null){
+                        val temp: ArrayList<ProductData> = response.body()!!.data
+                        if (temp.size > 0) {
+                            val position = brandProductListRecyclerViewAdapter.itemCount
+                            brandProductListRecyclerViewAdapter.dataList.addAll(temp)
+                            brandProductListRecyclerViewAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }
