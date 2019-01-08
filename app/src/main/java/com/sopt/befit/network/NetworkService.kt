@@ -7,9 +7,12 @@ import com.sopt.befit.post.PostLoginResponse
 import com.sopt.befit.post.PostSignUpResponse
 import com.sopt.befit.post.PostTotalUserDataResponse
 import com.sopt.befit.data.LoginData
+
+
 import com.sopt.befit.get.GetBrandResponse
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.get.GetProductListResponse
+
 import com.sopt.befit.get.*
 import com.sopt.befit.post.*
 import com.sopt.befit.put.PutModifyPwResponse
@@ -49,8 +52,9 @@ interface NetworkService {
     ): Call<PostForPwFindUserResponse>
 
     @POST("/user/combineForm")
+    @Headers("Content-Type: application/json")
     fun TotalUserDataResponse(
-            @Header("Content-Type: application/json")
+
             @Body combineFormData: CombineFormData
     ): Call<PostTotalUserDataResponse>
 
@@ -153,6 +157,12 @@ interface NetworkService {
             @Path("brand_idx") brand_idx: Int
     ): Call<GetProductListResponse>
 
+
+    @GET("/brands/randomPopular/three")
+    fun getBrandRecommendResponse(
+    @Header("Authorization") token : String
+    ) : Call<GetBrandRecommendResponse>
+
     //상품 검색 초기 페이지
     @GET("/search/firstSearchPage")
     fun getSearchInitalListResponse(
@@ -185,7 +195,7 @@ interface NetworkService {
     fun getEachProductListResponse(
             @Header("Authorization") authorization: String,
             @Path("product_idx") brand_idx: Int
-    ): Call<GetProductListResponse>
+    ): Call<GetEachProductResponse>
   
     //상품 사이즈 비교
     @GET("/closet/{closet_idx}/compare/{product_idx}") //?product_size={product_size}
@@ -211,4 +221,8 @@ interface NetworkService {
             @Path("closet_idx") closet_idx: Int
     ): Call<DeleteClosetResponse>
     
+    @GET("/brands/preference")
+    fun getBrandRankingResponse(
+            @Header("Authorization") token : String
+    ) : Call<GetBrandRankingResponse>
 }
