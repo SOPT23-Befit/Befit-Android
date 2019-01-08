@@ -1,6 +1,6 @@
 package com.sopt.befit.post
 
-data class PostTotalUserDataResponse (
+data class DeleteClosetResponse(
         val status : Int,
         val message : String
 )

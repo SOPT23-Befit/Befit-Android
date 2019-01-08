@@ -39,7 +39,6 @@ class JjimProductFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val productFragmentView: View = inflater!!.inflate(R.layout.fragment_product, container, false)
-        Log.d("zzzzz","onCreateView")
         return productFragmentView
     }
 
