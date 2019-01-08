@@ -32,7 +32,9 @@
         <activity android:name=".activity.KakaoAddressActivity" >
 
         </activity>
-        <activity android:name=".activity.LogInActivity" />
+        <activity android:name=".activity.LogInActivity" >
+
+        </activity>
         <activity android:name=".activity.MainActivity">
 
         </activity>

@@ -1,4 +1,4 @@
-package com.sopt.befit.Adapter
+package com.sopt.befit.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

@@ -3,6 +3,7 @@ package com.sopt.befit.fragment
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,14 +13,18 @@ import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
 import com.sopt.befit.adapter.*
-
-import com.sopt.befit.data.JjimProductData
+import com.sopt.befit.data.BrandRecommendData
+import com.sopt.befit.data.LoginData
+import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.db.SharedPreferenceController
+import com.sopt.befit.get.GetBrandRecommendResponse
 import com.sopt.befit.get.GetUserDataResponse
+import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.layout_group.*
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
@@ -34,10 +39,15 @@ class HomeFragment: Fragment(){
 
     val body : MutableList<MutableList<String>> = ArrayList()
 
+    lateinit var networkService: NetworkService
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false) }
+
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -47,7 +57,9 @@ class HomeFragment: Fragment(){
         setcategory()
         setRecyclerView()
         configureBannerNavigation()
-        configureHomeBrandNavigation()
+
+        //통신
+        getUserDataResponse()
 
         ibtn_menu_open.setOnClickListener(){
             ibtn_menu_open.visibility=View.GONE
@@ -69,10 +81,6 @@ class HomeFragment: Fragment(){
             AAAAMainActivity.instance.tabvisible()
         }
 
-        if(body.isNotEmpty()){
-
-            //iv_listview_arrow.visibility=View.INVISIBLE
-        }
 
       //ㅂㅐ너 클릭시
         //브랜드상품 클릭시
@@ -197,9 +205,9 @@ class HomeFragment: Fragment(){
     }
 
 
-    private fun configureHomeBrandNavigation()
+    private fun configureHomeBrandNavigation(dataList : ArrayList<BrandRecommendData>)
     {
-        vp_aaa_main_home_fragment.adapter = HomeFragmentBrandPagerAdapter(childFragmentManager,3)
+        vp_aaa_main_home_fragment.adapter = HomeFragmentBrandPagerAdapter(childFragmentManager,3,dataList)
         vp_aaa_main_home_fragment.offscreenPageLimit = 3
         lo_tab_aaa_main_home_fragment.setupWithViewPager(vp_aaa_main_home_fragment)
 //TabLayout에 붙일 layout을 찾아준 다음
@@ -219,6 +227,64 @@ class HomeFragment: Fragment(){
         vp_aaa_main_banner.offscreenPageLimit = 3
 
     }
+
+
+    private fun getUserDataResponse(){
+        Log.d("aaaaaaa","aaaaaa")
+        networkService = ApplicationController.instance!!.networkService
+        //val token = SharedPreferenceController.getAuthorization(activity!!)
+        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        val getBrandRecommendResponse = networkService.getBrandRecommendResponse(token)
+        getBrandRecommendResponse.enqueue(object : Callback<GetBrandRecommendResponse> {
+            override fun onFailure(call: Call<GetBrandRecommendResponse>, t: Throwable) {
+                Log.d("board list fail", t.toString())
+            }
+            override fun onResponse(call: Call<GetBrandRecommendResponse>, response: Response<GetBrandRecommendResponse>) {
+                response?.let {
+                    Log.d("zzzzzzzz",response.code().toString())
+                    if(response.isSuccessful){
+                        Log.d("zzzzzz",response.body()!!.toString())
+                        when (response.body()!!.status) {
+                            200 -> {
+                                Log.v("success", response.message().toString())
+
+                                configureHomeBrandNavigation(response.body()!!.data)
+                            }
+
+                            400 -> {
+                                Log.v("fail",response.message())
+                                Log.v("fail",response.errorBody().toString())
+                                toast("랜덤 3개 브랜드 별 인기 상품 리스트 조회 실패")
+                            }
+
+                            401 -> {
+                                Log.v("fail",response.message())
+                                Log.v("fail",response.errorBody().toString())
+                                toast("인증 실")
+                            }
+
+                            500 -> {
+
+                                Log.v("409 error",response.message())
+                                Log.v("server error",response.errorBody().toString())
+                                toast("서버 내부 에러")
+                            }
+                            600->{
+                                Log.v("600 error",response.message())
+                                Log.v("database error",response.errorBody().toString())
+                                toast("데이터베이스 에러")
+                            }
+                            else -> {
+                                toast("Error")
+                            }
+                        }
+                    } else {
+                        Log.d("status fail",it.code().toString())
+                    }
+                }
+            } })
+    }
+
 
 }
 
