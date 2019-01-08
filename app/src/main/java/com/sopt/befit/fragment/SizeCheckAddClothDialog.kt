@@ -19,6 +19,10 @@ class SizeCheckAddClothDialog(): DialogFragment() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         btn_dl_size_check_add_cloth.setOnClickListener {
             //내옷추가 액티비티로
@@ -27,8 +31,6 @@ class SizeCheckAddClothDialog(): DialogFragment() {
         dl_size_check_add_cloth_cancel.setOnClickListener {
             dismiss()
         }
+
     }
-
-
-
 }

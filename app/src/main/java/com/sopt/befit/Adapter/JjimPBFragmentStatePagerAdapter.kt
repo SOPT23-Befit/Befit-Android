@@ -5,22 +5,17 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.sopt.befit.fragment.*
 
-
-class MyFragmentStatePagerAdapter(fm: FragmentManager, val FragmentCount: Int) : FragmentStatePagerAdapter(fm) {
+class JjimPBFragmentStatePagerAdapter(fm: FragmentManager, val FragmentCount: Int) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment? {
         when (position) {
-            0 -> return HomeFragment()
-            1 -> return SearchFragment()
-            2 -> return BrandRankingFragment()
-            3 -> return JjimFragment()
-            4 -> return MypageFragment()
+            0 -> return JjimProductFragment()
+            1 -> return JjimBrandFragment()
 
             else -> return null
         }
     }
 
     override fun getCount(): Int = FragmentCount
-
 
 }

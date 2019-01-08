@@ -7,35 +7,36 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.sopt.befit.R
-import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
+import com.sopt.befit.adapter.EachBrandRecyclerViewAdapter
 import com.sopt.befit.data.BrandData
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
-import kotlinx.android.synthetic.main.fragment_brand.*
+import kotlinx.android.synthetic.main.fragment_search_brand.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class JjimBrandFragment : Fragment() {
+class EachBrandFragment : Fragment() {
 
-    lateinit var jjimBrandRecyclerViewAdapter: JjimBrandRecyclerViewAdapter
+    lateinit var eachBrandRecyclerViewAdapter: EachBrandRecyclerViewAdapter
+
+    var token: String = ""
+    var b_idx: Int = 0
+    var search: String? = null
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
-
-    var token: String = ""
-    var b_idx: Int = 0
 
     val dataList: ArrayList<BrandData> by lazy {
         ArrayList<BrandData>()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val brandFragmentView: View = inflater!!.inflate(R.layout.fragment_brand, container, false)
-        return brandFragmentView
+        return inflater!!.inflate(R.layout.fragment_search_brand, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -43,27 +44,26 @@ class JjimBrandFragment : Fragment() {
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
+        arguments?.let {
+            search = it.getString("search")
+        }
+
         setRecyclerView()
 
-        getJjimBrandListResponse()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        //getJjimBrandListResponse()
+        getSearchBrandResponse()
     }
 
     private fun setRecyclerView() {
-        jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList)
-        rv_frag_brand_list.adapter = jjimBrandRecyclerViewAdapter
-        rv_frag_brand_list.layoutManager = LinearLayoutManager(activity)
+        eachBrandRecyclerViewAdapter = EachBrandRecyclerViewAdapter(activity!!, dataList)
+        rv_frag_s_brand_list.adapter = eachBrandRecyclerViewAdapter
+        rv_frag_s_brand_list.layoutManager = LinearLayoutManager(activity)
     }
 
-    private fun getJjimBrandListResponse() {
-        val getJjimBrandListResponse = networkService.getJjimBrandListResponse(token)
-        getJjimBrandListResponse.enqueue(object : Callback<GetBrandListResponse> {
+    private fun getSearchBrandResponse() {
+        val getSearchBrandResponse = networkService.getSearchBrandResponse(token, search!!)
+        getSearchBrandResponse.enqueue(object : Callback<GetBrandListResponse> {
             override fun onFailure(call: Call<GetBrandListResponse>, t: Throwable) {
-                Log.e("jjim brand list fail", t.toString())
+                Log.e("search brand list fail", t.toString())
             }
 
             override fun onResponse(call: Call<GetBrandListResponse>, response: Response<GetBrandListResponse>) {
@@ -71,10 +71,9 @@ class JjimBrandFragment : Fragment() {
                     if (response.body()?.data != null) {
                         val temp: ArrayList<BrandData> = response.body()!!.data
                         if (temp.size > 0) {
-                            tv_fragment_jjim_brand_count.text="찜한 브랜드 "+ temp.size.toString()
-                            val position = jjimBrandRecyclerViewAdapter.itemCount
-                            jjimBrandRecyclerViewAdapter.dataList.addAll(temp)
-                            jjimBrandRecyclerViewAdapter.notifyItemInserted(position)
+                            val position = eachBrandRecyclerViewAdapter.itemCount
+                            eachBrandRecyclerViewAdapter.dataList.addAll(temp)
+                            eachBrandRecyclerViewAdapter.notifyItemInserted(position)
                         }
                     }
                 }

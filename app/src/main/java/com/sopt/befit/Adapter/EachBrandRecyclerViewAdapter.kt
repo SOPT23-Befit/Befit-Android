@@ -1,6 +1,7 @@
 package com.sopt.befit.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
+import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.BrandData
 
 class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<EachBrandRecyclerViewAdapter.Holder>() {
@@ -21,11 +25,20 @@ class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        //메인 사진 띄우기
         holder.b_name.text = dataList[position].name_english
 
-        holder.item_btn.setOnClickListener{
-            //프로덕트의 상세페이지로 넘어간다
+        val requestOptions = RequestOptions()
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].logo_url)
+                .thumbnail(0.5f)
+                .into(holder.logo)
+
+        holder.item_btn.setOnClickListener {
+            val intent: Intent = Intent(ctx, BrandMainActivity::class.java)
+            intent.putExtra("idx", dataList[position].idx)
+            ctx.startActivity(intent)
         }
     }
 

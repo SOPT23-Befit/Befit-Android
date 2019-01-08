@@ -31,6 +31,7 @@
         <activity android:name=".activity.InputInfo" />
         <activity android:name=".activity.KakaoAddressActivity" >
 
+
         </activity>
         <activity android:name=".activity.LogInActivity" >
 
@@ -41,9 +42,9 @@
         <activity android:name=".activity.MyPageAccountSettingActivity" />
         <activity android:name=".activity.MyPageTotalUserInfoManage" />
         <activity android:name=".activity.MySizeLookupActivity" />
-        <activity android:name=".activity.ProductContentViewActivity"></activity>
+        <activity android:name=".activity.ProductContentViewActivity">
+        </activity>
         <activity android:name=".activity.ResetPasswordActivity" />
-        <activity android:name=".activity.SearchEmailActivity" />
         <activity android:name=".activity.SearchPasswordActivity" >
 
         </activity>
@@ -52,7 +53,7 @@
         </activity>
         <activity android:name=".activity.SelectGenderActivity" />
         <activity android:name=".activity.SignUpActivity"></activity>
-=        <activity android:name=".activity.CheckMyBrandPreferenceActivity" />
+        <activity android:name=".activity.CheckMyBrandPreferenceActivity" />
         <activity android:name=".activity.SizeCheckPageActivity"></activity>
         <activity android:name=".activity.CheckMyBrandPreferenceManActivity"></activity>
     </application>
