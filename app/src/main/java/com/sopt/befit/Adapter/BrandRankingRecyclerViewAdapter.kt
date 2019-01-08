@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.data.BrandRankingData
 
@@ -21,11 +23,19 @@ class BrandRankingRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //메인 사진 띄우기
-        holder.b_name.text = dataList[position].b_name
-        holder.brandrankingcnt.text = dataList[position].brandrankingCnt
+
+        holder.b_name.text = dataList[position].name_korean
+        holder.brandrankingcnt.text = (position+1).toString()
         holder.item_btn.setOnClickListener {
             //넘어간다
         }
+
+        val requestOptions = RequestOptions()
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].logo_url)
+                .thumbnail(0.5f)
+                .into(holder.logo)
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {

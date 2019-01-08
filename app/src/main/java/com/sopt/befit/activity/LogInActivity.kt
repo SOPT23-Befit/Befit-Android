@@ -55,7 +55,7 @@ class LogInActivity : AppCompatActivity() {
 
                         SharedPreferenceController.setAuthorization(this@LogInActivity, token)
                         toast(SharedPreferenceController.getAuthorization(this@LogInActivity))
-                        startActivity<AAAAMainActivity>("token" to "$token")
+                        startActivity<AAAAMainActivity>()
                     }
                 }
             })

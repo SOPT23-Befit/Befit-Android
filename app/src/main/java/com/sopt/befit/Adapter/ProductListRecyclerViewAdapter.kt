@@ -42,7 +42,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.b_name.text = dataList[position].brand_Korean_name
+        holder.b_name.text = dataList[position].name_korean
         holder.p_name.text = dataList[position].name
         holder.p_price.text = dataList[position].price
 
@@ -82,15 +82,15 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val main: ImageView = itemView.findViewById(R.id.img_rv_item_my_size_lookup_main) as ImageView
+        val main: ImageView = itemView.findViewById(R.id.img_rv_item_each_product_main) as ImageView
 
-        val heart: ToggleButton = itemView.findViewById(R.id.img_rv_item_jjim_product_heart) as ToggleButton
+        val heart: ToggleButton = itemView.findViewById(R.id.img_rv_item_each_product_heart) as ToggleButton
 
-        val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_my_size_lookup_b_name) as TextView
-        val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_my_size_lookup_p_name) as TextView
-        val p_price: TextView = itemView.findViewById(R.id.tv_rv_item_jjim_product_p_price) as TextView
+        val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_b_name) as TextView
+        val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_p_name) as TextView
+        val p_price: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_p_price) as TextView
 
-        val item_btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_item_jjim_product) as RelativeLayout
+        val item_btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_item_each_product) as RelativeLayout
     }
 
     private fun postJjimProductLikeResponse(p: Int) {
@@ -123,6 +123,5 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 }
             }
         })
-
     }
 }

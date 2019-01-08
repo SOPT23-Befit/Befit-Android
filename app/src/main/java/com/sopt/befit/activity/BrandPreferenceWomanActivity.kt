@@ -180,6 +180,10 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
             }
         }
 
+        ibtn_brand_prefer_woman_back.setOnClickListener(){
+            finish()
+        }
+
         ibtn_brand_prefer_next_wm.setOnClickListener(){
             startActivity<SignUpActivity>("gender" to "$gender","brand1" to "$brand1","brand2" to "$brand2")
         }

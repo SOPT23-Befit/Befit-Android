@@ -38,17 +38,19 @@
             android:id="@+id/lo_aaa_main_home_brand_rec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_aaa_main_home_fragment"
                 android:layout_width="wrap_content"
-                android:layout_height="483dp">
+                android:layout_height="483dp"
+                android:layout_marginTop="24.5dp">
             </android.support.v4.view.ViewPager>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/lo_tab_aaa_main_home_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="10dp"
                 android:layout_below="@id/vp_aaa_main_home_fragment">
             </android.support.design.widget.TabLayout>
 
@@ -56,40 +58,41 @@
 
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/lo_aaa_main_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_aaa_main_banner"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp">
             </android.support.v4.view.ViewPager>
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/lo_tab_aaa_main_banner"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_below="@id/vp_aaa_main_banner">
-            </android.support.design.widget.TabLayout>
-
-
 
         </RelativeLayout>
 
+<LinearLayout
+    android:id="@+id/lo_aaa_main_my_racommend_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나의 추천 아이템"
+        android:textStyle="bold"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="나의 추천 아이템"
-            android:textStyle="bold"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_my_rec_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_my_rec_item_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
 
-        </android.support.v7.widget.RecyclerView>
 </LinearLayout>
     </FrameLayout>
 
@@ -100,7 +103,7 @@
         android:layout_width="304dp"
         android:layout_height="668dp"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="gone">
 
 
        <LinearLayout
@@ -121,29 +124,47 @@
                android:layout_width="wrap_content"
                android:layout_height="56dp"
                android:src="@drawable/cancel"
+               android:background="@null"
                android:layout_weight="1"/>
 
        </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_aaa_main_new_cate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/tv_aaa_main_best_cate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Best"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
 
 
         <ExpandableListView
             android:id="@+id/nav_list"
             android:layout_width="278dp"
-            android:layout_height="586dp"
-            android:layout_below="@id/list_head"
-            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_aaa_main_best_cate"
             android:layout_alignParentTop="true"
-            android:layout_gravity="right"
-            android:layout_marginStart="0dp"
             android:layout_marginLeft="26dp"
-            android:layout_marginTop="0dp"
             android:background="@null"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
             android:groupIndicator="@null"
-            android:paddingTop="30dp"
             >
 
 

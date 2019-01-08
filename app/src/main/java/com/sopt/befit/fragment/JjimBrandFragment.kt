@@ -10,11 +10,10 @@ import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
 import com.sopt.befit.data.BrandData
-import com.sopt.befit.get.GetJjimBrandListResponse
+import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_brand.*
-import kotlinx.android.synthetic.main.fragment_jjim.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +25,9 @@ class JjimBrandFragment : Fragment() {
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
+
+    var token: String = ""
+    var b_idx: Int = 0
 
     val dataList: ArrayList<BrandData> by lazy {
         ArrayList<BrandData>()
@@ -39,11 +41,12 @@ class JjimBrandFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+
         setRecyclerView()
 
         getJjimBrandListResponse()
     }
-
 
     override fun onStart() {
         super.onStart()
@@ -57,18 +60,18 @@ class JjimBrandFragment : Fragment() {
     }
 
     private fun getJjimBrandListResponse() {
-        val getJjimBrandListResponse = networkService.getJjimBrandListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80")
-        getJjimBrandListResponse.enqueue(object : Callback<GetJjimBrandListResponse> {
-            override fun onFailure(call: Call<GetJjimBrandListResponse>, t: Throwable) {
+        val getJjimBrandListResponse = networkService.getJjimBrandListResponse(token)
+        getJjimBrandListResponse.enqueue(object : Callback<GetBrandListResponse> {
+            override fun onFailure(call: Call<GetBrandListResponse>, t: Throwable) {
                 Log.e("jjim brand list fail", t.toString())
             }
 
-            override fun onResponse(call: Call<GetJjimBrandListResponse>, response: Response<GetJjimBrandListResponse>) {
+            override fun onResponse(call: Call<GetBrandListResponse>, response: Response<GetBrandListResponse>) {
                 if (response.isSuccessful) {
-                    if(response.body()!=null){
+                    if (response.body()?.data != null) {
                         val temp: ArrayList<BrandData> = response.body()!!.data
                         if (temp.size > 0) {
-                            tv_fragment_jjim_brand_count.text="찜한 브랜드"+ temp.size.toString()
+                            tv_fragment_jjim_brand_count.text="찜한 브랜드 "+ temp.size.toString()
                             val position = jjimBrandRecyclerViewAdapter.itemCount
                             jjimBrandRecyclerViewAdapter.dataList.addAll(temp)
                             jjimBrandRecyclerViewAdapter.notifyItemInserted(position)

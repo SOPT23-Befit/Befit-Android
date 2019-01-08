@@ -100,7 +100,7 @@
         android:layout_width="292dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="34dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="34dp"
         android:layout_marginRight="34dp"
         android:orientation="vertical"
         >
@@ -229,16 +229,25 @@
                 android:paddingLeft="8dp"
                 android:textColor="#b8191919"
                 android:textSize="14sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                />
 
 
         </RelativeLayout>
-
+        <TextView
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="유효하지 않은 이메일 형식입니다."
+            android:textSize="10sp"
+            android:textColor="#7a36e4"
+            android:id="@+id/tv_activity_sign_up_check_email"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/textboxround">
 
             <TextView
@@ -248,17 +257,19 @@
                 android:text="비밀번호"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="14dp"/>
+
             <EditText
                 android:id="@+id/et_sign_up_password"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:ems="10"
+                android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="#b8191919"
-                android:textSize="14sp"
-                android:layout_gravity="center"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <TextView
