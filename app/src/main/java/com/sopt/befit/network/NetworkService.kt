@@ -185,7 +185,7 @@ interface NetworkService {
     fun getEachProductListResponse(
             @Header("Authorization") authorization: String,
             @Path("product_idx") brand_idx: Int
-    ): Call<GetProductListResponse>
+    ): Call<GetEachProductResponse>
   
     //상품 사이즈 비교
     @GET("/closet/{closet_idx}/compare/{product_idx}") //?product_size={product_size}
