@@ -8,27 +8,22 @@
     android:paddingLeft="@dimen/fab_margin"
     android:paddingRight="@dimen/fab_margin"
     android:paddingTop="@dimen/fab_margin"
-    android:weightSum="5"
+    android:weightSum="6"
     android:id="@+id/activity_kakao_address"
     tools:context=".activity.KakaoAddressActivity">
     <WebView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="6"
         android:id="@+id/wv_activity_kakao_address"
 
         />
-    <TextView
-        android:id="@+id/tv_activity_kakao_address"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Result"
-        />
+
+
+
+    </LinearLayout>
 
 
 
 
 
-</LinearLayout>
