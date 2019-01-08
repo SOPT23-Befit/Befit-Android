@@ -8,8 +8,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.fragment.CompareSizeFragment1
 import com.sopt.befit.fragment.CompareSizeFragment2
 import com.sopt.befit.fragment.CompareSizeFragment3
+import com.sopt.befit.get.ClosetDetail
 
-class CompareSizeAdapter(fm: FragmentManager, val fragmentCount: Int) : FragmentStatePagerAdapter(fm) {
+class CompareSizeAdapter(fm: FragmentManager, val fragmentCount: Int,var ClosetList : ArrayList<ClosetDetail>) : FragmentStatePagerAdapter(fm) {
     override fun getItem(position: Int): Fragment? {
 //        when (position) {
 //            0 -> return CompareSizeFragment1()
@@ -20,7 +21,7 @@ class CompareSizeAdapter(fm: FragmentManager, val fragmentCount: Int) : Fragment
         var fragment : Fragment
         var bundle = Bundle()
         bundle.putInt("position",position)
-
+        bundle.putSerializable("ClosetList",ClosetList)
         fragment = CompareSizeFragment1()
         fragment.arguments = bundle
 

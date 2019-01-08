@@ -151,7 +151,7 @@ interface NetworkService {
     ): Call<GetProductListResponse>
 
     //상품 사이즈 비교
-    @GET("/closet/{closet_idx}/compare/{product_idx}?product_size={product_size}")
+    @GET("/closet/{closet_idx}/compare/{product_idx}") //?product_size={product_size}
     fun getCompareSizeResponse(
             @Header("Authorization") authorization: String,
             @Path("closet_idx") closet_idx: Int,
@@ -160,7 +160,7 @@ interface NetworkService {
     ): Call<GetCompareSizeResponse>
 
     //나의 옷장 리스트
-    @GET("{/closet/category/{category_idx}")
+    @GET("/closet/category/{category_idx}")
     fun getClosetListResponse(
             @Header("Authorization") authorization: String,
             @Path("category_idx") category_idx: Int
