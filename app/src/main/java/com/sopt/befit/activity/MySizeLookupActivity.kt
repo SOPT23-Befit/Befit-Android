@@ -43,12 +43,6 @@ class MySizeLookupActivity : AppCompatActivity() {
 
     private fun setRecyclerView() {
         var dataList: ArrayList<MySizeLookupData> = ArrayList()
-        dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
-        dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
-        dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
-        dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
-        dataList.add(MySizeLookupData("후아유", "양털뽀글이", "53000", false))
-        dataList.add(MySizeLookupData("", "", "", false))
 
         mySizeLookupRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList, 0)
         mySizeLookupDeleteRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList, 1)
