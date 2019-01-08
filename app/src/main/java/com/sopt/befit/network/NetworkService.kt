@@ -210,4 +210,5 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Path("closet_idx") closet_idx: Int
     ): Call<DeleteClosetResponse>
+    
 }
