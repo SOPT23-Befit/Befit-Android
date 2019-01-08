@@ -21,8 +21,8 @@
             android:layout_gravity="center_vertical"/>
         <ImageView
             android:id="@+id/iv_rv_brand_ranking_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_login"
             android:layout_marginLeft="20dp"/>
@@ -33,7 +33,7 @@
             android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
             android:text="브랜드 네임"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
 
     </LinearLayout>
 

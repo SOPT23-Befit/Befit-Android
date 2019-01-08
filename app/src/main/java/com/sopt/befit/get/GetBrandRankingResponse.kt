@@ -6,5 +6,5 @@ import com.sopt.befit.data.BrandRankingData
 data class GetBrandRankingResponse(
         val status : Int,
         val message : String,
-        val data : BrandRankingData
+        val data : ArrayList<BrandRankingData>
 )

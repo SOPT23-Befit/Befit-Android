@@ -52,8 +52,9 @@ interface NetworkService {
     ): Call<PostForPwFindUserResponse>
 
     @POST("/user/combineForm")
+    @Headers("Content-Type: application/json")
     fun TotalUserDataResponse(
-            @Header("Content-Type: application/json")
+
             @Body combineFormData: CombineFormData
     ): Call<PostTotalUserDataResponse>
 
@@ -213,5 +214,8 @@ interface NetworkService {
             @Path("category_idx") category_idx: Int
     ): Call<GetClosetListResponse>
 
-
+    @GET("/brands/preference")
+    fun getBrandRankingResponse(
+            @Header("Authorization") token : String
+    ) : Call<GetBrandRankingResponse>
 }

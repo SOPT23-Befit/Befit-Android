@@ -11,8 +11,10 @@ import com.sopt.befit.R
 import com.sopt.befit.adapter.BrandRankingRecyclerViewAdapter
 import com.sopt.befit.data.BrandRankingData
 import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.get.GetBrandRankingResponse
 import com.sopt.befit.get.GetInitialBrandResponse
 import com.sopt.befit.get.InitialBrand
+import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_ranking.*
 import retrofit2.Callback
@@ -20,7 +22,7 @@ import retrofit2.Callback
 class BrandRankingFragment :Fragment(){
     lateinit var brandRankingRecyclerViewAdapter: BrandRankingRecyclerViewAdapter
     lateinit var networkService: NetworkService
-    lateinit var temp : BrandRankingData
+    lateinit var temp : ArrayList<BrandRankingData>
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,7 +34,9 @@ class BrandRankingFragment :Fragment(){
         super.onActivityCreated(savedInstanceState)
 
 
-        setRecyclerView()
+       // setRecyclerView()
+
+        getBrandRankingResponse()
     }
 
     private fun setRecyclerView() {
@@ -41,7 +45,35 @@ class BrandRankingFragment :Fragment(){
 
 
         val dataList2 : ArrayList<BrandRankingData> = ArrayList()
-        dataList2.add(BrandRankingData("1","","유니클로"))
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
+
+        dataList2.add(BrandRankingData(0,"","유니클로","","","",
+                0,"","","","",0))
 
 
         brandRankingRecyclerViewAdapter = BrandRankingRecyclerViewAdapter(activity!!, dataList2)
@@ -51,21 +83,23 @@ class BrandRankingFragment :Fragment(){
     }
 
 
-    /*private fun getBrandRankingResponse(){
+   private fun getBrandRankingResponse(){
 
-        val getBrandRankingResponse = networkService.getBrandRankingResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", initial)
-        getBrandRankingResponse.enqueue(object : Callback<GetInitialBrandResponse> {
-            override fun onFailure(call: retrofit2.Call<GetInitialBrandResponse>, t: Throwable) {
-                Log.e("brandInitial", t.toString())
+       networkService = ApplicationController.instance!!.networkService
+        val getBrandRankingResponse = networkService.getBrandRankingResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80")
+        getBrandRankingResponse.enqueue(object : Callback<GetBrandRankingResponse> {
+            override fun onFailure(call: retrofit2.Call<GetBrandRankingResponse>, t: Throwable) {
+                Log.e("brandRanking", t.toString())
             }
 
-            override fun onResponse(call: retrofit2.Call<GetInitialBrandResponse>, response: retrofit2.Response<GetInitialBrandResponse>) {
+            override fun onResponse(call: retrofit2.Call<GetBrandRankingResponse>, response: retrofit2.Response<GetBrandRankingResponse>) {
                 if (response.isSuccessful) {
-                    val temp: ArrayList<InitialBrand> = response.body()!!.data
+                    val temp: ArrayList<BrandRankingData> = response.body()!!.data
+                    setRecyclerView()
                     if (temp.size > 0) {
-                        val position = BrandsRecyclerViewAdapter.itemCount
-                        BrandsRecyclerViewAdapter.dataList.addAll(temp)
-                        BrandsRecyclerViewAdapter.notifyItemInserted(position)
+                        val position = brandRankingRecyclerViewAdapter.itemCount
+                        brandRankingRecyclerViewAdapter.dataList.addAll(temp)
+                        brandRankingRecyclerViewAdapter.notifyItemInserted(position)
 
 
                         // BrandsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(applicationContext, temp)
@@ -76,5 +110,5 @@ class BrandRankingFragment :Fragment(){
                 }
             }
         })
-    }*/
+    }
 }
