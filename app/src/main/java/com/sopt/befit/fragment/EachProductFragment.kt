@@ -7,12 +7,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
+import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search_product.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,7 +30,7 @@ class EachProductFragment() : Fragment() {
 
     var token: String = ""
     var b_idx: Int = 0
-    var searchString : String = ""
+    var search: String? = null
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -43,7 +45,11 @@ class EachProductFragment() : Fragment() {
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
-        searchString="자켓"//savedInstanceState!!.getString("searchImage")
+        //Toast.makeText(activity!!, "eachproduct:" + savedInstanceState!!.getString("searchImage"), Toast.LENGTH_SHORT).show();
+
+        arguments?.let {
+            search = it.getString("search")
+        }
 
         setViewClickListener()
 
@@ -80,7 +86,7 @@ class EachProductFragment() : Fragment() {
     }
 
     private fun getSearchNewProductListResponse() {
-        val getSearchNewProductListResponse = networkService.getSearchNewProductResponse(token, searchString)
+        val getSearchNewProductListResponse = networkService.getSearchNewProductResponse(token, search!!)
         getSearchNewProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {
                 Log.e("search new product fail", t.toString())
@@ -88,11 +94,13 @@ class EachProductFragment() : Fragment() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    val temp: ArrayList<ProductData> = response.body()!!.data
-                    if (temp.size > 0) {
-                        val position = searchProductListRecyclerViewAdapter.itemCount
-                        searchProductListRecyclerViewAdapter.dataList.addAll(temp)
-                        searchProductListRecyclerViewAdapter.notifyDataSetChanged()
+                    if (response.body()?.data != null) {
+                        val temp: ArrayList<ProductData> = response.body()!!.data
+                        if (temp.size > 0) {
+                            val position = searchProductListRecyclerViewAdapter.itemCount
+                            searchProductListRecyclerViewAdapter.dataList.addAll(temp)
+                            searchProductListRecyclerViewAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }
@@ -100,7 +108,7 @@ class EachProductFragment() : Fragment() {
     }
 
     private fun getSearchPopularProductListResponse() {
-        val getSearchPopularProductListResponse = networkService.getSearchPopularProductResponse(token, searchString)
+        val getSearchPopularProductListResponse = networkService.getSearchPopularProductResponse(token, search!!)
         getSearchPopularProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {
                 Log.e("brand fail", t.toString())
@@ -108,11 +116,13 @@ class EachProductFragment() : Fragment() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    val temp: ArrayList<ProductData> = response.body()!!.data
-                    if (temp.size > 0) {
-                        val position = searchProductListRecyclerViewAdapter.itemCount
-                        searchProductListRecyclerViewAdapter.dataList.addAll(temp)
-                        searchProductListRecyclerViewAdapter.notifyDataSetChanged()
+                    if (response.body()?.data != null) {
+                        val temp: ArrayList<ProductData> = response.body()!!.data
+                        if (temp.size > 0) {
+                            val position = searchProductListRecyclerViewAdapter.itemCount
+                            searchProductListRecyclerViewAdapter.dataList.addAll(temp)
+                            searchProductListRecyclerViewAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }

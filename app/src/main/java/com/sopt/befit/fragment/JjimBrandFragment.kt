@@ -68,7 +68,7 @@ class JjimBrandFragment : Fragment() {
 
             override fun onResponse(call: Call<GetBrandListResponse>, response: Response<GetBrandListResponse>) {
                 if (response.isSuccessful) {
-                    if(response.body()!=null){
+                    if (response.body()?.data != null) {
                         val temp: ArrayList<BrandData> = response.body()!!.data
                         if (temp.size > 0) {
                             tv_fragment_jjim_brand_count.text="찜한 브랜드 "+ temp.size.toString()

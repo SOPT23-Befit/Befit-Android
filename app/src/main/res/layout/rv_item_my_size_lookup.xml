@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/tv_rv_item_my_size_lookup_p_name"
-            android:layout_width="wrap_content"
+            android:layout_width="122dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_rv_item_my_size_lookup_main"
             android:layout_alignParentStart="true"

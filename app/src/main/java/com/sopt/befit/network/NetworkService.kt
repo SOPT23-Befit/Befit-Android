@@ -7,9 +7,12 @@ import com.sopt.befit.post.PostLoginResponse
 import com.sopt.befit.post.PostSignUpResponse
 import com.sopt.befit.post.PostTotalUserDataResponse
 import com.sopt.befit.data.LoginData
+
+
 import com.sopt.befit.get.GetBrandResponse
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.get.GetProductListResponse
+
 import com.sopt.befit.get.*
 import com.sopt.befit.post.*
 import com.sopt.befit.put.PutModifyPwResponse
@@ -153,6 +156,12 @@ interface NetworkService {
             @Path("brand_idx") brand_idx: Int
     ): Call<GetProductListResponse>
 
+
+    @GET("/brands/randomPopular/three")
+    fun getBrandRecommendResponse(
+    @Header("Authorization") token : String
+    ) : Call<GetBrandRecommendResponse>
+
     //상품 검색 초기 페이지
     @GET("/search/firstSearchPage")
     fun getSearchInitalListResponse(
@@ -203,5 +212,6 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Path("category_idx") category_idx: Int
     ): Call<GetClosetListResponse>
+
 
 }
