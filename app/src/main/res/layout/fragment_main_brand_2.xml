@@ -40,7 +40,7 @@
                 android:layout_marginBottom="6dp"/>
             <TextView
                 android:id="@+id/tv_aaa_main_brand2_recommend_p_name1"
-                android:layout_width="wrap_content"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_main_brand_2_product_1"
                 android:text="상품명"
@@ -61,7 +61,7 @@
                 android:layout_marginBottom="6dp"/>
             <TextView
                 android:id="@+id/tv_aaa_main_brand2_recommend_p_name2"
-                android:layout_width="wrap_content"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 android:layout_below="@id/iv_main_brand_2_product_2"
@@ -82,7 +82,7 @@
                 android:layout_marginBottom="6dp"/>
             <TextView
                 android:id="@+id/tv_aaa_main_brand2_recommend_p_name3"
-                android:layout_width="wrap_content"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_main_brand_2_product_3"
                 android:text="상품명"

@@ -11,10 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.JsonParser
 import com.sopt.befit.Adapter.CompareSizeAdapter
+
 import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.animation.ProgressAnimation
 import com.sopt.befit.data.ProductData

@@ -214,5 +214,8 @@ interface NetworkService {
             @Path("category_idx") category_idx: Int
     ): Call<GetClosetListResponse>
 
-
+    @GET("/brands/preference")
+    fun getBrandRankingResponse(
+            @Header("Authorization") token : String
+    ) : Call<GetBrandRankingResponse>
 }
