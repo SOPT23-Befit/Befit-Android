@@ -30,17 +30,23 @@ class JjimProductFragment : Fragment() {
         ArrayList<ProductData>()
     }
 
+    var token: String = ""
+    var b_idx: Int = 0
+
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val productFragmentView: View = inflater!!.inflate(R.layout.fragment_product, container, false)
+        Log.d("zzzzz","onCreateView")
         return productFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
         setRecyclerView()
 
@@ -59,7 +65,7 @@ class JjimProductFragment : Fragment() {
     }
 
     private fun getJjimProductListResponse() {
-        val getJjimProductListResponse = networkService.getJjimProductListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80")
+        val getJjimProductListResponse = networkService.getJjimProductListResponse(token)
         getJjimProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {
                 Log.e("jjim product list fail", t.toString())

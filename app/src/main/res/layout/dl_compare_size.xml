@@ -7,12 +7,15 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_compare_size_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="450dp">
     </android.support.v4.view.ViewPager>
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tl_bottom_navi_act_bottom_menu"
+    <TextView
+        android:id="@+id/btn_dl_compare_size_check"
         android:layout_width="match_parent"
-        android:layout_height="41.5dp"
-        android:layout_alignParentBottom="true">
-    </android.support.design.widget.TabLayout>
+        android:layout_height="36dp"
+        android:layout_below="@+id/vp_compare_size_view_pager"
+        android:text="확인"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:background="#000000"/>
 </RelativeLayout>

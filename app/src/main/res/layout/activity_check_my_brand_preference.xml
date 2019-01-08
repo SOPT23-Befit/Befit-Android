@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageButton
-                android:id="@+id/ibtn_back"
+                android:id="@+id/ibtn_check_brand_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -72,35 +72,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/ibtn_brand_preference_woman_thisisneverthat"
+                android:id="@+id/ibtn_check_brand_preference_woman_thisisneverthat"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginLeft="81.7dp"
                 android:src="@drawable/woman_thisisneverthat"/>
             <ImageView
-                android:id="@+id/ibtn_activity_brand_preference_woman_Romantic_crown"
+                android:id="@+id/ibtn_check_brand_preference_woman_Romantic_crown"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="240.3dp"
                 android:layout_marginTop="46.7dp"
                 android:src="@drawable/woman_romantic_crwon"/>
             <ImageView
-                android:id="@+id/ibtn_activity_brand_preference_woman_Minav"
+                android:id="@+id/ibtn_check_brand_preference_woman_Minav"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="-10dp"
                 android:layout_marginTop="121.9dp"
                 android:src="@drawable/woman_minav"/>
             <ImageView
-                android:id="@+id/ibtn_activity_brand_preference_woman_Lafudgestore"
+                android:id="@+id/ibtn_check_brand_preference_woman_Lafudgestore"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="140.0dp"
                 android:layout_marginTop="153.4dp"
                 android:src="@drawable/woman_lafudgestore"/>
             <ImageView
-                android:id="@+id/ibtn_activity_brand_preference_woman_More_or_Less"
+                android:id="@+id/ibtn_check_brand_preference_woman_More_or_Less"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_alignParentRight="true"
@@ -108,14 +108,14 @@
                 android:layout_marginTop="180.7dp"
                 android:src="@drawable/woman_more_or_less"/>
             <ImageView
-                android:id="@+id/ibtn_activity_brand_preference_woman_Anderson_Bell"
+                android:id="@+id/ibtn_check_brand_preference_woman_Anderson_Bell"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="256.3dp"
                 android:src="@drawable/woman_andersson_bell"/>
             <ImageView
-                android:id="@+id/ibtn_activity_brand_preference_woman_OIOI"
+                android:id="@+id/ibtn_check_brand_preference_woman_OIOI"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="200.9dp"
@@ -123,7 +123,7 @@
                 android:src="@drawable/woman_oioi"/>
 
             <ImageView
-                android:id="@+id/ibtn_activity_brand_preference_woman_Critic"
+                android:id="@+id/ibtn_check_brand_preference_woman_Critic"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginLeft="95dp"

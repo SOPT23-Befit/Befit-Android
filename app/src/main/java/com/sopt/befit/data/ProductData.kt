@@ -9,8 +9,9 @@ data class ProductData(
         val brand_idx : Int,
         val date : String,
         val link : String,
-        val mesure : Any,
+        val measure : Any,
         var like_score : Int,
         var product_like : Int,
-        val brand_Korean_name : String
+        val name_korean : String,
+        val name_english : String
 )

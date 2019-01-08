@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main1"
@@ -11,99 +10,98 @@
         android:layout_height="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="W,1:1"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guide_0.6666"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
+        android:id="@+id/guide_0.6666"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6666"
-        android:id="@+id/guide_0.6666"/>
+        app:layout_constraintGuide_percent="0.6666" />
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/guide_0.6666"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/guide_0.6666"
-        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main2"/>
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main2" />
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main4"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toStartOf="@+id/guide_0.3333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main8" />
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main1" />
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="W,1:1"
         android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toStartOf="@+id/guide_0.6666"
-        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main8"
         app:layout_constraintStart_toStartOf="@+id/guide_0.3333"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main1" />
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main6"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop"
         app:layout_constraintStart_toEndOf="@+id/img_rv_item_search_image_main5"
-        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main3"/>
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main3" />
 
     <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/guide_0.3333"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3333"/>
-
-    <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guide_0.5"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.3333" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main7"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="W,1:1"
         android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toStartOf="@+id/guide_0.5"
-        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main5"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main5" />
 
     <ImageView
         android:id="@+id/img_rv_item_search_image_main8"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop"
         app:layout_constraintStart_toEndOf="@+id/img_rv_item_search_image_main7"
         app:layout_constraintTop_toBottomOf="@+id/img_rv_item_search_image_main6" />
 

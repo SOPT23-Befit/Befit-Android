@@ -9,11 +9,13 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.R.id.tv_my_size_add_edit
 import com.sopt.befit.data.MySizeLookupData
 
-class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<MySizeLookupData>, val flag : Int) : RecyclerView.Adapter<MySizeLookupRecyclerViewAdapter.Holder>() {
+class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<MySizeLookupData>, val flag: Int) : RecyclerView.Adapter<MySizeLookupRecyclerViewAdapter.Holder>() {
 
     //flag 0 추가하는 어뎁터 1 나의 옷 정보들 삭제하는 어뎁터
 
@@ -25,30 +27,38 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.b_name.text = dataList[position].b_name
-        holder.p_name.text = dataList[position].p_name
+        holder.b_name.text = dataList[position].name
+        holder.p_name.text = dataList[position].name_korean
 
-        if(flag==0){
+        val requestOptions = RequestOptions()
+
+        Glide.with(ctx)
+                .setDefaultRequestOptions(requestOptions)
+                .load(dataList[position].image_url)
+                .thumbnail(0.5f)
+                .into(holder.main)
+
+        if (flag == 0) {
             holder.gray.visibility = View.GONE
-            holder.delete.visibility=View.GONE
-        }else{
-            if(holder.b_name.text!=""){
+            holder.delete.visibility = View.GONE
+        } else {
+            if (holder.b_name.text != "") {
                 holder.gray.visibility = View.VISIBLE
-                holder.delete.visibility=View.VISIBLE
+                holder.delete.visibility = View.VISIBLE
             }
         }
 
-        holder.item_btn.setOnClickListener{
-            if(flag==0){
-                if(holder.b_name.text!=""){
+        holder.item_btn.setOnClickListener {
+            if (flag == 0) {
+                if (holder.b_name.text != "") {
                     Toast.makeText(ctx, "상세페이지로 넘어가기", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Toast.makeText(ctx, "나의 옷 정보 추가하기 창으로 넘어가기", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                if(holder.b_name.text!=""){
+            } else {
+                if (holder.b_name.text != "") {
                     Toast.makeText(ctx, "이 데이터 삭제하기", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Toast.makeText(ctx, "아무일도 안 일어나", Toast.LENGTH_SHORT).show();
                 }
             }

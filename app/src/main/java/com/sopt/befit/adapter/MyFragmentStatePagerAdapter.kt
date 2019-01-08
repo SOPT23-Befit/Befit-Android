@@ -11,7 +11,7 @@ class MyFragmentStatePagerAdapter(fm: FragmentManager, val FragmentCount: Int) :
     override fun getItem(position: Int): Fragment? {
         when (position) {
             0 -> return HomeFragment()
-            1 -> return SearchProductFragment()
+            1 -> return SearchFragment()
             2 -> return BrandRankingFragment()
             3 -> return JjimFragment()
             4 -> return MypageFragment()

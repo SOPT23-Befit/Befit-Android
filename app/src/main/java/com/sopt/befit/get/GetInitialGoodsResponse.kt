@@ -13,5 +13,10 @@ data class InitialGoods(
         val product_category_index : Int,
         val image_url : String,
         val brand_idx : Int,
-        val measure : Object
+        val measure : Array<Size>
+)
+data class Size(
+        val L : Int,
+        val M : Int,
+        val S : Int
 )
