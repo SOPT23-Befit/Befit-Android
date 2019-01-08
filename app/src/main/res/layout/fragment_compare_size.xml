@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:maxHeight="565dp"
     android:layout_width="328dp"
-    android:layout_height="565dp"
+    android:layout_height="600dp"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="150dp">
 
         <TextView
             android:id="@+id/tv_fragment_compare_size_goods_name"
@@ -40,11 +39,11 @@
         <ProgressBar
             android:id="@+id/progress"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="-34dp"
-            android:layout_marginTop="-32dp"
+            android:layout_marginRight="-43dp"
+            android:layout_marginTop="-43dp"
             android:max="100"
             android:progress="50"
             android:background="@drawable/circle_background"
@@ -60,7 +59,7 @@
             android:layout_marginTop="22.4dp"
             android:layout_marginRight="22dp"
             android:textStyle="bold"
-            android:text="40%"/>
+            android:text="50%"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +86,6 @@
             android:id="@+id/iv_fragment_compare_size_goods_size"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
             android:src="@mipmap/ic_launcher" />
     </RelativeLayout>
 

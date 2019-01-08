@@ -29,6 +29,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.layout_group.*
 import org.jetbrains.anko.support.v4.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment: Fragment(){
     lateinit var homefragmentAdapterList: ProductListRecyclerViewAdapter
