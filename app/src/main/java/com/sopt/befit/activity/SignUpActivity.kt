@@ -65,6 +65,7 @@ class SignUpActivity : AppCompatActivity() {
                         when (it.body()!!.status) {
                             201 -> {
                                 Log.v("success", response.message().toString())
+                                Log.v("dddddd","aaaaaa")
                                 startActivity<LogInActivity>()
                                 finish()
                             }
