@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.google.gson.JsonParser
-import com.sopt.befit.Adapter.CompareSizeAdapter
+
 
 import com.sopt.befit.R
 import com.sopt.befit.activity.ProductContentViewActivity
+import com.sopt.befit.adapter.CompareSizeAdapter
 import com.sopt.befit.get.ClosetDetail
 import kotlinx.android.synthetic.main.dl_compare_size.*
 import org.jetbrains.anko.support.v4.startActivity
