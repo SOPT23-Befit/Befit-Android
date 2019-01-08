@@ -88,7 +88,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
         btn_activity_total_user_back.setOnClickListener {
             finish()
         }
-
+        ib_activity_post_cancel.visibility = View.GONE
 
         //완료 버튼 클릭 못하게
         btn_activity_total_user_complete.isClickable = false
@@ -105,8 +105,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
             val calIntent = Intent(this, KakaoAddressActivity::class.java)
             startActivityForResult(calIntent, 3000)
 
-            btn_activity_total_user_search_address.visibility = View.GONE
-            rl_activity_total_user_address.visibility = View.VISIBLE
+
         }
 
         et_activity_user_phone.addTextChangedListener(phoneWatcher)
@@ -124,6 +123,8 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
 
                     tv_activity_total_user_post_num.text = data!!.getStringExtra("postnum")
                     tv_activity_total_user_home_address.text = data!!.getStringExtra("home_address")
+                    btn_activity_total_user_search_address.visibility = View.GONE
+                    rl_activity_total_user_address.visibility = View.VISIBLE
                     ib_activity_post_cancel.visibility = View.VISIBLE
 
                      //detail address 칠 수 있게 만들기
