@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/btn_rv_item_jjim_product"
+    android:id="@+id/btn_rv_item_each_product"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginRight="4dp"
@@ -16,7 +16,7 @@
         android:layout_centerInParent="true">
 
         <ImageView
-            android:id="@+id/img_rv_item_my_size_lookup_main"
+            android:id="@+id/img_rv_item_each_product_main"
             android:layout_width="match_parent"
 
             android:layout_height="180dp"
@@ -26,12 +26,12 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/tv_rv_item_my_size_lookup_b_name"
+            android:id="@+id/tv_rv_item_each_product_b_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img_rv_item_my_size_lookup_main"
+            android:layout_below="@+id/img_rv_item_each_product_main"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="6dp"
             android:layout_marginTop="6dp"
             android:lineSpacingExtra="2sp"
             android:text="유니클로"
@@ -39,26 +39,26 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/tv_rv_item_my_size_lookup_p_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_rv_item_my_size_lookup_b_name"
+            android:id="@+id/tv_rv_item_each_product_p_name"
+            android:layout_width="122dp"
+            android:layout_height="24dp"
+            android:layout_below="@+id/tv_rv_item_each_product_b_name"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="3dp"
             android:lineSpacingExtra="1sp"
-            android:text="투버튼 롱코트"
+            android:text="울 오버핏 셋업 자켓 (체크패턴) 코튼 16수 오버핏 알로하 하와이 티셔츠"
             android:textColor="#000000"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/tv_rv_item_jjim_product_p_price"
+            android:id="@+id/tv_rv_item_each_product_p_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_rv_item_my_size_lookup_p_name"
+            android:layout_below="@+id/tv_rv_item_each_product_p_name"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
             android:lineSpacingExtra="1sp"
             android:text="150,000"
             android:layout_marginBottom="24dp"
@@ -66,13 +66,12 @@
             android:textSize="12sp" />
 
         <ToggleButton
-            android:id="@+id/img_rv_item_jjim_product_heart"
+            android:id="@+id/img_rv_item_each_product_heart"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_below="@id/img_rv_item_my_size_lookup_main"
-            android:layout_alignRight="@id/img_rv_item_my_size_lookup_main"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="2dp"
+            android:layout_below="@id/img_rv_item_each_product_main"
+            android:layout_alignRight="@id/img_rv_item_each_product_main"
+            android:layout_marginTop="14dp"
             android:background="@drawable/selector_heart"
             android:textOff=""
             android:textOn=""/>

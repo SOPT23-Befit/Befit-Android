@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.sopt.befit.R
 import com.sopt.befit.adapter.EachBrandRecyclerViewAdapter
 import com.sopt.befit.data.BrandData
@@ -24,7 +25,7 @@ class EachBrandFragment : Fragment() {
 
     var token: String = ""
     var b_idx: Int = 0
-    var searchString : String = ""
+    var search: String? = null
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -43,11 +44,13 @@ class EachBrandFragment : Fragment() {
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
-        searchString="유니"//savedInstanceState!!.getString("searchImage")
+        arguments?.let {
+            search = it.getString("search")
+        }
 
         setRecyclerView()
 
-       getSearchBrandResponse()
+        getSearchBrandResponse()
     }
 
     private fun setRecyclerView() {
@@ -57,7 +60,7 @@ class EachBrandFragment : Fragment() {
     }
 
     private fun getSearchBrandResponse() {
-        val getSearchBrandResponse = networkService.getSearchBrandResponse(token, searchString)
+        val getSearchBrandResponse = networkService.getSearchBrandResponse(token, search!!)
         getSearchBrandResponse.enqueue(object : Callback<GetBrandListResponse> {
             override fun onFailure(call: Call<GetBrandListResponse>, t: Throwable) {
                 Log.e("search brand list fail", t.toString())

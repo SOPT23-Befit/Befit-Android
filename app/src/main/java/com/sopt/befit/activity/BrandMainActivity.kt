@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
@@ -29,6 +30,7 @@ class BrandMainActivity : AppCompatActivity() {
 
     var token: String = ""
     var b_idx: Int = 0
+    var flag : Int = 0 // 0 이면 특정 상품 클릭 시 1 이면 브랜드 클릭시
 
     lateinit var brandProductListRecyclerViewAdapter: ProductListRecyclerViewAdapter
 
@@ -42,6 +44,10 @@ class BrandMainActivity : AppCompatActivity() {
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         b_idx = intent.getIntExtra("idx", 0)
+
+        if(flag == 1){
+            layout_brand_main_one_product.visibility = View.GONE
+        }
 
         setViewClickListener()
 

@@ -85,8 +85,12 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
     override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
 
         if (actionId == EditorInfo.IME_ACTION_DONE) {
-            layout_search_product_bottom.setVisibility(View.VISIBLE)
-            configureBottomNavigation()
+            if(et_search_product_write.text.toString()!=""){
+                layout_search_product_bottom.setVisibility(View.VISIBLE)
+                configureBottomNavigation()
+            }else{
+                Toast.makeText(activity!!, "검색란이 비워져 있습니다.", Toast.LENGTH_SHORT).show();
+            }
         }
         return false
     }
@@ -124,7 +128,8 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
 
     private fun configureBottomNavigation() {
         val b = Bundle()
-        b.putString("searchString", et_search_product_write.text.toString())
+
+        b.putString("search", et_search_product_write.text.toString())
 
         vp_search_product_brand_navi_act_frag_pager.adapter = SearchPBFragmentStatePagerAdapter(childFragmentManager, 2, b)
         vp_search_product_brand_navi_act_frag_pager.offscreenPageLimit = 2
@@ -136,5 +141,8 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
         //탭 하나하나 TabLayout에 연결시켜줍니다.
         tl_search_product_brand_navi_act_top_menu.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_navi_product_tap) as ImageView
         tl_search_product_brand_navi_act_top_menu.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_navi_brand_tap) as ImageView
+
+
+
     }
 }
