@@ -12,9 +12,7 @@ import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData
 import com.sopt.befit.fragment.CompareSizeDialog
 import com.sopt.befit.fragment.SizeCheckAddClothDialog
-import com.sopt.befit.get.GetClosetListResponse
-import com.sopt.befit.get.GetMyClosetListResponse
-import com.sopt.befit.get.GetUserDataResponse
+import com.sopt.befit.get.*
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_product_content_view.*
@@ -29,9 +27,10 @@ class ProductContentViewActivity : AppCompatActivity() {
 
     val MY_CLOSET_LIST_REQUEST_CODE = 1000
 
-    val closetlist: ArrayList<ClosetData> by lazy {
-        ArrayList<ClosetData>()
-    }
+    lateinit var closetlist:ArrayList<ClosetDetail>
+//    val closetlist: ArrayList<Data> by lazy {
+//        ArrayList<Data>()
+//    }
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -92,7 +91,7 @@ class ProductContentViewActivity : AppCompatActivity() {
 //            .thumbnail(0.5f)
 
     private fun getMyClosetListResponse() {
-        val getMyClosetListResponse = networkService.getClosetListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", 1)
+        val getMyClosetListResponse = networkService.getClosetListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", 4)
         Log.d("aaaaaaa", "aaaaaa")
         //val token = SharedPreferenceController.getAuthorization(activity!!)
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
@@ -103,10 +102,27 @@ class ProductContentViewActivity : AppCompatActivity() {
             override fun onResponse(call: Call<GetClosetListResponse>, response: Response<GetClosetListResponse>) {
                 response?.let {
                     if(it.isSuccessful){
-                        Log.d("zzzzz",it.body()!!.toString())
+                        Log.d("ABAB",it.body()!!.toString())
                         when (it.body()!!.status) {
                             200 -> {
                                 Log.v("success", response.message().toString())
+
+                                closetlist = it.body()!!.data
+
+                                // 옷정보가 없다면
+                                //옷정보가 있다면
+                                if (closetlist.isEmpty()) {
+                                    val sizecheckDialog: DialogFragment = SizeCheckAddClothDialog()
+
+                                    sizecheckDialog.show(supportFragmentManager, "closet list")
+                                } else {
+                                    val compareSizeDialog: DialogFragment = CompareSizeDialog()
+                                    var bundle = Bundle()
+                                    bundle.putSerializable("ClosetList",closetlist)
+                                    compareSizeDialog.arguments = bundle
+                                    //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
+                                    compareSizeDialog.show(supportFragmentManager, "compare size")
+                                }
                             }
 
                             400 -> {
@@ -136,17 +152,7 @@ class ProductContentViewActivity : AppCompatActivity() {
                             }
                         }
 
-                        // 옷정보가 없다면
-                        val sizecheckDialog: DialogFragment = SizeCheckAddClothDialog()
-                        //옷정보가 있다면
-                        val compareSizeDialog: DialogFragment = CompareSizeDialog()
 
-                        if (closetlist.isEmpty()) {
-                            compareSizeDialog.show(supportFragmentManager, "compare size")
-                        } else {
-                            //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
-                            compareSizeDialog.show(supportFragmentManager, "compare size")
-                        }
                     } else {
                         Log.d("zzzzz",it.code().toString())
                     }

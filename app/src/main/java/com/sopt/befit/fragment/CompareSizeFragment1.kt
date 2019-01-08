@@ -12,14 +12,19 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.sopt.befit.Adapter.CompareSizeAdapter
+import com.sopt.befit.activity.ProductContentViewActivity
+import com.sopt.befit.animation.ProgressAnimation
+import com.sopt.befit.get.ClosetDetail
 import com.sopt.befit.get.GetCompareSizeResponse
 import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
+import kotlinx.android.synthetic.main.dl_compare_size.*
 import kotlinx.android.synthetic.main.fragment_compare_size.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +35,7 @@ class CompareSizeFragment1 : Fragment() {
     val COMPARE_DIALOG_REQUEST_CODE = 1000
     var position : Int = -1
     lateinit var CompareSizeAdapter: CompareSizeAdapter
-
+    lateinit var closetList : ArrayList<ClosetDetail>
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -38,20 +43,27 @@ class CompareSizeFragment1 : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size_s, container, false)
+        val view: View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size, container, false)
         return view
     }
 
-    private fun setSpinner() {
-        val dataList: ArrayList<String> = ArrayList()
+    private fun setSpinner(dataList : ArrayList<ClosetDetail>) {
+        val closetNameList: ArrayList<String> = ArrayList()
 
-        sp_compare_size.adapter = ArrayAdapter<String>(activity!!, R.layout.simple_list_item_single_choice, dataList)
+        for(i in 0 until dataList.size){
+            closetNameList.add(dataList.get(i).name)
+        }
+
+        sp_compare_size.adapter = ArrayAdapter<String>(activity!!, R.layout.simple_list_item_single_choice, closetNameList)
         //sp_my_size_add_select_size.adapter = SelectSizeSpinnerAdapterval(this, dataList)
         sp_compare_size.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                getCompareSizeResponse()
                 //toast("선택된 아이템 : " + sp_compare_size.getItemAtPosition((position)))
                 //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
+                var closetIdx = dataList.get(position).closet_idx
+
+                closetIdx = 8
+                getCompareSizeResponse(closetIdx)
 
             }
 
@@ -62,6 +74,7 @@ class CompareSizeFragment1 : Fragment() {
 
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -70,18 +83,18 @@ class CompareSizeFragment1 : Fragment() {
 
 
         position = arguments!!.getInt("position")
-
+        closetList = arguments!!.getSerializable("ClosetList") as ArrayList<ClosetDetail>
         Log.d("fragment position",position.toString())
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setSpinner()
+        setSpinner(closetList)
     }
 
-    private fun getCompareSizeResponse() {
-        val getCompareSizeResponse = networkService.getCompareSizeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", 1, 1, product_size = "s")
+    private fun getCompareSizeResponse(closetIdx : Int) {
+        val getCompareSizeResponse = networkService.getCompareSizeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", closetIdx, 10, product_size = "M")
         Log.d("aaaaaaa", "aaaaaa")
         //val token = SharedPreferenceController.getAuthorization(activity!!)
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
@@ -94,14 +107,16 @@ class CompareSizeFragment1 : Fragment() {
                 response?.let {
                     when (it.body()!!.status) {
                         200 -> {
-                            Log.v("success", response.message().toString())
+                            Log.v("success", response.body()!!.toString())
+                            var animation = ProgressAnimation(progress,2000)//2000은 2초
+                            animation.setProgress(response.body()!!.data.percent.toInt())
 
                         }
 
-                        400 -> {
+                        404 -> {
                             Log.v("fail", response.message())
                             Log.v("fail", response.errorBody().toString())
-                            toast("로그인 실패")
+                            toast("해당 정보의 상품은 존재하지 않습니다.")
                         }
 
                         500 -> {

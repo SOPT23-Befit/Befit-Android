@@ -3,9 +3,9 @@ package com.sopt.befit.get
 data class GetMyClosetListResponse(
         val status : Int,
         val message : String,
-        val data : Array<ClosetDetail>
+        val data : Array<nn>
 )
-data class ClosetDetail(
+data class nn(
         val closet_idx : Int,
         val name_korean : String,
         val name_english : String,
