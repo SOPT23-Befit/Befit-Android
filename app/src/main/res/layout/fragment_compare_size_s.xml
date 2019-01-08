@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:maxHeight="565dp"
     android:layout_width="328dp"
-    android:layout_height="481.5dp"
+    android:layout_height="565dp"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="52dp">
@@ -23,6 +25,7 @@
         android:layout_height="47dp">
 
         <TextView
+            android:id="@+id/zxcv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -35,42 +38,20 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="241dp">
+        android:layout_height="203.9dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30.3dp"
+            android:layout_marginTop="20dp"
             android:src="@mipmap/ic_launcher" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="51dp">
 
-        <TextView
-            android:id="@+id/tv_my_size_add_select"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="옷변경"
-            android:textColor="#191919"
-            android:textSize="11sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/sp_compare_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_my_size_add_select"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="6dp"
-            android:spinnerMode="dialog"></Spinner>
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="29dp">
+        android:layout_height="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -85,17 +66,22 @@
     <RelativeLayout
         android:layout_width="288.6dp"
         android:layout_height="1dp"
-        android:layout_marginLeft="20.2dp"
-        android:background="#707070"></RelativeLayout>
+        android:layout_marginLeft="20.2dp"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="288.6dp"
+        android:layout_height="1dp"
+        android:background="#707070"
+        android:layout_marginLeft="20.2dp"></RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp">
+        android:layout_height="28dp">
 
         <TableLayout
             android:id="@+id/layout_my_size_add_display_tvs"
             android:layout_width="288.6dp"
-            android:layout_height="31dp"
+            android:layout_height="28dp"
             android:layout_centerHorizontal="true">
 
             <TableRow
@@ -159,16 +145,16 @@
     <RelativeLayout
         android:layout_width="288.6dp"
         android:layout_height="1dp"
-        android:layout_marginLeft="60.2dp"
+        android:layout_marginLeft="20.2dp"
         android:background="#dcdcdc"></RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp">
+        android:layout_height="28dp">
 
         <TableLayout
             android:layout_width="288.6dp"
-            android:layout_height="31dp"
+            android:layout_height="28dp"
             android:layout_centerHorizontal="true">
 
             <TableRow
@@ -241,11 +227,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="31dp">
+        android:layout_height="28dp">
 
         <TableLayout
             android:layout_width="288.6dp"
-            android:layout_height="31dp"
+            android:layout_height="28dp"
             android:layout_centerHorizontal="true">
 
             <TableRow
@@ -309,11 +295,56 @@
             </TableRow>
         </TableLayout>
     </RelativeLayout>
-
     <RelativeLayout
-        android:layout_width="288.6dp"
-        android:layout_height="1dp"
-        android:layout_marginLeft="20.2dp"
-        android:background="#707070"></RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="51dp">
+
+        <TextView
+            android:id="@+id/tv_my_size_add_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="옷변경"
+            android:textColor="#191919"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/sp_compare_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_my_size_add_select"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
+            android:spinnerMode="dialog"></Spinner>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <ImageView
+            android:id="@+id/number1"
+            android:layout_width="7.5dp"
+            android:layout_height="7.5dp"
+            android:layout_marginLeft="146dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/oval_shape_black"/>
+        <ImageView
+            android:id="@+id/number2"
+            android:layout_width="7.5dp"
+            android:layout_height="7.5dp"
+            android:layout_toRightOf="@id/number1"
+            android:layout_marginLeft="7.4dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/oval_shape_white"/>
+        <ImageView
+            android:id="@+id/number3"
+            android:layout_width="7.5dp"
+            android:layout_height="7.5dp"
+            android:layout_toRightOf="@id/number2"
+            android:layout_marginLeft="7.4dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/oval_shape_white"/>
+    </RelativeLayout>
+
 
 </LinearLayout>

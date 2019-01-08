@@ -20,8 +20,8 @@ interface NetworkService {
 
     //회원 가입
     @POST("/user")
+    @Headers("Content-Type: application/json")
     fun postSignUpResponse(
-            @Header("Content-Type: application/json")
             @Body userData: UserData
     ): Call<PostSignUpResponse>
 
@@ -196,4 +196,12 @@ interface NetworkService {
             @Query("product_size")
       product_size: String
     ): Call<GetCompareSizeResponse>
+
+    //나의 옷장 리스트
+    @GET("{/closet/category/{category_idx}")
+    fun getClosetListResponse(
+            @Header("Authorization") authorization: String,
+            @Path("category_idx") category_idx: Int
+    ): Call<GetClosetListResponse>
+
 }

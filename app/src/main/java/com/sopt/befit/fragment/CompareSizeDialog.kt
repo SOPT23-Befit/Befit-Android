@@ -30,16 +30,17 @@ class CompareSizeDialog() : DialogFragment() {
     }
 
     private fun configureBottomNavigation() {
+        var count = 2
         vp_compare_size_view_pager.adapter = CompareSizeAdapter(childFragmentManager,3)
         //vp_bottom_navi_act_frag_pager.offscreenPageLimit = 3
         // ViewPager와 Tablayout을 엮어줍니다!
-        tl_bottom_navi_act_bottom_menu.setupWithViewPager(vp_compare_size_view_pager)
-        //TabLayout에 붙일 layout을 찾아준 다음
-        val bottomNaviLayout: View = this.layoutInflater.inflate(R.layout.bottom_navigation_tab, null, false)
-        //탭 하나하나 TabLayout에 연결시켜줍니다.
-        tl_bottom_navi_act_bottom_menu.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number1) as RelativeLayout
-        tl_bottom_navi_act_bottom_menu.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number2) as RelativeLayout
-        tl_bottom_navi_act_bottom_menu.getTabAt(2)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number3) as RelativeLayout
+//        tl_bottom_navi_act_bottom_menu.setupWithViewPager(vp_compare_size_view_pager)
+//        //TabLayout에 붙일 layout을 찾아준 다음
+//        val bottomNaviLayout: View = this.layoutInflater.inflate(R.layout.bottom_navigation_tab, null, false)
+//        //탭 하나하나 TabLayout에 연결시켜줍니다.
+//        tl_bottom_navi_act_bottom_menu.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number1) as RelativeLayout
+//        tl_bottom_navi_act_bottom_menu.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number2) as RelativeLayout
+//        tl_bottom_navi_act_bottom_menu.getTabAt(2)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number3) as RelativeLayout
     }
 
 

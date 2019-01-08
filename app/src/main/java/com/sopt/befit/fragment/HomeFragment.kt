@@ -12,7 +12,17 @@ import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
 import com.sopt.befit.adapter.*
+<<<<<<< HEAD
 import com.sopt.befit.data.ProductData
+=======
+
+import com.sopt.befit.data.ProductData
+import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
+import com.sopt.befit.get.GetUserDataResponse
+import com.sopt.befit.network.NetworkService
+
+>>>>>>> 1102909f60f60c4c4297502b032d2ef7063f5e12
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_group.*
 import org.jetbrains.anko.support.v4.toast
