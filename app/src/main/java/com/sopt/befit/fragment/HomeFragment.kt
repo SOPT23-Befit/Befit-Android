@@ -29,6 +29,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.layout_group.*
 import org.jetbrains.anko.support.v4.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment: Fragment(){
     lateinit var homefragmentAdapterList: ProductListRecyclerViewAdapter
@@ -55,7 +58,7 @@ class HomeFragment: Fragment(){
         configureBannerNavigation()
 
         //통신
-        getUserDataResponse()
+        getBrandRecommendResponse()
 
 
 
@@ -211,21 +214,13 @@ class HomeFragment: Fragment(){
         lo_tab_aaa_main_home_fragment.getTabAt(0)!!.select()
 
     }
-    private fun configureBannerNavigation()
-    {
-        vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(fragmentManager!!,3)
+    private fun configureBannerNavigation() {
+        vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(childFragmentManager, 3)
         vp_aaa_main_banner.offscreenPageLimit = 3
-        lo_tab_aaa_main_home_fragment.setupWithViewPager(vp_aaa_main_banner)
-//TabLayout에 붙일 layout을 찾아준 다음
-        val bannerNaviLayout : View = this.layoutInflater.inflate(R.layout.main_brand_tab_bar, null, false)
-//탭 하나하나 TabLayout에 연결시켜줍니다.
-        lo_tab_aaa_main_home_fragment.getTabAt(0)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_1) as ImageView
-        lo_tab_aaa_main_home_fragment.getTabAt(1)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_2) as ImageView
 
-        lo_tab_aaa_main_home_fragment.getTabAt(2)!!.customView = bannerNaviLayout.findViewById(R.id.iv_home_fragment_banner_3) as ImageView
+        }
 
-
-    private fun getUserDataResponse(){
+    private fun getBrandRecommendResponse(){
         Log.d("aaaaaaa","aaaaaa")
         networkService = ApplicationController.instance!!.networkService
         //val token = SharedPreferenceController.getAuthorization(activity!!)
@@ -275,7 +270,7 @@ class HomeFragment: Fragment(){
                             }
                         }
                     } else {
-                        Log.d("status fail",it.code().toString())
+                        Log.d("status fail",response.code().toString())
                     }
                 }
             } })

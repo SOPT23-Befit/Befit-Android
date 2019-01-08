@@ -13,7 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.sopt.befit.Adapter.CompareSizeAdapter
+import com.sopt.befit.adapter.CompareSizeAdapter
 import com.sopt.befit.get.GetCompareSizeResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
