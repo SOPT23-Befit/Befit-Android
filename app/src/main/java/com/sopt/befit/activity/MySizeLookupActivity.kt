@@ -3,51 +3,120 @@ package com.sopt.befit.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.View
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MySizeLookupRecyclerViewAdapter
-import com.sopt.befit.data.MySizeLookupData
-import kotlinx.android.synthetic.main.activity_my_page_account_setting.*
+import com.sopt.befit.get.ClosetDetail
+import com.sopt.befit.get.GetClosetListResponse
+import com.sopt.befit.network.ApplicationController
+import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_my_size_lookup.*
 import kotlinx.android.synthetic.main.rv_item_my_size_lookup.*
-import kotlinx.android.synthetic.main.rv_item_my_size_lookup.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MySizeLookupActivity : AppCompatActivity() {
+class MySizeLookupActivity : BaseActivity() {
+
+    companion object {
+        lateinit var instance: MySizeLookupActivity
+    }
+
+    val dataList: ArrayList<ClosetDetail> by lazy {
+        ArrayList<ClosetDetail>()
+    }
+
+    var token: String = ""
+    var c_idx: Int = 4
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     lateinit var mySizeLookupRecyclerViewAdapter: MySizeLookupRecyclerViewAdapter
-    lateinit var mySizeLookupDeleteRecyclerViewAdapter: MySizeLookupRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_size_lookup)
 
+        instance = this
+
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI"
+
+        setView()
+        setOnButton()
         setRecyclerView()
 
-        setViewClickListener()
+        getClosetListResponse()
     }
 
-    private fun setViewClickListener() {
-        tv_my_size_add_edit.setOnClickListener {
-            if (tv_my_size_add_edit.text == "편집") {
-                tv_my_size_add_edit.setText("완료")
+    private fun setView() {
+        tv_my_size_add_title.text = getCategoryString()
+    }
 
-                //mySizeLookupRecyclerViewAdapter.notifyItemRangeChanged(0, mySizeLookupRecyclerViewAdapter.getItemCount());
-                rv_my_size_lookup.adapter = mySizeLookupDeleteRecyclerViewAdapter
-            } else {
-                tv_my_size_add_edit.setText("편집")
-                img_rv_item_my_size_lookup_delete.visibility = View.GONE
-                rv_my_size_lookup.adapter = mySizeLookupRecyclerViewAdapter
+    private fun setOnButton() {
+        tv_my_size_add_edit.setOnClickListener {
+            when(mySizeLookupRecyclerViewAdapter.flag) {
+                0 -> {
+                    tv_my_size_add_edit.text = "완료"
+                    mySizeLookupRecyclerViewAdapter.flag = 1
+                }
+                1 -> {
+                    tv_my_size_add_edit.text = "편집"
+                    mySizeLookupRecyclerViewAdapter.flag = 0
+                }
             }
+            mySizeLookupRecyclerViewAdapter.notifyDataSetChanged()
         }
     }
 
     private fun setRecyclerView() {
-        var dataList: ArrayList<MySizeLookupData> = ArrayList()
-
-        mySizeLookupRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList, 0)
-        mySizeLookupDeleteRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList, 1)
-
+        mySizeLookupRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList)
         rv_my_size_lookup.adapter = mySizeLookupRecyclerViewAdapter
         rv_my_size_lookup.layoutManager = GridLayoutManager(this, 2)
+    }
+
+    private fun getClosetListResponse() {
+        val getClosetListResponse = networkService.getClosetListResponse(token, c_idx)
+        getClosetListResponse.enqueue(object : Callback<GetClosetListResponse> {
+            override fun onFailure(call: Call<GetClosetListResponse>, t: Throwable) {
+                Log.e("my size look up fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetClosetListResponse>, response: Response<GetClosetListResponse>) {
+                if (response.isSuccessful) {
+                    var temp: ArrayList<ClosetDetail> = ArrayList<ClosetDetail>()
+                    var position = 0
+                    if (response.body()?.data != null) {
+                        position = mySizeLookupRecyclerViewAdapter.itemCount
+                        temp = response!!.body()!!.data
+                    }
+                    temp.add(ClosetDetail(0, "", "", "", "", "", 0, ""))
+                    mySizeLookupRecyclerViewAdapter.dataList.addAll(temp)
+                    mySizeLookupRecyclerViewAdapter.notifyItemInserted(position+1)
+                }
+            }
+        })
+    }
+
+    private fun getCategoryString(): String {
+        when (c_idx) {
+            0 -> return "Outer"
+            1 -> return "Jacket"
+            2 -> return "Coat"
+            3 -> return "Shirts"
+            4 -> return "Knits"
+            5 -> return "Hoody"
+            6 -> return "Sweat Shirts"
+            7 -> return "T-Shirts"
+            8 -> return "Onepiece"
+            9 -> return "Jeans"
+            10 -> return "Pants"
+            11 -> return "Slacks"
+            12 -> return "Short-Pants"
+            13 -> return "Skirts"
+        }
+        return ""
     }
 }

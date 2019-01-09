@@ -1,6 +1,7 @@
 package com.sopt.befit.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.sopt.befit.R.id.tv_brand_main_product_count
 import com.sopt.befit.R.id.tv_fragment_jjim_product_count
 import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostProductLikeResponse
@@ -22,15 +24,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<ProductData>) : RecyclerView.Adapter<ProductListRecyclerViewAdapter.Holder>() {
+class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<ProductData>) : RecyclerView.Adapter<MyRecommendProductRecyclerViewAdapter.Holder>() {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_each_product, parent, false)
-        Utilities.setGlobalFont(view, ctx);
+        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_home_fragment_rec_product, parent, false)
         return Holder(view)
     }
 
@@ -59,6 +60,9 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
 
         val requestOptions = RequestOptions()
 
+        //var token : String = SharedPreferenceController.getAuthorization(ctx)
+        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+
         Glide.with(ctx)
                 .setDefaultRequestOptions(requestOptions)
                 .load(dataList[position].image_url)
@@ -66,8 +70,11 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 .into(holder.main)
 
         holder.item_btn.setOnClickListener {
-            Toast.makeText(ctx, "상세 상품 정보로 넘어가기", Toast.LENGTH_SHORT).show();
-        }
+            val intent : Intent = Intent(ctx, BrandMainActivity::class.java)
+            intent.putExtra("idx", dataList[position].idx)
+            intent.putExtra("token", token)
+            ctx.startActivity(intent)
+    }
 
         holder.heart.setOnClickListener {
             //dataList[position].p_like=!dataList[position].p_like 통신으로 좋아요 싫어요 해줍니다

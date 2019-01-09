@@ -307,7 +307,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="36dp"
             android:layout_gravity="center_vertical"
-            android:text="입력해주세요"
+            android:hint="입력해주세요"
             android:textSize="14sp"
             android:textColor="#848484"
             android:background="@null"
@@ -340,7 +340,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
-            android:text="입력해주세요"
+            android:hint="입력해주세요"
             android:textSize="14sp"
             android:textColor="#848484"
 

@@ -264,9 +264,9 @@ class SignUpActivity : AppCompatActivity() {
         var password = et_sign_up_password.text.toString()
         var passwordcheck = et_sign_up_password_check.text.toString()
         var email = et_sign_up_email.text.toString()
-        var gender = "남성"
-        var brand1 = "1"
-        var brand2=  "2"
+        var gender = intent.getStringExtra("gender")
+        var brand1 = intent.getStringExtra("brand1")
+        var brand2=  intent.getStringExtra("brand2")
        // var gender = intent!!.getStringExtra("gender")
         //var brand1 = intent!!.getStringExtra("brand1")
         //var brand2 = intent!!.getStringExtra("brand2")

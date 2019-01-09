@@ -68,18 +68,15 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
         setContentView(R.layout.activity_my_page_total_user_info_manage)
 
         //intent 하고 setting 하는 작업
-//        email = intent!!.getStringExtra("email")
-////        name = intent!!.getStringExtra("name")
-////        birth = intent!!.getStringExtra("birth")
-////        password = intent!!.getStringExtra("password")
-////        gender = intent!!.getStringExtra("gender")
-////
-////
-////        tv_activity_total_user_name.setText(name)
-////        tv_activity_total_user_pw.setText(password)
-////        tv_activity_total_user_email.setText(email)
-////        tv_activity_total_user_birth.setText(birth)
-////        tv_activity_total_user_gender.setText(gender)
+       email = intent!!.getStringExtra("email")
+       name = intent!!.getStringExtra("name")
+       birth = intent!!.getStringExtra("birthday")
+       gender = intent!!.getStringExtra("gender")
+
+        tv_activity_total_user_name.setText(name)
+        tv_activity_total_user_email.setText(email)
+        tv_activity_total_user_birth.setText(birth)
+        tv_activity_total_user_gender.setText(gender)
 
 
 
@@ -88,7 +85,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
         btn_activity_total_user_back.setOnClickListener {
             finish()
         }
-
+        ib_activity_post_cancel.visibility = View.GONE
 
         //완료 버튼 클릭 못하게
         btn_activity_total_user_complete.isClickable = false
@@ -105,8 +102,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
             val calIntent = Intent(this, KakaoAddressActivity::class.java)
             startActivityForResult(calIntent, 3000)
 
-            btn_activity_total_user_search_address.visibility = View.GONE
-            rl_activity_total_user_address.visibility = View.VISIBLE
+
         }
 
         et_activity_user_phone.addTextChangedListener(phoneWatcher)
@@ -124,6 +120,8 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
 
                     tv_activity_total_user_post_num.text = data!!.getStringExtra("postnum")
                     tv_activity_total_user_home_address.text = data!!.getStringExtra("home_address")
+                    btn_activity_total_user_search_address.visibility = View.GONE
+                    rl_activity_total_user_address.visibility = View.VISIBLE
                     ib_activity_post_cancel.visibility = View.VISIBLE
 
                      //detail address 칠 수 있게 만들기

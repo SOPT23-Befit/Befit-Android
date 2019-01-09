@@ -214,10 +214,18 @@ interface NetworkService {
             @Path("category_idx") category_idx: Int
     ): Call<GetClosetListResponse>
 
+    //나의 옷장 아이템 삭제
+    @DELETE("/closet/{closet_idx}")
+    fun deleteClosetResponse(
+            @Header("Authorization") authorization: String,
+            @Path("closet_idx") closet_idx: Int
+    ): Call<DeleteClosetResponse>
+    
     @GET("/brands/preference")
     fun getBrandRankingResponse(
             @Header("Authorization") token : String
     ) : Call<GetBrandRankingResponse>
+
 
     //특정 상품 디테일 사이즈
     @GET("/closet/{closet_idx}")
@@ -225,4 +233,10 @@ interface NetworkService {
             @Header("Authorization") token : String,
             @Path("closet_idx") closet_idx: Int
     ) : Call<GetCheckMySizeResponse>
+
+    @GET("/products/forUserRec")
+    fun getMyRecommendProduct(
+            @Header("Authorization") token : String
+    ) : Call<GetMyRecommendProduct>
+
 }
