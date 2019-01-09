@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.BrandData
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.network.ApplicationController
@@ -35,6 +36,8 @@ class JjimBrandFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val brandFragmentView: View = inflater!!.inflate(R.layout.fragment_brand, container, false)
+        Utilities.setGlobalFont(brandFragmentView, activity!!);
+
         return brandFragmentView
     }
 

@@ -18,7 +18,8 @@ import com.sopt.befit.data.BrandData
 class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<EachBrandRecyclerViewAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_each_brand, parent, false)
+        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_one_text_img, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 

@@ -30,6 +30,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_each_product, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 

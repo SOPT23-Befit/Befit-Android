@@ -1,5 +1,7 @@
 package com.sopt.befit.data
 
+import java.io.Serializable
+
 data class ProductData(
         val idx : Int,
         val name : String,
@@ -14,4 +16,4 @@ data class ProductData(
         var product_like : Int,
         val name_korean : String,
         val name_english : String
-)
+) : Serializable

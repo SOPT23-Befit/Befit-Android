@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
@@ -37,7 +38,10 @@ class EachProductFragment() : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_search_product, container, false)
+        val eachProductFragmentView: View = inflater!!.inflate(R.layout.fragment_search_product, container, false)
+        Utilities.setGlobalFont(eachProductFragmentView, activity!!);
+
+        return eachProductFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

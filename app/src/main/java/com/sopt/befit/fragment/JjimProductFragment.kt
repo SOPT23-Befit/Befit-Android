@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
@@ -39,6 +40,7 @@ class JjimProductFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val productFragmentView: View = inflater!!.inflate(R.layout.fragment_product, container, false)
+        Utilities.setGlobalFont(productFragmentView, activity!!);
         return productFragmentView
     }
 
