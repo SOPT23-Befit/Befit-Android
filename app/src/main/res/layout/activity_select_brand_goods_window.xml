@@ -320,13 +320,14 @@
                     </TableRow>
                 </TableLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="301.5dp"
                 android:layout_height="1dp"
-                android:background="#dcdcdc"
                 android:layout_below="@+id/line2"
-                android:layout_marginLeft="50dp">
-            </RelativeLayout>
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="72dp"
+                android:background="#dcdcdc"></RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 
