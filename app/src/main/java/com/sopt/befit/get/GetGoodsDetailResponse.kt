@@ -1,14 +1,13 @@
 package com.sopt.befit.get
 
-import java.io.Serializable
-import java.util.*
+import java.util.ArrayList
 
-data class GetInitialGoodsResponse (
+data class GetGoodsDetailResponse (
         val status : String,
         val message: String,
-        val data : ArrayList<InitialGoods>
+        val data : ArrayList<GoodsDetail>
 )
-data class InitialGoods(
+data class GoodsDetail(
         val idx : Int,
         val name : String,
         val product_category_index : Int,

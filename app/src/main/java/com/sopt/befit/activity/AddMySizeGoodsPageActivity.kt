@@ -13,6 +13,7 @@ import android.view.View
 import com.sopt.befit.R
 import com.sopt.befit.adapter.GoodsRecyclerViewAdapter
 import com.sopt.befit.data.BrandData
+import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetInitialBrandResponse
 import com.sopt.befit.get.GetInitialGoodsResponse
 import com.sopt.befit.get.InitialBrand
@@ -26,18 +27,25 @@ import retrofit2.Callback
 class AddMySizeGoodsPageActivity : AppCompatActivity() {
 
 
+
     val GOODS_INITAIL_REQUEST_CODE = 2000
     lateinit var GoodsRecyclerViewAdapter: GoodsRecyclerViewAdapter
     val dataList: ArrayList<InitialGoods> by lazy {
         ArrayList<InitialGoods>()
     }
+
+    companion object {
+        lateinit var instance: AddMySizeGoodsPageActivity
+    }
+
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
 
+    lateinit var initialData : InitialGoods
 
-    companion object {
-        lateinit var goodsinstance: AddMySizeGoodsPageActivity
+    fun getGoodsData() : InitialGoods {
+        return initialData
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,12 +54,14 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         rv_add_my_size_goods_list.visibility = View.GONE
         setBtnClickListener()
         setRecyclerView()
-        goodsinstance = this
+        instance = this
+
+
     }
 
     fun setBtnClickListener() {
         btn_activity_add_my_size_goods_back.setOnClickListener {
-            AddMySizeGoodsPageActivity.goodsinstance.finish()
+            AddMySizeGoodsPageActivity.instance.finish()
         }
         et_add_my_size_act_search_goods.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
