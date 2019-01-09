@@ -52,8 +52,9 @@ interface NetworkService {
     ): Call<PostForPwFindUserResponse>
 
     @POST("/user/combineForm")
+    @Headers("Content-Type: application/json")
     fun TotalUserDataResponse(
-            @Header("Content-Type: application/json")
+
             @Body combineFormData: CombineFormData
     ): Call<PostTotalUserDataResponse>
 
@@ -194,7 +195,7 @@ interface NetworkService {
     fun getEachProductListResponse(
             @Header("Authorization") authorization: String,
             @Path("product_idx") brand_idx: Int
-    ): Call<GetProductListResponse>
+    ): Call<GetEachProductResponse>
   
     //상품 사이즈 비교
     @GET("/closet/{closet_idx}/compare/{product_idx}") //?product_size={product_size}
@@ -213,6 +214,13 @@ interface NetworkService {
             @Path("category_idx") category_idx: Int
     ): Call<GetClosetListResponse>
 
+    //나의 옷장 아이템 삭제
+    @DELETE("/closet/{closet_idx}")
+    fun deleteClosetResponse(
+            @Header("Authorization") authorization: String,
+            @Path("closet_idx") closet_idx: Int
+    ): Call<DeleteClosetResponse>
+    
     @GET("/brands/preference")
     fun getBrandRankingResponse(
             @Header("Authorization") token : String

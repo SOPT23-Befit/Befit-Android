@@ -10,6 +10,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData
+import com.sopt.befit.data.ProductData
 import com.sopt.befit.fragment.CompareSizeDialog
 import com.sopt.befit.fragment.SizeCheckAddClothDialog
 import com.sopt.befit.get.*
@@ -27,6 +28,10 @@ class ProductContentViewActivity : AppCompatActivity() {
 
     val MY_CLOSET_LIST_REQUEST_CODE = 1000
 
+    companion object {
+        lateinit var instance : ProductContentViewActivity
+    }
+
     lateinit var closetlist:ArrayList<ClosetDetail>
 //    val closetlist: ArrayList<Data> by lazy {
 //        ArrayList<Data>()
@@ -42,9 +47,15 @@ class ProductContentViewActivity : AppCompatActivity() {
     private var webSetting: WebSettings? = null
 
 
+    //상품 정보
+    lateinit var productData : ProductData
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_content_view)
+
+        instance = this
 //        mywebview = findViewById(R.id.wv_activity_product_content_view)
 //
 //
@@ -60,8 +71,7 @@ class ProductContentViewActivity : AppCompatActivity() {
         }
         val fm: FragmentManager = supportFragmentManager
 
-
-
+        getProductResponse()
 
         btn_activity_product_contentview_size_check.setOnClickListener {
             //sizecheckDialog.show(fm, "Can't compare with anything")
@@ -71,6 +81,10 @@ class ProductContentViewActivity : AppCompatActivity() {
 
 //
 //        btn_dl_size_check_login.setOnClickListener {
+    }
+
+    fun getCurrentProductData() : ProductData{
+        return productData
     }
 
     //    fun init_webView(){
@@ -89,6 +103,29 @@ class ProductContentViewActivity : AppCompatActivity() {
 //            .setDefaultRequestOptions(requestOptions)
 //            .load(dataList[position].image_url)
 //            .thumbnail(0.5f)
+
+    private fun getProductResponse(){
+        val getMyClosetListResponse = networkService.getEachProductListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI",10)
+        getMyClosetListResponse.enqueue(object : Callback<GetEachProductResponse>{
+            override fun onFailure(call: Call<GetEachProductResponse>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<GetEachProductResponse>, response: Response<GetEachProductResponse>) {
+                if(response.isSuccessful){
+                    when(response.body()!!.status){
+                        200->{
+                            productData = response.body()!!.data
+                        }
+                    }
+                } else {
+
+                }
+            }
+
+        })
+    }
+
 
     private fun getMyClosetListResponse() {
         val getMyClosetListResponse = networkService.getClosetListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", 4)
@@ -119,6 +156,12 @@ class ProductContentViewActivity : AppCompatActivity() {
                                     val compareSizeDialog: DialogFragment = CompareSizeDialog()
                                     var bundle = Bundle()
                                     bundle.putSerializable("ClosetList",closetlist)
+
+                                    //상품 정보 넘기기
+//                                    bundle.putInt("product_idx",productData.idx)
+//                                    bundle.putString("measure",productData.mesure.toString())
+
+
                                     compareSizeDialog.arguments = bundle
                                     //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
                                     compareSizeDialog.show(supportFragmentManager, "compare size")

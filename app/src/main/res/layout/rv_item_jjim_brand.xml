@@ -40,7 +40,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="84dp"
-        android:text="VANS" />
+        />
 
     <ToggleButton
         android:id="@+id/img_rv_item_jjim_brand_heart"

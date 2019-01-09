@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MyFragmentStatePagerAdapter
@@ -36,16 +37,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AAAAMainActivity : AppCompatActivity() {
+class AAAAMainActivity :BaseActivity() {
 
+    var time : Long = 0
 
     companion object {
         lateinit var instance: AAAAMainActivity
     }
 
     lateinit var networkService: NetworkService
-    lateinit var temp : ArrayList<BrandRecommendData>
-
+    lateinit var temp: ArrayList<BrandRecommendData>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,13 +115,22 @@ class AAAAMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addFragment(fragment : Fragment){
-        val transaction : FragmentTransaction = supportFragmentManager.beginTransaction()
+    private fun addFragment(fragment: Fragment) {
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.vp_aaa_main_home_fragment, fragment)
         transaction.commit()
     }
 
 
 
+
+    override fun onBackPressed() {
+        if (System.currentTimeMillis()-time>=2000){
+            time=System.currentTimeMillis()
+            Toast.makeText(getApplicationContext(),"뒤로 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
+        }else if(System.currentTimeMillis()-time<2000){
+            finish()
+        }
+    }
 
 }

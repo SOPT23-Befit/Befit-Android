@@ -16,6 +16,7 @@ import android.widget.Toast
 import com.sopt.befit.R
 import com.sopt.befit.adapter.SearchPBFragmentStatePagerAdapter
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.SearchProductData
 import com.sopt.befit.get.GetProductListResponse
@@ -42,7 +43,10 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_search, container, false)
+        val searchFragmentView: View = inflater!!.inflate(R.layout.fragment_search, container, false)
+        Utilities.setGlobalFont(searchFragmentView, activity!!);
+
+        return searchFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -141,8 +145,6 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
         //탭 하나하나 TabLayout에 연결시켜줍니다.
         tl_search_product_brand_navi_act_top_menu.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_navi_product_tap) as ImageView
         tl_search_product_brand_navi_act_top_menu.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_navi_brand_tap) as ImageView
-
-
 
     }
 }
