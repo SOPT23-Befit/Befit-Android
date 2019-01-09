@@ -14,7 +14,7 @@ open class BaseActivity : AppCompatActivity() {
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
         if (mTypeface == null) {
-            mTypeface = Typeface.createFromAsset(this.assets, "fonts/kopubdotummedium.ttf")
+            mTypeface = Typeface.createFromAsset(this.assets, "fonts/kopubworlddotummedium.ttf")
         }
         setGlobalFont(window.decorView)
     }
