@@ -17,10 +17,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MySizeLookupActivity : AppCompatActivity() {
+class MySizeLookupActivity : BaseActivity() {
 
     companion object {
-        lateinit var instance : MySizeLookupActivity
+        lateinit var instance: MySizeLookupActivity
     }
 
     val dataList: ArrayList<ClosetDetail> by lazy {
@@ -45,14 +45,30 @@ class MySizeLookupActivity : AppCompatActivity() {
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI"
 
         setView()
-
+        setOnButton()
         setRecyclerView()
 
         getClosetListResponse()
     }
 
-    private fun setView(){
+    private fun setView() {
         tv_my_size_add_title.text = getCategoryString()
+    }
+
+    private fun setOnButton() {
+        tv_my_size_add_edit.setOnClickListener {
+            when(mySizeLookupRecyclerViewAdapter.flag) {
+                0 -> {
+                    tv_my_size_add_edit.text = "완료"
+                    mySizeLookupRecyclerViewAdapter.flag = 1
+                }
+                1 -> {
+                    tv_my_size_add_edit.text = "편집"
+                    mySizeLookupRecyclerViewAdapter.flag = 0
+                }
+            }
+            mySizeLookupRecyclerViewAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun setRecyclerView() {
@@ -65,28 +81,27 @@ class MySizeLookupActivity : AppCompatActivity() {
         val getClosetListResponse = networkService.getClosetListResponse(token, c_idx)
         getClosetListResponse.enqueue(object : Callback<GetClosetListResponse> {
             override fun onFailure(call: Call<GetClosetListResponse>, t: Throwable) {
-                Log.e("brand fail", t.toString())
+                Log.e("my size look up fail", t.toString())
             }
 
             override fun onResponse(call: Call<GetClosetListResponse>, response: Response<GetClosetListResponse>) {
                 if (response.isSuccessful) {
                     var temp: ArrayList<ClosetDetail> = ArrayList<ClosetDetail>()
+                    var position = 0
                     if (response.body()?.data != null) {
-                        temp=response!!.body()!!.data
-                        if (temp.size > 0) {
-
-                        }
+                        position = mySizeLookupRecyclerViewAdapter.itemCount
+                        temp = response!!.body()!!.data
                     }
-                    temp.add(ClosetDetail(0,"","","","","",0,""))
+                    temp.add(ClosetDetail(0, "", "", "", "", "", 0, ""))
                     mySizeLookupRecyclerViewAdapter.dataList.addAll(temp)
-                    mySizeLookupRecyclerViewAdapter.notifyDataSetChanged()
+                    mySizeLookupRecyclerViewAdapter.notifyItemInserted(position+1)
                 }
             }
         })
     }
 
-    private fun getCategoryString() : String {
-        when(c_idx){
+    private fun getCategoryString(): String {
+        when (c_idx) {
             0 -> return "Outer"
             1 -> return "Jacket"
             2 -> return "Coat"

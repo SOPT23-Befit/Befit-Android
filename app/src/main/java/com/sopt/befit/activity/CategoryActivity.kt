@@ -15,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CategoryActivity : AppCompatActivity() {
+class CategoryActivity : BaseActivity() {
 
     lateinit var productListRecyclerViewAdapter: ProductListRecyclerViewAdapter
 
@@ -24,7 +24,7 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     var token: String = ""
-    var c_idx: Int = intent.getIntExtra("idx", 0)
+    var c_idx: Int = 4//intent.getIntExtra("idx", 0)
     var search: String? = null
 
     val networkService: NetworkService by lazy {

@@ -225,4 +225,9 @@ interface NetworkService {
     fun getBrandRankingResponse(
             @Header("Authorization") token : String
     ) : Call<GetBrandRankingResponse>
+
+    @GET("/products/forUserRec")
+    fun getMyRecommendProduct(
+            @Header("Authorization") token : String
+    ) : Call<GetMyRecommendProduct>
 }

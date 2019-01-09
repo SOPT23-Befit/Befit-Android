@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.sopt.befit.R
 import com.sopt.befit.adapter.EachBrandRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.BrandData
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.network.ApplicationController
@@ -36,7 +37,10 @@ class EachBrandFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_search_brand, container, false)
+        val eachBrandFragmentView: View = inflater!!.inflate(R.layout.fragment_search_brand, container, false)
+        Utilities.setGlobalFont(eachBrandFragmentView, activity!!);
+
+        return eachBrandFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

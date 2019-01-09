@@ -1,5 +1,7 @@
 package com.sopt.befit.data
 
+import java.io.Serializable
+
 data class UserTotalData(
         val idx: Int,
         val email : String,
@@ -14,4 +16,4 @@ data class UserTotalData(
         val post_number : String,
         val home_address : String,
         val detail_address : String
-)
+) :Serializable

@@ -16,5 +16,5 @@ data class BrandRecommendData (
         var mainfeed_url : String,
         var brand_like : Int,
         var products : ArrayList<ProductData>
-) : Serializable
+): Serializable
 //시리얼 상속시키며누번들 넣을 수 있음

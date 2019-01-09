@@ -16,6 +16,7 @@ import android.widget.Toast
 import com.sopt.befit.R
 import com.sopt.befit.adapter.SearchPBFragmentStatePagerAdapter
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.SearchProductData
 import com.sopt.befit.get.GetProductListResponse
@@ -42,7 +43,10 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_search, container, false)
+        val searchFragmentView: View = inflater!!.inflate(R.layout.fragment_search, container, false)
+        Utilities.setGlobalFont(searchFragmentView, activity!!);
+
+        return searchFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

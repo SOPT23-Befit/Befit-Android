@@ -21,6 +21,7 @@ import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.DeleteClosetResponse
 import kotlinx.android.synthetic.main.activity_my_size_lookup.*
+import org.jetbrains.anko.image
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,6 +40,7 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_my_size_lookup, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 
@@ -59,28 +61,16 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
                     .load(dataList[position].image_url)
                     .thumbnail(0.5f)
                     .into(holder.main)
+        } else {
+            holder.main.setImageResource(R.drawable.add)
         }
 
-        MySizeLookupActivity.instance.tv_my_size_add_edit.setOnClickListener {
-            if (MySizeLookupActivity.instance.tv_my_size_add_edit.text == "편집") {
-                flag = 1
-                MySizeLookupActivity.instance.tv_my_size_add_edit.text = "완료"
-
-                holder.delete.visibility = View.VISIBLE
-                holder.gray.visibility = View.VISIBLE
-                if (dataList[position].name_korean != "") {
-
-                }
-            } else {
-                flag = 0
-                MySizeLookupActivity.instance.tv_my_size_add_edit.text = "편집"
-
-                holder.delete.visibility = View.INVISIBLE
-                holder.gray.visibility = View.INVISIBLE
-                if (dataList[position].name_korean != "") {
-
-                }
-            }
+        if (dataList[position].name_korean != "" && flag == 1) {
+            holder.delete.visibility = View.VISIBLE
+            holder.gray.visibility = View.VISIBLE
+        } else {
+            holder.delete.visibility = View.INVISIBLE
+            holder.gray.visibility = View.INVISIBLE
         }
 
         holder.item_btn.setOnClickListener {
