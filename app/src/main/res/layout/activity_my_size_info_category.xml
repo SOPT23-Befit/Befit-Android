@@ -31,4 +31,11 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_item_size_info_category_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_fragment_jjim_brand_rl"
+        ></android.support.v7.widget.RecyclerView>
+
 </LinearLayout>
