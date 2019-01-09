@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SizeCheckPageActivity"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -37,7 +36,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/text_brand"
             android:layout_width="wrap_content"
@@ -65,10 +64,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_brand"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            android:text="L size"
+            android:layout_marginRight="50dp"
+            android:text="L"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="#242424"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="size"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/text_brand"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
             android:textColor="#242424" />
     </RelativeLayout>
     <RelativeLayout
