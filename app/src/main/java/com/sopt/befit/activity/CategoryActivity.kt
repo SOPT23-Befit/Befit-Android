@@ -37,11 +37,17 @@ class CategoryActivity : BaseActivity() {
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
+        setView()
+
         setRecyclerView()
 
         setViewClickListener()
 
         getCategoryNewProductListResponse()
+    }
+
+    private fun setView() {
+        tv_category_title.text = getCategoryString()
     }
 
     private fun setViewClickListener() {
@@ -107,5 +113,25 @@ class CategoryActivity : BaseActivity() {
                 }
             }
         })
+    }
+
+    private fun getCategoryString(): String {
+        when (c_idx) {
+            0 -> return "Outer"
+            1 -> return "Jacket"
+            2 -> return "Coat"
+            3 -> return "Shirts"
+            4 -> return "Knits"
+            5 -> return "Hoody"
+            6 -> return "Sweat Shirts"
+            7 -> return "T-Shirts"
+            8 -> return "Onepiece"
+            9 -> return "Jeans"
+            10 -> return "Pants"
+            11 -> return "Slacks"
+            12 -> return "Short-Pants"
+            13 -> return "Skirts"
+        }
+        return ""
     }
 }

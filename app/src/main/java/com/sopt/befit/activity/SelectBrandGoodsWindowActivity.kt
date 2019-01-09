@@ -34,7 +34,7 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_brand_goods_window)
 
-        intent.getIntExtra("brand_idx",0)             //브랜드 idx값 가져오기.
+        intent.getIntExtra("brand_idx",0)    //브랜드 idx값 가져오기.
         intent.getIntExtra("categpry_idx",0)          //카테고리 idx 값 가져오기.
 
         setSpinner()
