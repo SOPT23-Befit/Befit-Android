@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.sopt.befit.R
+import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.BrandRecommendData
+import com.sopt.befit.db.SharedPreferenceController
 import kotlinx.android.synthetic.main.fragment_main_brand_1.*
 import kotlinx.android.synthetic.main.fragment_main_brand_2.*
 import kotlinx.android.synthetic.main.fragment_main_brand_3.*
+import org.jetbrains.anko.support.v4.startActivity
 
 class MainBrandFragment3: Fragment(){
 //    companion object {
@@ -41,6 +44,11 @@ class MainBrandFragment3: Fragment(){
 
     lateinit var brandData : BrandRecommendData
 
+    var flag : Int = 1//0일때 브랜드 클릭시
+    //1일때는 하위상품 클릭시
+
+   // var token : String = SharedPreferenceController.getAuthorization(activity!!)
+   val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +74,23 @@ class MainBrandFragment3: Fragment(){
         tv_aaa_main_brand3_recommend_p_name3.text=brandData.products[2].name
 
 
+        iv_main_brand_3.setOnClickListener(){
+            flag=0
+            startActivity<BrandMainActivity>("idx" to brandData.idx, "flag" to flag,"token" to token)
+        }
+
+        iv_main_brand_3_product_1.setOnClickListener(){
+            flag=1
+            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+        }
+        iv_main_brand_3_product_2.setOnClickListener(){
+            flag=1
+            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+        }
+        iv_main_brand_3_product_3.setOnClickListener(){
+            flag=1
+            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+        }
 
     }
 }

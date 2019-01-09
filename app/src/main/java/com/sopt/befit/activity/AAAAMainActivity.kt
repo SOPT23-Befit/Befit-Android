@@ -52,7 +52,6 @@ class AAAAMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_aaaamain)
 
-//        getUserDataResponse()
         configureBottomNavigation()
 
         Log.d("aaaaaa", "onCreate")
@@ -60,6 +59,23 @@ class AAAAMainActivity : AppCompatActivity() {
         instance = this
 
 
+
+        ibtn_AAAA_main_act_mypage.setOnClickListener(){
+            toast("mypage clisked")
+        }
+        ibtn_AAAA_main_act_search.setOnClickListener(){
+            toast("search clisked")
+        }
+        ibtn_AAAA_main_act_jjim.setOnClickListener(){
+            toast("jjim clicked")
+        }
+        ibtn_AAAA_main_act_home.setOnClickListener(){
+            toast("homeclicked")
+        }
+
+        ibtn_AAAA_main_act_ranking.setOnClickListener(){
+            toast("ranking clicked")
+        }
 
     }
 
@@ -106,66 +122,5 @@ class AAAAMainActivity : AppCompatActivity() {
 
 
 
-    private fun getUserDataResponse(){
-        Log.d("aaaaaaa","aaaaaa")
-        networkService = ApplicationController.instance!!.networkService
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
-        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
-        val getBrandRecommendResponse = networkService.getBrandRecommendResponse(token)
-        getBrandRecommendResponse.enqueue(object : Callback<GetBrandRecommendResponse> {
-            override fun onFailure(call: Call<GetBrandRecommendResponse>, t: Throwable) { Log.e("board list fail", t.toString())
-            }
-            override fun onResponse(call: Call<GetBrandRecommendResponse>, response: Response<GetBrandRecommendResponse>) {
-                response?.let {
-                    when (it.body()!!.status) {
-                        200 -> {
-                            Log.v("success", response.message().toString())
-                            temp  = response.body()!!.data
 
-
-//                            addFragment(MainBrandFragment1.getInstance(mainfeed_url1,name_english1,image_url1_1,image_url1_2,image_url1_3))
-//
-//                            addFragment(MainBrandFragment2.getInstance(mainfeed_url2,name_english2,image_url2_1,image_url2_2,image_url2_3))
-//                            addFragment(MainBrandFragment3.getInstance(mainfeed_url3,name_english3,image_url3_1,image_url3_2,image_url3_3))
-
-
-
-
-
-
-
-
-
-                        }
-
-                        400 -> {
-                            Log.v("fail",response.message())
-                            Log.v("fail",response.errorBody().toString())
-                            toast("랜덤 3개 브랜드 별 인기 상품 리스트 조회 실패")
-                        }
-
-                        401 -> {
-                            Log.v("fail",response.message())
-                            Log.v("fail",response.errorBody().toString())
-                            toast("인증 실")
-                        }
-
-                        500 -> {
-
-                            Log.v("409 error",response.message())
-                            Log.v("server error",response.errorBody().toString())
-                            toast("서버 내부 에러")
-                        }
-                        600->{
-                            Log.v("600 error",response.message())
-                            Log.v("database error",response.errorBody().toString())
-                            toast("데이터베이스 에러")
-                        }
-                        else -> {
-                            toast("Error")
-                        }
-                    }
-                }
-            } })
-    }
 }
