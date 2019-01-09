@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
-import com.sopt.befit.adapter.Utilities
+//import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController

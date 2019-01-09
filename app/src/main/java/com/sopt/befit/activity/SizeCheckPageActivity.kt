@@ -28,7 +28,6 @@ class SizeCheckPageActivity : AppCompatActivity() {
 
     lateinit var detailData : DetailSize
 
-
     fun getDetailSizeData() : DetailSize{
         return detailData
     }
@@ -42,7 +41,7 @@ class SizeCheckPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_size_check_page_activiy)
         btnBackOnClick()
 
-        //val closet_idx                        //closet_idx값 받아오기.
+        val closet_idx = intent.getIntExtra("closet_idx",0)
 
     }
 

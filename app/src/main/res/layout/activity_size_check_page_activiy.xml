@@ -60,7 +60,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginLeft="16dp"/>
         <TextView
-            android:id="@+id/btn_activity_size_check_page_size"
+            android:id="@+id/activity_size_check_page_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_brand"

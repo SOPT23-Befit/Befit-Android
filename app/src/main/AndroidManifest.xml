@@ -16,6 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.AAAAMainActivity">
 
+
         </activity>
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
@@ -26,7 +27,13 @@
         <activity android:name=".activity.InputInfo" />
         <activity android:name=".activity.KakaoAddressActivity"></activity>
         <activity android:name=".activity.LogInActivity"></activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.MyPageAccountSettingActivity" />
         <activity android:name=".activity.MyPageTotalUserInfoManage" />
         <activity android:name=".activity.MySizeLookupActivity">
