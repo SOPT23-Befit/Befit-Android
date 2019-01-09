@@ -30,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="360dp">
         <ImageView
+            android:id="@+id/iv_activity_size_check_page_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher"/>
@@ -59,6 +60,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginLeft="16dp"/>
         <TextView
+            android:id="@+id/btn_activity_size_check_page_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_brand"

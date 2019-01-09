@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.google.gson.JsonParser
+import com.rd.PageIndicatorView
 
 
 import com.sopt.befit.R
@@ -15,6 +16,12 @@ import com.sopt.befit.adapter.CompareSizeAdapter
 import com.sopt.befit.get.ClosetDetail
 import kotlinx.android.synthetic.main.dl_compare_size.*
 import org.jetbrains.anko.support.v4.startActivity
+import com.sopt.befit.R.id.pageIndicatorView
+import android.support.v4.view.ViewPager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import kotlinx.android.synthetic.main.fragment_compare_size.*
+
 
 class CompareSizeDialog() : DialogFragment() {
 
@@ -31,7 +38,12 @@ class CompareSizeDialog() : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.dl_compare_size, container, false)
-        return view
+
+        Glide.with(view.context)
+                .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/21.+hoody_under.png")
+                .into(view!!.findViewById(R.id.iv_fragment_compare_size_my_size))
+
+                return view
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,24 +59,44 @@ class CompareSizeDialog() : DialogFragment() {
         var jsonString = data.measure.toString()
         var parser = JsonParser()
         var json = parser.parse(jsonString).asJsonObject
+
         closetSize = ArrayList<String>()
 
         for((index,measure) in json.entrySet().withIndex()){
             closetSize.add(measure.key)
         }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         configureBottomNavigation()
         checkBtnClick()
+
+
     }
 
     private fun configureBottomNavigation() {
-        var count = 2
+       // var count = 2
         vp_compare_size_view_pager.adapter = CompareSizeAdapter(childFragmentManager,closetSize.size,closetList)
         vp_compare_size_view_pager.offscreenPageLimit = closetSize.size
-        //vp_bottom_navi_act_frag_pager.offscreenPageLimit = 3
+        pageIndicatorView.count = closetSize.size
+        pageIndicatorView.selection = 1
+
+        vp_compare_size_view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {/*empty*/
+            }
+
+            override fun onPageSelected(position: Int) {
+                pageIndicatorView.selection = position
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {/*empty*/
+            }
+        })
+
+  //      pageIndicatorView.setCount(closetSize.size) // specify total count of indicators
+   //     pageIndicatorView.setSelection(1)       //vp_bottom_navi_act_frag_pager.offscreenPageLimit = 3
         // ViewPager와 Tablayout을 엮어줍니다!
 //        tl_bottom_navi_act_bottom_menu.setupWithViewPager(vp_compare_size_view_pager)
 //        //TabLayout에 붙일 layout을 찾아준 다음

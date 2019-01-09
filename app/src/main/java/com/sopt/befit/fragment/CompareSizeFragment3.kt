@@ -18,6 +18,7 @@ import com.sopt.befit.get.GetCompareSizeResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
+import kotlinx.android.synthetic.main.dl_compare_size.*
 import kotlinx.android.synthetic.main.fragment_compare_size.*
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
