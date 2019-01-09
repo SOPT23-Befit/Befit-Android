@@ -226,8 +226,17 @@ interface NetworkService {
             @Header("Authorization") token : String
     ) : Call<GetBrandRankingResponse>
 
+
+    //특정 상품 디테일 사이즈
+    @GET("/closet/{closet_idx}")
+    fun getCheckMySizeResponse(
+            @Header("Authorization") token : String,
+            @Path("closet_idx") closet_idx: Int
+    ) : Call<GetCheckMySizeResponse>
+
     @GET("/products/forUserRec")
     fun getMyRecommendProduct(
             @Header("Authorization") token : String
     ) : Call<GetMyRecommendProduct>
+
 }

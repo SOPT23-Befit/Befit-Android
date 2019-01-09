@@ -6,11 +6,11 @@ import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.webkit.WebSettings
-import android.webkit.WebView
+import android.webkit.*
 import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.fragment.CompareSizeDialog
 import com.sopt.befit.fragment.SizeCheckAddClothDialog
 import com.sopt.befit.get.*
@@ -32,6 +32,10 @@ class ProductContentViewActivity : AppCompatActivity() {
         lateinit var instance : ProductContentViewActivity
     }
 
+
+    //웹뷰에서 회원가입 누를 때 넘겨주려면 가지고 있어야 한다.
+    lateinit var usertotaldata : UserTotalData
+
     lateinit var closetlist:ArrayList<ClosetDetail>
 //    val closetlist: ArrayList<Data> by lazy {
 //        ArrayList<Data>()
@@ -40,15 +44,21 @@ class ProductContentViewActivity : AppCompatActivity() {
         ApplicationController.instance.networkService
     }
 
-    var mywebview: WebView? = null
+    //연결할 쇼핑몰 웹 url
+    private var url: String = "http://www.naver.com"
 
-    lateinit var url: String
     private var webView: WebView? = null
     private var webSetting: WebSettings? = null
-
+    private var webChromeClient: WebChromeClient? = null
 
     //상품 정보
     lateinit var productData : ProductData
+
+    //webview 초기화
+
+
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,16 +66,28 @@ class ProductContentViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_content_view)
 
         instance = this
-//        mywebview = findViewById(R.id.wv_activity_product_content_view)
-//
-//
-//        mywebview!!.webViewClient = object : WebViewClient(){
-//            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-//                view?.loadUrl(url)
-//                return true
-//            }
-//        }
-//        mywebview!!.loadUrl("")
+
+        webView = findViewById(R.id.wv_activity_product_content_view)
+
+       webView!!.webViewClient = WebViewClient()
+        webSetting = webView!!.settings
+        webSetting!!.javaScriptEnabled = true
+
+        webView!!.webViewClient = object : WebViewClient(){
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                return false
+            }
+
+        }
+        webView!!.webChromeClient = object : WebChromeClient(){
+
+
+
+        }
+       webView!!.settings.builtInZoomControls = true
+        webView!!.settings.setSupportZoom(true)
+        webView!!.loadUrl(url)
+
         btn_activity_product_contentview_cancel.setOnClickListener {
             finish()
         }
@@ -79,9 +101,11 @@ class ProductContentViewActivity : AppCompatActivity() {
         }
 
 
-//
-//        btn_dl_size_check_login.setOnClickListener {
+
     }
+
+
+
 
     fun getCurrentProductData() : ProductData{
         return productData
@@ -128,7 +152,8 @@ class ProductContentViewActivity : AppCompatActivity() {
 
 
     private fun getMyClosetListResponse() {
-        val getMyClosetListResponse = networkService.getClosetListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", 4)
+        val getMyClosetListResponse = networkService
+                .getClosetListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", 0)
         Log.d("aaaaaaa", "aaaaaa")
         //val token = SharedPreferenceController.getAuthorization(activity!!)
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
@@ -144,28 +169,34 @@ class ProductContentViewActivity : AppCompatActivity() {
                             200 -> {
                                 Log.v("success", response.message().toString())
 
-                                closetlist = it.body()!!.data
+                                if (it.body()?.data != null){
+                                    closetlist = it.body()!!.data
 
                                 // 옷정보가 없다면
-                                //옷정보가 있다면
+
                                 if (closetlist.isEmpty()) {
                                     val sizecheckDialog: DialogFragment = SizeCheckAddClothDialog()
 
-                                    sizecheckDialog.show(supportFragmentManager, "closet list")
-                                } else {
-                                    val compareSizeDialog: DialogFragment = CompareSizeDialog()
-                                    var bundle = Bundle()
-                                    bundle.putSerializable("ClosetList",closetlist)
 
-                                    //상품 정보 넘기기
+                                        sizecheckDialog.show(supportFragmentManager, "closet list")
+                                    } else {
+                                        val compareSizeDialog: DialogFragment = CompareSizeDialog()
+                                        var bundle = Bundle()
+                                        bundle.putSerializable("ClosetList",closetlist)
+
+                                        //상품 정보 넘기기
 //                                    bundle.putInt("product_idx",productData.idx)
 //                                    bundle.putString("measure",productData.mesure.toString())
 
 
-                                    compareSizeDialog.arguments = bundle
-                                    //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
-                                    compareSizeDialog.show(supportFragmentManager, "compare size")
+                                        compareSizeDialog.arguments = bundle
+                                        //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
+                                        compareSizeDialog.show(supportFragmentManager, "compare size")
+                                    }
+                                } else{
+
                                 }
+
                             }
 
                             400 -> {

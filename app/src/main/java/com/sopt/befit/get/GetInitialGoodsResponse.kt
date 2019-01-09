@@ -1,5 +1,6 @@
 package com.sopt.befit.get
 
+import java.io.Serializable
 import java.util.*
 
 data class GetInitialGoodsResponse (
@@ -13,10 +14,5 @@ data class InitialGoods(
         val product_category_index : Int,
         val image_url : String,
         val brand_idx : Int,
-        val measure : Array<Size>
-)
-data class Size(
-        val L : Int,
-        val M : Int,
-        val S : Int
+        val measure : Any
 )
