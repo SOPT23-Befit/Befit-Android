@@ -20,7 +20,7 @@ public class Utilities {
                 for (int i = 0; i < len; i++) {
                     View v = vg.getChildAt(i);
                     if (v instanceof TextView) {
-                        ((TextView) v).setTypeface(Typeface.createFromAsset(assetManager,"fonts/kopubdotummedium.ttf"));
+                        ((TextView) v).setTypeface(Typeface.createFromAsset(assetManager,"fonts/kopubworlddotummedium.ttf"));
                     }
                     setGlobalFont(v, ctx);
                 }
