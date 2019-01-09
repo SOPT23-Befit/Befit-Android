@@ -29,6 +29,7 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_jjim_brand, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 

@@ -39,6 +39,7 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_my_size_lookup, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 
@@ -65,20 +66,16 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
             if (MySizeLookupActivity.instance.tv_my_size_add_edit.text == "편집") {
                 flag = 1
                 MySizeLookupActivity.instance.tv_my_size_add_edit.text = "완료"
-
-                holder.delete.visibility = View.VISIBLE
-                holder.gray.visibility = View.VISIBLE
                 if (dataList[position].name_korean != "") {
-
+                    holder.delete.visibility = View.VISIBLE
+                    holder.gray.visibility = View.VISIBLE
                 }
             } else {
                 flag = 0
                 MySizeLookupActivity.instance.tv_my_size_add_edit.text = "편집"
-
-                holder.delete.visibility = View.INVISIBLE
-                holder.gray.visibility = View.INVISIBLE
                 if (dataList[position].name_korean != "") {
-
+                    holder.delete.visibility = View.INVISIBLE
+                    holder.gray.visibility = View.INVISIBLE
                 }
             }
         }

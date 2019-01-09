@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimPBFragmentStatePagerAdapter
+import com.sopt.befit.adapter.Utilities
 import kotlinx.android.synthetic.main.fragment_jjim.*
 
 class JjimFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val jjimFragmentView: View = inflater!!.inflate(R.layout.fragment_jjim, container, false)
+        Utilities.setGlobalFont(jjimFragmentView, activity!!);
+
         return jjimFragmentView
     }
 

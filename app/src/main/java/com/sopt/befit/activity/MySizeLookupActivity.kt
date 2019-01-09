@@ -17,7 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MySizeLookupActivity : AppCompatActivity() {
+class MySizeLookupActivity : BaseActivity() {
 
     companion object {
         lateinit var instance : MySizeLookupActivity
@@ -73,9 +73,6 @@ class MySizeLookupActivity : AppCompatActivity() {
                     var temp: ArrayList<ClosetDetail> = ArrayList<ClosetDetail>()
                     if (response.body()?.data != null) {
                         temp=response!!.body()!!.data
-                        if (temp.size > 0) {
-
-                        }
                     }
                     temp.add(ClosetDetail(0,"","","","","",0,""))
                     mySizeLookupRecyclerViewAdapter.dataList.addAll(temp)

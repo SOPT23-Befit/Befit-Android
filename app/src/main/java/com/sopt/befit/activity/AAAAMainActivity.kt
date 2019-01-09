@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MyFragmentStatePagerAdapter
@@ -36,16 +37,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AAAAMainActivity : AppCompatActivity() {
+class AAAAMainActivity :BaseActivity() {
 
+    var time : Long = 0
 
     companion object {
         lateinit var instance: AAAAMainActivity
     }
 
     lateinit var networkService: NetworkService
-    lateinit var temp : ArrayList<BrandRecommendData>
-
+    lateinit var temp: ArrayList<BrandRecommendData>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +59,6 @@ class AAAAMainActivity : AppCompatActivity() {
         Log.d("aaaaaa", "onCreate")
 
         instance = this
-
 
 
     }
@@ -98,29 +98,30 @@ class AAAAMainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addFragment(fragment : Fragment){
-        val transaction : FragmentTransaction = supportFragmentManager.beginTransaction()
+    private fun addFragment(fragment: Fragment) {
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.vp_aaa_main_home_fragment, fragment)
         transaction.commit()
     }
 
 
-
-    private fun getUserDataResponse(){
-        Log.d("aaaaaaa","aaaaaa")
+    private fun getUserDataResponse() {
+        Log.d("aaaaaaa", "aaaaaa")
         networkService = ApplicationController.instance!!.networkService
         //val token = SharedPreferenceController.getAuthorization(activity!!)
         val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         val getBrandRecommendResponse = networkService.getBrandRecommendResponse(token)
         getBrandRecommendResponse.enqueue(object : Callback<GetBrandRecommendResponse> {
-            override fun onFailure(call: Call<GetBrandRecommendResponse>, t: Throwable) { Log.e("board list fail", t.toString())
+            override fun onFailure(call: Call<GetBrandRecommendResponse>, t: Throwable) {
+                Log.e("board list fail", t.toString())
             }
+
             override fun onResponse(call: Call<GetBrandRecommendResponse>, response: Response<GetBrandRecommendResponse>) {
                 response?.let {
                     when (it.body()!!.status) {
                         200 -> {
                             Log.v("success", response.message().toString())
-                            temp  = response.body()!!.data
+                            temp = response.body()!!.data
 
 
 //                            addFragment(MainBrandFragment1.getInstance(mainfeed_url1,name_english1,image_url1_1,image_url1_2,image_url1_3))
@@ -129,36 +130,29 @@ class AAAAMainActivity : AppCompatActivity() {
 //                            addFragment(MainBrandFragment3.getInstance(mainfeed_url3,name_english3,image_url3_1,image_url3_2,image_url3_3))
 
 
-
-
-
-
-
-
-
                         }
 
                         400 -> {
-                            Log.v("fail",response.message())
-                            Log.v("fail",response.errorBody().toString())
+                            Log.v("fail", response.message())
+                            Log.v("fail", response.errorBody().toString())
                             toast("랜덤 3개 브랜드 별 인기 상품 리스트 조회 실패")
                         }
 
                         401 -> {
-                            Log.v("fail",response.message())
-                            Log.v("fail",response.errorBody().toString())
+                            Log.v("fail", response.message())
+                            Log.v("fail", response.errorBody().toString())
                             toast("인증 실")
                         }
 
                         500 -> {
 
-                            Log.v("409 error",response.message())
-                            Log.v("server error",response.errorBody().toString())
+                            Log.v("409 error", response.message())
+                            Log.v("server error", response.errorBody().toString())
                             toast("서버 내부 에러")
                         }
-                        600->{
-                            Log.v("600 error",response.message())
-                            Log.v("database error",response.errorBody().toString())
+                        600 -> {
+                            Log.v("600 error", response.message())
+                            Log.v("database error", response.errorBody().toString())
                             toast("데이터베이스 에러")
                         }
                         else -> {
@@ -166,6 +160,16 @@ class AAAAMainActivity : AppCompatActivity() {
                         }
                     }
                 }
-            } })
+            }
+        })
+    }
+
+    override fun onBackPressed() {
+        if (System.currentTimeMillis()-time>=2000){
+            time=System.currentTimeMillis()
+            Toast.makeText(getApplicationContext(),"뒤로 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
+        }else if(System.currentTimeMillis()-time<2000){
+            finish()
+        }
     }
 }
