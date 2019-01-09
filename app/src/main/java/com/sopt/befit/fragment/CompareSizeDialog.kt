@@ -40,7 +40,7 @@ class CompareSizeDialog() : DialogFragment() {
         val view: View = inflater.inflate(R.layout.dl_compare_size, container, false)
 
         Glide.with(view.context)
-                .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/21.+hoody_under.png")
+                .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/33.+jeansslackspants.png")
                 .into(view!!.findViewById(R.id.iv_fragment_compare_size_my_size))
 
                 return view

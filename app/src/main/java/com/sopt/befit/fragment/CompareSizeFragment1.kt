@@ -54,7 +54,7 @@ class CompareSizeFragment1 : Fragment() {
         val view: View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size, container, false)
 
         Glide.with(context!!)
-                .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/24.+hoody_above_l.png")
+                .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/36.+jeansslackspants_l.png")
                 .thumbnail(0.5f)
                 .into(view!!.findViewById(com.sopt.befit.R.id.iv_fragment_compare_size_goods_size))
 
