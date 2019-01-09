@@ -20,7 +20,7 @@ class KakaoAddressActivity : AppCompatActivity() {
     private var homeaddress : String? = null
     private var handler: Handler? = null
 
-    internal var url = "file:///android_asset/daum.js"
+    internal var url = "https://trilliwon.github.io/postcode/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +28,7 @@ class KakaoAddressActivity : AppCompatActivity() {
 
         init_webView()
         handler = Handler()
+        
     }
 
 
@@ -54,24 +55,29 @@ class KakaoAddressActivity : AppCompatActivity() {
 
     }
 
-    internal inner class AndroidBridge{
+    private inner class AndroidBridge{
         @JavascriptInterface
         // arg1 : postnum 09952 arg2 : homeaddress : 서울시 서대문구 대현동
         // arg3 : Building Name : 쌍용아파트 1지구
-        public fun setAddress( arg1 : String, arg2 : String ,arg3 : String){
-            handler!!.post{
-                val intent : Intent = Intent()
-                postnum = arg1!!.toString()
-                homeaddress=arg2!!.toString() + " ("+arg3!!.toString() + ")"
-                intent.putExtra("postnum",postnum)
-                intent.putExtra("home_address",homeaddress)
-                setResult(Activity.RESULT_OK,intent)
-                init_webView()
-                finish()
+         fun setAddress( arg1 : String, arg2 : String ,arg3 : String) {
+            handler!!.post(object : Runnable {
+                public override fun run() {
+                    val intent: Intent = Intent()
+                    postnum = arg1!!.toString()
+                    homeaddress=arg2!!.toString() + " ("+arg3!!.toString() + ")"
+                    intent.putExtra("postnum",postnum)
+                    intent.putExtra("home_address",homeaddress)
+                    setResult(Activity.RESULT_OK,intent)
+                    init_webView()
+                    finish()
+                }
+
+            })
+
             }
         }
+        }
 
-    }
 
 
-}
+
