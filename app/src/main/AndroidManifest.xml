@@ -15,7 +15,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.AAAAMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
@@ -32,7 +36,9 @@
         <activity android:name=".activity.MySizeLookupActivity">
 
         </activity>
-        <activity android:name=".activity.ProductContentViewActivity"></activity>
+        <activity android:name=".activity.ProductContentViewActivity">
+
+        </activity>
         <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".activity.SearchPasswordActivity"></activity>
         <activity android:name=".activity.SelectBrandActivity" />
@@ -43,11 +49,7 @@
         <activity android:name=".activity.SizeCheckPageActivity" />
         <activity android:name=".activity.CheckMyBrandPreferenceManActivity" />
         <activity android:name=".activity.MySizeInfoCategoryActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

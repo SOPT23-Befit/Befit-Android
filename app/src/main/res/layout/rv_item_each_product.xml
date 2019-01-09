@@ -4,11 +4,11 @@
     android:id="@+id/btn_rv_item_each_product"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginRight="4dp"
+    android:layout_centerInParent="true"
     android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
     android:layout_marginBottom="12dp"
-    android:background="#FFFFFF"
-    android:layout_centerInParent="true">
+    android:background="#FFFFFF">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -18,7 +18,6 @@
         <ImageView
             android:id="@+id/img_rv_item_each_product_main"
             android:layout_width="match_parent"
-
             android:layout_height="180dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -56,10 +55,11 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="6dp"
             android:layout_marginTop="6dp"
-            android:lineSpacingExtra="1sp"
             android:layout_marginBottom="24dp"
+            android:lineSpacingExtra="1sp"
             android:textColor="#000000"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <ToggleButton
             android:id="@+id/img_rv_item_each_product_heart"
@@ -70,7 +70,7 @@
             android:layout_marginTop="14dp"
             android:background="@drawable/selector_heart"
             android:textOff=""
-            android:textOn=""/>
+            android:textOn="" />
 
     </RelativeLayout>
 
