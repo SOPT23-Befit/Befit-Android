@@ -68,18 +68,15 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
         setContentView(R.layout.activity_my_page_total_user_info_manage)
 
         //intent 하고 setting 하는 작업
-//        email = intent!!.getStringExtra("email")
-////        name = intent!!.getStringExtra("name")
-////        birth = intent!!.getStringExtra("birth")
-////        password = intent!!.getStringExtra("password")
-////        gender = intent!!.getStringExtra("gender")
-////
-////
-////        tv_activity_total_user_name.setText(name)
-////        tv_activity_total_user_pw.setText(password)
-////        tv_activity_total_user_email.setText(email)
-////        tv_activity_total_user_birth.setText(birth)
-////        tv_activity_total_user_gender.setText(gender)
+       email = intent!!.getStringExtra("email")
+       name = intent!!.getStringExtra("name")
+       birth = intent!!.getStringExtra("birthday")
+       gender = intent!!.getStringExtra("gender")
+
+        tv_activity_total_user_name.setText(name)
+        tv_activity_total_user_email.setText(email)
+        tv_activity_total_user_birth.setText(birth)
+        tv_activity_total_user_gender.setText(gender)
 
 
 
