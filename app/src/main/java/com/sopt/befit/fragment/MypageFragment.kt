@@ -28,7 +28,12 @@ class MypageFragment :Fragment(){
     lateinit var networkService: NetworkService
     lateinit var usertotalData: UserTotalData
     lateinit var temp : UserTotalData
-
+    lateinit var name : String
+    lateinit var email: String
+    lateinit var gender : String
+    lateinit var birth : String
+    lateinit var brand1 : String
+    lateinit var brand2 : String
 
 
 
@@ -50,24 +55,22 @@ class MypageFragment :Fragment(){
 
 
 
-
-
     }
 
 
 
-    fun setlistview(){
+    fun setlistview(data : UserTotalData){
 
 
 
         val cus : MutableList<String> = ArrayList()
 
-        var name = temp.name
-        var email = temp.email
-        var gender = temp.gender
-        var brand1 = temp.brand1_idx
-        var brand2 = temp.brand2_idx
-        var birth = temp.birthday
+         name = data.name
+         email = data.email
+         gender = data.gender
+        brand1 = data.brand1_idx.toString()
+        brand2 = data.brand2_idx.toString()
+        birth = data.birthday
 
         cus.add("1:1 문의내역")
         cus.add("상품 QnA 내역")
@@ -161,7 +164,7 @@ class MypageFragment :Fragment(){
                             tv_my_page_email.text=temp.email
                             tv_my_page_name.text=temp.name
 
-                            setlistview()
+                            setlistview(response.body()!!.data)
 
 
 
