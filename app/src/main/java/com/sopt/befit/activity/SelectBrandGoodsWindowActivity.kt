@@ -43,9 +43,7 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_brand_goods_window)
-
-
-
+      
         //상품 정보 넘겨주기
 //        product_idx = arguments!!.getInt("product_idx")
 //        measure = arguments!!.getString("measure")
