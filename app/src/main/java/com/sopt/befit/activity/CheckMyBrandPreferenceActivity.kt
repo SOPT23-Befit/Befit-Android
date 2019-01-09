@@ -16,32 +16,32 @@ class CheckMyBrandPreferenceActivity : AppCompatActivity() {
 
         var gender = intent.getStringExtra("gender")
 
-        var brand1 = intent.getIntExtra("brand1",0)
-        var brand2 = intent.getIntExtra("brand2",0)
+        var brand1 = intent.getStringExtra("brand1")
+        var brand2 = intent.getStringExtra("brand2")
 
-        if(brand1==1||brand2==1){
+        if(brand1=="17"||brand2=="17"){
             ibtn_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)
 
         }
-        else if(brand1==2||brand2==2){
+        if(brand1=="12"||brand2=="12"){
             ibtn_check_brand_preference_woman_Romantic_crown.setImageResource(R.drawable.woman_select_romantic_crown)
         }
-        else if(brand1==3||brand2==3){
+        if(brand1=="2"||brand2=="2"){
             ibtn_check_brand_preference_woman_Minav.setImageResource(R.drawable.woman_select_minav)
         }
-        else if(brand1==4||brand2==4){
+        if(brand1=="3"||brand2=="3"){
             ibtn_check_brand_preference_woman_Lafudgestore.setImageResource(R.drawable.woman_select_lafudgestore)
         }
-        else if(brand1==5||brand2==5){
+        if(brand1=="32"||brand2=="32"){
             ibtn_check_brand_preference_woman_More_or_Less.setImageResource(R.drawable.woman_select_more_or_less)
         }
-        else if(brand1==6||brand2==6){
+        if(brand1=="9"||brand2=="9"){
             ibtn_check_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_select_andersson_bell)
         }
-        else if(brand1==7||brand2==7){
+        if(brand1=="37"||brand2=="37"){
             ibtn_check_brand_preference_woman_OIOI.setImageResource(R.drawable.woman_select_oioi)
         }
-        else if(brand1==8||brand2==8){
+        if(brand1=="14"||brand2=="14"){
             ibtn_check_brand_preference_woman_Critic.setImageResource(R.drawable.woman_select_critic)
         }
 

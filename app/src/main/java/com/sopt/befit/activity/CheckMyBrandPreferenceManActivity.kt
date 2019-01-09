@@ -17,28 +17,28 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_my_brand_preference_man)
 
-        if(brand1==1||brand2==1){
+        if(brand1==17||brand2==17){
             ibtn_check_brand_preference_man_thisisneverthat.setImageResource(R.drawable.man_select_thisisneverthat)
         }
-        else if(brand1==2||brand2==2){
+        else if(brand1==12||brand2==12){
             ibtn_check_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_select_romanticcrown)
         }
-        else if(brand1==3||brand2==3){
+        else if(brand1==18||brand2==18){
             ibtn_check_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_select_istkunst)
         }
-        else if(brand1==4||brand2==4){
+        else if(brand1==10||brand2==10){
             ibtn_check_brand_preference_man_Liberteng.setImageResource(R.drawable.man_select_liberteng)
         }
-        else if(brand1==5||brand2==5){
+        else if(brand1==7||brand2==7){
             ibtn_check_brand_preference_man_Covernat.setImageResource(R.drawable.man_select_covernat)
         }
-        else if(brand1==6||brand2==6){
+        else if(brand1==9||brand2==9){
             ibtn_check_brand_preference_man_Andersson_Bell.setImageResource(R.drawable.man_select_anderssonbell)
         }
-        else if(brand1==7||brand2==7){
+        else if(brand1==22||brand2==22){
             ibtn_check_brand_preference_man_Insilence.setImageResource(R.drawable.man_select_insilence)
         }
-        else if(brand1==8||brand2==8){
+        else if(brand1==14||brand2==14){
             ibtn_check_brand_preference_man_Critic.setImageResource(R.drawable.man_select_critic)
         }
 

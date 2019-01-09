@@ -24,7 +24,7 @@ class CategoryActivity : BaseActivity() {
     }
 
     var token: String = ""
-    var c_idx: Int = intent.getIntExtra("idx", 0)
+    var c_idx: Int = 4//intent.getIntExtra("idx", 0)
     var search: String? = null
 
     val networkService: NetworkService by lazy {
