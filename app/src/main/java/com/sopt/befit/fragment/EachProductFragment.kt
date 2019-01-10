@@ -67,6 +67,8 @@ class EachProductFragment() : Fragment() {
             if (tv_search_product_popular.isChecked) {
                 tv_search_product_popular.setChecked(false)
                 tv_search_product_new.setChecked(true)
+                tv_search_product_new.setTypeface(Utilities.boldTypeface);
+                tv_search_product_popular.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getSearchNewProductListResponse()
             }
@@ -76,6 +78,8 @@ class EachProductFragment() : Fragment() {
             if (tv_search_product_new.isChecked) {
                 tv_search_product_new.setChecked(false)
                 tv_search_product_popular.setChecked(true)
+                tv_search_product_popular.setTypeface(Utilities.boldTypeface);
+                tv_search_product_new.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getSearchPopularProductListResponse()
             }

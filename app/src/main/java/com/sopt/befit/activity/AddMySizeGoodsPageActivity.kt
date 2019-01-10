@@ -22,9 +22,15 @@ import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_add_my_size.*
 import kotlinx.android.synthetic.main.activity_add_my_size_goods_page.*
+import org.jetbrains.anko.toast
 import retrofit2.Callback
 
 class AddMySizeGoodsPageActivity : AppCompatActivity() {
+
+
+    var brand_idx: Int = 2
+    var category_idx: Int = 0
+
 
     val GOODS_INITAIL_REQUEST_CODE = 2000
     lateinit var GoodsRecyclerViewAdapter: GoodsRecyclerViewAdapter
@@ -40,9 +46,9 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         ApplicationController.instance.networkService
     }
 
-    lateinit var initialData : InitialGoods
+    lateinit var initialData: InitialGoods
 
-    fun getGoodsData() : InitialGoods {
+    fun getGoodsData(): InitialGoods {
         return initialData
     }
 
@@ -52,6 +58,10 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         rv_add_my_size_goods_list.visibility = View.GONE
         setBtnClickListener()
         setRecyclerView()
+        brand_idx = intent.getIntExtra("brand_idx", 0)                       //브랜드 idx값 받기.
+        category_idx = intent.getIntExtra("category_idx", 0)                 //카테고리 idx값 받기.
+        getgoodsInitial()
+        rv_add_my_size_goods_list.visibility = View.VISIBLE
         instance = this
 
     }
@@ -76,25 +86,17 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
                 }
             }
         })
-        et_add_my_size_act_search_goods.setOnClickListener {
-            rv_add_my_size_goods_list.visibility = View.VISIBLE
-            //var brand_idx =intent.getIntExtra("brand_idx",0)
-            var brand_idx : Int = 1
-            var category_Idx : Int = 2
-            //category_idx = inten.getIntExtra("brand_idx", 0)
-            //intent.getIntExtra("brand_idx",0)                       //브랜드 idx값 받기.
-            getgoodsInitial(brand_idx, category_Idx)
-        }
+
 
     }
 
     private fun setRecyclerView() {
 
-        var goodsList: ArrayList<InitialBrand> = ArrayList()
+        var goodsList: ArrayList<InitialGoods> = ArrayList()
 
-        //brandGoodsRecyclerViewAdapter = BrandGoodsRecyclerViewAdapter(this,goodsList)
-        //rv_add_my_size_goods_list.adapter = brandGoodsRecyclerViewAdapter
-        //rv_add_my_size_goods_list.layoutManager = LinearLayoutManager(this)
+        GoodsRecyclerViewAdapter = GoodsRecyclerViewAdapter(this, goodsList)
+        rv_add_my_size_goods_list.layoutManager = LinearLayoutManager(this)
+        rv_add_my_size_goods_list.adapter = GoodsRecyclerViewAdapter
     }
 
     private fun getSelectedGoodsResponse(searchKeyWord: String) {
@@ -104,9 +106,9 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         //searchKeyWord 여기에 검색어가 담겨있으니까, 통신할때 이 값을 넘겨주면 됨!!!
     }
 
-    public fun getgoodsInitial(brand_Idx: Int, category_Idx: Int) {
+    public fun getgoodsInitial() {
 
-        val getGoodsInitialResponse = networkService.getGoodsByInitialResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", 1, 1)
+        val getGoodsInitialResponse = networkService.getGoodsByInitialResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", brand_idx, category_idx)
         getGoodsInitialResponse.enqueue(object : Callback<GetInitialGoodsResponse> {
             override fun onFailure(call: retrofit2.Call<GetInitialGoodsResponse>, t: Throwable) {
                 Log.e("goodsInitial error", t.toString())
@@ -114,30 +116,20 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
 
             override fun onResponse(call: retrofit2.Call<GetInitialGoodsResponse>, response: retrofit2.Response<GetInitialGoodsResponse>) {
 
-
                 if (response.isSuccessful) {
-                    val temp: ArrayList<InitialGoods> = response.body()!!.data
-                    if (temp.size > 0) {
-                        //val position = GoodsRecyclerViewAdapter.itemCount
-                      //  GoodsRecyclerViewAdapter.dataList.addAll(temp)
-                      //  GoodsRecyclerViewAdapter.notifyItemInserted(position)
+                    if (response.body()?.data != null) {
+                        val temp: ArrayList<InitialGoods> = response.body()!!.data
+                        if (temp.size > 0) {
+                            val position = GoodsRecyclerViewAdapter.itemCount
+                            GoodsRecyclerViewAdapter.dataList.addAll(temp)
+                            GoodsRecyclerViewAdapter.notifyItemInserted(position)
 
-                        GoodsRecyclerViewAdapter = GoodsRecyclerViewAdapter(applicationContext,temp)
-                        rv_add_my_size_goods_list.layoutManager = LinearLayoutManager(applicationContext)
-                        rv_add_my_size_goods_list.adapter = GoodsRecyclerViewAdapter
-
+                        }
                     }
                 }
             }
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == GOODS_INITAIL_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-            }
-        }
-    }
 
 }

@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
@@ -57,6 +58,8 @@ class CategoryActivity : BaseActivity() {
             if (tv_category_popular.isChecked) {
                 tv_category_popular.setChecked(false)
                 tv_category_new.setChecked(true)
+                tv_category_new.setTypeface(Utilities.boldTypeface);
+                tv_category_popular.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getCategoryNewProductListResponse()
             }
@@ -65,9 +68,14 @@ class CategoryActivity : BaseActivity() {
             if (tv_category_new.isChecked) {
                 tv_category_new.setChecked(false)
                 tv_category_popular.setChecked(true)
+                tv_category_popular.setTypeface(Utilities.boldTypeface);
+                tv_category_new.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getCategoryPopularProductListResponse()
             }
+        }
+        img_brand_main_back.setOnClickListener{
+            finish()
         }
     }
 
