@@ -11,6 +11,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.sopt.befit.Adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.BrandData

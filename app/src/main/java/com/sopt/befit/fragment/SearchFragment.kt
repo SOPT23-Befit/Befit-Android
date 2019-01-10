@@ -13,10 +13,10 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.sopt.befit.Adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.adapter.SearchPBFragmentStatePagerAdapter
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
-import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.SearchProductData
 import com.sopt.befit.get.GetProductListResponse

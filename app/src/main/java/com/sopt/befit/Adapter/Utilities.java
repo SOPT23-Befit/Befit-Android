@@ -1,4 +1,5 @@
-package com.sopt.befit.adapter;
+package com.sopt.befit.Adapter;
+
 
 import android.content.Context;
 import android.content.res.AssetManager;

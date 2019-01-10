@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.sopt.befit.Adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.R.id.tv_my_size_add_edit
 import com.sopt.befit.activity.MySizeLookupActivity
