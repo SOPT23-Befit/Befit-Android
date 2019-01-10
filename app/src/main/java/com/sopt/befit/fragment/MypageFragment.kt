@@ -1,5 +1,6 @@
 package com.sopt.befit.fragment
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -34,7 +35,7 @@ class MypageFragment :Fragment(){
     lateinit var birth : String
     lateinit var brand1 : String
     lateinit var brand2 : String
-
+    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
 
 
@@ -110,8 +111,12 @@ class MypageFragment :Fragment(){
         tv_mypage_fragment_total.setOnClickListener(){
             //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
 
+            var intent = Intent(activity,MyPageTotalUserInfoManage::class.java)
+            intent.putExtra("token",token)
+            intent.putExtra("UserTotalData",temp)
+            startActivity(intent)
 
-            startActivity<MyPageTotalUserInfoManage>("name" to "$name", "birthday" to "$birth", "email" to "$email","gender" to "$gender")
+            //startActivity<MyPageTotalUserInfoManage>("UserTotalData" to temp, "token" to token)
 
         }
 
@@ -148,7 +153,6 @@ class MypageFragment :Fragment(){
         Log.d("aaaaaaa","aaaaaa")
         networkService = ApplicationController.instance!!.networkService
         //val token = SharedPreferenceController.getAuthorization(activity!!)
-        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         val getUserDataResponse = networkService.getUserDataResponse(token)
         getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
             override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) { Log.e("board list fail", t.toString())
