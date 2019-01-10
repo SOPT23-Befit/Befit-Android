@@ -14,6 +14,7 @@ import com.sopt.befit.R
 import com.sopt.befit.R.id.tv_brand_main_product_count
 import com.sopt.befit.R.id.tv_fragment_jjim_product_count
 import com.sopt.befit.activity.BrandMainActivity
+import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.ApplicationController
@@ -70,9 +71,10 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                 .into(holder.main)
 
         holder.item_btn.setOnClickListener {
-            val intent : Intent = Intent(ctx, BrandMainActivity::class.java)
+            val intent : Intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].idx)
             intent.putExtra("token", token)
+            //userdata 전달
             ctx.startActivity(intent)
     }
 

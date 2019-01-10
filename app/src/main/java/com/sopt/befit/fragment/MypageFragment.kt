@@ -1,5 +1,6 @@
 package com.sopt.befit.fragment
 
+import android.accounts.AccountAuthenticatorActivity
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -69,22 +70,22 @@ class MypageFragment :Fragment(){
         var brand2 = temp.brand2_idx
         var birth = temp.birthday
 
-        cus.add("1:1 문의내역")
-        cus.add("상품 QnA 내역")
-        cus.add("공지사항")
-        cus.add("QnA")
-
-
-
-
-        header.add("고객센터")
-
-
-
-        body.add(cus)
-
-
-        elv_my_page_list.setAdapter(Expandable(activity!!,header,body))
+//        cus.add("1:1 문의내역")
+//        cus.add("상품 QnA 내역")
+//        cus.add("공지사항")
+//        cus.add("QnA")
+//
+//
+//
+//
+//        header.add("고객센터")
+//
+//
+//
+//        body.add(cus)
+//
+//
+//        elv_my_page_list.setAdapter(Expandable(activity!!,header,body))
 
         tv_mypage_fragment_preference.setOnClickListener(){
 
@@ -101,7 +102,7 @@ class MypageFragment :Fragment(){
         tv_mypage_fragment_size.setOnClickListener(){
             //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
 
-            //사이즈 확인하기로
+            startActivity<MySizeInfoCategoryActivity>()
         }
 
         tv_mypage_fragment_total.setOnClickListener(){
@@ -111,33 +112,36 @@ class MypageFragment :Fragment(){
             startActivity<MyPageTotalUserInfoManage>("name" to "$name", "birthday" to "$birth", "email" to "$email","gender" to "$gender")
 
         }
-
-
-        elv_my_page_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-
-
-
-            Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
-
-
-
-
-            var gpos = groupPosition
-            var cpos = childPosition
-
-            Log.d("ssss","$gpos,$cpos")
-
-
-
-
-            if(gpos==0&&cpos==0)
-            {
-                toast("1:1 문의 내역")
-            }
-            return@setOnChildClickListener false
-
-
+        iv_mypage_setting.setOnClickListener(){
+            startActivity<MyPageAccountSettingActivity>()
         }
+
+
+//        elv_my_page_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+//
+//
+//
+//            Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
+//
+//
+//
+//
+//            var gpos = groupPosition
+//            var cpos = childPosition
+//
+//            Log.d("ssss","$gpos,$cpos")
+//
+//
+//
+//
+//            if(gpos==0&&cpos==0)
+//            {
+//                toast("1:1 문의 내역")
+//            }
+//            return@setOnChildClickListener false
+//
+//
+//        }
 
 
     }

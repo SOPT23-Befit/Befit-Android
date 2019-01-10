@@ -3,6 +3,7 @@ package com.sopt.befit.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.sopt.befit.R
 import kotlinx.android.synthetic.main.activity_brand_preference_woman.*
 import kotlinx.android.synthetic.main.activity_check_my_brand_preference.*
@@ -471,6 +472,7 @@ class CheckMyBrandPreferenceActivity : AppCompatActivity() {
                         cnt++
                         brand1 = "32"
                         ibtn_check_brand_preference_woman_More_or_Less.setImageResource(R.drawable.woman_select_more_or_less) // 선택
+
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "32"
@@ -495,6 +497,9 @@ class CheckMyBrandPreferenceActivity : AppCompatActivity() {
 
             }
         }
+
+
+
     }
 
 }
