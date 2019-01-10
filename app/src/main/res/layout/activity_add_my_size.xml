@@ -39,8 +39,9 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/btn_activity_search_for_brands_a"
@@ -124,7 +125,8 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:layout_height="40dp">
 
             <ImageView
@@ -209,7 +211,8 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:layout_height="40dp">
 
             <ImageView
@@ -294,10 +297,12 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="308dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="26dp"
             android:layout_marginTop="18dp"
+            android:layout_marginRight="26dp"
+            android:layout_gravity="center"
             android:alpha="0.3"
             android:background="#000000"></RelativeLayout>
 

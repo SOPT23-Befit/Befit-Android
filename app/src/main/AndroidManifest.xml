@@ -41,7 +41,8 @@
         <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".activity.SearchPasswordActivity"></activity>
         <activity android:name=".activity.SelectBrandActivity" />
-        <activity android:name=".activity.SelectBrandGoodsWindowActivity"></activity>
+        <activity android:name=".activity.SelectBrandGoodsWindowActivity">
+        </activity>
         <activity android:name=".activity.SelectGenderActivity" />
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.CheckMyBrandPreferenceActivity" />
@@ -49,7 +50,6 @@
         </activity>
         <activity android:name=".activity.CheckMyBrandPreferenceManActivity" />
         <activity android:name=".activity.MySizeInfoCategoryActivity">
-
         </activity>
     </application>
 
