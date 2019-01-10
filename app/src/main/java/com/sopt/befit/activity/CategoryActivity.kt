@@ -47,6 +47,8 @@ class CategoryActivity : BaseActivity() {
         setViewClickListener()
 
         getCategoryNewProductListResponse()
+
+
     }
 
     private fun setView() {
