@@ -26,11 +26,8 @@ class SizeCheckPageActivity : AppCompatActivity() {
 
     lateinit var size : ArrayList<String>
 
-    lateinit var detailData : DetailSize
 
-    fun getDetailSizeData() : DetailSize{
-        return detailData
-    }
+    var closet_idx : Int = 0
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -40,11 +37,9 @@ class SizeCheckPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_size_check_page_activiy)
         btnBackOnClick()
-
+      
+        closet_idx = intent.getIntExtra("closet_idx",0)
         getCheckMySizeResponse()
-
-        val closet_idx = intent.getIntExtra("closet_idx",0)
-
     }
 
     fun btnBackOnClick() {
@@ -55,14 +50,13 @@ class SizeCheckPageActivity : AppCompatActivity() {
     }
 
     private fun getCheckMySizeResponse() {
-        val getCheckMySizeResponse = networkService.getCheckMySizeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", 1)
+        val getCheckMySizeResponse = networkService.getCheckMySizeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", closet_idx)
         getCheckMySizeResponse.enqueue(object : Callback<GetCheckMySizeResponse> {
             override fun onFailure(call: Call<GetCheckMySizeResponse>, t: Throwable) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onResponse(call: Call<GetCheckMySizeResponse>, response: Response<GetCheckMySizeResponse>) {
-
 
                 val requestOptions = RequestOptions()
                 //        requestOptions.placeholder(R.drawable.기본적으로 띄울 이미지)
@@ -83,15 +77,6 @@ class SizeCheckPageActivity : AppCompatActivity() {
                             text_goods_name.setText(response.body()!!.data.name)
                             btn_activity_size_check_page_size.setText(response.body()!!.data.product_size)
 
-                            detailData = this@SizeCheckPageActivity.getDetailSizeData()
-
-                            var jsonString = detailData.measure.toString()
-                            var parser = JsonParser()
-                            var json = parser.parse(jsonString).asJsonObject
-
-                            for ((index, measure) in json.entrySet().withIndex()) {
-                                size.add(measure.key)
-                            }
 
                         }
                         400 -> {

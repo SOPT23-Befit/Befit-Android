@@ -46,7 +46,8 @@
         <activity android:name=".activity.SelectGenderActivity" />
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.CheckMyBrandPreferenceActivity" />
-        <activity android:name=".activity.SizeCheckPageActivity" />
+        <activity android:name=".activity.SizeCheckPageActivity" >
+        </activity>
         <activity android:name=".activity.CheckMyBrandPreferenceManActivity" />
         <activity android:name=".activity.MySizeInfoCategoryActivity">
 
