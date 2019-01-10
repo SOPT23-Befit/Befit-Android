@@ -21,9 +21,14 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
      var brand2 = "7"
     var cnt = 2
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_my_brand_preference_man)
+
+        ibtn_check_brand_man_back.isEnabled=false
+
 
         if(brand1=="17"||brand2=="17"){
             ibtn_check_brand_preference_man_thisisneverthat.setImageResource(R.drawable.man_select_thisisneverthat)
@@ -54,6 +59,7 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
             finish()
         }
 
+
         ibtn_check_brand_preference_man_thisisneverthat.setOnClickListener() {
 
             Log.v("aaaaaa",cnt.toString())
@@ -83,12 +89,15 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
                         brand1 = "17"
                         ibtn_check_brand_preference_man_thisisneverthat.setImageResource(R.drawable.man_select_thisisneverthat) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "17"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_thisisneverthat.setImageResource(R.drawable.man_select_thisisneverthat) // 선택
                     }
                 }
@@ -142,12 +151,16 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         brand1 = "9"
                         ibtn_check_brand_preference_man_Andersson_Bell.setImageResource(R.drawable.man_select_anderssonbell) //선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "9"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_Andersson_Bell.setImageResource(R.drawable.man_select_anderssonbell) //선택
                     }
                 }
@@ -200,12 +213,16 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         brand1 = "14"
                         ibtn_check_brand_preference_man_Critic.setImageResource(R.drawable.man_select_critic) //선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "14"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_Critic.setImageResource(R.drawable.man_select_critic) //선택
                     }
                 }
@@ -257,12 +274,16 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         brand1 = "18"
                         ibtn_check_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_select_istkunst) //선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "18"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_select_istkunst) //선택
                     }
                 }
@@ -312,12 +333,16 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
-                         brand1 = "7"
+                        ibtn_check_brand_man_back.isEnabled=true
+
+                        brand1 = "7"
                         ibtn_check_brand_preference_man_Covernat.setImageResource(R.drawable.man_select_covernat) //선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "7"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_Covernat.setImageResource(R.drawable.man_select_covernat) //선택
                     }
                 }
@@ -367,12 +392,16 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         brand1 = "22"
                         ibtn_check_brand_preference_man_Insilence.setImageResource(R.drawable.man_select_insilence) //선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "22"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_Insilence.setImageResource(R.drawable.man_select_insilence) //선택
                     }
                 }
@@ -421,12 +450,16 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         brand1 = "10"
                         ibtn_check_brand_preference_man_Liberteng.setImageResource(R.drawable.man_select_liberteng) //선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "10"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_Liberteng.setImageResource(R.drawable.man_select_liberteng) //선택
                     }
                 }
@@ -475,12 +508,16 @@ class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
                     if(brand1 == ""){
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         brand1 = "12"
                         ibtn_check_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_select_romanticcrown) //선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "12"
                         cnt++
+                        ibtn_check_brand_man_back.isEnabled=true
+
                         ibtn_check_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_select_romanticcrown) //선택
                     }
                 }
