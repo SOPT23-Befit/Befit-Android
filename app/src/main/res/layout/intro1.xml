@@ -32,7 +32,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/doyouwant"
+        android:src="@drawable/intro_1"
         android:layout_gravity="center"/>
     </LinearLayout>
 

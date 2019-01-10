@@ -12,9 +12,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
-import com.sopt.befit.activity.BrandMainActivity
-import com.sopt.befit.activity.CategoryActivity
-import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.adapter.*
 import com.sopt.befit.data.*
 
@@ -242,124 +239,6 @@ class HomeFragment : Fragment() {
 
 
 
-
-    //nav_list.setAdapter(Expandable(activity!!,header,body))
-
-
-
-//    nav_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-//
-//
-//
-//        tv_listview_title.setTextColor(Color.parseColor("#7a36e4"))
-//
-//
-//        Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
-//
-//
-//        var gpos = groupPosition
-//        var cpos = childPosition
-//
-//
-//
-//
-//           if(gpos==0&&cpos==0){
-//               startActivity<CategoryActivity>("idx" to 0)
-//           }
-//
-//        if(gpos==0&&cpos==1){
-//            startActivity<CategoryActivity>("idx" to 1)
-//        }
-//
-//        if(gpos==0&&cpos==2){
-//            startActivity<CategoryActivity>("idx" to 2)
-//        }
-//
-//        if(gpos==0&&cpos==3){
-//            startActivity<CategoryActivity>("idx" to 3)
-//        }
-//
-//        if(gpos==0&&cpos==4){
-//            startActivity<CategoryActivity>("idx" to 4)
-//        }
-//
-//        if(gpos==0&&cpos==5){
-//            startActivity<CategoryActivity>("idx" to 5)
-//        }
-//        if(gpos==0&&cpos==6){
-//            startActivity<CategoryActivity>("idx" to 6)
-//        }
-//
-//        if(gpos==0&&cpos==7){
-//            startActivity<CategoryActivity>("idx" to 7)
-//        }
-//        if(gpos==0&&cpos==8){
-//            startActivity<CategoryActivity>("idx" to 9)
-//        }
-//        if(gpos==0&&cpos==9){
-//            startActivity<CategoryActivity>("idx" to 10)
-//        }
-//        if(gpos==0&&cpos==10){
-//            startActivity<CategoryActivity>("idx" to 11)
-//        }
-//        if(gpos==0&&cpos==11){
-//            startActivity<CategoryActivity>("idx" to 12)
-//        }
-//        if(gpos==0&&cpos==12){
-//            startActivity<CategoryActivity>("idx" to 8)
-//        }
-//
-//        if(gpos==0&&cpos==13){
-//            startActivity<CategoryActivity>("idx" to 13)
-//        }
-//
-//
-//        if(gpos==1&&cpos==0){
-//            startActivity<CategoryActivity>("idx" to 0)
-//        }
-//
-//        if(gpos==1&&cpos==1){
-//            startActivity<CategoryActivity>("idx" to 1)
-//        }
-//        if(gpos==1&&cpos==2){
-//            startActivity<CategoryActivity>("idx" to 2)
-//        }
-//
-//
-//        if(gpos==1&&cpos==3){
-//            startActivity<CategoryActivity>("idx" to 3)
-//        }
-//
-//
-//        if(gpos==1&&cpos==4){
-//            startActivity<CategoryActivity>("idx" to 4)
-//        }
-//
-//        if(gpos==1&&cpos==5){
-//            startActivity<CategoryActivity>("idx" to 5)
-//        }
-//        if(gpos==1&&cpos==6){
-//            startActivity<CategoryActivity>("idx" to 6)
-//        }
-//        if(gpos==1&&cpos==7){
-//            startActivity<CategoryActivity>("idx" to 7)
-//        }
-//
-//        if(gpos==1&&cpos==8){
-//            startActivity<CategoryActivity>("idx" to 9)
-//        }
-//        if(gpos==1&&cpos==9){
-//            startActivity<CategoryActivity>("idx" to 10)
-//        }
-//        if(gpos==1&&cpos==10){
-//            startActivity<CategoryActivity>("idx" to 11)
-//        }
-//        if(gpos==1&&cpos==11){
-//            startActivity<CategoryActivity>("idx" to 12)
-//        }
-//        return@setOnChildClickListener false
-//
-//    }
     }
 
 
