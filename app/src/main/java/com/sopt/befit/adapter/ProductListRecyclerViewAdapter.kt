@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.sopt.befit.Adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.R.id.tv_brand_main_product_count
 import com.sopt.befit.R.id.tv_fragment_jjim_product_count

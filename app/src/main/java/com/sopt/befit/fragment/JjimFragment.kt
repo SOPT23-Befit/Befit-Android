@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.sopt.befit.Adapter.Utilities
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimPBFragmentStatePagerAdapter
 import kotlinx.android.synthetic.main.fragment_jjim.*

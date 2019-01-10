@@ -11,7 +11,6 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.sopt.befit.Adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.BrandData
@@ -19,7 +18,7 @@ import com.sopt.befit.data.BrandData
 class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<EachBrandRecyclerViewAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_one_text_img, parent, false)
+        val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_each_brand, parent, false)
         Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }

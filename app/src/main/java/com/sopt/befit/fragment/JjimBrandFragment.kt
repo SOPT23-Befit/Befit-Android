@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sopt.befit.Adapter.Utilities
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
 import com.sopt.befit.data.BrandData

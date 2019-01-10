@@ -1,6 +1,7 @@
 package com.sopt.befit.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,17 +13,14 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.sopt.befit.Adapter.Utilities
 import com.sopt.befit.R
-import com.sopt.befit.R.id.tv_my_size_add_edit
 import com.sopt.befit.activity.MySizeLookupActivity
-import com.sopt.befit.data.MySizeLookupData
+import com.sopt.befit.activity.SelectBrandGoodsWindowActivity
+import com.sopt.befit.activity.SizeCheckPageActivity
 import com.sopt.befit.get.ClosetDetail
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.DeleteClosetResponse
-import kotlinx.android.synthetic.main.activity_my_size_lookup.*
-import org.jetbrains.anko.image
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -77,9 +75,13 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
         holder.item_btn.setOnClickListener {
             if (flag == 0) {
                 if (holder.b_name.text != "") {
-                    Toast.makeText(ctx, "상세페이지로 넘어가기", Toast.LENGTH_SHORT).show();
+                    val intent: Intent = Intent(ctx, SizeCheckPageActivity::class.java)
+                    intent.putExtra("closet_idx", dataList[position].closet_idx)
+                    ctx.startActivity(intent)
                 } else {
-                    Toast.makeText(ctx, "나의 옷 정보 추가하기 창으로 넘어가기", Toast.LENGTH_SHORT).show();
+                    val intent: Intent = Intent(ctx, SelectBrandGoodsWindowActivity::class.java)
+                    intent.putExtra("category_idx", dataList[position].product_category_index)
+                    ctx.startActivity(intent)
                 }
             } else {
                 if (holder.b_name.text != "") {
@@ -87,7 +89,7 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
                     MySizeLookupActivity.instance.dataList.removeAt(position)
                     MySizeLookupActivity.instance.mySizeLookupRecyclerViewAdapter.notifyItemRemoved(position)
                 } else {
-                    Toast.makeText(ctx, "아무일도 안 일어나", Toast.LENGTH_SHORT).show();
+
                 }
             }
         }
