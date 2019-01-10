@@ -18,7 +18,10 @@ import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostBrandLikeResponse
 import com.sopt.befit.post.PostBrandUnlikeResponse
+import com.sopt.befit.post.PostProductLikeResponse
+import com.sopt.befit.post.PostProductUnlikeResponse
 import kotlinx.android.synthetic.main.activity_brand_main.*
+import kotlinx.android.synthetic.main.activity_brand_main.view.*
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,9 +34,9 @@ class BrandMainActivity : BaseActivity() {
     }
 
     var token: String = ""
-    lateinit var productData  : ProductData
+    lateinit var productData: ProductData
     var b_idx: Int = 0
-    var flag : Int = 0 //1 일때 상품 하나 레이아웃 띄우기
+    var flag: Int = 0 //1 일때 상품 하나 레이아웃 띄우기
 
     lateinit var brandProductListRecyclerViewAdapter: ProductListRecyclerViewAdapter
 
@@ -48,16 +51,15 @@ class BrandMainActivity : BaseActivity() {
         token = intent.getStringExtra("token")
         flag = intent.getIntExtra("flag", 0)
 
-        if(flag == 0){
+        if (flag == 0) {
             layout_brand_main_one_product.visibility = View.GONE
             b_idx = intent.getIntExtra("idx", 0)
-        }else{
+        } else {
             toast("프로덕트 하나")
             layout_brand_main_one_product.visibility = View.VISIBLE
-            //p_idx = intent.getExtra("idx", 0)
+            //productData = intent.getSerializableExtra("ProductData") as ProductData
+            //setOneProductView()
         }
-
-
 
         setViewClickListener()
 
@@ -72,6 +74,20 @@ class BrandMainActivity : BaseActivity() {
         }
          */
         getBrandNewProductListResponse()
+    }
+
+    private fun setOneProductView() {
+        tv_brand_main_p_b_name_kor.text = productData.name_korean
+        tv_brand_main_p_name.text = productData.name
+        tv_brand_main_b_price.text = productData.price
+
+        val requestOption = RequestOptions()
+
+        Glide.with(this@BrandMainActivity)
+                .setDefaultRequestOptions(requestOption)
+                .load(productData.image_url)
+                .thumbnail(0.5f)
+                .into(layout_brand_main_one_product.img_brand_main_p_image)
     }
 
     private fun setViewClickListener() {
@@ -98,7 +114,18 @@ class BrandMainActivity : BaseActivity() {
             }
         }
 
-        img_brand_main_back.setOnClickListener{
+        img_brand_main_b_heart.setOnClickListener {
+            if (productData.product_like == 1) {
+                //좋아요 상태면 싫어요를 한다
+                postBrandOneProductUnlikeResponse()
+                productData.product_like = 0
+            } else {
+                postBrandOneProductLikeResponse()
+                productData.product_like = 1
+            }
+        }
+
+        img_brand_main_back.setOnClickListener {
             finish()
         }
     }
@@ -161,10 +188,10 @@ class BrandMainActivity : BaseActivity() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    if(response.body()?.data!=null){
+                    if (response.body()?.data != null) {
                         val temp: ArrayList<ProductData> = response.body()!!.data
                         if (temp.size > 0) {
-                            tv_brand_main_product_count.text="PRODUCT ("+temp.size+")"
+                            tv_brand_main_product_count.text = "PRODUCT (" + temp.size + ")"
                             val position = brandProductListRecyclerViewAdapter.itemCount
                             brandProductListRecyclerViewAdapter.dataList.addAll(temp)
                             brandProductListRecyclerViewAdapter.notifyDataSetChanged()
@@ -184,7 +211,7 @@ class BrandMainActivity : BaseActivity() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    if(response.body()?.data!=null){
+                    if (response.body()?.data != null) {
                         val temp: ArrayList<ProductData> = response.body()!!.data
                         if (temp.size > 0) {
                             val position = brandProductListRecyclerViewAdapter.itemCount
@@ -222,6 +249,38 @@ class BrandMainActivity : BaseActivity() {
             }
 
             override fun onResponse(call: Call<PostBrandUnlikeResponse>, response: Response<PostBrandUnlikeResponse>) {
+                if (response.isSuccessful) {
+
+                }
+            }
+        })
+    }
+
+    private fun postBrandOneProductLikeResponse() {
+        val postBrandOneProductLikeResponse = networkService.postProductLikeResponse(token,
+                productData.idx)
+        postBrandOneProductLikeResponse.enqueue(object : Callback<PostProductLikeResponse> {
+            override fun onFailure(call: Call<PostProductLikeResponse>, t: Throwable) {
+                Log.e("brand one product like fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostProductLikeResponse>, response: Response<PostProductLikeResponse>) {
+                if (response.isSuccessful) {
+
+                }
+            }
+        })
+    }
+
+    private fun postBrandOneProductUnlikeResponse() {
+        val postBrandOneProductUnlikeResponse = networkService.postProductUnlikeResponse(token,
+                productData.idx)
+        postBrandOneProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
+            override fun onFailure(call: Call<PostProductUnlikeResponse>, t: Throwable) {
+                Log.e("jjim product like fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostProductUnlikeResponse>, response: Response<PostProductUnlikeResponse>) {
                 if (response.isSuccessful) {
 
                 }
