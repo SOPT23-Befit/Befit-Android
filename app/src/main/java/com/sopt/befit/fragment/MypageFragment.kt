@@ -1,6 +1,10 @@
 package com.sopt.befit.fragment
 
+
 import android.content.Intent
+
+import android.accounts.AccountAuthenticatorActivity
+
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -37,8 +41,10 @@ class MypageFragment :Fragment(){
     lateinit var brand2 : String
     val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
+    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
 
+    //val token = SharedPreferenceController.getAuthorization(activity!!)
 
 
 
@@ -73,22 +79,22 @@ class MypageFragment :Fragment(){
         brand2 = data.brand2_idx.toString()
         birth = data.birthday
 
-        cus.add("1:1 문의내역")
-        cus.add("상품 QnA 내역")
-        cus.add("공지사항")
-        cus.add("QnA")
-
-
-
-
-        header.add("고객센터")
-
-
-
-        body.add(cus)
-
-
-        elv_my_page_list.setAdapter(Expandable(activity!!,header,body))
+//        cus.add("1:1 문의내역")
+//        cus.add("상품 QnA 내역")
+//        cus.add("공지사항")
+//        cus.add("QnA")
+//
+//
+//
+//
+//        header.add("고객센터")
+//
+//
+//
+//        body.add(cus)
+//
+//
+//        elv_my_page_list.setAdapter(Expandable(activity!!,header,body))
 
         tv_mypage_fragment_preference.setOnClickListener(){
 
@@ -105,7 +111,7 @@ class MypageFragment :Fragment(){
         tv_mypage_fragment_size.setOnClickListener(){
             //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
 
-            //사이즈 확인하기로
+            startActivity<MySizeInfoCategoryActivity>()
         }
 
         tv_mypage_fragment_total.setOnClickListener(){
@@ -116,43 +122,47 @@ class MypageFragment :Fragment(){
             intent.putExtra("UserTotalData",temp)
             startActivity(intent)
 
-            //startActivity<MyPageTotalUserInfoManage>("UserTotalData" to temp, "token" to token)
 
+        }
+        iv_mypage_setting.setOnClickListener(){
+            startActivity<MyPageAccountSettingActivity>()
         }
 
 
-        elv_my_page_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-
-
-
-            Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
-
-
-
-
-            var gpos = groupPosition
-            var cpos = childPosition
-
-            Log.d("ssss","$gpos,$cpos")
-
-
-
-
-            if(gpos==0&&cpos==0)
-            {
-                toast("1:1 문의 내역")
-            }
-            return@setOnChildClickListener false
-
-
-        }
+//        elv_my_page_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+//
+//
+//
+//            Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
+//
+//
+//
+//
+//            var gpos = groupPosition
+//            var cpos = childPosition
+//
+//            Log.d("ssss","$gpos,$cpos")
+//
+//
+//
+//
+//            if(gpos==0&&cpos==0)
+//            {
+//                toast("1:1 문의 내역")
+//            }
+//            return@setOnChildClickListener false
+//
+//
+//        }
 
 
     }
     private fun getUserDataResponse(){
         Log.d("aaaaaaa","aaaaaa")
         networkService = ApplicationController.instance!!.networkService
+
         //val token = SharedPreferenceController.getAuthorization(activity!!)
+
         val getUserDataResponse = networkService.getUserDataResponse(token)
         getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
             override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) { Log.e("board list fail", t.toString())

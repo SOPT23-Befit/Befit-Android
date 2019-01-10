@@ -25,7 +25,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<ClosetDetail>) : RecyclerView.Adapter<MySizeLookupRecyclerViewAdapter.Holder>() {
+class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<ClosetDetail>, val c_idx : Int) : RecyclerView.Adapter<MySizeLookupRecyclerViewAdapter.Holder>() {
 
     //flag 0 추가하는 어뎁터 1 나의 옷 정보들 삭제하는 어뎁터
 
@@ -80,7 +80,7 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
                     ctx.startActivity(intent)
                 } else {
                     val intent: Intent = Intent(ctx, SelectBrandGoodsWindowActivity::class.java)
-                    intent.putExtra("category_idx", dataList[position].product_category_index)
+                    intent.putExtra("category_idx", c_idx)
                     ctx.startActivity(intent)
                 }
             } else {

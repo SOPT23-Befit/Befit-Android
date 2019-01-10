@@ -45,6 +45,8 @@ class BrandRankingFragment :Fragment(){
         setRecyclerView()
 
         getBrandRankingResponse()
+
+
     }
 
     private fun setRecyclerView() {

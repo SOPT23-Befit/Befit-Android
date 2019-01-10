@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 public class Utilities {
 
-    static Typeface mediumTypeface;
-    static Typeface lightTypeface;
-    static Typeface boldTypeface;
+    public static Typeface mediumTypeface;
+    public static Typeface lightTypeface;
+    public static Typeface boldTypeface;
 
     public static void setGlobalFont(View view, Context ctx) {
         AssetManager assetManager = ctx.getAssets();

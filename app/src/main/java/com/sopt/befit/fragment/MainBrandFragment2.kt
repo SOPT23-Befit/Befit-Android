@@ -57,15 +57,15 @@ class MainBrandFragment2: Fragment(){
 
         iv_main_brand_2_product_1.setOnClickListener(){
             flag=1
-            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+            startActivity<BrandMainActivity>("ProductData" to brandData.products[0],"flag" to flag,"token" to token)
         }
         iv_main_brand_2_product_2.setOnClickListener(){
             flag=1
-            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+            startActivity<BrandMainActivity>("ProductData" to brandData.products[1],"flag" to flag,"token" to token)
         }
         iv_main_brand_2_product_3.setOnClickListener(){
             flag=1
-            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+            startActivity<BrandMainActivity>("ProductData" to brandData.products[2],"flag" to flag,"token" to token)
         }
     }
 }
