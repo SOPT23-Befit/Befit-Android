@@ -2,7 +2,6 @@ package com.sopt.befit.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.KeyEvent
@@ -13,10 +12,10 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.adapter.SearchPBFragmentStatePagerAdapter
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
-import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.SearchProductData
 import com.sopt.befit.get.GetProductListResponse

@@ -1,12 +1,18 @@
 package com.sopt.befit.activity
 
 
+import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import android.webkit.*
+import com.airbnb.lottie.LottieAnimationView
 import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData
 import com.sopt.befit.data.ProductData
@@ -45,8 +51,9 @@ class ProductContentViewActivity : AppCompatActivity() {
     }
 
     //연결할 쇼핑몰 웹 url
-    private var url: String = "http://www.naver.com"
 
+    //intent로 바꿔주고 http 붙여주기
+    private var url: String = "http://www.naver.com"
     private var webView: WebView? = null
     private var webSetting: WebSettings? = null
     private var webChromeClient: WebChromeClient? = null
@@ -54,8 +61,8 @@ class ProductContentViewActivity : AppCompatActivity() {
     //상품 정보
     lateinit var productData : ProductData
 
-    //webview 초기화
-
+    //회원 가입시 전달할 데이터를 위한 핸들러
+    private var handler : Handler? = null
 
 
 
@@ -64,25 +71,44 @@ class ProductContentViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_content_view)
-
+        handler = Handler()
         instance = this
 
         webView = findViewById(R.id.wv_activity_product_content_view)
-
+        val animation : LottieAnimationView = findViewById(R.id.lottie_loading_web_view)
        webView!!.webViewClient = WebViewClient()
         webSetting = webView!!.settings
         webSetting!!.javaScriptEnabled = true
-
+        Log.v("onCreate","aaaaa")
         webView!!.webViewClient = object : WebViewClient(){
+
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                Log.v("webViewClient,shouldOverride","bbbbbb")
                 return false
+            }
+
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                Log.v("webViewonPagestarted","bbbbbb")
+                animation.visibility = View.VISIBLE
+                tv_anouncement.visibility = View.VISIBLE
+                tv_anouncement2.visibility = View.VISIBLE
+                tv_anouncement3.visibility = View.VISIBLE
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                animation.visibility =View.GONE
+                tv_anouncement.visibility = View.GONE
+                tv_anouncement2.visibility = View.GONE
+                tv_anouncement3.visibility = View.GONE
             }
 
         }
         webView!!.webChromeClient = object : WebChromeClient(){
-
-
-
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                super.onProgressChanged(view, newProgress)
+            }
         }
        webView!!.settings.builtInZoomControls = true
         webView!!.settings.setSupportZoom(true)
@@ -104,9 +130,24 @@ class ProductContentViewActivity : AppCompatActivity() {
 
     }
 
+        //쇼핑몰에서 회원가입시 유저 data 전달
+    fun webViewSignUpPostUserData(userTotalData: UserTotalData) {
+            var name = userTotalData.name
+            var email = userTotalData.email
+            var birth = userTotalData.birthday
+            var phone = userTotalData.phone
+            var postnum = userTotalData.post_number
+            var home_address = userTotalData.home_address
+            var detail_address = userTotalData.detail_address
+            fun postUserData() {
+                handler!!.post(object : Runnable {
+                    public override fun run() {
+                        name
 
-
-
+                    }
+                })
+            }
+        }
     fun getCurrentProductData() : ProductData{
         return productData
     }
