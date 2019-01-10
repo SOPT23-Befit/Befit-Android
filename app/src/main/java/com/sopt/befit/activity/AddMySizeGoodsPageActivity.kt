@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_add_my_size_goods_page.*
 import org.jetbrains.anko.toast
 import retrofit2.Callback
 
-class AddMySizeGoodsPageActivity : AppCompatActivity() {
+class AddMySizeGoodsPageActivity : BaseActivity() {
 
 
     var brand_idx: Int = 2

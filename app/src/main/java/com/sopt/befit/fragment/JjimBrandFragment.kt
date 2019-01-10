@@ -15,6 +15,7 @@ import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_brand.*
+import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,15 +50,18 @@ class JjimBrandFragment : Fragment() {
         setRecyclerView()
 
         getJjimBrandListResponse()
-    }
 
-    override fun onStart() {
-        super.onStart()
-        //getJjimBrandListResponse()
+        setViewClickListener()
+    }
+    private fun setViewClickListener(){
+        refresh_brand_main.setOnRefreshListener {
+            getJjimBrandListResponse()
+            refresh_brand_main.isRefreshing=false
+        }
     }
 
     private fun setRecyclerView() {
-        jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList)
+        jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList, token)
         rv_frag_brand_list.adapter = jjimBrandRecyclerViewAdapter
         rv_frag_brand_list.layoutManager = LinearLayoutManager(activity)
     }
@@ -71,15 +75,15 @@ class JjimBrandFragment : Fragment() {
 
             override fun onResponse(call: Call<GetBrandListResponse>, response: Response<GetBrandListResponse>) {
                 if (response.isSuccessful) {
+                    dataList.clear()
                     if (response.body()?.data != null) {
                         val temp: ArrayList<BrandData> = response.body()!!.data
                         if (temp.size > 0) {
                             tv_fragment_jjim_brand_count.text="찜한 브랜드 "+ temp.size.toString()
-                            val position = jjimBrandRecyclerViewAdapter.itemCount
                             jjimBrandRecyclerViewAdapter.dataList.addAll(temp)
-                            jjimBrandRecyclerViewAdapter.notifyItemInserted(position)
                         }
                     }
+                    jjimBrandRecyclerViewAdapter.notifyDataSetChanged()
                 }
             }
         })

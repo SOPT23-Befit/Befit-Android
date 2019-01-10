@@ -30,7 +30,7 @@ import retrofit2.Callback
 
 //import javax.security.auth.callback.Callback
 
-class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
 
 
     var brand_idx : Int = 0

@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
 import com.sopt.befit.activity.*
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetUserDataResponse
@@ -51,7 +52,9 @@ class MypageFragment :Fragment(){
     //   var birth = AAAAMainActivity.instance.usertotalData.birthday
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_mypage, container, false)
+        val eachBrandFragmentView: View = inflater!!.inflate(R.layout.fragment_mypage, container, false)
+        Utilities.setGlobalFont(eachBrandFragmentView, activity!!);
+        return eachBrandFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

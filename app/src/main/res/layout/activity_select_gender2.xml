@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:textStyle="bold"
+                android:tag="bold"
                 android:text="성별"
                 android:textSize="28sp"/>
 
@@ -84,7 +84,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="여성"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:tag="bold"
                 android:layout_marginTop="25dp"/>
 
 
@@ -113,7 +113,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="남성"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:tag="bold"
                 android:layout_marginTop="25dp"/>
 
 

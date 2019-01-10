@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_check_my_size_info.*
 import kotlinx.android.synthetic.main.fragment_ranking.*
 import org.jetbrains.anko.startActivity
 
-class CheckMySizeInfoActivity : AppCompatActivity() {
+class CheckMySizeInfoActivity : BaseActivity() {
     lateinit var mySizeInfoRecyclerViewAdapter: MySizeInfoRecyclerViewAdapter
 
 

@@ -30,12 +30,19 @@
             android:text="" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_frag_product_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_product_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tv_fragment_jjim_product_rl"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_frag_product_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_fragment_jjim_product_rl"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </RelativeLayout>

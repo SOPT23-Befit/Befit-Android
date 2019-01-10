@@ -9,7 +9,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
-class BrandPreferenceManActivity : AppCompatActivity() {
+class BrandPreferenceManActivity : BaseActivity() {
 
     var brand1 = ""
     var brand2 =""
