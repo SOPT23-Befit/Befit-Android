@@ -20,7 +20,6 @@ import org.jetbrains.anko.support.v4.startActivity
 class MainBrandFragment1: Fragment(){
 
 
-
     lateinit var brandData : BrandRecommendData
     var flag : Int = 1//0일때 브랜드 클릭시
     //1일때는 하위상품 클릭시

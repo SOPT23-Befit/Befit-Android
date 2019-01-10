@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.adapter.BrandGoodsRecyclerViewAdapter
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetBrandResponse
 import com.sopt.befit.get.GetProductListResponse
@@ -18,6 +19,7 @@ import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostBrandLikeResponse
 import com.sopt.befit.post.PostBrandUnlikeResponse
 import kotlinx.android.synthetic.main.activity_brand_main.*
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,8 +31,9 @@ class BrandMainActivity : BaseActivity() {
     }
 
     var token: String = ""
+    lateinit var productData  : ProductData
     var b_idx: Int = 0
-    var flag : Int = 0 // 0 이면 특정 상품 클릭 시 1 이면 브랜드 클릭시
+    var flag : Int = 0 //1 일때 상품 하나 레이아웃 띄우기
 
     lateinit var brandProductListRecyclerViewAdapter: ProductListRecyclerViewAdapter
 
@@ -42,12 +45,19 @@ class BrandMainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_brand_main)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
-        b_idx = intent.getIntExtra("idx", 0)
+        token = intent.getStringExtra("token")
+        flag = intent.getIntExtra("flag", 0)
 
-        if(flag == 1){
+        if(flag == 0){
             layout_brand_main_one_product.visibility = View.GONE
+            b_idx = intent.getIntExtra("idx", 0)
+        }else{
+            toast("프로덕트 하나")
+            layout_brand_main_one_product.visibility = View.VISIBLE
+            //p_idx = intent.getExtra("idx", 0)
         }
+
+
 
         setViewClickListener()
 
@@ -56,11 +66,11 @@ class BrandMainActivity : BaseActivity() {
         getBrandResponse()
 
         /*
+
         refresh_brand_main_act.setOnRefresh {
             toast("새로 고침!")
         }
          */
-
         getBrandNewProductListResponse()
     }
 
@@ -70,6 +80,8 @@ class BrandMainActivity : BaseActivity() {
             if (tv_brand_main_popular.isChecked) {
                 tv_brand_main_popular.setChecked(false)
                 tv_brand_main_new.setChecked(true)
+                tv_brand_main_new.setTypeface(Utilities.boldTypeface);
+                tv_brand_main_popular.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getBrandNewProductListResponse()
             }
@@ -79,6 +91,8 @@ class BrandMainActivity : BaseActivity() {
             if (tv_brand_main_new.isChecked) {
                 tv_brand_main_new.setChecked(false)
                 tv_brand_main_popular.setChecked(true)
+                tv_brand_main_popular.setTypeface(Utilities.boldTypeface);
+                tv_brand_main_new.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getBrandPopularProductListResponse()
             }
@@ -182,7 +196,6 @@ class BrandMainActivity : BaseActivity() {
             }
         })
     }
-
 
     private fun postBrandLikeResponse() {
         val postBrandLikeResponse = networkService.postBrandLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",

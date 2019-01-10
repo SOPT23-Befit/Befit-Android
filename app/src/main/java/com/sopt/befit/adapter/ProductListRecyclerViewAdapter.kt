@@ -1,6 +1,7 @@
 package com.sopt.befit.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,9 +11,8 @@ import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
-import com.sopt.befit.R.id.tv_brand_main_product_count
-import com.sopt.befit.R.id.tv_fragment_jjim_product_count
 import com.sopt.befit.activity.BrandMainActivity
+import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -51,12 +51,6 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
             holder.heart.setChecked(true)
         }
 
-        if(ctx is BrandMainActivity) {
-            //holder.count.text = "PRODUCT (" + getItemCount() + ")"
-        }else{
-
-        }
-
         val requestOptions = RequestOptions()
 
         Glide.with(ctx)
@@ -66,7 +60,9 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 .into(holder.main)
 
         holder.item_btn.setOnClickListener {
-            Toast.makeText(ctx, "상세 상품 정보로 넘어가기", Toast.LENGTH_SHORT).show();
+            val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
+            intent.putExtra("idx", dataList[position].idx)
+            ctx.startActivity(intent)
         }
 
         holder.heart.setOnClickListener {
@@ -87,8 +83,8 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
 
         val heart: ToggleButton = itemView.findViewById(R.id.img_rv_item_each_product_heart) as ToggleButton
 
-        val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_b_name) as TextView
-        val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_p_name) as TextView
+        val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_p_name) as TextView
+        val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_b_name) as TextView
         val p_price: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_p_price) as TextView
 
         val item_btn: RelativeLayout = itemView.findViewById(R.id.btn_rv_item_each_product) as RelativeLayout

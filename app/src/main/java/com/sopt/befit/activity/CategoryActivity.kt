@@ -37,6 +37,8 @@ class CategoryActivity : BaseActivity() {
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
+        c_idx = intent.getIntExtra("idx", 0)
+
         setView()
 
         setRecyclerView()
@@ -52,7 +54,7 @@ class CategoryActivity : BaseActivity() {
 
     private fun setViewClickListener() {
         tv_category_new.setOnClickListener {
-            if(tv_category_popular.isChecked){
+            if (tv_category_popular.isChecked) {
                 tv_category_popular.setChecked(false)
                 tv_category_new.setChecked(true)
                 dataList.clear()
@@ -60,7 +62,7 @@ class CategoryActivity : BaseActivity() {
             }
         }
         tv_category_popular.setOnClickListener {
-            if(tv_category_new.isChecked){
+            if (tv_category_new.isChecked) {
                 tv_category_new.setChecked(false)
                 tv_category_popular.setChecked(true)
                 dataList.clear()
@@ -84,11 +86,13 @@ class CategoryActivity : BaseActivity() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    val temp: ArrayList<ProductData> = response.body()!!.data
-                    if (temp.size > 0) {
-                        val position = productListRecyclerViewAdapter.itemCount
-                        productListRecyclerViewAdapter.dataList.addAll(temp)
-                        productListRecyclerViewAdapter.notifyDataSetChanged()
+                    if (response.body()?.data != null) {
+                        val temp: ArrayList<ProductData> = response.body()!!.data
+                        if (temp.size > 0) {
+                            val position = productListRecyclerViewAdapter.itemCount
+                            productListRecyclerViewAdapter.dataList.addAll(temp)
+                            productListRecyclerViewAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }
@@ -104,11 +108,13 @@ class CategoryActivity : BaseActivity() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
-                    val temp: ArrayList<ProductData> = response.body()!!.data
-                    if (temp.size > 0) {
-                        val position = productListRecyclerViewAdapter.itemCount
-                        productListRecyclerViewAdapter.dataList.addAll(temp)
-                        productListRecyclerViewAdapter.notifyDataSetChanged()
+                    if (response.body()?.data != null) {
+                        val temp: ArrayList<ProductData> = response.body()!!.data
+                        if (temp.size > 0) {
+                            val position = productListRecyclerViewAdapter.itemCount
+                            productListRecyclerViewAdapter.dataList.addAll(temp)
+                            productListRecyclerViewAdapter.notifyDataSetChanged()
+                        }
                     }
                 }
             }
