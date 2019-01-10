@@ -42,9 +42,6 @@ class MypageFragment :Fragment(){
     lateinit var brand2 : String
     val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
-
-
-
     //val token = SharedPreferenceController.getAuthorization(activity!!)
 
 
