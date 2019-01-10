@@ -17,6 +17,7 @@ import com.sopt.befit.R
 import com.sopt.befit.get.*
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
+import kotlinx.android.synthetic.main.activity_add_my_size.*
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
 import okhttp3.Response
 import org.jetbrains.anko.ctx
@@ -130,6 +131,8 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
         btn_selected_brand.setOnClickListener {
             val intent : Intent = Intent(this, AddMySizeBrandPageActivity::class. java)
             startActivityForResult(intent,REQUEST_BRAND_ACTIVITY)
+            activity_my_size_add.visibility=View.GONE
+            activity_add_my_size_goods_name.setText(" ")
         }
     }
 
