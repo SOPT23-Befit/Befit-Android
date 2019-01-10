@@ -73,14 +73,8 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
 
         holder.item_btn.setOnClickListener {
 
-            getUserDataResponse()
-            val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
-            intent.putExtra("idx", dataList[position].idx)
-            intent.putExtra("link", dataList[position].link)
-            intent.putExtra("token", token)
-            intent.putExtra("UserTotalData",temp)
+            getUserDataResponse(position)
 
-            ctx.startActivity(intent)
         }
 
     }
@@ -93,7 +87,7 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
         val item_btn: ConstraintLayout = itemView.findViewById(R.id.btn_rv_item_each_product) as ConstraintLayout
     }
 
-    private fun getUserDataResponse(){
+    private fun getUserDataResponse(position: Int){
         Log.d("aaaaaaa","aaaaaa")
         //val token = SharedPreferenceController.getAuthorization(activity!!)
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
@@ -108,7 +102,13 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                             Log.v("success", response.message().toString())
                             temp  = response.body()!!.data
 
+                            val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
+                            intent.putExtra("idx", dataList[position].idx)
+                            intent.putExtra("link", dataList[position].link)
+                            intent.putExtra("token", token)
+                            intent.putExtra("UserTotalData",temp)
 
+                            ctx.startActivity(intent)
 
                         }
 
