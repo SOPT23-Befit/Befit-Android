@@ -79,7 +79,7 @@ class MySizeLookupActivity : BaseActivity() {
     }
 
     private fun setRecyclerView() {
-        mySizeLookupRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList)
+        mySizeLookupRecyclerViewAdapter = MySizeLookupRecyclerViewAdapter(this, dataList, category_idx)
         rv_my_size_lookup.adapter = mySizeLookupRecyclerViewAdapter
         rv_my_size_lookup.layoutManager = GridLayoutManager(this, 2)
     }

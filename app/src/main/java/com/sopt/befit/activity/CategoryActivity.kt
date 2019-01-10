@@ -38,7 +38,7 @@ class CategoryActivity : BaseActivity() {
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
-        c_idx = intent.getIntExtra("idx", 0)
+        c_idx = intent.getIntExtra("category_idx", 0)
 
         setView()
 

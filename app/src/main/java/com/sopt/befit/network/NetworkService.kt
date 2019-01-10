@@ -63,12 +63,14 @@ interface NetworkService {
             @Header("Authorization") token : String
     ) : Call<GetUserDataResponse>
 
+    //사이즈 추가할 때 브랜드 검색
     @GET("/brands")
     fun getBrandsByInitialResponse(
             @Header("Authorization") authorization: String,
             @Query("initial") initial : Char
     ) : Call<GetInitialBrandResponse>
 
+    //사이즈 추가할 때 브랜드 상품 검색
     @GET("/closet/brands/{brand_idx}/category/{category_idx}")
     fun getGoodsByInitialResponse(
             @Header("Authorization") authorization: String,

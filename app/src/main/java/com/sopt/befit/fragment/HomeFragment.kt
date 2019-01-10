@@ -12,9 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.sopt.befit.R
 import com.sopt.befit.activity.AAAAMainActivity
-import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.activity.CategoryActivity
-import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.adapter.*
 import com.sopt.befit.data.*
 
@@ -76,10 +74,101 @@ class HomeFragment : Fragment() {
 
         getMyReccomendProduct()
 
-        ibtn_menu_open.setOnClickListener() {
-            ibtn_menu_open.visibility = View.INVISIBLE
-            tv_aaa_main_befit.visibility = View.INVISIBLE
-            category_menu.visibility = View.VISIBLE
+
+
+        tv_main_category_man_outer.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 0)
+        }
+        tv_main_category_man_jacket.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 1)
+        }
+        tv_main_category_man_coat.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 2)
+        }
+        tv_main_category_man_shirts.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 3)
+        }
+        tv_main_category_man_knits.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 4)
+        }
+        tv_main_category_man_hoody.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 5)
+        }
+        tv_main_category_man_seat_shirts.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 6)
+        }
+        tv_main_category_man_t_shirts.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 7)
+        }
+        tv_main_category_man_jeans.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 9)
+        }
+        tv_main_category_man_pants.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 10)
+        }
+        tv_main_category_man_slacks.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 11)
+        }
+        tv_main_category_man_short_pants.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 12)
+        }
+
+        tv_main_category_woman_outer.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 0)
+        }
+        tv_main_category_woman_jacket.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 1)
+        }
+        tv_main_category_woman_coat.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 2)
+        }
+        tv_main_category_woman_shirts.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 3)
+        }
+        tv_main_category_woman_knits.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 4)
+        }
+        tv_main_category_woman_hoody.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 5)
+        }
+
+        tv_main_category_woman_sweat_shirts.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 6)
+        }
+        tv_main_category_woman_t_shirts.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 7)
+        }
+        tv_main_category_woman_onepiece.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 8)
+        }
+        tv_main_category_woman_Jean.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 9)
+        }
+        tv_main_category_woman_pants.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 10)
+        }
+        tv_main_category_woman_slacks.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 11)
+        }
+        tv_main_category_woman_short_pants.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 12)
+        }
+        tv_main_category_woman_skirts.setOnClickListener(){
+            startActivity<CategoryActivity>("category_idx" to 14)
+        }
+
+
+
+
+
+
+
+
+        ibtn_menu_open.setOnClickListener(){
+            ibtn_menu_open.visibility=View.INVISIBLE
+            tv_aaa_main_befit.visibility=View.INVISIBLE
+            category_menu.visibility=View.VISIBLE
+
             //lo_aaa_main_home_brand_rec.visibility = View.GONE
             //lo_aaa_main_banner.visibility=View.GONE
             //lo_aaa_main_my_racommend_item.visibility=View.GONE
@@ -216,6 +305,7 @@ class HomeFragment : Fragment() {
         body.add(women)
         body.add(men)
 
+
 //        nav_list.setAdapter(Expandable(activity!!, header, body))
 //
 //
@@ -324,6 +414,7 @@ class HomeFragment : Fragment() {
 //            return@setOnChildClickListener false
 //
 //        }
+
     }
 
     private fun setRecyclerView() {

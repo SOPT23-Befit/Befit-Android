@@ -1,5 +1,6 @@
 package com.sopt.befit.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat.startActivity
@@ -25,13 +26,17 @@ import com.sopt.befit.data.BrandData
 import com.sopt.befit.get.InitialBrand
 import com.sopt.befit.get.InitialGoods
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
+import org.jetbrains.anko.ctx
 import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class GoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<InitialGoods>) : RecyclerView.Adapter<GoodsRecyclerViewAdapter.Holder>() {
 
     var category_idx : Int = 0
+    val brand_idx : Int = 0
 
+    val GOODS_INITAIL_REQUEST_CODE = 1000
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_brand_data, parent, false)
@@ -47,27 +52,22 @@ class GoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Initial
 
         holder.brandbtn.setOnClickListener {
             if (ctx is AddMySizeGoodsPageActivity) {
-                val intent: Intent = Intent(ctx, AddMySizeGoodsPageActivity::class.java)
-                intent.putExtra("name", dataList[position].idx)                         //상품명 보내기.
-                val requestOptions = RequestOptions()
-                //        requestOptions.placeholder(R.drawable.기본적으로 띄울 이미지)
-                //        requestOptions.error(R.drawable.에러시 띄울 이미지)
-                //        requestOptions.override(150)
 
-                Glide.with(ctx)
-                        .setDefaultRequestOptions(requestOptions)
-                        .load(dataList[position].image_url)
-                        .thumbnail(0.5f)
-                        .into(ctx.findViewById(img_my_size_add_p_img))
-                //ctx.startActivity(intent)
+                val intent: Intent = Intent(ctx, SelectBrandGoodsWindowActivity::class.java)
+                intent.putExtra("idx", dataList[position].idx)                         //상품idx 보내기.
+                intent.putExtra("name",dataList[position].name)                        //상품이름 보내기.
+                intent.putExtra("image_url",dataList[position].image_url)              //상품이미지 보내기.
 
-                val brand_Idx=ctx.intent.getIntExtra("brand_idx",1)
-                val category_Idx= ctx.intent.getIntExtra("catefory_idx",1)
+
 
                 SelectBrandGoodsWindowActivity.brandgoodsinstance.goodsBoxVisibleController(dataList.get(position).name)
 
-                ctx.getgoodsInitial(brand_Idx, category_Idx)
+                ctx.setResult(Activity.RESULT_OK,intent)
                 ctx.finish()
+
+//
+//                ctx.getgoodsInitial()
+//                ctx.finish()
 
 
             }

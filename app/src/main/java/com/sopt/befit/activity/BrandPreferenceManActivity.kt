@@ -11,7 +11,6 @@ import org.jetbrains.anko.toast
 
 class BrandPreferenceManActivity : BaseActivity() {
 
-    var preferenceCnt = 0
     var brand1 = ""
     var brand2 =""
     //IST KUNST	18
@@ -30,7 +29,6 @@ class BrandPreferenceManActivity : BaseActivity() {
         setContentView(R.layout.activity_brand_preference_man)
         ibtn_brand_prefer_next.isClickable = false
         var gender : String = intent.getStringExtra("gender")
-
 
         ibtn_activity_brand_preference_man_thisisneverthat.setOnClickListener() {
 

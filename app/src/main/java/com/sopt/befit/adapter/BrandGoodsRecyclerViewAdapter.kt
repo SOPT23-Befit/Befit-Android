@@ -1,5 +1,6 @@
 package com.sopt.befit.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat.startActivity
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.R.id.*
+import com.sopt.befit.R.layout.activity_select_brand_goods_window
 
 import com.sopt.befit.activity.AddMySizeBrandPageActivity
 import com.sopt.befit.activity.AddMySizeGoodsPageActivity
@@ -27,6 +29,7 @@ import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
 import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.toast
 
 class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<InitialBrand>) : RecyclerView.Adapter<BrandGoodsRecyclerViewAdapter.Holder>() {
 
@@ -50,12 +53,11 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<In
 
             if(ctx is AddMySizeBrandPageActivity){
                 SelectBrandGoodsWindowActivity.brandgoodsinstance.brandBoxVisibleController(dataList.get(position).name_english)
-                val intent: Intent = Intent(ctx, AddMySizeBrandPageActivity::class.java)                //brand_idx값 넘기기.
-                intent.putExtra("brand_idx", dataList[position].idx)
-                //ctx.startActivity(intent)
+                val intent: Intent = Intent(ctx, SelectBrandGoodsWindowActivity::class.java)
+                intent.putExtra("brand_idx", dataList[position].idx)                         //brand_idx값 넘기기.
+                intent.putExtra("name_korean",dataList[position].name_korean)               //name_korean값 넘기기
+                ctx.setResult(Activity.RESULT_OK,intent)
                 ctx.finish()
-
-
             }
         }
 

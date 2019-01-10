@@ -13,11 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
-        android:usesCleartextTraffic="true"
-        >
-        <activity android:name=".activity.AAAAMainActivity"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.AAAAMainActivity"
             android:windowSoftInputMode="adjustPan">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,10 +28,11 @@
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
         <activity android:name=".activity.BrandMainActivity" />
         <activity android:name=".activity.BrandPreferenceWomanActivity" />
-        <activity android:name=".activity.BrandPreferenceManActivity" />
+        <activity android:name=".activity.BrandPreferenceManActivity" >
+
+        </activity>
         <activity android:name=".activity.CategoryActivity" />
         <activity android:name=".activity.InputInfo" />
-
         <activity android:name=".activity.KakaoAddressActivity" />
         <activity android:name=".activity.LogInActivity" />
         <activity android:name=".activity.MainActivity" />
@@ -39,7 +40,6 @@
         <activity android:name=".activity.MyPageTotalUserInfoManage" />
         <activity android:name=".activity.MySizeLookupActivity" />
         <activity android:name=".activity.ProductContentViewActivity" />
-
         <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".activity.SearchPasswordActivity" />
         <activity android:name=".activity.SelectBrandActivity" />
@@ -47,21 +47,14 @@
         <activity android:name=".activity.SelectGenderActivity" />
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.CheckMyBrandPreferenceActivity" />
-
         <activity android:name=".activity.SizeCheckPageActivity" />
-
-        <activity android:name=".activity.CheckMyBrandPreferenceManActivity" />
         <activity android:name=".activity.MySizeInfoCategoryActivity" >
 
+      
         </activity>
-        <activity
-            android:name=".activity.IntroActivity">
-
-        </activity>
-
-
-
-
+        <activity android:name=".activity.MySizeInfoCategoryActivity" />
+        <activity android:name=".activity.IntroActivity"></activity>
+        <activity android:name=".activity.SplashActivity"></activity>
     </application>
 
 </manifest>

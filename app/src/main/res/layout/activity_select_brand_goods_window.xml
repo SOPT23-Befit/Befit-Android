@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp">
         <ImageView
+            android:id="@+id/btn_activity_select_brand_goods_window_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -62,6 +63,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:textSize="16sp"
+            android:maxLength="20"
             android:textColor="#7a36e4"
             android:layout_marginRight="32dp"/>
         <ImageView
@@ -100,6 +102,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="32dp"
             android:textColor="#7a36e4"
+            android:maxLength="20"
             android:textSize="16sp" />
 
         <ImageView
@@ -131,13 +134,26 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp">
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center">
 
             <TextView
+                android:id="@+id/tv_select_brand_goods_window_brandname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+
+                android:text="유니클로"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_select_brand_goods_window_goodsname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_select_brand_goods_window_brandname"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:text="조던 스포츠웨어 에어 티"
                 android:textColor="#000000"
@@ -157,7 +173,9 @@
                 android:text="사이즈 선택"
                 android:textColor="#000000"
                 android:textSize="16sp"
+                     
                 android:tag="bold"/>
+          
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -168,6 +186,7 @@
                 android:layout_alignTop="@+id/tv_my_size_add_select"
                 android:layout_marginLeft="79dp"
                 android:textSize="12sp"/>
+
 
             <Spinner
                 android:id="@+id/sp_my_size_add_select_size"
@@ -182,6 +201,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/activity_select_brand_goods_window_size"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
@@ -196,7 +216,6 @@
                     android:background="#f9fafb">
                     <TableRow
                         android:layout_weight="1"
-                        android:background="#f9fafb"
                         android:orientation="horizontal">
 
                         <TextView
@@ -326,7 +345,6 @@
                 android:layout_height="1dp"
                 android:layout_below="@+id/line2"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="72dp"
                 android:background="#dcdcdc"></RelativeLayout>
         </RelativeLayout>
     </LinearLayout>

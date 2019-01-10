@@ -39,8 +39,8 @@
     <RelativeLayout
         android:layout_width="328dp"
         android:layout_height="32dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         android:background="@drawable/roundingbox">
         <ImageView
             android:id="@+id/search_for_goods"
@@ -54,7 +54,6 @@
             android:id="@+id/et_add_my_size_act_search_goods"
             android:layout_width="328dp"
             android:layout_height="32dp"
-            android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/search_for_goods"
             android:layout_centerVertical="true"
             android:background="@null"
