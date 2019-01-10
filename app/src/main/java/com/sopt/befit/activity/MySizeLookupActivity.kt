@@ -71,6 +71,10 @@ class MySizeLookupActivity : BaseActivity() {
             }
             mySizeLookupRecyclerViewAdapter.notifyDataSetChanged()
         }
+
+        img_my_size_lookup_back.setOnClickListener{
+            finish()
+        }
     }
 
     private fun setRecyclerView() {

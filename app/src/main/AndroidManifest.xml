@@ -37,6 +37,7 @@
 
         </activity>
         <activity android:name=".activity.ProductContentViewActivity">
+
         </activity>
         <activity android:name=".activity.ResetPasswordActivity" />
         <activity android:name=".activity.SearchPasswordActivity"></activity>

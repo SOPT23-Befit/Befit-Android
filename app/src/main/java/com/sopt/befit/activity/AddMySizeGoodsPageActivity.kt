@@ -26,8 +26,6 @@ import retrofit2.Callback
 
 class AddMySizeGoodsPageActivity : AppCompatActivity() {
 
-
-
     val GOODS_INITAIL_REQUEST_CODE = 2000
     lateinit var GoodsRecyclerViewAdapter: GoodsRecyclerViewAdapter
     val dataList: ArrayList<InitialGoods> by lazy {
@@ -55,7 +53,6 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         setBtnClickListener()
         setRecyclerView()
         instance = this
-
 
     }
 
