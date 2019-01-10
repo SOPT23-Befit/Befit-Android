@@ -104,7 +104,8 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
 
                             val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
                             intent.putExtra("idx", dataList[position].idx)
-                            intent.putExtra("link", dataList[position].link)
+                            intent.putExtra("url", dataList[position].link)
+                            intent.putExtra("name_english", dataList[position].name_english)
                             intent.putExtra("token", token)
                             intent.putExtra("UserTotalData",temp)
 
