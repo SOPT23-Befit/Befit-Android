@@ -85,7 +85,8 @@ class CompareSizeFragment1 : Fragment() {
 
                 }
             })
-        }else{}
+        } else {
+        }
     }
 
 
