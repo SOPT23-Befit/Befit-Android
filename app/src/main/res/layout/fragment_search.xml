@@ -50,8 +50,9 @@
         <TextView
             android:id="@+id/tv_search_product_cancle"
             android:layout_width="49dp"
-            android:layout_height="match_parent"
+            android:layout_height="32dp"
             android:layout_marginLeft="4dp"
+            android:layout_marginRight="7dp"
             android:gravity="center"
             android:lineSpacingExtra="2sp"
             android:text="취소"
