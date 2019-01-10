@@ -30,7 +30,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ProductContentViewActivity : AppCompatActivity() {
+class ProductContentViewActivity : BaseActivity() {
 
     val MY_CLOSET_LIST_REQUEST_CODE = 1000
 
@@ -80,7 +80,9 @@ class ProductContentViewActivity : AppCompatActivity() {
         webSetting = webView!!.settings
         webSetting!!.javaScriptEnabled = true
         Log.v("onCreate","aaaaa")
+        
         webView!!.webViewClient = object : WebViewClient(){
+
 
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 Log.v("webViewClient,shouldOverride","bbbbbb")

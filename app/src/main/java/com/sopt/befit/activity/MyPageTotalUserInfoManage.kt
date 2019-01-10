@@ -29,7 +29,7 @@ import retrofit2.Response
 import java.util.regex.Pattern
 
 
-class MyPageTotalUserInfoManage : AppCompatActivity() {
+class MyPageTotalUserInfoManage : BaseActivity() {
     lateinit var postnum : String
     lateinit var sub_postnum: String
     lateinit var home_address : String
