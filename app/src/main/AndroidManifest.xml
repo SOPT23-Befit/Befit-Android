@@ -51,7 +51,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MySizeInfoCategoryActivity" />
+
         <activity android:name=".activity.IntroActivity">
+
+
 
         </activity>
         <activity android:name=".activity.SplashActivity"></activity>

@@ -44,7 +44,6 @@ class SizeCheckPageActivity : AppCompatActivity() {
 
     fun btnBackOnClick() {
         btn_activity_size_check_page_back.setOnClickListener {
-            startActivity<MySizeLookupActivity>()
             finish()
         }
     }
