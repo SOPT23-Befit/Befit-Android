@@ -132,17 +132,19 @@ interface NetworkService {
     ): Call<GetProductListResponse>
 
     //상품 전체 카테고리 최신순 조회
-    @GET("/products/new/category/{category_idx}")
+    @GET("/products/new/category/{category_idx}?gender={gender}")
     fun getCategoryNewProductListResponse(
             @Header("Authorization") authorization: String,
-            @Path("category_idx") category_idx: Int
+            @Path("category_idx") category_idx: Int,
+            @Query("gender") gender : String
     ): Call<GetProductListResponse>
 
     //상품 전체 카테고리 최신순 조회
-    @GET("/products/popular/category/{category_idx}")
+    @GET("/products/popular/category/{category_idx}?gender={gender}")
     fun getCategoryPopularProductListResponse(
             @Header("Authorization") authorization: String,
-            @Path("category_idx") category_idx: Int
+            @Path("category_idx") category_idx: Int,
+            @Query("gender") gender : String
     ): Call<GetProductListResponse>
 
     //상품 전체 브랜드 최신순 조회
@@ -198,7 +200,7 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Path("product_idx") brand_idx: Int
     ): Call<GetEachProductResponse>
-  
+
     //상품 사이즈 비교
     @GET("/closet/{closet_idx}/compare/{product_idx}") //?product_size={product_size}
     fun getCompareSizeResponse(
@@ -222,7 +224,7 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Path("closet_idx") closet_idx: Int
     ): Call<DeleteClosetResponse>
-    
+
     @GET("/brands/preference")
     fun getBrandRankingResponse(
             @Header("Authorization") token : String

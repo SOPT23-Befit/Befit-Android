@@ -34,13 +34,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
         return Holder(view)
     }
 
-    override fun getItemCount(): Int {
-        if (dataList != null) {
-            return dataList.size
-        } else {
-            return 0
-        }
-    }
+    override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.b_name.text = dataList[position].name_korean
@@ -61,7 +55,8 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
 
         holder.item_btn.setOnClickListener {
             val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
-            intent.putExtra("idx", dataList[position].idx)
+            intent.putExtra("brand_idx ", dataList[position].brand_idx)
+            intent.putExtra("link", dataList[position].link)
             ctx.startActivity(intent)
         }
 

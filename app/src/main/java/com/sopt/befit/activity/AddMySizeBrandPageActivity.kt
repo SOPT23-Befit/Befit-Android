@@ -23,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.http.Header
 import retrofit2.http.Path
 
-class AddMySizeBrandPageActivity : AppCompatActivity() {
+class AddMySizeBrandPageActivity : BaseActivity() {
 
 
     var brand_name: String? = null

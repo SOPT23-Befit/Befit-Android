@@ -13,7 +13,7 @@ import android.widget.TextView
 import com.sopt.befit.R
 import kotlinx.android.synthetic.main.activity_kakao_address.*
 
-class KakaoAddressActivity : AppCompatActivity() {
+class KakaoAddressActivity : BaseActivity() {
 
 
     private var webView: WebView? = null

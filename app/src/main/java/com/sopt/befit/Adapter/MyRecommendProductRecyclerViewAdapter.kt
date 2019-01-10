@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.R
 import com.sopt.befit.activity.BrandMainActivity
-import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.get.GetUserDataResponse
@@ -40,6 +39,7 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_home_fragment_rec_product, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 
@@ -72,9 +72,12 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                 .into(holder.main)
 
         holder.item_btn.setOnClickListener {
+            val intent: Intent = Intent(ctx, BrandMainActivity::class.java)
+            intent.putExtra("idx", dataList[position].idx)
+            intent.putExtra("token", token)
+            ctx.startActivity(intent)
 
             getUserDataResponse(position)
-
         }
 
     }
@@ -84,6 +87,7 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
 
         val b_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_b_name) as TextView
         val p_name: TextView = itemView.findViewById(R.id.tv_rv_item_each_product_p_name) as TextView
+
         val item_btn: ConstraintLayout = itemView.findViewById(R.id.btn_rv_item_each_product) as ConstraintLayout
     }
 
@@ -135,5 +139,6 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                     }
                 }
             } })
+
     }
 }

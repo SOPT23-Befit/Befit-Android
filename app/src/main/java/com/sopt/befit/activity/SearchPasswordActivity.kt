@@ -29,7 +29,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class SearchPasswordActivity : AppCompatActivity() {
+class SearchPasswordActivity : BaseActivity() {
         lateinit var ForPwuserData : ForPwUserData
         lateinit var networkservice : NetworkService
 

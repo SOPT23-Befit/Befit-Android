@@ -15,6 +15,7 @@ class Intro2Fragment : Fragment() {
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val brandFragmentView: View = inflater!!.inflate(R.layout.intro2, container, false)
+            Utilities.setGlobalFont(brandFragmentView, activity!!);
             return brandFragmentView
         }
 

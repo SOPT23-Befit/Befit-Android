@@ -37,6 +37,7 @@ class BrandGoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<In
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_brand_data, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 

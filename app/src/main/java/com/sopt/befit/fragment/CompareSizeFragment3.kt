@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.sopt.befit.adapter.CompareSizeAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.get.GetCompareSizeResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -36,6 +37,7 @@ class CompareSizeFragment3 : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size,container,false)
+        Utilities.setGlobalFont(view, activity!!);
         return view
     }
 

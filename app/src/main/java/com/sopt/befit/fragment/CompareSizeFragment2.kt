@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.sopt.befit.adapter.CompareSizeAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.get.GetCompareSizeResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -23,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CompareSizeFragment2 : Fragment(){
+class CompareSizeFragment2 : Fragment() {
 
     val COMPARE_DIALOG_REQUEST_CODE = 1000
     lateinit var CompareSizeAdapter: CompareSizeAdapter
@@ -33,7 +34,8 @@ class CompareSizeFragment2 : Fragment(){
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size_m,container,false)
+        val view: View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size_m, container, false)
+        Utilities.setGlobalFont(view, activity!!);
         return view
     }
 
@@ -56,6 +58,7 @@ class CompareSizeFragment2 : Fragment(){
         })
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -64,6 +67,7 @@ class CompareSizeFragment2 : Fragment(){
         super.onActivityCreated(savedInstanceState)
         setSpinner()
     }
+
     private fun getCompareSizeResponse() {
         val getCompareSizeResponse = networkService.getCompareSizeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", 1, 1, product_size = "s")
         Log.d("aaaaaaa", "aaaaaa")
@@ -108,6 +112,7 @@ class CompareSizeFragment2 : Fragment(){
 
         })
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == COMPARE_DIALOG_REQUEST_CODE) {

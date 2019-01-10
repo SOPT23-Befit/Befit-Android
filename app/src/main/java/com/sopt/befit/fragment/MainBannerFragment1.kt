@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_main_banner3.*
 class MainBannerFragment1: Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val brandFragmentView: View = inflater!!.inflate(R.layout.fragment_main_banner1, container, false)
+
         return brandFragmentView
     }
 

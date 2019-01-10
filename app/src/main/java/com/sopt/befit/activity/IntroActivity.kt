@@ -8,7 +8,7 @@ import com.sopt.befit.adapter.IntroPagerAdapter
 import kotlinx.android.synthetic.main.activity_intro.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

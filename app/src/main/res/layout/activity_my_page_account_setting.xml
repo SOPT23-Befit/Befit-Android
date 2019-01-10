@@ -21,7 +21,7 @@
             android:layout_marginTop="17dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:tag="bold"
             android:lineSpacingExtra="2sp"
             android:textSize="20sp"
             android:textColor="#000000"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="#191919"
-            android:textStyle="bold"
+            android:tag="bold"
             android:text="자동 로그인"/>
         <Switch
             android:id="@+id/sw_activity_my_page_account_setting_turn"
@@ -73,7 +73,7 @@
             android:layout_marginLeft="22dp"
             android:layout_centerVertical="true"
             android:textColor="#191919"
-            android:textStyle="bold"
+            android:tag="bold"
             android:text="로그아웃"/>
     </RelativeLayout>
 
@@ -89,7 +89,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="11dp"
             android:text="회원탈퇴"
-            android:textStyle="bold"
+            android:tag="bold"
             android:textColor="#b8191919"
             android:textSize="14sp" />
     </RelativeLayout>
