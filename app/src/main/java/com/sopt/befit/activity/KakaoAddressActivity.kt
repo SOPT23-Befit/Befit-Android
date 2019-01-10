@@ -11,31 +11,40 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.widget.TextView
 import com.sopt.befit.R
+import kotlinx.android.synthetic.main.activity_kakao_address.*
 
 class KakaoAddressActivity : AppCompatActivity() {
 
 
     private var webView: WebView? = null
     private var postnum: String? = null
-    private var homeaddress : String? = null
+    private var zonecode : String? = null
+    private var fulladdress : String? = null
     private var handler: Handler? = null
 
-    internal var url = "https://trilliwon.github.io/postcode/"
+    internal var url = "https://han51361.github.io/postcode/lsw"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kakao_address)
+        btn_activity_kakao.isEnabled  = false
 
         init_webView()
         handler = Handler()
-        
+        btn_activity_kakao_back.setOnClickListener {
+            finish()
+        }
+        btn_activity_kakao.setOnClickListener {
+
+            finish()
+        }
     }
 
 
     fun init_webView(){
         //web view 설정
         webView = findViewById(R.id.wv_activity_kakao_address)
-
+        Log.v("init_webview","sasd")
         //javascript 허용
         webView!!.settings.javaScriptEnabled = true
         //javascript window open 허용
@@ -57,19 +66,25 @@ class KakaoAddressActivity : AppCompatActivity() {
 
     private inner class AndroidBridge{
         @JavascriptInterface
-        // arg1 : postnum 09952 arg2 : homeaddress : 서울시 서대문구 대현동
+        // arg1 : postnum 100-771 arg2 : zonecode: 03933
         // arg3 : Building Name : 쌍용아파트 1지구
-         fun setAddress( arg1 : String, arg2 : String ,arg3 : String) {
+         public fun setAddress( arg1 : String, arg2 : String ,arg3 : String) {
             handler!!.post(object : Runnable {
                 public override fun run() {
                     val intent: Intent = Intent()
                     postnum = arg1!!.toString()
-                    homeaddress=arg2!!.toString() + " ("+arg3!!.toString() + ")"
-                    intent.putExtra("postnum",postnum)
-                    intent.putExtra("home_address",homeaddress)
-                    setResult(Activity.RESULT_OK,intent)
-                    init_webView()
-                    finish()
+                    zonecode = arg2!!.toString()
+                    fulladdress=arg3!!.toString()
+                    intent.putExtra("zone_code",zonecode)
+                    intent.putExtra("post_num",postnum)
+                    intent.putExtra("full_address",fulladdress)
+
+                  if(postnum!!.isNotEmpty()){
+                      btn_activity_kakao.isEnabled  = true
+                      btn_activity_kakao.setBackgroundResource(R.drawable.blackbox)
+                      setResult(Activity.RESULT_OK,intent)
+                  }
+
                 }
 
             })

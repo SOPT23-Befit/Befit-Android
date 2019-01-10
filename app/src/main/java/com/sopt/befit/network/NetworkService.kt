@@ -51,10 +51,10 @@ interface NetworkService {
             @Body forPwUserData: ForPwUserData
     ): Call<PostForPwFindUserResponse>
 
-    @POST("/user/combineForm")
+    @PUT("/user/combineForm")
     @Headers("Content-Type: application/json")
     fun TotalUserDataResponse(
-
+            @Header("Authorization") authorization: String,
             @Body combineFormData: CombineFormData
     ): Call<PostTotalUserDataResponse>
 
