@@ -15,16 +15,17 @@
 
         <ImageView
             android:id="@+id/img_rv_item_each_brand_logo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@mipmap/ic_launcher_round"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:scaleType="centerInside"/>
 
         <ImageView
             android:id="@+id/img_rv_item_each_brand_circle"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/brandoutlinecircle" />
     </RelativeLayout>

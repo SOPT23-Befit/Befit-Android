@@ -100,8 +100,10 @@
 
                         <android.support.v4.view.ViewPager
                             android:id="@+id/vp_aaa_main_banner"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"></android.support.v4.view.ViewPager>
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp">
+
+                        </android.support.v4.view.ViewPager>
                         <android.support.design.widget.TabLayout
                             android:id="@+id/tabDots"
                             android:layout_alignParentBottom="true"
@@ -230,36 +232,47 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/tv_main_category_woman_outer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Outer"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_jacket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jacket"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_coat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Coat"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_shirts"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Shirts"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_knits"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Knits"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_hoody"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hoody"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_sweat_shirts"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sweat Shirts"
@@ -268,36 +281,50 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_main_category_woman_t_shirts"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="T-Shirts"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_Jean"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jeans"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_pants"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pants"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_slacks"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Slacks"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_short_pants"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Short-Pants"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_onepiece"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Onepiece"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_woman_skirts"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Skirts"
@@ -357,31 +384,37 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/tv_main_category_man_outer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Outer"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_jacket"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jacket"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_coat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Coat"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_shirts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Shirts"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_knits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Knits"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_hoody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hoody"
@@ -391,32 +424,38 @@
 
 
                 <TextView
+                    android:id="@+id/tv_main_category_man_seat_shirts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sweat Shirts"
                     android:layout_marginTop="20dp"
                     />
                 <TextView
+                    android:id="@+id/tv_main_category_man_t_shirts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="T-Shirts"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_jeans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jeans"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_pants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pants"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_slacks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Slacks"
                     android:layout_marginTop="20dp"/>
                 <TextView
+                    android:id="@+id/tv_main_category_man_short_pants"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Short-Pants"
