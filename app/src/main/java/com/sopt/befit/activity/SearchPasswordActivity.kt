@@ -125,13 +125,14 @@ class SearchPasswordActivity : AppCompatActivity() {
         }
 
         btn_activity_search_pw_bithday.setOnClickListener(){
-            lo_search_pw_total.visibility= View.INVISIBLE
             lo_search_pw_date_picker_total.visibility=View.VISIBLE
+            iv_search_background.visibility=View.VISIBLE
 
         }
         btn_search_pw_date_picker_ok.setOnClickListener(){
-            lo_search_pw_total.visibility= View.VISIBLE
             lo_search_pw_date_picker_total.visibility=View.GONE
+
+            iv_search_background.visibility=View.GONE
 
         }
 

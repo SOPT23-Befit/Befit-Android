@@ -121,11 +121,6 @@ class AAAAMainActivity :BaseActivity() {
         }
     }
 
-    private fun addFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.vp_aaa_main_home_fragment, fragment)
-        transaction.commit()
-    }
 
 
 
