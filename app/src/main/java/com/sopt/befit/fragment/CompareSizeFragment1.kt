@@ -26,7 +26,9 @@ import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
+import kotlinx.android.synthetic.main.bottom_navigation_tab.*
 import kotlinx.android.synthetic.main.dl_compare_size.*
+import kotlinx.android.synthetic.main.dl_compare_size.view.*
 import kotlinx.android.synthetic.main.fragment_compare_size.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.ctx
@@ -38,44 +40,52 @@ import retrofit2.Response
 
 class CompareSizeFragment1 : Fragment() {
 
-    lateinit var sizeList : ArrayList<String>
-    lateinit var product : ProductData
+    lateinit var sizeList: ArrayList<String>
+    lateinit var product: ProductData
     val COMPARE_DIALOG_REQUEST_CODE = 1000
-    var position : Int = -1
+    var position: Int = -1
     lateinit var CompareSizeAdapter: CompareSizeAdapter
-    lateinit var closetList : ArrayList<ClosetDetail>
+    lateinit var closetList: ArrayList<ClosetDetail>
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size, container, false)
+
+        Glide.with(context!!)
+                .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/24.+hoody_above_l.png")
+                .thumbnail(0.5f)
+                .into(view!!.findViewById(com.sopt.befit.R.id.iv_fragment_compare_size_goods_size))
+
         return view
     }
 
-    private fun setSpinner(dataList : ArrayList<ClosetDetail>) {
+    private fun setSpinner(dataList: ArrayList<ClosetDetail>) {
         val closetNameList: ArrayList<String> = ArrayList()
 
-        for(i in 0 until dataList.size){
+        for (i in 0 until dataList.size) {
             closetNameList.add(dataList.get(i).name)
         }
 
-        Log.d("dddddd",position.toString())
-        sp_compare_size.adapter = ArrayAdapter<String>(activity!!, R.layout.simple_list_item_single_choice, closetNameList)
-        //sp_my_size_add_select_size.adapter = SelectSizeSpinnerAdapterval(this, dataList)
-        sp_compare_size.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                //toast("선택된 아이템 : " + sp_compare_size.getItemAtPosition((position)))
-                //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
-                var closetIdx = dataList.get(position).closet_idx
-                closetIdx = 8
-                getCompareSizeResponse(closetIdx)
-            }
+        Log.d("dddddd", position.toString())
+        if (sp_compare_size != null) {
+            sp_compare_size.adapter = ArrayAdapter<String>(activity!!, R.layout.simple_list_item_single_choice, closetNameList)
+            //sp_my_size_add_select_size.adapter = SelectSizeSpinnerAdapterval(this, dataList)
+            sp_compare_size.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    //toast("선택된 아이템 : " + sp_compare_size.getItemAtPosition((position)))
+                    //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
+                    var closetIdx = dataList.get(position).closet_idx
+                    closetIdx = 8
+                    getCompareSizeResponse(closetIdx)
+                }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
+                override fun onNothingSelected(parent: AdapterView<*>) {
 
-            }
-        })
-
+                }
+            })
+        }else{}
     }
 
 
@@ -88,7 +98,7 @@ class CompareSizeFragment1 : Fragment() {
 
         position = arguments!!.getInt("position")
         closetList = arguments!!.getSerializable("ClosetList") as ArrayList<ClosetDetail>
-        Log.d("fragment position",position.toString())
+        Log.d("fragment position", position.toString())
 //
         product = ProductContentViewActivity.instance.getCurrentProductData()
 
@@ -97,7 +107,7 @@ class CompareSizeFragment1 : Fragment() {
         var json = parser.parse(jsonString).asJsonObject
         sizeList = ArrayList<String>()
 
-        for((index,measure) in json.entrySet().withIndex()){
+        for ((index, measure) in json.entrySet().withIndex()) {
             sizeList.add(measure.key)
         }
 
@@ -108,7 +118,7 @@ class CompareSizeFragment1 : Fragment() {
         setSpinner(closetList)
     }
 
-    private fun getCompareSizeResponse(closetIdx : Int) {
+    private fun getCompareSizeResponse(closetIdx: Int) {
         val getCompareSizeResponse = networkService.getCompareSizeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", closetIdx, product.idx, product_size = sizeList.get(position))
         Log.d("aaaaaaa", "aaaaaa")
         //val token = SharedPreferenceController.getAuthorization(activity!!)
@@ -123,28 +133,20 @@ class CompareSizeFragment1 : Fragment() {
                     when (it.body()!!.status) {
                         200 -> {
                             Log.v("success", response.body()!!.toString())
-                            var animation = ProgressAnimation(progress,2000)//2000은 2초
+                            var animation = ProgressAnimation(progress, 2000)//2000은 2초
                             animation.setProgress(response.body()!!.data.percent.toInt())
 
-                            tv_fragment_compare_size_percent.text = response.body()!!.data.percent+"%"
+                            tv_fragment_compare_size_percent.text = response.body()!!.data.percent + "%"
 
 
-                            val requestOptions = RequestOptions()
+                            //  val requestOptions = RequestOptions()
 //            //        requestOptions.placeholder(R.drawable.기본적으로 띄울 이미지)
 //            //        requestOptions.error(R.drawable.에러시 띄울 이미지)
-                            requestOptions.override(150)
-                            Glide.with(context!!)
-                                    .setDefaultRequestOptions(requestOptions)
-                                    .load(response.body()!!.data.compare_url)
-                                    .thumbnail(0.5f)
-                                    .into(iv_fragment_compare_size_goods_size)
+                            // requestOptions.override(170)
 
-                            requestOptions.override(150)
-                            Glide.with(context!!)
-                                    .setDefaultRequestOptions(requestOptions)
-                                    .load(response.body()!!.data.my_url)
-                                    .thumbnail(0.5f)
-                                    .into(iv_fragment_compare_size_my_size)
+                            // requestOptions.override(170)
+                            val requestOptions = RequestOptions()
+
 
                             var key = ArrayList<String>()
                             var data = ArrayList<Double>()
@@ -153,9 +155,9 @@ class CompareSizeFragment1 : Fragment() {
                             var parser = JsonParser()
                             var json = parser.parse(jsonString).asJsonObject
 
-                            for((index,closet) in json.entrySet().withIndex()){
+                            for ((index, closet) in json.entrySet().withIndex()) {
                                 key.add(closet.key)
-                                if(closet.value == null){
+                                if (closet.value == null) {
                                     data.add(100.0)
                                 } else {
                                     data.add(closet.value.asDouble)
@@ -195,6 +197,7 @@ class CompareSizeFragment1 : Fragment() {
 
         })
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == COMPARE_DIALOG_REQUEST_CODE) {

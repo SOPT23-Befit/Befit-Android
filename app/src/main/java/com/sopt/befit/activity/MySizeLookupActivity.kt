@@ -28,7 +28,7 @@ class MySizeLookupActivity : BaseActivity() {
     }
 
     var token: String = ""
-    var c_idx: Int = 4
+    var c_idx: Int = 0
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -41,6 +41,8 @@ class MySizeLookupActivity : BaseActivity() {
         setContentView(R.layout.activity_my_size_lookup)
 
         instance = this
+
+        c_idx=intent.getIntExtra("c_idx", 0)
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI"
 
