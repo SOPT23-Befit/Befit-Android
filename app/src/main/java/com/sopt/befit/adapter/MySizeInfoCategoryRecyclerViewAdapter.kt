@@ -83,7 +83,7 @@ class MySizeInfoCategoryRecyclerViewAdapter(val ctx: Context, val dataList: Arra
 
         holder.item_btn.setOnClickListener {
             val intent: Intent = Intent(ctx, MySizeLookupActivity::class.java)
-            intent.putExtra("c_idx", dataList[position])
+            intent.putExtra("category_idx", dataList[position])
             ctx.startActivity(intent)
         }
     }

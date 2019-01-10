@@ -36,6 +36,11 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.graphics.Color.parseColor
+import android.R.attr.fragment
+import android.support.design.widget.TabLayout.OnTabSelectedListener
+
+
 
 class AAAAMainActivity :BaseActivity() {
 
@@ -89,6 +94,7 @@ class AAAAMainActivity :BaseActivity() {
     private fun configureBottomNavigation() {
         vp_bottom_navi_act_frag_pager.adapter = MyFragmentStatePagerAdapter(supportFragmentManager, 5)
         vp_bottom_navi_act_frag_pager.offscreenPageLimit = 5
+
         tl_bottom_navi_act_bottom_menu.setupWithViewPager(vp_bottom_navi_act_frag_pager)
         //TabLayout에 붙일 layout을 찾아준 다음
         val bottomNaviLayout: View = this.layoutInflater.inflate(R.layout.tab_bar, null, false)

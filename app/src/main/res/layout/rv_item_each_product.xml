@@ -24,7 +24,7 @@
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/tv_rv_item_each_product_b_name"
+            android:id="@+id/tv_rv_item_each_product_p_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_rv_item_each_product_main"
@@ -36,10 +36,10 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/tv_rv_item_each_product_p_name"
+            android:id="@+id/tv_rv_item_each_product_b_name"
             android:layout_width="122dp"
             android:layout_height="25dp"
-            android:layout_below="@+id/tv_rv_item_each_product_b_name"
+            android:layout_below="@+id/tv_rv_item_each_product_p_name"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="6dp"
             android:layout_marginTop="3dp"
@@ -51,7 +51,7 @@
             android:id="@+id/tv_rv_item_each_product_p_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_rv_item_each_product_p_name"
+            android:layout_below="@+id/tv_rv_item_each_product_b_name"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="6dp"
             android:layout_marginTop="6dp"

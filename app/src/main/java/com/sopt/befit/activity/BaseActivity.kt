@@ -35,7 +35,6 @@ open class BaseActivity : AppCompatActivity() {
                 val v = vg.getChildAt(i)
                 if (v is TextView && v.getTag() != null) {
                     if (v.getTag().equals("bold")) {
-                        Toast.makeText(this, "bold 처리", Toast.LENGTH_SHORT).show()
                         v.typeface = boldTypeface
                     } else if (v.getTag().equals("light")) {
                         v.typeface = lightTypeface
