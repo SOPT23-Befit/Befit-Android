@@ -37,8 +37,7 @@ class EachBrandFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val eachBrandFragmentView: View = inflater!!.inflate(R.layout.fragment_search_brand, container, false)
-        //com.sopt.befit.adapter.Utilities.setGlobalFont(eachBrandFragmentView, activity!!);
-
+        Utilities.setGlobalFont(eachBrandFragmentView, activity!!);
         return eachBrandFragmentView
     }
 
@@ -57,7 +56,7 @@ class EachBrandFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        eachBrandRecyclerViewAdapter = EachBrandRecyclerViewAdapter(activity!!, dataList)
+        eachBrandRecyclerViewAdapter = EachBrandRecyclerViewAdapter(activity!!, dataList, token)
         rv_frag_s_brand_list.adapter = eachBrandRecyclerViewAdapter
         rv_frag_s_brand_list.layoutManager = LinearLayoutManager(activity)
     }

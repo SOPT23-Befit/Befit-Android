@@ -12,7 +12,7 @@ import android.webkit.WebView
 import android.widget.TextView
 import com.sopt.befit.R
 
-class KakaoAddressActivity : AppCompatActivity() {
+class KakaoAddressActivity : BaseActivity() {
 
 
     private var webView: WebView? = null

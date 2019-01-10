@@ -20,18 +20,19 @@ import com.sopt.befit.R.id.pageIndicatorView
 import android.support.v4.view.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.sopt.befit.adapter.Utilities
 import kotlinx.android.synthetic.main.fragment_compare_size.*
 
 
 class CompareSizeDialog() : DialogFragment() {
 
-    lateinit var closetList : ArrayList<ClosetDetail>
+    lateinit var closetList: ArrayList<ClosetDetail>
     var product_idx = -1
-    lateinit var measure : String
-    lateinit var closetSize : ArrayList<String>
-    fun checkBtnClick(){
-        btn_dl_compare_size_check.setOnClickListener{
-           // startActivity<ProductContentViewActivity>()
+    lateinit var measure: String
+    lateinit var closetSize: ArrayList<String>
+    fun checkBtnClick() {
+        btn_dl_compare_size_check.setOnClickListener {
+            // startActivity<ProductContentViewActivity>()
             dismiss()
         }
     }
@@ -42,8 +43,8 @@ class CompareSizeDialog() : DialogFragment() {
         Glide.with(view.context)
                 .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/33.+jeansslackspants.png")
                 .into(view!!.findViewById(R.id.iv_fragment_compare_size_my_size))
-
-                return view
+        Utilities.setGlobalFont(view, activity!!);
+        return view
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +63,7 @@ class CompareSizeDialog() : DialogFragment() {
 
         closetSize = ArrayList<String>()
 
-        for((index,measure) in json.entrySet().withIndex()){
+        for ((index, measure) in json.entrySet().withIndex()) {
             closetSize.add(measure.key)
         }
 
@@ -77,8 +78,8 @@ class CompareSizeDialog() : DialogFragment() {
     }
 
     private fun configureBottomNavigation() {
-       // var count = 2
-        vp_compare_size_view_pager.adapter = CompareSizeAdapter(childFragmentManager,closetSize.size,closetList)
+        // var count = 2
+        vp_compare_size_view_pager.adapter = CompareSizeAdapter(childFragmentManager, closetSize.size, closetList)
         vp_compare_size_view_pager.offscreenPageLimit = closetSize.size
         pageIndicatorView.count = closetSize.size
         pageIndicatorView.selection = 1
@@ -95,8 +96,8 @@ class CompareSizeDialog() : DialogFragment() {
             }
         })
 
-  //      pageIndicatorView.setCount(closetSize.size) // specify total count of indicators
-   //     pageIndicatorView.setSelection(1)       //vp_bottom_navi_act_frag_pager.offscreenPageLimit = 3
+        //      pageIndicatorView.setCount(closetSize.size) // specify total count of indicators
+        //     pageIndicatorView.setSelection(1)       //vp_bottom_navi_act_frag_pager.offscreenPageLimit = 3
         // ViewPager와 Tablayout을 엮어줍니다!
 //        tl_bottom_navi_act_bottom_menu.setupWithViewPager(vp_compare_size_view_pager)
 //        //TabLayout에 붙일 layout을 찾아준 다음
@@ -106,7 +107,6 @@ class CompareSizeDialog() : DialogFragment() {
 //        tl_bottom_navi_act_bottom_menu.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number2) as RelativeLayout
 //        tl_bottom_navi_act_bottom_menu.getTabAt(2)!!.customView = bottomNaviLayout.findViewById(R.id.compare_size_number3) as RelativeLayout
     }
-
 
 
 }

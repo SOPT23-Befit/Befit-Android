@@ -24,7 +24,7 @@ import retrofit2.Callback
 
 //import javax.security.auth.callback.Callback
 
-class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
 
 
     var category_idx : Int = 0

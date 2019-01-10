@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_check_my_brand_preference.*
 import kotlinx.android.synthetic.main.activity_check_my_brand_preference_man.*
 import org.jetbrains.anko.toast
 
-class CheckMyBrandPreferenceManActivity : AppCompatActivity() {
+class CheckMyBrandPreferenceManActivity : BaseActivity() {
 
    // var gender = intent.getStringExtra("gender")
   //  var brand1 = intent.getStringExtra("brand1")

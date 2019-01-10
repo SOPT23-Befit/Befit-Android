@@ -22,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SizeCheckPageActivity : AppCompatActivity() {
+class SizeCheckPageActivity : BaseActivity() {
 
     lateinit var size : ArrayList<String>
 

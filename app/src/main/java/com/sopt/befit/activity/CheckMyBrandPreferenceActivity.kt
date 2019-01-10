@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_brand_preference_woman.*
 import kotlinx.android.synthetic.main.activity_check_my_brand_preference.*
 import org.jetbrains.anko.toast
 
-class CheckMyBrandPreferenceActivity : AppCompatActivity() {
+class CheckMyBrandPreferenceActivity : BaseActivity() {
 
 
 

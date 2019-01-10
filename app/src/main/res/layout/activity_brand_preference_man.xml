@@ -4,49 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.BrandPreferenceManActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.BrandPreferenceManActivity">
 
     <ImageView
         android:id="@+id/ibtn_brand_prefer_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/back"
         android:layout_marginLeft="26dp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:src="@drawable/back" />
 
 
-<LinearLayout
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:layout_marginTop="41dp"
-android:layout_marginLeft="26dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="41dp"
+        android:orientation="horizontal">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="선호브랜드 2가지"
-    android:textColor="#000000"
-    android:textStyle="bold"
-    android:textSize="28sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선호브랜드 2가지"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:tag="bold" />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="를"
-    android:textStyle="bold"
-    android:textSize="28sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="를"
+            android:textSize="28sp"
+            android:tag="bold" />
 
-</LinearLayout>
+    </LinearLayout>
 
-<TextView
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="선택해주세요"
-android:textStyle="bold"
-android:textSize="28sp"
-android:layout_marginLeft="26dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:text="선택해주세요"
+        android:textSize="28sp"
+        android:tag="bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"

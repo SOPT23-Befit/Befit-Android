@@ -22,7 +22,7 @@ import retrofit2.Callback
 import retrofit2.http.Header
 import retrofit2.http.Path
 
-class AddMySizeBrandPageActivity : AppCompatActivity() {
+class AddMySizeBrandPageActivity : BaseActivity() {
 
     val BRAND_INITAIL_REQUEST_CODE = 1000
     lateinit var BrandsRecyclerViewAdapter: BrandGoodsRecyclerViewAdapter

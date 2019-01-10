@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.activity_add_my_size.*
 import kotlinx.android.synthetic.main.activity_add_my_size_goods_page.*
 import retrofit2.Callback
 
-class AddMySizeGoodsPageActivity : AppCompatActivity() {
+class AddMySizeGoodsPageActivity : BaseActivity() {
 
     val GOODS_INITAIL_REQUEST_CODE = 2000
     lateinit var GoodsRecyclerViewAdapter: GoodsRecyclerViewAdapter

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.sopt.befit.R
 import com.sopt.befit.activity.BrandMainActivity
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.BrandRecommendData
 import com.sopt.befit.db.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_brand_main.*
@@ -38,6 +39,7 @@ class MainBrandFragment1: Fragment(){
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val brandFragmentView: View = inflater!!.inflate(R.layout.fragment_main_brand_1, container, false)
+        Utilities.setGlobalFont(brandFragmentView, activity!!);
         return brandFragmentView
     }
 

@@ -22,11 +22,12 @@ import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_search.*
+import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SearchFragment : Fragment(), TextView.OnEditorActionListener {
+class SearchFragment : Fragment(), TextView.OnEditorActionListener{
 
     lateinit var searchProductImageRecyclerViewAdapter: SearchProductImageRecyclerViewAdapter
 
@@ -64,7 +65,7 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
 
         tv_search_product_cancle.setOnClickListener {
             //취소버튼 눌렀을 때
-            rv_search_product_top.setVisibility(View.VISIBLE)
+            refresh_search_img.setVisibility(View.VISIBLE)
             tv_search_product_cancle.setVisibility(View.GONE)
             layout_search_product_bottom.setVisibility(View.GONE)
             et_search_product_write.setText("")
@@ -73,9 +74,13 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
         et_search_product_write.setOnEditorActionListener(this)
 
         et_search_product_write.setOnClickListener() {
-            et_search_product_write.setSelection(et_search_product_write.getText().length);
-            rv_search_product_top.setVisibility(View.GONE)
+            refresh_search_img.setVisibility(View.GONE)
             tv_search_product_cancle.setVisibility(View.VISIBLE)
+        }
+
+        refresh_search_img.setOnRefreshListener {
+            getSearchInitalListResponse()
+            refresh_search_img.isRefreshing = false
         }
     }
 
@@ -88,10 +93,10 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
     override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
 
         if (actionId == EditorInfo.IME_ACTION_DONE) {
-            if(et_search_product_write.text.toString()!=""){
+            if (et_search_product_write.text.toString() != "") {
                 layout_search_product_bottom.setVisibility(View.VISIBLE)
                 configureBottomNavigation()
-            }else{
+            } else {
                 Toast.makeText(activity!!, "검색란이 비워져 있습니다.", Toast.LENGTH_SHORT).show();
             }
         }
@@ -107,6 +112,7 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
+                    dataList.clear()
                     if (response.body()?.data != null) {
                         val temp: ArrayList<ProductData> = response.body()!!.data
                         if (temp.size > 0) {
@@ -121,9 +127,10 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener {
                                         , temp[7 + 8 * i].image_url, temp[7 + 8 * i].idx))
 
                             }
-                            searchProductImageRecyclerViewAdapter.notifyDataSetChanged();
                         }
+
                     }
+                    searchProductImageRecyclerViewAdapter.notifyDataSetChanged();
                 }
             }
         })

@@ -8,7 +8,6 @@
     tools:context=".activity.BrandMainActivity">
 
     <android.support.v4.widget.NestedScrollView
-        android:id="@+id/refresh_brand_main_act"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -129,7 +128,6 @@
                     android:layout_height="165dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="9dp"
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/itembox"/>
 
@@ -143,13 +141,15 @@
                     android:textOff=""
                     android:textOn=""
                     android:background="@drawable/selector_heart" />
-
+k
                 <ImageView
                     android:id="@+id/img_brand_main_p_image"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_alignTop="@id/img_brand_main_item_box"
+                    android:layout_marginTop="1dp"
                     android:layout_alignLeft="@id/img_brand_main_item_box"
-                    android:layout_centerVertical="true"
                     android:scaleType="centerCrop" />
 
                 <TextView
@@ -181,15 +181,15 @@
 
                 <TextView
                     android:id="@+id/tv_brand_main_p_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="130dp"
+                    android:layout_height="24dp"
                     android:layout_below="@id/tv_brand_main_p_b_name_kor"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginBottom="6dp"
                     android:layout_toRightOf="@id/img_brand_main_p_image"
                     android:lineSpacingExtra="1sp"
                     android:textColor="#000000"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/tv_brand_main_b_price"

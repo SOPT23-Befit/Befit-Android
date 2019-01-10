@@ -23,6 +23,7 @@ import com.sopt.befit.network.NetworkService
 class BrandRankingRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandRankingData>) : RecyclerView.Adapter<BrandRankingRecyclerViewAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_brand_ranking_item, parent, false)
+        Utilities.setGlobalFont(view, ctx);
         return Holder(view)
     }
 

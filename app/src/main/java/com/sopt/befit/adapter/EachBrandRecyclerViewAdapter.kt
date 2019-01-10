@@ -15,7 +15,7 @@ import com.sopt.befit.R
 import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.data.BrandData
 
-class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<EachBrandRecyclerViewAdapter.Holder>() {
+class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>, val token : String) : RecyclerView.Adapter<EachBrandRecyclerViewAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_each_brand, parent, false)
@@ -39,6 +39,7 @@ class EachBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
         holder.item_btn.setOnClickListener {
             val intent: Intent = Intent(ctx, BrandMainActivity::class.java)
             intent.putExtra("idx", dataList[position].idx)
+            intent.putExtra("token", token)
             ctx.startActivity(intent)
         }
     }

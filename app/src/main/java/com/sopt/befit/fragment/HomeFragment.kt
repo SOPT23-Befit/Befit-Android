@@ -51,13 +51,15 @@ class HomeFragment : Fragment() {
 
     var flag = 0
 
-    var flag_men =0
+    var flag_men = 0
 
     lateinit var networkService: NetworkService
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val homeFragmentView: View = inflater!!.inflate(R.layout.fragment_home, container, false)
+        Utilities.setGlobalFont(homeFragmentView, activity!!);
+        return homeFragmentView
     }
 
 
@@ -74,61 +76,52 @@ class HomeFragment : Fragment() {
 
         getMyReccomendProduct()
 
-
-
-
-        ibtn_menu_open.setOnClickListener(){
-            ibtn_menu_open.visibility=View.INVISIBLE
-            tv_aaa_main_befit.visibility=View.INVISIBLE
-            category_menu.visibility=View.VISIBLE
+        ibtn_menu_open.setOnClickListener() {
+            ibtn_menu_open.visibility = View.INVISIBLE
+            tv_aaa_main_befit.visibility = View.INVISIBLE
+            category_menu.visibility = View.VISIBLE
             //lo_aaa_main_home_brand_rec.visibility = View.GONE
             //lo_aaa_main_banner.visibility=View.GONE
             //lo_aaa_main_my_racommend_item.visibility=View.GONE
-            iv_home_fragment_background.visibility=View.VISIBLE
+            iv_home_fragment_background.visibility = View.VISIBLE
             AAAAMainActivity.instance.tabvisible()
         }
 
-        ibtn_menu_close.setOnClickListener(){
-            ibtn_menu_open.visibility=View.VISIBLE
-            tv_aaa_main_befit.visibility=View.VISIBLE
-            category_menu.visibility=View.GONE
+        ibtn_menu_close.setOnClickListener() {
+            ibtn_menu_open.visibility = View.VISIBLE
+            tv_aaa_main_befit.visibility = View.VISIBLE
+            category_menu.visibility = View.GONE
             //lo_aaa_main_home_brand_rec.visibility = View.VISIBLE
             //lo_aaa_main_banner.visibility=View.VISIBLE
             //lo_aaa_main_my_racommend_item.visibility=View.VISIBLE
-            iv_home_fragment_background.visibility=View.GONE
+            iv_home_fragment_background.visibility = View.GONE
 
             AAAAMainActivity.instance.tabvisible()
         }
 
-        lo_aaa_main_women_category.setOnClickListener(){
-            if(flag==0)
-            {
-
-
-                if(flag_men==1)
-                {
-                    flag_men=0
+        lo_aaa_main_women_category.setOnClickListener() {
+            if (flag == 0) {
+                if (flag_men == 1) {
+                    flag_men = 0
                     tv_aaa_main_men_cate.setTextColor(Color.parseColor("#000000"))
 
-                    lo_men_category.visibility=View.GONE
+                    lo_men_category.visibility = View.GONE
 
                     iv_home_arrowdown_men.setImageResource(R.drawable.arrow_down)
                 }
-                flag=1
+                flag = 1
                 tv_aaa_main_women_cate.setTextColor(Color.parseColor("#7a36e4"))
 
-                lo_women_category.visibility=View.VISIBLE
+                lo_women_category.visibility = View.VISIBLE
                 iv_home_arrowdown_women.setImageResource(R.drawable.arrow_up)
 
 
-            }
-            else if(flag==1)
-            {
+            } else if (flag == 1) {
 
-                    flag=0
-                    tv_aaa_main_women_cate.setTextColor(Color.parseColor("#000000"))
+                flag = 0
+                tv_aaa_main_women_cate.setTextColor(Color.parseColor("#000000"))
 
-                    lo_women_category.visibility=View.GONE
+                lo_women_category.visibility = View.GONE
 
                 iv_home_arrowdown_women.setImageResource(R.drawable.arrow_down)
 
@@ -136,45 +129,36 @@ class HomeFragment : Fragment() {
         }
 
 
-        lo_aaa_main_men_category.setOnClickListener(){
-            if(flag_men==0)
-            {
-                if(flag==1){
-                    flag=0
+        lo_aaa_main_men_category.setOnClickListener() {
+            if (flag_men == 0) {
+                if (flag == 1) {
+                    flag = 0
                     tv_aaa_main_women_cate.setTextColor(Color.parseColor("#000000"))
 
-                    lo_women_category.visibility=View.GONE
+                    lo_women_category.visibility = View.GONE
 
                     iv_home_arrowdown_women.setImageResource(R.drawable.arrow_down)
                 }
 
-                flag_men=1
+                flag_men = 1
                 tv_aaa_main_men_cate.setTextColor(Color.parseColor("#7a36e4"))
 
-                lo_men_category.visibility=View.VISIBLE
+                lo_men_category.visibility = View.VISIBLE
 
                 iv_home_arrowdown_men.setImageResource(R.drawable.arrow_up)
 
-            }
-            else if(flag_men==1)
-            {
+            } else if (flag_men == 1) {
 
-                flag_men=0
+                flag_men = 0
                 tv_aaa_main_men_cate.setTextColor(Color.parseColor("#000000"))
 
-                lo_men_category.visibility=View.GONE
+                lo_men_category.visibility = View.GONE
 
                 iv_home_arrowdown_men.setImageResource(R.drawable.arrow_down)
 
             }
 
         }
-
-
-
-
-        //ㅂㅐ너 클릭시
-        //브랜드상품 클릭시
     }
 
 
@@ -205,7 +189,6 @@ class HomeFragment : Fragment() {
         women.add("Onepiece")
         women.add("Skirts")
 
-
         val men: MutableList<String> = ArrayList()
         men.add("Outer")
         men.add("Jacket")
@@ -227,154 +210,127 @@ class HomeFragment : Fragment() {
 
         men.add("Short-Pants")
 
-
-
         header.add("Women")
         header.add("Men")
-
-
-
 
         body.add(women)
         body.add(men)
 
-
-
-
-
-
-    //nav_list.setAdapter(Expandable(activity!!,header,body))
-
-
-
-//    nav_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+//        nav_list.setAdapter(Expandable(activity!!, header, body))
 //
 //
+//        nav_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+//            tv_listview_title.setTextColor(Color.parseColor("#7a36e4"))
 //
-//        tv_listview_title.setTextColor(Color.parseColor("#7a36e4"))
+//            Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
+//
+//            var gpos = groupPosition
+//            var cpos = childPosition
+//
+//            if (gpos == 0 && cpos == 0) {
+//                startActivity<CategoryActivity>("idx" to 0)
+//            }
+//
+//            if (gpos == 0 && cpos == 1) {
+//                startActivity<CategoryActivity>("idx" to 1)
+//            }
+//
+//            if (gpos == 0 && cpos == 2) {
+//                startActivity<CategoryActivity>("idx" to 2)
+//            }
+//
+//            if (gpos == 0 && cpos == 3) {
+//                startActivity<CategoryActivity>("idx" to 3)
+//            }
+//
+//            if (gpos == 0 && cpos == 4) {
+//                startActivity<CategoryActivity>("idx" to 4)
+//            }
+//
+//            if (gpos == 0 && cpos == 5) {
+//                startActivity<CategoryActivity>("idx" to 5)
+//            }
+//            if (gpos == 0 && cpos == 6) {
+//                startActivity<CategoryActivity>("idx" to 6)
+//            }
+//
+//            if (gpos == 0 && cpos == 7) {
+//                startActivity<CategoryActivity>("idx" to 7)
+//            }
+//            if (gpos == 0 && cpos == 8) {
+//                startActivity<CategoryActivity>("idx" to 9)
+//            }
+//            if (gpos == 0 && cpos == 9) {
+//                startActivity<CategoryActivity>("idx" to 10)
+//            }
+//            if (gpos == 0 && cpos == 10) {
+//                startActivity<CategoryActivity>("idx" to 11)
+//            }
+//            if (gpos == 0 && cpos == 11) {
+//                startActivity<CategoryActivity>("idx" to 12)
+//            }
+//            if (gpos == 0 && cpos == 12) {
+//                startActivity<CategoryActivity>("idx" to 8)
+//            }
+//
+//            if (gpos == 0 && cpos == 13) {
+//                startActivity<CategoryActivity>("idx" to 13)
+//            }
 //
 //
-//        Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
+//            if (gpos == 1 && cpos == 0) {
+//                startActivity<CategoryActivity>("idx" to 0)
+//            }
+//
+//            if (gpos == 1 && cpos == 1) {
+//                startActivity<CategoryActivity>("idx" to 1)
+//            }
+//            if (gpos == 1 && cpos == 2) {
+//                startActivity<CategoryActivity>("idx" to 2)
+//            }
 //
 //
-//        var gpos = groupPosition
-//        var cpos = childPosition
+//            if (gpos == 1 && cpos == 3) {
+//                startActivity<CategoryActivity>("idx" to 3)
+//            }
 //
 //
+//            if (gpos == 1 && cpos == 4) {
+//                startActivity<CategoryActivity>("idx" to 4)
+//            }
 //
+//            if (gpos == 1 && cpos == 5) {
+//                startActivity<CategoryActivity>("idx" to 5)
+//            }
+//            if (gpos == 1 && cpos == 6) {
+//                startActivity<CategoryActivity>("idx" to 6)
+//            }
+//            if (gpos == 1 && cpos == 7) {
+//                startActivity<CategoryActivity>("idx" to 7)
+//            }
 //
-//           if(gpos==0&&cpos==0){
-//               startActivity<CategoryActivity>("idx" to 0)
-//           }
+//            if (gpos == 1 && cpos == 8) {
+//                startActivity<CategoryActivity>("idx" to 9)
+//            }
+//            if (gpos == 1 && cpos == 9) {
+//                startActivity<CategoryActivity>("idx" to 10)
+//            }
+//            if (gpos == 1 && cpos == 10) {
+//                startActivity<CategoryActivity>("idx" to 11)
+//            }
+//            if (gpos == 1 && cpos == 11) {
+//                startActivity<CategoryActivity>("idx" to 12)
+//            }
+//            return@setOnChildClickListener false
 //
-//        if(gpos==0&&cpos==1){
-//            startActivity<CategoryActivity>("idx" to 1)
 //        }
-//
-//        if(gpos==0&&cpos==2){
-//            startActivity<CategoryActivity>("idx" to 2)
-//        }
-//
-//        if(gpos==0&&cpos==3){
-//            startActivity<CategoryActivity>("idx" to 3)
-//        }
-//
-//        if(gpos==0&&cpos==4){
-//            startActivity<CategoryActivity>("idx" to 4)
-//        }
-//
-//        if(gpos==0&&cpos==5){
-//            startActivity<CategoryActivity>("idx" to 5)
-//        }
-//        if(gpos==0&&cpos==6){
-//            startActivity<CategoryActivity>("idx" to 6)
-//        }
-//
-//        if(gpos==0&&cpos==7){
-//            startActivity<CategoryActivity>("idx" to 7)
-//        }
-//        if(gpos==0&&cpos==8){
-//            startActivity<CategoryActivity>("idx" to 9)
-//        }
-//        if(gpos==0&&cpos==9){
-//            startActivity<CategoryActivity>("idx" to 10)
-//        }
-//        if(gpos==0&&cpos==10){
-//            startActivity<CategoryActivity>("idx" to 11)
-//        }
-//        if(gpos==0&&cpos==11){
-//            startActivity<CategoryActivity>("idx" to 12)
-//        }
-//        if(gpos==0&&cpos==12){
-//            startActivity<CategoryActivity>("idx" to 8)
-//        }
-//
-//        if(gpos==0&&cpos==13){
-//            startActivity<CategoryActivity>("idx" to 13)
-//        }
-//
-//
-//        if(gpos==1&&cpos==0){
-//            startActivity<CategoryActivity>("idx" to 0)
-//        }
-//
-//        if(gpos==1&&cpos==1){
-//            startActivity<CategoryActivity>("idx" to 1)
-//        }
-//        if(gpos==1&&cpos==2){
-//            startActivity<CategoryActivity>("idx" to 2)
-//        }
-//
-//
-//        if(gpos==1&&cpos==3){
-//            startActivity<CategoryActivity>("idx" to 3)
-//        }
-//
-//
-//        if(gpos==1&&cpos==4){
-//            startActivity<CategoryActivity>("idx" to 4)
-//        }
-//
-//        if(gpos==1&&cpos==5){
-//            startActivity<CategoryActivity>("idx" to 5)
-//        }
-//        if(gpos==1&&cpos==6){
-//            startActivity<CategoryActivity>("idx" to 6)
-//        }
-//        if(gpos==1&&cpos==7){
-//            startActivity<CategoryActivity>("idx" to 7)
-//        }
-//
-//        if(gpos==1&&cpos==8){
-//            startActivity<CategoryActivity>("idx" to 9)
-//        }
-//        if(gpos==1&&cpos==9){
-//            startActivity<CategoryActivity>("idx" to 10)
-//        }
-//        if(gpos==1&&cpos==10){
-//            startActivity<CategoryActivity>("idx" to 11)
-//        }
-//        if(gpos==1&&cpos==11){
-//            startActivity<CategoryActivity>("idx" to 12)
-//        }
-//        return@setOnChildClickListener false
-//
-//    }
     }
 
-
-
-
-
     private fun setRecyclerView() {
-
-
         myRecommendProductRecyclerViewAdapter = MyRecommendProductRecyclerViewAdapter(activity!!, dataList)
         rv_my_rec_item_list.adapter = myRecommendProductRecyclerViewAdapter
         rv_my_rec_item_list.layoutManager = GridLayoutManager(activity, 2)
-
     }
-
 
     private fun configureHomeBrandNavigation(dataList: ArrayList<BrandRecommendData>) {
 
@@ -395,10 +351,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun configureBannerNavigation() {
+        /*
         vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(childFragmentManager, 3)
         vp_aaa_main_banner.offscreenPageLimit = 3
         tabDots.setupWithViewPager(vp_aaa_main_banner)
-
+         */
     }
 
     private fun getBrandRecommendResponse() {
@@ -485,7 +442,6 @@ class HomeFragment : Fragment() {
             }
         })
     }
-
 
 }
 

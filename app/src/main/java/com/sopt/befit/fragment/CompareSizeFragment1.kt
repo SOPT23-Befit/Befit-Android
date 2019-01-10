@@ -18,6 +18,7 @@ import com.google.gson.JsonParser
 
 import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.adapter.CompareSizeAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.animation.ProgressAnimation
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.ClosetDetail
@@ -57,7 +58,7 @@ class CompareSizeFragment1 : Fragment() {
                 .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/36.+jeansslackspants_l.png")
                 .thumbnail(0.5f)
                 .into(view!!.findViewById(com.sopt.befit.R.id.iv_fragment_compare_size_goods_size))
-
+        Utilities.setGlobalFont(view, activity!!);
         return view
     }
 

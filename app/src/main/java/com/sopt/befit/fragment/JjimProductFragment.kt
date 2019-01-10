@@ -45,6 +45,11 @@ class JjimProductFragment : Fragment() {
         return productFragmentView
     }
 
+    override fun onResume() {
+        super.onResume()
+        getJjimProductListResponse()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -52,12 +57,14 @@ class JjimProductFragment : Fragment() {
 
         setRecyclerView()
 
-        getJjimProductListResponse()
+        setViewClickListener()
     }
 
-    override fun onStart() {
-        super.onStart()
-        //getJjimProductListResponse()
+    private fun setViewClickListener(){
+        refresh_product_main.setOnRefreshListener {
+            getJjimProductListResponse()
+            refresh_product_main.isRefreshing=false
+        }
     }
 
     private fun setRecyclerView() {
@@ -75,15 +82,16 @@ class JjimProductFragment : Fragment() {
 
             override fun onResponse(call: Call<GetProductListResponse>, response: Response<GetProductListResponse>) {
                 if (response.isSuccessful) {
+                    dataList.clear()
                     if(response.body()?.data!=null){
                         val temp: ArrayList<ProductData> = response.body()!!.data
                         if (temp.size > 0) {
                             tv_fragment_jjim_product_count.text= "찜한 상품 " + temp.size.toString()
                             val position = productListRecyclerViewAdapter.itemCount
                             productListRecyclerViewAdapter.dataList.addAll(temp)
-                            productListRecyclerViewAdapter.notifyItemInserted(position)
                         }
                     }
+                    productListRecyclerViewAdapter.notifyDataSetChanged()
                 }
             }
         })

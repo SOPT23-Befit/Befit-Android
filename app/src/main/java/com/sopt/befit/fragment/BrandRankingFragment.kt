@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.adapter.BrandRankingRecyclerViewAdapter
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.BrandRankingData
 import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.get.GetBrandRankingResponse
@@ -34,6 +35,7 @@ class BrandRankingFragment :Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val brandRankingFragmentView: View = inflater!!.inflate(R.layout.fragment_ranking, container, false)
+        Utilities.setGlobalFont(brandRankingFragmentView, activity!!);
         return brandRankingFragmentView
     }
 
