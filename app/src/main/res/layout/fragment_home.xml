@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <FrameLayout
@@ -55,29 +56,36 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:visibility="visible">
+
                         <ImageView
                             android:id="@+id/iv_home_fragment_behind"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/behindrect"
                             android:layout_marginLeft="75dp"
                             android:layout_marginTop="17dp"
                             android:layout_marginRight="105dp"
                             android:layout_marginBottom="228dp"
-                            />
+                            android:src="@drawable/behindrect"
+                            android:visibility="visible"/>
 
                         <android.support.v4.view.ViewPager
                             android:id="@+id/vp_aaa_main_home_fragment"
                             android:layout_width="wrap_content"
                             android:layout_height="483dp"
+                            android:layout_alignParentStart="true"
                             android:layout_marginTop="24.5dp"></android.support.v4.view.ViewPager>
 
                         <android.support.design.widget.TabLayout
                             android:id="@+id/lo_tab_aaa_main_home_fragment"
                             android:layout_width="match_parent"
-                            android:layout_height="10dp"
+                            android:layout_height="3dp"
+                            android:layout_below="@id/vp_aaa_main_home_fragment"
                             android:layout_marginLeft="50dp"
-                            android:layout_below="@id/vp_aaa_main_home_fragment"></android.support.design.widget.TabLayout>
+                            app:tabIndicatorHeight="3dp"
+                            app:tabIndicatorColor="#000000"
+                            android:background="#e0e0e0">
+
+                        </android.support.design.widget.TabLayout>
 
 
                     </RelativeLayout>
@@ -87,13 +95,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="visible"
+                        android:layout_marginTop="24dp">
 
                         <android.support.v4.view.ViewPager
                             android:id="@+id/vp_aaa_main_banner"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"></android.support.v4.view.ViewPager>
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp">
 
+                        </android.support.v4.view.ViewPager>
+                        <android.support.design.widget.TabLayout
+                            android:id="@+id/tabDots"
+                            android:layout_alignParentBottom="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            app:tabBackground="@drawable/main_brand_tab_selector"
+                            app:tabGravity="center"
+                            app:tabIndicatorHeight="0dp"/>
 
                     </RelativeLayout>
 
@@ -108,15 +126,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
-                            android:layout_marginBottom="10dp"
                             android:layout_marginTop="26.5dp"
+                            android:layout_marginBottom="10dp"
                             android:text="나의 추천 아이템"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/rv_my_rec_item_list"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:nestedScrollingEnabled="false">
 
@@ -130,13 +148,19 @@
 
     </FrameLayout>
 
-
+<ImageView
+    android:id="@+id/iv_home_fragment_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/alpha"
+    android:visibility="gone"/>
     <LinearLayout
         android:id="@+id/category_menu"
         android:layout_width="304dp"
-        android:layout_height="668dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:background="#ffffff">
 
 
         <LinearLayout
@@ -156,40 +180,291 @@
 
             <ImageButton
                 android:id="@+id/ibtn_menu_close"
-                android:layout_width="wrap_content"
-                android:layout_height="56dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:src="@drawable/cancel" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_aaa_main_new_cate"
-            android:layout_width="wrap_content"
+
+
+        <LinearLayout
+            android:id="@+id/lo_aaa_main_women_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_aaa_main_women_cate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="Women"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="9"/>
+            <ImageView
+                android:id="@+id/iv_home_arrowdown_women"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_down"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lo_women_category"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="26dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="New"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/tv_aaa_main_best_cate"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_main_category_woman_outer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Outer"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_jacket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jacket"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_coat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coat"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_shirts"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shirts"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_knits"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Knits"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_hoody"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hoody"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_sweat_shirts"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sweat Shirts"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="15dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_main_category_woman_t_shirts"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T-Shirts"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_Jean"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jeans"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_pants"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pants"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_slacks"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Slacks"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_short_pants"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Short-Pants"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_onepiece"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onepiece"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_woman_skirts"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Skirts"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="15dp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000"
+            android:layout_marginLeft="26dp"
+ >
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lo_aaa_main_men_category"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_aaa_main_men_cate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="Men"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="9"/>
+            <ImageView
+                android:id="@+id/iv_home_arrowdown_men"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_down"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lo_men_category"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="26dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="Best"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_main_category_man_outer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Outer"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_jacket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jacket"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_coat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coat"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_shirts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shirts"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_knits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Knits"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_hoody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hoody"
+                    android:layout_marginTop="20dp"/>
 
 
-        <ExpandableListView
+
+
+                <TextView
+                    android:id="@+id/tv_main_category_man_seat_shirts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sweat Shirts"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_main_category_man_t_shirts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T-Shirts"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_jeans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jeans"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_pants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pants"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_slacks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Slacks"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/tv_main_category_man_short_pants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Short-Pants"
+                    android:layout_marginTop="20dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--<ExpandableListView
             android:id="@+id/nav_list"
             android:layout_width="278dp"
             android:layout_height="wrap_content"
@@ -203,7 +478,7 @@
             android:groupIndicator="@null">
 
 
-        </ExpandableListView>
+        </ExpandableListView>-->
     </LinearLayout>
 
 

@@ -26,7 +26,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="60dp"
             android:lineSpacingExtra="2sp"
-            android:text="Outer"
+            android:tag="bold"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -37,6 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
+            android:tag="bold"
             android:text="편집"
             android:textColor="#000000"
             android:textSize="14sp" />

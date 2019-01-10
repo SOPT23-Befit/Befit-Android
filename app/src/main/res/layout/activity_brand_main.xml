@@ -38,6 +38,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="18dp"
                     android:lineSpacingExtra="2sp"
+                    android:tag="bold"
                     android:text="브랜드"
                     android:textColor="#000000"
                     android:textSize="20sp" />
@@ -97,7 +98,6 @@
                     android:layout_marginTop="11dp"
                     android:layout_marginLeft="8dp"
                     android:lineSpacingExtra="2sp"
-                    android:text="VANS"
                     android:textColor="#000000"
                     android:tag="bold"
                     android:textSize="15sp" />
@@ -162,7 +162,7 @@
                     android:layout_toRightOf="@id/img_brand_main_p_image"
                     android:layout_alignTop="@id/img_brand_main_item_box"
                     android:layout_marginTop="25dp"
-
+                    android:tag="bold"
                     android:layout_marginLeft="4dp"
                     android:text="선택한 상품" />
 
@@ -176,7 +176,6 @@
                     android:layout_marginBottom="6dp"
                     android:layout_toRightOf="@id/img_brand_main_p_image"
                     android:lineSpacingExtra="2sp"
-                    android:text="유니클로"
                     android:textColor="#000000"
                     android:textSize="10sp" />
 
@@ -189,7 +188,6 @@
                     android:layout_marginBottom="2dp"
                     android:layout_toRightOf="@id/img_brand_main_p_image"
                     android:lineSpacingExtra="1sp"
-                    android:text="투버튼 롱코트"
                     android:textColor="#000000"
                     android:textSize="12sp" />
 
@@ -201,7 +199,7 @@
                     android:layout_marginLeft="4dp"
                     android:layout_toRightOf="@id/img_brand_main_p_image"
                     android:lineSpacingExtra="1sp"
-                    android:text="150,000"
+                    android:tag="bold"
                     android:textColor="#000000"
                     android:textSize="12sp" />
 
@@ -215,12 +213,13 @@
                 <TextView
                     android:id="@+id/tv_brand_main_product_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="6dp"
                     android:background="#ebebeb"
                     android:gravity="center_vertical"
+                    android:tag="bold"
                     android:lineSpacingExtra="2sp"
                     android:textColor="#000000"
                     android:textSize="14sp" />
@@ -237,6 +236,7 @@
                     android:letterSpacing="0.06"
                     android:lineSpacingExtra="2sp"
                     android:text="신상순"
+                    android:tag="bold"
                     android:textColor="@color/text_color_new_popular"
                     android:textSize="10sp" />
 
