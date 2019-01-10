@@ -30,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:cursorVisible="false"
+                android:tag="light"
                 android:hint="찾고 계신 상품이 무엇인가요?"
                 android:inputType="textPersonName"
                 android:lineSpacingExtra="30sp"

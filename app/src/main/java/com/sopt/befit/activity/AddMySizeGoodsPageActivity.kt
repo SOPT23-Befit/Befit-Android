@@ -27,6 +27,7 @@ import retrofit2.Callback
 
 class AddMySizeGoodsPageActivity : AppCompatActivity() {
 
+
     var brand_idx: Int = 2
     var category_idx: Int = 0
 
@@ -62,7 +63,6 @@ class AddMySizeGoodsPageActivity : AppCompatActivity() {
         getgoodsInitial()
         rv_add_my_size_goods_list.visibility = View.VISIBLE
         instance = this
-
 
     }
 

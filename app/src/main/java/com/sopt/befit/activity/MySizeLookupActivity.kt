@@ -28,7 +28,7 @@ class MySizeLookupActivity : BaseActivity() {
     }
 
     var token: String = ""
-    var c_idx: Int = 0
+    var category_idx: Int = 0
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -42,9 +42,10 @@ class MySizeLookupActivity : BaseActivity() {
 
         instance = this
 
-        c_idx=intent.getIntExtra("c_idx", 0)
+        category_idx=intent.getIntExtra("category_idx", 0)
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI"
+//var token : String = SharedPreferenceController.getAuthorization(activity !̆̈  !̆̈ )
 
         setView()
         setOnButton()
@@ -71,6 +72,10 @@ class MySizeLookupActivity : BaseActivity() {
             }
             mySizeLookupRecyclerViewAdapter.notifyDataSetChanged()
         }
+
+        img_my_size_lookup_back.setOnClickListener{
+            finish()
+        }
     }
 
     private fun setRecyclerView() {
@@ -80,7 +85,7 @@ class MySizeLookupActivity : BaseActivity() {
     }
 
     private fun getClosetListResponse() {
-        val getClosetListResponse = networkService.getClosetListResponse(token, c_idx)
+        val getClosetListResponse = networkService.getClosetListResponse(token, category_idx)
         getClosetListResponse.enqueue(object : Callback<GetClosetListResponse> {
             override fun onFailure(call: Call<GetClosetListResponse>, t: Throwable) {
                 Log.e("my size look up fail", t.toString())
@@ -103,7 +108,7 @@ class MySizeLookupActivity : BaseActivity() {
     }
 
     private fun getCategoryString(): String {
-        when (c_idx) {
+        when (category_idx) {
             0 -> return "Outer"
             1 -> return "Jacket"
             2 -> return "Coat"

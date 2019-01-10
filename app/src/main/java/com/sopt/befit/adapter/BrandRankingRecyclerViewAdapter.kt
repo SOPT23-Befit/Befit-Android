@@ -25,7 +25,7 @@ class BrandRankingRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_brand_ranking_item, parent, false)
         return Holder(view)
     }
-    var flag = 0
+
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -43,7 +43,6 @@ class BrandRankingRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
         holder.item_btn.setOnClickListener {
             val intent : Intent = Intent(ctx, BrandMainActivity::class.java)
             intent.putExtra("idx", dataList[position].idx)
-            intent.putExtra("flag",flag)
             intent.putExtra("token",token)
 
 

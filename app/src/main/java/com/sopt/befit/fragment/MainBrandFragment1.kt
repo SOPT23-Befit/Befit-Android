@@ -20,7 +20,6 @@ import org.jetbrains.anko.support.v4.startActivity
 class MainBrandFragment1: Fragment(){
 
 
-
     lateinit var brandData : BrandRecommendData
     var flag : Int = 1//0일때 브랜드 클릭시
     //1일때는 하위상품 클릭시
@@ -64,15 +63,15 @@ class MainBrandFragment1: Fragment(){
 
         iv_main_brand_1_product_1.setOnClickListener(){
             flag=1
-            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+            startActivity<BrandMainActivity>("ProductData" to brandData.products[0],"flag" to flag,"token" to token)
         }
         iv_main_brand_1_product_2.setOnClickListener(){
             flag=1
-            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+            startActivity<BrandMainActivity>("ProductData" to brandData.products[1],"flag" to flag,"token" to token)
         }
         iv_main_brand_1_product_3.setOnClickListener(){
             flag=1
-            startActivity<BrandMainActivity>("idx" to brandData.idx,"flag" to flag,"token" to token)
+            startActivity<BrandMainActivity>("ProductData" to brandData.products[2],"flag" to flag,"token" to token)
         }
 
 

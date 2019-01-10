@@ -20,6 +20,7 @@
             android:checked="true"
             android:letterSpacing="0.06"
             android:lineSpacingExtra="2sp"
+            android:tag="bold"
             android:text="신상순"
             android:textColor="@color/text_color_new_popular"
             android:textSize="10sp" />

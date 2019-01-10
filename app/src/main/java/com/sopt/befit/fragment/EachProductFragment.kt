@@ -7,15 +7,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
-import com.sopt.befit.adapter.Utilities
+
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
-import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search_product.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,6 +67,8 @@ class EachProductFragment() : Fragment() {
             if (tv_search_product_popular.isChecked) {
                 tv_search_product_popular.setChecked(false)
                 tv_search_product_new.setChecked(true)
+                tv_search_product_new.setTypeface(Utilities.boldTypeface);
+                tv_search_product_popular.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getSearchNewProductListResponse()
             }
@@ -77,6 +78,8 @@ class EachProductFragment() : Fragment() {
             if (tv_search_product_new.isChecked) {
                 tv_search_product_new.setChecked(false)
                 tv_search_product_popular.setChecked(true)
+                tv_search_product_popular.setTypeface(Utilities.boldTypeface);
+                tv_search_product_new.setTypeface(Utilities.mediumTypeface);
                 dataList.clear()
                 getSearchPopularProductListResponse()
             }

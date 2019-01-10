@@ -37,10 +37,9 @@ class SizeCheckPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_size_check_page_activiy)
         btnBackOnClick()
-
+      
         closet_idx = intent.getIntExtra("closet_idx",0)
         getCheckMySizeResponse()
-
     }
 
     fun btnBackOnClick() {
@@ -72,6 +71,7 @@ class SizeCheckPageActivity : AppCompatActivity() {
                     when (response.body()!!.status) {
                         200 -> {
                             Log.v("success", response.message().toString())
+
                             text_brand.setText(response.body()!!.data.name_korean)
                             text_goods_name.setText(response.body()!!.data.name)
                             btn_activity_size_check_page_size.setText(response.body()!!.data.product_size)

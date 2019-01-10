@@ -108,7 +108,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/textboxround">
+            android:background="@drawable/input">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@drawable/textboxround"
+            android:background="@drawable/input"
             android:layout_marginTop="13dp"
             android:id="@+id/btn_sign_up_select_bithday"
             android:orientation="horizontal"
@@ -203,7 +203,7 @@
             android:layout_height="46dp"
             android:layout_marginTop="13dp"
             android:layout_marginBottom="4dp"
-            android:background="@drawable/textboxround"
+            android:background="@drawable/input"
             >
 
 
@@ -248,7 +248,7 @@
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/textboxround">
+            android:background="@drawable/input">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -261,7 +261,7 @@
             <EditText
                 android:id="@+id/et_sign_up_password"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:background="@null"
@@ -287,7 +287,7 @@
             android:layout_height="41dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="4dp"
-            android:background="@drawable/textboxround">
+            android:background="@drawable/input">
 
             <TextView
                 android:id="@+id/tv_sign_up_password_check"
@@ -302,11 +302,12 @@
                 android:paddingRight="8dp" />
             <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_sign_up_password_check"
                 android:background="@null"
                 android:ems="10"
                 android:lines="1"
+                android:layout_centerVertical="true"
                 android:id="@+id/et_sign_up_password_check"
 
                 />
@@ -356,6 +357,14 @@
     </LinearLayout>
 
 </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_sign_up_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/alpha"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 <RelativeLayout
     android:id="@+id/lo_sign_up_date_picker"
     android:layout_width="wrap_content"
@@ -387,11 +396,5 @@
         />
 </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/iv_sign_up_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/alpha"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+
 </RelativeLayout>
