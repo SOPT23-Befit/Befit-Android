@@ -202,7 +202,6 @@ class SignUpActivity : AppCompatActivity() {
                 lo_sign_up_date_picker.visibility=View.VISIBLE
                 iv_sign_up_background.visibility=View.VISIBLE
 
-                lo_sign_up_total.visibility=View.GONE
             }
 
 
@@ -213,7 +212,6 @@ class SignUpActivity : AppCompatActivity() {
                 datepickerStatus = 0
                 lo_sign_up_date_picker.visibility=View.GONE
                 iv_sign_up_background.visibility=View.GONE
-                lo_sign_up_total.visibility = View.VISIBLE
             }
         }
         val dateChangeListener = DatePicker.OnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
