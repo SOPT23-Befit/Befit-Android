@@ -23,7 +23,8 @@
             android:text="맞춤 브랜드와 상품 추천"
             android:textStyle="bold"
             android:textSize="28sp"
-            android:textColor="#7a36e4"/>
+            android:textColor="#7a36e4"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 

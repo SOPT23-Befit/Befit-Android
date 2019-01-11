@@ -18,11 +18,13 @@ class MySizeInfoCategoryActivity : BaseActivity() {
         ArrayList<Int>()
     }
 
-    val s: Int = 1
+    var gender: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_size_info_category)
+
+        gender = intent.getStringExtra("gender")
 
         setViewClickListener()
 
@@ -51,7 +53,7 @@ class MySizeInfoCategoryActivity : BaseActivity() {
         dataList.add(12)
         dataList.add(13)
 
-        if(s==1){
+        if(gender.equals("남성")){
             //남자일때
             dataList.removeAt(13)
             dataList.removeAt(8)

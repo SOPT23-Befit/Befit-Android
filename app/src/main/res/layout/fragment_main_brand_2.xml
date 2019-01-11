@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center">zz
     <ImageView
         android:id="@+id/iv_main_brand_2"
         android:layout_width="240dp"
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="16dp">
             <ImageView
                 android:id="@+id/iv_main_brand_2_product_1"
                 android:layout_width="88dp"
@@ -41,10 +41,11 @@
             <TextView
                 android:id="@+id/tv_aaa_main_brand2_recommend_p_name1"
                 android:layout_width="88dp"
-                android:layout_height="wrap_content"
+                android:layout_height="16dp"
                 android:layout_below="@id/iv_main_brand_2_product_1"
                 android:text="상품명"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -52,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="16dp">
             <ImageView
                 android:id="@+id/iv_main_brand_2_product_2"
                 android:layout_width="88dp"
@@ -62,17 +63,18 @@
             <TextView
                 android:id="@+id/tv_aaa_main_brand2_recommend_p_name2"
                 android:layout_width="88dp"
-                android:layout_height="wrap_content"
+                android:layout_height="16dp"
                 android:scaleType="centerCrop"
                 android:layout_below="@id/iv_main_brand_2_product_2"
                 android:text="상품명"
+                android:gravity="center_horizontal"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="16dp">
             <ImageView
                 android:id="@+id/iv_main_brand_2_product_3"
                 android:layout_width="88dp"
@@ -83,7 +85,8 @@
             <TextView
                 android:id="@+id/tv_aaa_main_brand2_recommend_p_name3"
                 android:layout_width="88dp"
-                android:layout_height="wrap_content"
+                android:layout_height="16dp"
+                android:gravity="center_horizontal"
                 android:layout_below="@id/iv_main_brand_2_product_3"
                 android:text="상품명"
                 android:layout_centerHorizontal="true"/>

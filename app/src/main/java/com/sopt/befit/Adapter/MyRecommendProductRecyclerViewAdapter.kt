@@ -112,8 +112,10 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                             intent.putExtra("url", dataList[position].link)
                             Log.v("product_url",dataList[position].link)
                             intent.putExtra("name_english", dataList[position].name_english)
+                            intent.putExtra("product_category_index",dataList[position].product_category_index)
                             intent.putExtra("token", token)
                             intent.putExtra("UserTotalData",temp)
+                            intent.putExtra("product",dataList[position])
 
 
 

@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#000000"
-        />
+        android:alpha="0.3"/>
     <WebView
         android:layout_marginTop="2dp"
         android:layout_gravity="center_horizontal"

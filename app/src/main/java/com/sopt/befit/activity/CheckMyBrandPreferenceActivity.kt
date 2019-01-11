@@ -42,7 +42,16 @@ class CheckMyBrandPreferenceActivity : BaseActivity() {
         brand2 = intent.getStringExtra("brand2")
 
         iv_woman_brand_preference_modify_ok.setOnClickListener(){
-            putBrandModify(brand1,brand2)
+
+            if(brand1==""||brand2=="")
+            {
+                toast("두개의 브랜드를 선택해주세요")
+            }
+            else
+            {
+                putBrandModify(brand1,brand2)
+            }
+
 
         }
 
@@ -52,8 +61,7 @@ class CheckMyBrandPreferenceActivity : BaseActivity() {
         var cnt = 2
 
         if(brand1=="17"||brand2=="17"){
-            ibtn_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)
-
+            ibtn_check_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)
         }
         if(brand1=="12"||brand2=="12"){
             ibtn_check_brand_preference_woman_Romantic_crown.setImageResource(R.drawable.woman_select_romantic_crown)
