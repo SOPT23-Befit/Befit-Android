@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/btn_activity_my_page_account_setting_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginLeft="10dp"
