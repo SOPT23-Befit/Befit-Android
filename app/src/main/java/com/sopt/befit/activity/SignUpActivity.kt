@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
+import android.widget.Toast
 import com.sopt.befit.R
 import com.sopt.befit.data.UserData
 import com.sopt.befit.db.SharedPreferenceController
@@ -62,6 +63,8 @@ class SignUpActivity : BaseActivity() {
                 override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
 
                     response?.let {
+                        Log.v("resoponse_signup",response.body()!!.status.toString())
+                        Log.v("brand1",userData.toString())
                         when (it.body()!!.status) {
                             201 -> {
                                 Log.v("success", response.message().toString())
@@ -77,10 +80,16 @@ class SignUpActivity : BaseActivity() {
                             409 ->{
                                 Log.v("409 error",response.message())
                                 Log.v("conflict",response.errorBody().toString())
-                                toast("충돌 발생")
+                                Toast.makeText(applicationContext,
+                                        "중복된 이메일 입니다.", Toast.LENGTH_LONG).show()
+                              //  toast("중복된 이메일 입니다")
                             }
                             500 -> {
 
+                            }
+                            600 ->{
+                                toast("DB 에러").show()
+                                Log.v("600 error",response.message())
                             }
                             else -> {
                                 toast("Error")
