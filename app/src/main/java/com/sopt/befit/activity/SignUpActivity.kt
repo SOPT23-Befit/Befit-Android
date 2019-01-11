@@ -121,7 +121,7 @@ class SignUpActivity : BaseActivity() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if(!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", s)) {
                 tv_sign_up_notice.setTextColor(Color.parseColor("#7a36e4"))
-                tv_sign_up_notice.text = "특수문자,영문,숫자를 포함해주세요"
+                tv_sign_up_notice.text = "특수문자,영문,숫자를 8-20자로 포함해주세요"
             }else{
                 tv_sign_up_notice.text = "유효한 비밀번호 입니다."
             }
@@ -293,7 +293,7 @@ class SignUpActivity : BaseActivity() {
         //무조건 통신
         if (password.equals(passwordcheck)) {
 
-            if (name.length>0 && birth.length >0 && email.length > 0 && password.length > 0 && passwordcheck.length > 0) { //서로 같은지
+            if (name.length>0 && birth.length >0 && email.length > 0 && password.length > 8 && passwordcheck.length > 8) { //서로 같은지
 
                 Log.v("zzzz",gender)
                 Log.v("zzzz",brand1)
@@ -302,7 +302,7 @@ class SignUpActivity : BaseActivity() {
 
 
             } else {
-                toast("정보를 다 입력해주세요 ").show()
+                toast("정보를 확실히 입력해주세요 ").show()
             }
             //유효성 검사
         }else{

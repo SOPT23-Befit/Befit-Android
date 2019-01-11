@@ -45,7 +45,14 @@ class CheckMyBrandPreferenceManActivity : BaseActivity() {
         brand2 = intent.getStringExtra("brand2")
 
         iv_man_brand_preference_modify_ok.setOnClickListener(){
-            putBrandModify(brand1,brand2)
+            if(brand1==""||brand2=="")
+            {
+                toast("두개의 브랜드를 선택해주세요")
+            }
+            else
+            {
+                putBrandModify(brand1,brand2)
+            }
 
 
 
