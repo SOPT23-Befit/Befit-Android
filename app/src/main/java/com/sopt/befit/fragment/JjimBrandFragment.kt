@@ -49,9 +49,12 @@ class JjimBrandFragment : Fragment() {
 
         setRecyclerView()
 
-        getJjimBrandListResponse()
-
         setViewClickListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getJjimBrandListResponse()
     }
     private fun setViewClickListener(){
         refresh_brand_main.setOnRefreshListener {
@@ -84,6 +87,8 @@ class JjimBrandFragment : Fragment() {
                         }
                     }
                     jjimBrandRecyclerViewAdapter.notifyDataSetChanged()
+                }else{
+                    tv_fragment_jjim_brand_count.text= "찜한 상품 " + 0
                 }
             }
         })

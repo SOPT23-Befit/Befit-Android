@@ -34,9 +34,11 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
+  
     //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
     val token = SharedPreferenceController.getAuthorization(ctx)
+
     lateinit var temp : UserTotalData
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -102,7 +104,7 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                 response?.let {
                     when (it.body()!!.status) {
                         200 -> {
-                            Log.v("success", response.message().toString())
+                            Log.v("success", response.body().toString())
                             temp  = response.body()!!.data
 
                             val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
@@ -112,6 +114,10 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                             intent.putExtra("name_english", dataList[position].name_english)
                             intent.putExtra("token", token)
                             intent.putExtra("UserTotalData",temp)
+
+
+
+
 
                             ctx.startActivity(intent)
 

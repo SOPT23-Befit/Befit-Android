@@ -54,15 +54,18 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener{
 
         token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
-        getSearchInitalListResponse()
-
         setRecyclerView()
 
         setViewClickListener()
     }
 
-    private fun setViewClickListener() {
+    override fun onResume() {
+        super.onResume()
 
+        getSearchInitalListResponse()
+    }
+
+    private fun setViewClickListener() {
         tv_search_product_cancle.setOnClickListener {
             //취소버튼 눌렀을 때
             refresh_search_img.setVisibility(View.VISIBLE)
@@ -117,14 +120,14 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener{
                         val temp: ArrayList<ProductData> = response.body()!!.data
                         if (temp.size > 0) {
                             for (i in 0..2) {
-                                dataList.add(SearchProductData(temp[0 + 8 * i].image_url, temp[0 + 8 * i].idx
-                                        , temp[1 + 8 * i].image_url, temp[1 + 8 * i].idx
-                                        , temp[2 + 8 * i].image_url, temp[2 + 8 * i].idx
-                                        , temp[3 + 8 * i].image_url, temp[3 + 8 * i].idx
-                                        , temp[4 + 8 * i].image_url, temp[4 + 8 * i].idx
-                                        , temp[5 + 8 * i].image_url, temp[5 + 8 * i].idx
-                                        , temp[6 + 8 * i].image_url, temp[6 + 8 * i].idx
-                                        , temp[7 + 8 * i].image_url, temp[7 + 8 * i].idx))
+                                dataList.add(SearchProductData(temp[0+8*i]
+                                        , temp[1 + 8 * i]
+                                        , temp[2 + 8 * i]
+                                        , temp[3 + 8 * i]
+                                        , temp[4 + 8 * i]
+                                        , temp[5 + 8 * i]
+                                        , temp[6 + 8 * i]
+                                        , temp[7 + 8 * i]))
 
                             }
                         }

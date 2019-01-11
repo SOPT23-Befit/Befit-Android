@@ -158,12 +158,9 @@ class HomeFragment : Fragment() {
             startActivity<CategoryActivity>("category_idx" to 14)
         }
 
+        category_menu.setOnClickListener{
 
-
-
-
-
-
+        }
 
         ibtn_menu_open.setOnClickListener(){
             ibtn_menu_open.visibility=View.INVISIBLE
@@ -177,6 +174,8 @@ class HomeFragment : Fragment() {
            // AAAAMainActivity.instance.tabvisible()
             AAAAMainActivity.instance.tl_bottom_navi_act_bottom_menu.visibility=View.GONE
         }
+
+
 
         ibtn_menu_close.setOnClickListener() {
             ibtn_menu_open.visibility = View.VISIBLE
@@ -282,9 +281,9 @@ class HomeFragment : Fragment() {
 
     private fun configureBannerNavigation() {
 
-        vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(childFragmentManager, 3)
-        vp_aaa_main_banner.offscreenPageLimit = 3
-        tabDots.setupWithViewPager(vp_aaa_main_banner)
+//        vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(childFragmentManager, 3)
+//        vp_aaa_main_banner.offscreenPageLimit = 3
+//        tabDots.setupWithViewPager(vp_aaa_main_banner)
 
     }
 

@@ -1,5 +1,6 @@
 package com.sopt.befit.activity
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -13,8 +14,10 @@ import com.sopt.befit.adapter.BrandGoodsRecyclerViewAdapter
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
 import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.get.GetBrandResponse
 import com.sopt.befit.get.GetProductListResponse
+import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.PostBrandLikeResponse
@@ -29,6 +32,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class BrandMainActivity : BaseActivity() {
+
+    lateinit var temp: UserTotalData
 
     val dataList: ArrayList<ProductData> by lazy {
         ArrayList<ProductData>()
@@ -49,19 +54,20 @@ class BrandMainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_brand_main)
 
-        token = intent.getStringExtra("token")
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI"//
         flag = intent.getIntExtra("flag", 0)
 
         if (flag == 0) {
             layout_brand_main_one_product.visibility = View.GONE
             b_idx = intent.getIntExtra("idx", 0)
         } else {
-            toast("프로덕트 하나")
             layout_brand_main_one_product.visibility = View.VISIBLE
             productData = intent.getSerializableExtra("ProductData") as ProductData
             setOneProductView()
-            b_idx=productData.brand_idx
+            b_idx = productData.brand_idx
         }
+
+
 
         setViewClickListener()
 
@@ -88,6 +94,10 @@ class BrandMainActivity : BaseActivity() {
 
     private fun setViewClickListener() {
 
+        layout_brand_main_one_product.setOnClickListener {
+            getUserDataResponse(this)
+        }
+
         tv_brand_main_new.setOnClickListener {
             if (tv_brand_main_popular.isChecked) {
                 tv_brand_main_popular.setChecked(false)
@@ -98,6 +108,7 @@ class BrandMainActivity : BaseActivity() {
                 getBrandNewProductListResponse()
             }
         }
+
         tv_brand_main_popular.setOnClickListener {
             //리사이클러 뷰 재통신
             if (tv_brand_main_new.isChecked) {
@@ -110,26 +121,18 @@ class BrandMainActivity : BaseActivity() {
             }
         }
 
-        img_brand_main_b_heart.setOnClickListener {
+        img_brand_main_back.setOnClickListener {
+            finish()
+        }
+
+        img_brand_main_p_heart.setOnClickListener {
             if (productData.product_like == 1) {
-                //좋아요 상태면 싫어요를 한다
                 postBrandOneProductUnlikeResponse()
                 productData.product_like = 0
             } else {
                 postBrandOneProductLikeResponse()
                 productData.product_like = 1
             }
-        }
-
-        img_brand_main_back.setOnClickListener {
-            finish()
-        }
-
-        img_brand_main_item_box.setOnClickListener{
-            val intent: Intent = Intent(this, ProductContentViewActivity::class.java)
-            intent.putExtra("brand_idx", productData.brand_idx)
-            intent.putExtra("link", productData.link)
-            startActivity(intent)
         }
     }
 
@@ -150,6 +153,7 @@ class BrandMainActivity : BaseActivity() {
                 if (response.isSuccessful) {
                     tv_brand_main_b_name_eng.setText(response.body()!!.data.name_english)
                     tv_brand_main_b_name_kor.setText(response.body()!!.data.name_korean)
+
                     if (response.body()!!.data.likeFlag == 1) {
                         img_brand_main_b_heart.setChecked(true)
                     }
@@ -288,4 +292,59 @@ class BrandMainActivity : BaseActivity() {
             }
         })
     }
+
+    private fun getUserDataResponse(ctx : Context) {
+        Log.d("aaaaaaa", "aaaaaa")
+        //val token = SharedPreferenceController.getAuthorization(activity!!)
+        //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        val getUserDataResponse = networkService.getUserDataResponse(token)
+        getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
+            override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) {
+                Log.e("board list fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetUserDataResponse>, response: Response<GetUserDataResponse>) {
+                response?.let {
+                    when (it.body()!!.status) {
+                        200 -> {
+                            Log.v("success", response.message().toString())
+                            temp = response.body()!!.data
+
+                            val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
+                            intent.putExtra("idx", productData.idx)
+                            intent.putExtra("token", token)
+                            intent.putExtra("url", productData.link)
+                            intent.putExtra("name_english", productData.name_english)
+                            intent.putExtra("UserTotalData", temp)
+
+                            startActivity(intent)
+                        }
+
+                        400 -> {
+                            Log.v("fail", response.message())
+                            Log.v("fail", response.errorBody().toString())
+                            toast("로그인 실패")
+                        }
+
+                        500 -> {
+
+                            Log.v("409 error", response.message())
+                            Log.v("server error", response.errorBody().toString())
+                            toast("서버 내부 에러")
+                        }
+                        600 -> {
+                            Log.v("600 error", response.message())
+                            Log.v("database error", response.errorBody().toString())
+                            toast("데이터베이스 에러")
+                        }
+                        else -> {
+                            toast("Error")
+                        }
+                    }
+                }
+            }
+        })
+
+    }
+
 }

@@ -92,6 +92,8 @@ class JjimProductFragment : Fragment() {
                             val position = productListRecyclerViewAdapter.itemCount
                             productListRecyclerViewAdapter.dataList.addAll(temp)
                         }
+                    }else{
+                        tv_fragment_jjim_product_count.text= "찜한 상품 " + 0
                     }
                     productListRecyclerViewAdapter.notifyDataSetChanged()
                 }

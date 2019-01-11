@@ -36,6 +36,7 @@
                 android:lineSpacingExtra="30sp"
                 android:paddingLeft="34dp"
                 android:textColor="#848484"
+                android:focusedByDefault="true"
                 android:textSize="12sp" />
 
             <ImageView
