@@ -37,7 +37,7 @@
     <TextView
         android:id="@+id/tv_rv_item_each_product_p_name"
         android:layout_width="163dp"
-        android:layout_height="13dp"
+        android:layout_height="26dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="6dp"
         android:layout_marginTop="8dp"
