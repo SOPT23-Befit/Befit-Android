@@ -26,7 +26,10 @@ class MyPageAccountSettingActivity : BaseActivity() {
     fun setSwitchClick(){
         sw_activity_my_page_account_setting_turn.setOnCheckedChangeListener { switch, isChecked ->
             if (isChecked) {
-            } else {
+
+            }
+
+            else {
                 //OFF일 때
                 SharedPreferenceController.clearUserSharedPreferences(this)
             }

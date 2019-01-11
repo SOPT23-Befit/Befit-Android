@@ -452,8 +452,8 @@ class HomeFragment : Fragment() {
     private fun getBrandRecommendResponse() {
         Log.d("aaaaaaa", "aaaaaa")
         networkService = ApplicationController.instance!!.networkService
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
-        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        val token = SharedPreferenceController.getAuthorization(activity!!)
+        //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         val getBrandRecommendResponse = networkService.getBrandRecommendResponse(token)
         getBrandRecommendResponse.enqueue(object : Callback<GetBrandRecommendResponse> {
             override fun onFailure(call: Call<GetBrandRecommendResponse>, t: Throwable) {

@@ -172,6 +172,7 @@
                 android:layout_marginTop="22dp"
                 android:text="사이즈 선택"
                 android:textColor="#000000"
+
                 android:textSize="16sp"
                      
                 android:tag="bold"/>
@@ -186,6 +187,7 @@
                 android:layout_alignTop="@+id/tv_my_size_add_select"
                 android:layout_marginLeft="79dp"
                 android:textSize="12sp"/>
+
 
 
             <Spinner
@@ -210,9 +212,10 @@
                 android:layout_height="33.5dp">
                 <TableLayout
                     android:id="@+id/layout_my_size_display_tvs"
-                    android:layout_width="301.5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="33.5dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginRight="29dp"
                     android:background="#f9fafb">
                     <TableRow
                         android:layout_weight="1"
@@ -276,9 +279,10 @@
                 android:layout_below="@+id/line1"
                 android:layout_height="33.5dp">
                 <TableLayout
-                    android:layout_width="301.5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="33.5dp"
-                    android:layout_marginLeft="50dp">
+                    android:layout_marginRight="29dp"
+                    android:layout_marginLeft="29dp">
                     <TableRow
                         android:layout_weight="1"
                         android:orientation="horizontal">
@@ -341,10 +345,11 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="301.5dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@+id/line2"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="29dp"
+                android:layout_marginRight="29dp"
                 android:background="#dcdcdc"></RelativeLayout>
         </RelativeLayout>
     </LinearLayout>

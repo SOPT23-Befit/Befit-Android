@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:layout_marginTop="81dp"
         android:layout_marginLeft="26dp"
-        android:layout_marginBottom="68dp">
+        android:layout_marginBottom="26dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

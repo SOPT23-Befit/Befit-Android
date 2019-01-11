@@ -276,8 +276,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sweat Shirts"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="15dp"
+
                     />
 
                 <TextView
@@ -419,9 +418,6 @@
                     android:layout_height="wrap_content"
                     android:text="Hoody"
                     android:layout_marginTop="20dp"/>
-
-
-
 
                 <TextView
                     android:id="@+id/tv_main_category_man_seat_shirts"

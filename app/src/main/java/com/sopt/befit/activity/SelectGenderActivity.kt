@@ -23,11 +23,11 @@ class SelectGenderActivity : BaseActivity() {
 
 
             if (gender == 1) {
-                startActivity<BrandPreferenceWomanActivity>("gender" to "여")
+                startActivity<BrandPreferenceWomanActivity>("gender" to "여성")
             }
             if (gender == 2) {
 
-                startActivity<BrandPreferenceManActivity>("gender" to "남")
+                startActivity<BrandPreferenceManActivity>("gender" to "남성")
             }
 
         }
