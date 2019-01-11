@@ -14,6 +14,7 @@ import com.sopt.befit.R
 import com.sopt.befit.adapter.GoodsRecyclerViewAdapter
 import com.sopt.befit.data.BrandData
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetInitialBrandResponse
 import com.sopt.befit.get.GetInitialGoodsResponse
 import com.sopt.befit.get.InitialBrand
@@ -27,7 +28,7 @@ import retrofit2.Callback
 
 class AddMySizeGoodsPageActivity : BaseActivity() {
 
-
+    var token: String = ""
     var brand_idx: Int = 2
     var category_idx: Int = 0
 
@@ -108,7 +109,9 @@ class AddMySizeGoodsPageActivity : BaseActivity() {
 
     public fun getgoodsInitial() {
 
-        val getGoodsInitialResponse = networkService.getGoodsByInitialResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", brand_idx, category_idx)
+        token = SharedPreferenceController.getAuthorization(this)
+
+        val getGoodsInitialResponse = networkService.getGoodsByInitialResponse("token", brand_idx, category_idx)
         getGoodsInitialResponse.enqueue(object : Callback<GetInitialGoodsResponse> {
             override fun onFailure(call: retrofit2.Call<GetInitialGoodsResponse>, t: Throwable) {
                 Log.e("goodsInitial error", t.toString())

@@ -206,143 +206,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="33.5dp">
                         <TableLayout
-                            android:id="@+id/layout_my_size_display_tvs"
+                            android:id="@+id/layout_add_my_size_table"
                             android:layout_width="match_parent"
                             android:layout_height="33.5dp"
                             android:layout_marginLeft="29dp"
                             android:layout_marginRight="29dp"
                             android:background="#f9fafb">
-                            <TableRow
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_00"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textSize="12sp"
-                                    android:textColor="#191919"
-                                    android:text="총장" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_01"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textSize="12sp"
-                                    android:textColor="#191919"
-                                    android:text="소매길이" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_02"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textSize="12sp"
-                                    android:textColor="#191919"
-                                    android:text="어깨너비" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_03"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textSize="12sp"
-                                    android:textColor="#191919"
-                                    android:text="가슴단면" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_04"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textSize="12sp"
-                                    android:textColor="#191919"
-                                    android:text="암홀" />
-                            </TableRow>
                         </TableLayout>
                     </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/line2"
-                        android:layout_width="match_parent"
-                        android:layout_below="@+id/line1"
-                        android:layout_height="33.5dp">
-                        <TableLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="33.5dp"
-                            android:layout_marginRight="29dp"
-                            android:layout_marginLeft="29dp">
-                            <TableRow
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_10"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold"
-                                    android:text="61" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_11"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold"
-                                    android:text="73.5" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_12"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold"
-                                    android:text="36" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_13"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold"
-                                    android:text="43" />
-
-                                <TextView
-                                    android:id="@+id/tv_my_size_display_15"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:textColor="#000000"
-                                    android:textSize="11sp"
-                                    android:textStyle="bold"
-                                    android:text="55.5" />
-                            </TableRow>
-                        </TableLayout>
-                    </RelativeLayout>
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_below="@+id/line2"
                         android:layout_marginLeft="29dp"
                         android:layout_marginRight="29dp"
                         android:layout_marginBottom="30dp"

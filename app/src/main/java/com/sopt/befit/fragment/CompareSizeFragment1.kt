@@ -2,6 +2,7 @@ package com.sopt.befit.fragment
 
 import android.R
 import android.app.Activity
+import android.arch.lifecycle.Lifecycle
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -18,10 +19,11 @@ import com.google.gson.JsonParser
 
 import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.adapter.CompareSizeAdapter
-import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.animation.ProgressAnimation
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.ClosetDetail
+import com.sopt.befit.get.Compare
 import com.sopt.befit.get.GetCompareSizeResponse
 import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
@@ -33,6 +35,7 @@ import kotlinx.android.synthetic.main.dl_compare_size.view.*
 import kotlinx.android.synthetic.main.fragment_compare_size.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.defaultSharedPreferences
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
@@ -41,12 +44,16 @@ import retrofit2.Response
 
 class CompareSizeFragment1 : Fragment() {
 
+    var token: String = ""
+
     lateinit var sizeList: ArrayList<String>
     lateinit var product: ProductData
     val COMPARE_DIALOG_REQUEST_CODE = 1000
     var position: Int = -1
+    var closetIdx : Int = -1
     lateinit var CompareSizeAdapter: CompareSizeAdapter
     lateinit var closetList: ArrayList<ClosetDetail>
+    var compareData : Compare? = null
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -54,11 +61,6 @@ class CompareSizeFragment1 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(com.sopt.befit.R.layout.fragment_compare_size, container, false)
 
-        Glide.with(context!!)
-                .load("https://s3.ap-northeast-2.amazonaws.com/befit-server/36.+jeansslackspants_l.png")
-                .thumbnail(0.5f)
-                .into(view!!.findViewById(com.sopt.befit.R.id.iv_fragment_compare_size_goods_size))
-        Utilities.setGlobalFont(view, activity!!);
         return view
     }
 
@@ -86,23 +88,22 @@ class CompareSizeFragment1 : Fragment() {
 
                 }
             })
-        } else {
-        }
+        }else{}
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val product_idx = 1
-        val closet_idx = 1
 
 
         position = arguments!!.getInt("position")
-        closetList = arguments!!.getSerializable("ClosetList") as ArrayList<ClosetDetail>
+        closetIdx = arguments!!.getInt("closetIdx")
+
         Log.d("fragment position", position.toString())
 //
         product = ProductContentViewActivity.instance.getCurrentProductData()
+
 
         var jsonString = product.measure.toString()
         var parser = JsonParser()
@@ -113,15 +114,19 @@ class CompareSizeFragment1 : Fragment() {
             sizeList.add(measure.key)
         }
 
+        getCompareSizeResponse(closetIdx)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setSpinner(closetList)
+        //setSpinner(closetList)
     }
 
     private fun getCompareSizeResponse(closetIdx: Int) {
-        val getCompareSizeResponse = networkService.getCompareSizeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", closetIdx, product.idx, product_size = sizeList.get(position))
+        Log.d("zzzzzzz",position.toString())
+        token = SharedPreferenceController.getAuthorization(activity!!)
+        val getCompareSizeResponse = networkService.getCompareSizeResponse(token, closetIdx, product.idx, product_size = sizeList.get(position))
         Log.d("aaaaaaa", "aaaaaa")
         //val token = SharedPreferenceController.getAuthorization(activity!!)
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
@@ -135,10 +140,10 @@ class CompareSizeFragment1 : Fragment() {
                     when (it.body()!!.status) {
                         200 -> {
                             Log.v("success", response.body()!!.toString())
-                            var animation = ProgressAnimation(progress, 2000)//2000은 2초
-                            animation.setProgress(response.body()!!.data.percent.toInt())
-
-                            tv_fragment_compare_size_percent.text = response.body()!!.data.percent + "%"
+//                            var animation = ProgressAnimation(progress, 2000)//2000은 2초
+//                            animation.setProgress(response.body()!!.data.percent.toInt())
+//
+//                            tv_fragment_compare_size_percent.text = response.body()!!.data.percent + "%"
 
 
                             //  val requestOptions = RequestOptions()
@@ -147,29 +152,58 @@ class CompareSizeFragment1 : Fragment() {
                             // requestOptions.override(170)
 
                             // requestOptions.override(170)
-                            val requestOptions = RequestOptions()
+//                            val requestOptions = RequestOptions()
+//
+//
+//                            var key = ArrayList<String>()
+//                            var data = ArrayList<Double>()
+//
+//                            var jsonString = response.body()!!.data.measure.toString()
+//                            var parser = JsonParser()
+//                            var json = parser.parse(jsonString).asJsonObject
+//
+//                            for ((index, closet) in json.entrySet().withIndex()) {
+//                                key.add(closet.key)
+//                                if (closet.value == null) {
+//                                    data.add(100.0)
+//                                } else {
+//                                    data.add(closet.value.asDouble)
+//                                }
+//                            }
+//
+//                            tv_fragment_compare_size_goods_name.text = product.name
+//                            tv_fragment_compare_size_Size.text = sizeList.get(position)
+//
+//                            Log.v("===============tag===============", data.toString())
 
+                            if(response.body()!!.data != null){
+                                compareData = response.body()!!.data
 
-                            var key = ArrayList<String>()
-                            var data = ArrayList<Double>()
+                                Glide.with(context!!)
+                                        .load(compareData!!.compare_url)
+                                        .thumbnail(0.5f)
+                                        .into(iv_fragment_compare_size_goods_size)
+                                if(position == 0){
+                                    var dialog = parentFragment as CompareSizeDialog
+                                    Glide.with(activity!!)
+                                            .load(compareData!!.my_url)
+                                            .into(dialog.iv_fragment_compare_size_my_size)
 
-                            var jsonString = response.body()!!.data.measure.toString()
-                            var parser = JsonParser()
-                            var json = parser.parse(jsonString).asJsonObject
+                                    dialog.setClosetComapreData(compareData,0)
 
-                            for ((index, closet) in json.entrySet().withIndex()) {
-                                key.add(closet.key)
-                                if (closet.value == null) {
-                                    data.add(100.0)
-                                } else {
-                                    data.add(closet.value.asDouble)
                                 }
+
+                                if(lifecycle.currentState == Lifecycle.State.RESUMED){
+                                    Log.d("Spinner Life",""+position+"first")
+                                } else {
+                                    Log.d("Spinner Life",""+position+"other")
+                                }
+
+                            } else {
+                                toast("옷 사이즈 비교 불가능.")
+                                var dialog = parentFragment as CompareSizeDialog
+                                dialog.dismiss()
                             }
-
-                            tv_fragment_compare_size_goods_name.text = product.name
-                            tv_fragment_compare_size_Size.text = sizeList.get(position)
-
-                            Log.v("===============tag===============", data.toString())
 
                         }
 
@@ -206,5 +240,9 @@ class CompareSizeFragment1 : Fragment() {
             if (resultCode == Activity.RESULT_OK) {
             }
         }
+    }
+
+    fun getCompareSizeData() : Compare?{
+        return this.compareData
     }
 }

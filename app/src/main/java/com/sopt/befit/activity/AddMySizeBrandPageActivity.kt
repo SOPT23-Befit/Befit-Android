@@ -12,6 +12,7 @@ import android.widget.ImageView
 import com.sopt.befit.adapter.BrandGoodsRecyclerViewAdapter
 import com.sopt.befit.R
 import com.sopt.befit.data.BrandData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetInitialBrandResponse
 import com.sopt.befit.get.InitialBrand
 import com.sopt.befit.network.ApplicationController
@@ -26,6 +27,7 @@ import retrofit2.http.Path
 class AddMySizeBrandPageActivity : BaseActivity() {
 
 
+    var token: String = ""
     var brand_name: String? = null
     var click: Boolean = true
 
@@ -229,7 +231,9 @@ class AddMySizeBrandPageActivity : BaseActivity() {
 
     private fun getBrandInitial(initial: Char) {
 
-        val getBrandInitialResponse = networkService.getBrandsByInitialResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80", initial)
+        token = SharedPreferenceController.getAuthorization(this)
+
+        val getBrandInitialResponse = networkService.getBrandsByInitialResponse(token, initial)
         getBrandInitialResponse.enqueue(object : Callback<GetInitialBrandResponse> {
             override fun onFailure(call: retrofit2.Call<GetInitialBrandResponse>, t: Throwable) {
                 Log.e("brandInitial", t.toString())
