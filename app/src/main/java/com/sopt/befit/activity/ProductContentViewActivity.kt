@@ -36,6 +36,8 @@ class ProductContentViewActivity : BaseActivity() {
 
     val MY_CLOSET_LIST_REQUEST_CODE = 1000
 
+    lateinit var  token : String
+
     companion object {
         lateinit var instance : ProductContentViewActivity
     }
@@ -78,7 +80,9 @@ class ProductContentViewActivity : BaseActivity() {
         var intent_url = intent!!.getStringExtra("url")
         var url = "http://"+intent_url.toString()
 
+        closetlist = ArrayList<ClosetDetail>()
 
+        token = SharedPreferenceController.getAuthorization(this)
         usertotaldata = intent!!.getSerializableExtra("UserTotalData") as UserTotalData
 
 
@@ -90,7 +94,7 @@ class ProductContentViewActivity : BaseActivity() {
         webSetting = webView!!.settings
         webSetting!!.javaScriptEnabled = true
         Log.v("onCreate","aaaaa")
-        var token = intent!!.getStringExtra("token")
+
         var brand_name = intent!!.getStringExtra("name_english")
 
         webView!!.addJavascriptInterface(AndroidBridge(),"")
@@ -194,7 +198,7 @@ class ProductContentViewActivity : BaseActivity() {
 
 
     private fun getProductResponse(){
-        val getMyClosetListResponse = networkService.getEachProductListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI",10)
+        val getMyClosetListResponse = networkService.getEachProductListResponse(token,10)
         getMyClosetListResponse.enqueue(object : Callback<GetEachProductResponse>{
             override fun onFailure(call: Call<GetEachProductResponse>, t: Throwable) {
 
@@ -217,7 +221,7 @@ class ProductContentViewActivity : BaseActivity() {
 
 
     private fun getMyClosetListResponse() {
-        val token = SharedPreferenceController.getAuthorization(this)
+
 
         val getMyClosetListResponse = networkService
                 .getClosetListResponse(token, 0)
@@ -229,38 +233,33 @@ class ProductContentViewActivity : BaseActivity() {
 
             override fun onResponse(call: Call<GetClosetListResponse>, response: Response<GetClosetListResponse>) {
                 response?.let {
-                    if(it.isSuccessful){
-                        Log.d("ABAB",it.body()!!.toString())
+                    if (it.isSuccessful) {
+                        Log.d("ABAB", it.body()!!.toString())
                         when (it.body()!!.status) {
                             200 -> {
                                 Log.v("success", response.message().toString())
 
-                                if (it.body()?.data != null){
+                                if (it.body()?.data != null) {
                                     closetlist = it.body()!!.data
+                                    //toast(closetlist.size.toString()+"aaaa")
+                                    val compareSizeDialog: DialogFragment = CompareSizeDialog()
+                                    var bundle = Bundle()
+                                    bundle.putSerializable("ClosetList",closetlist)
 
-                                // 옷정보가 없다면
-
-                                if (closetlist.isEmpty()) {
-                                    val sizecheckDialog: DialogFragment = SizeCheckAddClothDialog()
-
-
-                                        sizecheckDialog.show(supportFragmentManager, "closet list")
-                                    } else {
-                                        val compareSizeDialog: DialogFragment = CompareSizeDialog()
-                                        var bundle = Bundle()
-                                        bundle.putSerializable("ClosetList",closetlist)
-
-                                        //상품 정보 넘기기
+                                    //상품 정보 넘기기
 //                                    bundle.putInt("product_idx",productData.idx)
 //                                    bundle.putString("measure",productData.mesure.toString())
 
 
-                                        compareSizeDialog.arguments = bundle
-                                        //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
-                                        compareSizeDialog.show(supportFragmentManager, "compare size")
-                                    }
-                                } else{
+                                    compareSizeDialog.arguments = bundle
+                                    //옷정보가 있을 때 사이즈비교 다이얼로그 띄우기
+                                    compareSizeDialog.show(supportFragmentManager, "compare size")
+                                }
+                                else {
+                                    // 옷정보가 없다면
 
+                                    val sizecheckDialog: DialogFragment = SizeCheckAddClothDialog()
+                                    sizecheckDialog.show(supportFragmentManager, "closet list")
                                 }
 
                             }
@@ -294,7 +293,7 @@ class ProductContentViewActivity : BaseActivity() {
 
 
                     } else {
-                        Log.d("zzzzz",it.code().toString())
+                        Log.d("zzzzz", it.code().toString())
                     }
                 }
             }
