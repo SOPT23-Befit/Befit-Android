@@ -31,7 +31,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
-
+  
     //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
     val token = SharedPreferenceController.getAuthorization(ctx)
@@ -65,11 +65,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 .into(holder.main)
 
         holder.item_btn.setOnClickListener {
-
             getUserDataResponse(position)
-
-            
-
         }
 
         holder.heart.setOnClickListener {
@@ -114,6 +110,24 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
             }
         })
     }
+
+    private fun postJjimProductUnlikeResponse(p: Int) {
+        var token = SharedPreferenceController.getAuthorization(ctx)
+        val postJjimProductUnlikeResponse = networkService.postProductUnlikeResponse(token,
+                dataList[p].idx)
+        postJjimProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
+            override fun onFailure(call: Call<PostProductUnlikeResponse>, t: Throwable) {
+                Log.e("jjim product like fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostProductUnlikeResponse>, response: Response<PostProductUnlikeResponse>) {
+                if (response.isSuccessful) {
+
+                }
+            }
+        })
+    }
+
     private fun getUserDataResponse(position: Int){
         Log.d("aaaaaaa","aaaaaa")
         //val token = SharedPreferenceController.getAuthorization(activity!!)
@@ -132,7 +146,6 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                             val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
                             intent.putExtra("idx", dataList[position].idx)
                             intent.putExtra("url", dataList[position].link)
-                            Log.v("product_url",dataList[position].link)
                             intent.putExtra("name_english", dataList[position].name_english)
                             intent.putExtra("token", token)
                             intent.putExtra("UserTotalData",temp)
@@ -164,22 +177,6 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                     }
                 }
             } })
-    }
 
-    private fun postJjimProductUnlikeResponse(p: Int) {
-        var token = SharedPreferenceController.getAuthorization(ctx)
-        val postJjimProductUnlikeResponse = networkService.postProductUnlikeResponse(token,
-                dataList[p].idx)
-        postJjimProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
-            override fun onFailure(call: Call<PostProductUnlikeResponse>, t: Throwable) {
-                Log.e("jjim product like fail", t.toString())
-            }
-
-            override fun onResponse(call: Call<PostProductUnlikeResponse>, response: Response<PostProductUnlikeResponse>) {
-                if (response.isSuccessful) {
-
-                }
-            }
-        })
     }
 }

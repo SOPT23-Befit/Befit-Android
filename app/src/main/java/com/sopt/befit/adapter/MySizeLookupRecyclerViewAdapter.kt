@@ -21,6 +21,7 @@ import com.sopt.befit.get.ClosetDetail
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import com.sopt.befit.post.DeleteClosetResponse
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -88,6 +89,8 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
                     deleteClosetResponse(dataList[position].closet_idx)
                     MySizeLookupActivity.instance.dataList.removeAt(position)
                     MySizeLookupActivity.instance.mySizeLookupRecyclerViewAdapter.notifyItemRemoved(position)
+                    MySizeLookupActivity.instance.mySizeLookupRecyclerViewAdapter.notifyItemRangeChanged(position, getItemCount())
+
                 } else {
 
                 }

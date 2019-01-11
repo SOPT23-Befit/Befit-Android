@@ -105,13 +105,12 @@
                     android:id="@+id/tv_brand_main_b_name_kor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/layout_brand_main_circlelogo"
                     android:layout_below="@+id/tv_brand_main_b_name_eng"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@+id/layout_brand_main_circlelogo"
                     android:lineSpacingExtra="1sp"
-                    android:text="반스"
                     android:textColor="#000000"
                     android:textSize="12sp" />
 
@@ -127,7 +126,6 @@
                     android:layout_width="341dp"
                     android:layout_height="165dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/itembox"/>
 
@@ -148,8 +146,8 @@ k
                     android:layout_height="160dp"
                     android:layout_marginLeft="1dp"
                     android:layout_alignTop="@id/img_brand_main_item_box"
-                    android:layout_marginTop="1dp"
                     android:layout_alignLeft="@id/img_brand_main_item_box"
+                    android:layout_marginTop="1dp"
                     android:scaleType="centerCrop" />
 
                 <TextView
