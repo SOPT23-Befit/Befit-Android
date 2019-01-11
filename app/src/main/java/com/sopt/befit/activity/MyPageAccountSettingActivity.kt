@@ -2,6 +2,7 @@ package com.sopt.befit.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Switch
 import android.widget.ToggleButton
 import com.sopt.befit.R
@@ -12,6 +13,7 @@ import org.jetbrains.anko.startActivity
 import java.lang.Boolean.TRUE
 
 class MyPageAccountSettingActivity : BaseActivity() {
+    //val token =SharedPreferenceController.getAuthorization(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,8 @@ class MyPageAccountSettingActivity : BaseActivity() {
         btn_activity_my_page_account_setting_back.setOnClickListener(){
             finish()
         }
+
+
     }
 
     fun setSwitchClick(){
@@ -34,8 +38,14 @@ class MyPageAccountSettingActivity : BaseActivity() {
             }
 
             else {
+
                 //OFF일 때
                 SharedPreferenceController.clearUserSharedPreferences(this)
+                startActivity<LogInActivity>()
+               // Log.v("auto login off",token)
+
+
+                //finishAffinity()
             }
         }
     }

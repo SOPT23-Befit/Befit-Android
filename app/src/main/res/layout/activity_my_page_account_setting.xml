@@ -55,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="22dp">
+            android:layout_marginRight="22dp"
+            android:checked="true">
         </Switch>
     </RelativeLayout>
     <RelativeLayout

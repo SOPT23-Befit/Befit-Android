@@ -63,7 +63,7 @@ class LogInActivity : BaseActivity() {
 //저번 시간에 배웠던 SharedPreference에 토큰을 저장!
 
                                 SharedPreferenceController.setAuthorization(this@LogInActivity, token)
-                                toast(SharedPreferenceController.getAuthorization(this@LogInActivity))
+                               // toast(SharedPreferenceController.getAuthorization(this@LogInActivity))
                                 startActivity<AAAAMainActivity>()
                                 finish()
 
