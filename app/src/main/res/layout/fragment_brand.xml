@@ -32,6 +32,7 @@
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh_brand_main"
+        android:layout_below="@+id/tv_fragment_jjim_brand_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -39,7 +40,6 @@
             android:id="@+id/rv_frag_brand_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_fragment_jjim_brand_rl"
             ></android.support.v7.widget.RecyclerView>
 
     </android.support.v4.widget.SwipeRefreshLayout>

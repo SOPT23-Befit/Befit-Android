@@ -32,6 +32,7 @@
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh_product_main"
+        android:layout_below="@id/tv_fragment_jjim_product_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
