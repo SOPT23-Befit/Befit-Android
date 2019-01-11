@@ -152,12 +152,14 @@ class ProductContentViewActivity : BaseActivity() {
             finish()
         }
         val fm: FragmentManager = supportFragmentManager
-
-        getProductResponse()
+        var product_idx = intent.getIntExtra("idx",0)
+        productData = intent!!.getSerializableExtra("product") as ProductData
+        //getProductResponse(product_idx)
 
         btn_activity_product_contentview_size_check.setOnClickListener {
             //sizecheckDialog.show(fm, "Can't compare with anything")
-            getMyClosetListResponse()
+            var category_idx = productData.product_category_index
+            getMyClosetListResponse(category_idx)
         }
 
 
@@ -197,8 +199,8 @@ class ProductContentViewActivity : BaseActivity() {
     }
 
 
-    private fun getProductResponse(){
-        val getMyClosetListResponse = networkService.getEachProductListResponse(token,10)
+    private fun getProductResponse(idx : Int){
+        val getMyClosetListResponse = networkService.getEachProductListResponse(token,idx)
         getMyClosetListResponse.enqueue(object : Callback<GetEachProductResponse>{
             override fun onFailure(call: Call<GetEachProductResponse>, t: Throwable) {
 
@@ -220,11 +222,11 @@ class ProductContentViewActivity : BaseActivity() {
     }
 
 
-    private fun getMyClosetListResponse() {
+    private fun getMyClosetListResponse(category_idx : Int) {
 
 
         val getMyClosetListResponse = networkService
-                .getClosetListResponse(token, 0)
+                .getClosetListResponse(token, category_idx)
         Log.d("aaaaaaa", "aaaaaa")
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         getMyClosetListResponse.enqueue(object : Callback<GetClosetListResponse> {

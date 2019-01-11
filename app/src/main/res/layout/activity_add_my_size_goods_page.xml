@@ -38,31 +38,6 @@
         android:background="#000000"></RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="328dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:background="@drawable/roundingbox">
-        <ImageView
-            android:id="@+id/search_for_goods"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/img_search" />
-
-        <EditText
-            android:id="@+id/et_add_my_size_act_search_goods"
-            android:layout_width="328dp"
-            android:layout_height="32dp"
-            android:layout_toRightOf="@+id/search_for_goods"
-            android:layout_centerVertical="true"
-            android:background="@null"
-            android:hint="사이즈를 추가할 상품명을 검색하세요"
-            android:textSize="12sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/activity_add_my_size_goods_selected"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

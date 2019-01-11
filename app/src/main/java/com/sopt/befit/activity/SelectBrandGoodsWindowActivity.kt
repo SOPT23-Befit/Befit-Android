@@ -71,7 +71,7 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
         category_idx = 3
         category_idx = intent.getIntExtra("category_idx", 5)
 
-
+        Log.d("selectBrand category",category_idx.toString())
         setBrandBtnOnClick()
         setGoodsBtnOnClick()
         backGoodsBtnOnClick()
@@ -92,7 +92,8 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
 
         if(requestCode == REQUEST_BRAND_ACTIVITY){
             if(resultCode == Activity.RESULT_OK){
-                brand_idx=data!!.getIntExtra("brand_idx", 0)             //브랜드 idx 값 가져오기.
+                brand_idx=data!!.getIntExtra("brand_idx", 0) //브랜드 idx 값 가져오기.
+                Log.d("selectBrand",brand_idx.toString())
             }
         }
         else if(requestCode == REQUEST_GOODS_ACTIVITY){
@@ -102,6 +103,8 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
                 image_url = data!!.getStringExtra("image_url")
                 measure = data!!.getStringExtra("measure")
                 product_idx = data!!.getIntExtra("idx", 0)
+
+                Log.d("selectBrand",product_idx.toString())
 
                 Log.d("selectBrandGoods",measure)
 

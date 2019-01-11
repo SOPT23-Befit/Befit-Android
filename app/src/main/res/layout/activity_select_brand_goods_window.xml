@@ -204,11 +204,11 @@
                     <RelativeLayout
                         android:id="@+id/line1"
                         android:layout_width="match_parent"
-                        android:layout_height="33.5dp">
+                        android:layout_height="wrap_content">
                         <TableLayout
                             android:id="@+id/layout_add_my_size_table"
                             android:layout_width="match_parent"
-                            android:layout_height="33.5dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="29dp"
                             android:layout_marginRight="29dp"
                             android:background="#f9fafb">

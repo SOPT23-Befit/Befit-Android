@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -106,6 +107,7 @@ class CompareSizeFragment1 : Fragment() {
 
 
         var jsonString = product.measure.toString()
+        jsonString = jsonString.replace(" ","")
         var parser = JsonParser()
         var json = parser.parse(jsonString).asJsonObject
         sizeList = ArrayList<String>()
@@ -136,99 +138,71 @@ class CompareSizeFragment1 : Fragment() {
             }
 
             override fun onResponse(call: Call<GetCompareSizeResponse>, response: Response<GetCompareSizeResponse>) {
-                response?.let {
-                    when (it.body()!!.status) {
-                        200 -> {
-                            Log.v("success", response.body()!!.toString())
-//                            var animation = ProgressAnimation(progress, 2000)//2000은 2초
-//                            animation.setProgress(response.body()!!.data.percent.toInt())
-//
-//                            tv_fragment_compare_size_percent.text = response.body()!!.data.percent + "%"
+                    if(response.isSuccessful){
+                        when (response.body()!!.status) {
+                            200 -> {
+                                Log.v("success", response.body()!!.toString())
 
+                                if(response.body()!!.data != null){
+                                    compareData = response.body()!!.data
 
-                            //  val requestOptions = RequestOptions()
-//            //        requestOptions.placeholder(R.drawable.기본적으로 띄울 이미지)
-//            //        requestOptions.error(R.drawable.에러시 띄울 이미지)
-                            // requestOptions.override(170)
+                                    Glide.with(context!!)
+                                            .load(compareData!!.compare_url)
+                                            .thumbnail(0.5f)
+                                            .into(iv_fragment_compare_size_goods_size)
+                                    if(position == 0){
+                                        var dialog = parentFragment as CompareSizeDialog
+                                        Glide.with(activity!!)
+                                                .load(compareData!!.my_url)
+                                                .into(dialog.iv_fragment_compare_size_my_size)
 
-                            // requestOptions.override(170)
-//                            val requestOptions = RequestOptions()
-//
-//
-//                            var key = ArrayList<String>()
-//                            var data = ArrayList<Double>()
-//
-//                            var jsonString = response.body()!!.data.measure.toString()
-//                            var parser = JsonParser()
-//                            var json = parser.parse(jsonString).asJsonObject
-//
-//                            for ((index, closet) in json.entrySet().withIndex()) {
-//                                key.add(closet.key)
-//                                if (closet.value == null) {
-//                                    data.add(100.0)
-//                                } else {
-//                                    data.add(closet.value.asDouble)
-//                                }
-//                            }
-//
-//                            tv_fragment_compare_size_goods_name.text = product.name
-//                            tv_fragment_compare_size_Size.text = sizeList.get(position)
-//
-//                            Log.v("===============tag===============", data.toString())
+                                        dialog.setClosetComapreData(compareData,0)
 
-                            if(response.body()!!.data != null){
-                                compareData = response.body()!!.data
+                                    }
 
-                                Glide.with(context!!)
-                                        .load(compareData!!.compare_url)
-                                        .thumbnail(0.5f)
-                                        .into(iv_fragment_compare_size_goods_size)
-                                if(position == 0){
-                                    var dialog = parentFragment as CompareSizeDialog
-                                    Glide.with(activity!!)
-                                            .load(compareData!!.my_url)
-                                            .into(dialog.iv_fragment_compare_size_my_size)
+                                    if(lifecycle.currentState == Lifecycle.State.RESUMED){
+                                        Log.d("Spinner Life",""+position+"first")
+                                    } else {
+                                        Log.d("Spinner Life",""+position+"other")
+                                    }
 
-                                    dialog.setClosetComapreData(compareData,0)
-
-                                }
-
-                                if(lifecycle.currentState == Lifecycle.State.RESUMED){
-                                    Log.d("Spinner Life",""+position+"first")
                                 } else {
-                                    Log.d("Spinner Life",""+position+"other")
+                                    toast("옷 사이즈 비교 불가능.")
+                                    var dialog = parentFragment as CompareSizeDialog
+                                    dialog.dismiss()
                                 }
 
-                            } else {
-                                toast("옷 사이즈 비교 불가능.")
-                                var dialog = parentFragment as CompareSizeDialog
-                                dialog.dismiss()
                             }
 
-                        }
+                            404 -> {
+                                Log.v("fail", response.message())
+                                Log.v("fail", response.errorBody().toString())
+                                toast("해당 정보의 상품은 존재하지 않습니다.")
+                            }
 
-                        404 -> {
-                            Log.v("fail", response.message())
-                            Log.v("fail", response.errorBody().toString())
-                            toast("해당 정보의 상품은 존재하지 않습니다.")
-                        }
+                            500 -> {
 
-                        500 -> {
-
-                            Log.v("409 error", response.message())
-                            Log.v("server error", response.errorBody().toString())
-                            toast("서버 내부 에러")
+                                Log.v("409 error", response.message())
+                                Log.v("server error", response.errorBody().toString())
+                                toast("서버 내부 에러")
+                            }
+                            600 -> {
+                                Log.v("600 error", response.message())
+                                Log.v("database error", response.errorBody().toString())
+                                toast("데이터베이스 에러")
+                            }
+                            else -> {
+                                toast("Error")
+                            }
                         }
-                        600 -> {
-                            Log.v("600 error", response.message())
-                            Log.v("database error", response.errorBody().toString())
-                            toast("데이터베이스 에러")
-                        }
-                        else -> {
-                            toast("Error")
-                        }
+                    } else {
+                        Log.d("ooooooooooo",response.code().toString())
+                        Toast.makeText(activity,"비교할 수 없는 상품입니다.",Toast.LENGTH_LONG).show()
+                        var dialog = parentFragment as CompareSizeDialog
+                        dialog.dismiss()
                     }
-                }
+
+
             }
 
         })
