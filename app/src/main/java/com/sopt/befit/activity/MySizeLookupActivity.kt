@@ -13,6 +13,7 @@ import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_my_size_lookup.*
 import kotlinx.android.synthetic.main.rv_item_my_size_lookup.*
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,6 +52,11 @@ class MySizeLookupActivity : BaseActivity() {
         setOnButton()
         setRecyclerView()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toast("재통신")
         getClosetListResponse()
     }
 
@@ -94,14 +100,13 @@ class MySizeLookupActivity : BaseActivity() {
             override fun onResponse(call: Call<GetClosetListResponse>, response: Response<GetClosetListResponse>) {
                 if (response.isSuccessful) {
                     var temp: ArrayList<ClosetDetail> = ArrayList<ClosetDetail>()
-                    var position = 0
+                    dataList.clear()
                     if (response.body()?.data != null) {
-                        position = mySizeLookupRecyclerViewAdapter.itemCount
                         temp = response!!.body()!!.data
                     }
                     temp.add(ClosetDetail(0, "", "", "", "", "", 0, ""))
                     mySizeLookupRecyclerViewAdapter.dataList.addAll(temp)
-                    mySizeLookupRecyclerViewAdapter.notifyItemInserted(position+1)
+                    mySizeLookupRecyclerViewAdapter.notifyDataSetChanged()
                 }
             }
         })

@@ -70,7 +70,7 @@ class MyPageTotalUserInfoManage : BaseActivity() {
         setContentView(R.layout.activity_my_page_total_user_info_manage)
 
         //intent 하고 setting 하는 작업
-        token = intent!!.getStringExtra("token")
+        token = SharedPreferenceController.getAuthorization(this)
         temp = intent.getSerializableExtra("UserTotalData") as UserTotalData
 
 

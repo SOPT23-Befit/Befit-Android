@@ -17,6 +17,7 @@ import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.fragment.CompareSizeDialog
 import com.sopt.befit.fragment.SizeCheckAddClothDialog
 import com.sopt.befit.get.*
@@ -30,6 +31,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
+
+
+
+
 class ProductContentViewActivity : BaseActivity() {
 
     val MY_CLOSET_LIST_REQUEST_CODE = 1000
@@ -40,7 +45,7 @@ class ProductContentViewActivity : BaseActivity() {
 
 
     //웹뷰에서 회원가입 누를 때 넘겨주려면 가지고 있어야 한다.
-    lateinit var usertotaldata : UserTotalData
+    var  usertotaldata = intent.getSerializableExtra("UserTotalData") as UserTotalData
 
     lateinit var closetlist:ArrayList<ClosetDetail>
 //    val closetlist: ArrayList<Data> by lazy {
@@ -75,6 +80,11 @@ class ProductContentViewActivity : BaseActivity() {
         instance = this
        var intent_url = intent!!.getStringExtra("url")
         var url = "http://"+intent_url.toString()
+
+
+
+
+
         webView = findViewById(R.id.wv_activity_product_content_view)
         val animation : LottieAnimationView = findViewById(R.id.lottie_loading_web_view)
        webView!!.webViewClient = WebViewClient()
@@ -83,6 +93,8 @@ class ProductContentViewActivity : BaseActivity() {
         Log.v("onCreate","aaaaa")
         var token = intent!!.getStringExtra("token")
         var brand_name = intent!!.getStringExtra("name_english")
+
+        webView!!.addJavascriptInterface(AndroidBridge(),"")
         tv_activity_product_contentview_brandname.text = brand_name.toString()
         webView!!.webViewClient = object : WebViewClient(){
 
@@ -107,6 +119,9 @@ class ProductContentViewActivity : BaseActivity() {
                 tv_anouncement.visibility = View.GONE
                 tv_anouncement2.visibility = View.GONE
                 tv_anouncement3.visibility = View.GONE
+                if(url!!.contains("/member/join.html")){
+                    webView!!.loadUrl("file:///android_asset/signup.js:test()")
+                }
             }
 
         }
@@ -136,43 +151,37 @@ class ProductContentViewActivity : BaseActivity() {
     }
 
         //쇼핑몰에서 회원가입시 유저 data 전달
-    fun webViewSignUpPostUserData(userTotalData: UserTotalData) {
-            var name = userTotalData.name
-            var email = userTotalData.email
-            var birth = userTotalData.birthday
-            var phone = userTotalData.phone
-            var postnum = userTotalData.post_number
-            var home_address = userTotalData.home_address
-            var detail_address = userTotalData.detail_address
-            fun postUserData() {
-                handler!!.post(object : Runnable {
-                    public override fun run() {
-                        name
+    private inner class AndroidBridge {
+            @JavascriptInterface
 
-                    }
-                })
+            public fun PostUserNameData() {
+                var name = usertotaldata.name
             }
+                fun postUserEmailData() {
+                    var email = usertotaldata.email
+                }
+                fun PostUserPhone(){
+                    var phone = usertotaldata.phone
+                }
+                fun PostUserBirth(){
+                    var birth = usertotaldata.birthday
+                }
+                fun PostUserHomeAddress(){
+                    var home_address = usertotaldata.home_address
+                }
+                fun PostUserPostNum(){
+                    var postnum = usertotaldata.post_number
+                }
+                fun PostUserDetailAddress(){
+                    var detail_address = usertotaldata.detail_address
+                }
+
         }
+
     fun getCurrentProductData() : ProductData{
         return productData
     }
 
-    //    fun init_webView(){
-//        webView =  findViewById(R.id.wv_activity_product_content_view)
-//        webView!!.settings.javaScriptEnabled = true
-//
-//        webView!!.loadUrl(url)
-//        webView!!.webChromeClient =WebChromeClient()
-//
-//
-//    }
-//    val requestOptions = RequestOptions()
-////             requestOptions.placeholder(R.drawable.기본적으로 띄울 이미지)
-////             requestOptions.error(R.drawable.에러시 띄울 이미지)
-////             requestOptions.override(150) Glide.with(ctx)
-//            .setDefaultRequestOptions(requestOptions)
-//            .load(dataList[position].image_url)
-//            .thumbnail(0.5f)
 
     private fun getProductResponse(){
         val getMyClosetListResponse = networkService.getEachProductListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI",10)
@@ -198,10 +207,11 @@ class ProductContentViewActivity : BaseActivity() {
 
 
     private fun getMyClosetListResponse() {
+        val token = SharedPreferenceController.getAuthorization(this)
+
         val getMyClosetListResponse = networkService
-                .getClosetListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", 0)
+                .getClosetListResponse(token, 0)
         Log.d("aaaaaaa", "aaaaaa")
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         getMyClosetListResponse.enqueue(object : Callback<GetClosetListResponse> {
             override fun onFailure(call: Call<GetClosetListResponse>, t: Throwable) {

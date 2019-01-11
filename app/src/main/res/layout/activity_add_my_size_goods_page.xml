@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.AddMySizeGoodsPageActivity">
+    tools:context="com.sopt.befit.activity.AddMySizeGoodsPageActivity"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -73,5 +74,5 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
-</RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

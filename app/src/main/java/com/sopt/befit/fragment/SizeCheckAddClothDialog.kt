@@ -29,6 +29,7 @@ class SizeCheckAddClothDialog(): DialogFragment() {
         btn_dl_size_check_add_cloth.setOnClickListener {
             //내옷추가 액티비티로
             startActivity<MySizeLookupActivity>()
+            dismiss()
         }
         dl_size_check_add_cloth_cancel.setOnClickListener {
             dismiss()
