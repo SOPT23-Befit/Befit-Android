@@ -12,8 +12,7 @@
         android:layout_height="288dp"
         android:scaleType="centerCrop"
         android:src="@drawable/woman_critic"
-        android:layout_gravity="center"
-        android:background="@drawable/bigshadow"/>
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/tv_main_brand_1"
