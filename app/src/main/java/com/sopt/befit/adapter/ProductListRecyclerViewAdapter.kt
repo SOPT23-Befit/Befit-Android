@@ -31,16 +31,15 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
-  
-    //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
-    val token = SharedPreferenceController.getAuthorization(ctx)
+    var token: String = ""
 
-    lateinit var temp : UserTotalData
+    lateinit var temp: UserTotalData
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_each_product, parent, false)
         Utilities.setGlobalFont(view, ctx);
+        token = SharedPreferenceController.getAuthorization(ctx)
         return Holder(view)
 
     }
@@ -48,6 +47,8 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
+
         holder.b_name.text = dataList[position].name_korean
         holder.p_name.text = dataList[position].name
         holder.p_price.text = dataList[position].price
@@ -75,7 +76,8 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 postJjimProductUnlikeResponse(position)
                 dataList[position].product_like = 0
             } else {
-                Log.d("productListLike position",position.toString())
+                Log.d("productListLike position", position.toString())
+
                 postJjimProductLikeResponse(position)
                 dataList[position].product_like = 1
             }
@@ -95,7 +97,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
     }
 
     private fun postJjimProductLikeResponse(p: Int) {
-        val postJjimProductLikeResponse = networkService.postProductLikeResponse(token,dataList[p].idx)
+        val postJjimProductLikeResponse = networkService.postProductLikeResponse(token, dataList[p].idx)
         postJjimProductLikeResponse.enqueue(object : Callback<PostProductLikeResponse> {
             override fun onFailure(call: Call<PostProductLikeResponse>, t: Throwable) {
                 Log.e("jjim product like fail", t.toString())
@@ -103,16 +105,13 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
 
             override fun onResponse(call: Call<PostProductLikeResponse>, response: Response<PostProductLikeResponse>) {
                 if (response.isSuccessful) {
-                    Log.d("ProductList like response",response.body().toString())
-                } else {
-                    Log.d("ProductList like response",response.code().toString())
+
                 }
             }
         })
     }
 
     private fun postJjimProductUnlikeResponse(p: Int) {
-        var token = SharedPreferenceController.getAuthorization(ctx)
         val postJjimProductUnlikeResponse = networkService.postProductUnlikeResponse(token,
                 dataList[p].idx)
         postJjimProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
@@ -128,47 +127,46 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
         })
     }
 
-    private fun getUserDataResponse(position: Int){
-        Log.d("aaaaaaa","aaaaaa")
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
-        //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+    private fun getUserDataResponse(position: Int) {
+        Log.d("aaaaaaa", "aaaaaa")
         val getUserDataResponse = networkService.getUserDataResponse(token)
         getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
-            override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) { Log.e("board list fail", t.toString())
+            override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) {
+                Log.e("board list fail", t.toString())
             }
+
             override fun onResponse(call: Call<GetUserDataResponse>, response: Response<GetUserDataResponse>) {
                 response?.let {
                     when (it.body()!!.status) {
                         200 -> {
                             Log.v("success", response.message().toString())
-                            temp  = response.body()!!.data
+                            temp = response.body()!!.data
 
                             val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
                             intent.putExtra("idx", dataList[position].idx)
                             intent.putExtra("url", dataList[position].link)
                             intent.putExtra("name_english", dataList[position].name_english)
-                            intent.putExtra("token", token)
-                            intent.putExtra("UserTotalData",temp)
+                            intent.putExtra("UserTotalData", temp)
 
                             ctx.startActivity(intent)
 
                         }
 
                         400 -> {
-                            Log.v("fail",response.message())
-                            Log.v("fail",response.errorBody().toString())
+                            Log.v("fail", response.message())
+                            Log.v("fail", response.errorBody().toString())
                             ctx.toast("로그인 실패")
                         }
 
                         500 -> {
 
-                            Log.v("409 error",response.message())
-                            Log.v("server error",response.errorBody().toString())
+                            Log.v("409 error", response.message())
+                            Log.v("server error", response.errorBody().toString())
                             ctx.toast("서버 내부 에러")
                         }
-                        600->{
-                            Log.v("600 error",response.message())
-                            Log.v("database error",response.errorBody().toString())
+                        600 -> {
+                            Log.v("600 error", response.message())
+                            Log.v("database error", response.errorBody().toString())
                             ctx.toast("데이터베이스 에러")
                         }
                         else -> {
@@ -176,7 +174,8 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                         }
                     }
                 }
-            } })
+            }
+        })
 
     }
 }

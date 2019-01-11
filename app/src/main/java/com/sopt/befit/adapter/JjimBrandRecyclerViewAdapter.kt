@@ -21,7 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>, val token : String) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
+class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -30,6 +30,7 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_jjim_brand, parent, false)
         Utilities.setGlobalFont(view, ctx);
+
         return Holder(view)
     }
 
@@ -54,7 +55,6 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
         holder.item_btn.setOnClickListener {
             val intent: Intent = Intent(ctx, BrandMainActivity::class.java)
             intent.putExtra("idx", dataList[position].idx)
-            intent.putExtra("token", token)
             ctx.startActivity(intent)
         }
 

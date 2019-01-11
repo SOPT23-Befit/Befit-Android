@@ -17,6 +17,7 @@ import com.sopt.befit.R
 import com.sopt.befit.activity.MySizeLookupActivity
 import com.sopt.befit.activity.SelectBrandGoodsWindowActivity
 import com.sopt.befit.activity.SizeCheckPageActivity
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.ClosetDetail
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -41,14 +42,13 @@ class MySizeLookupRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_my_size_lookup, parent, false)
         Utilities.setGlobalFont(view, ctx);
+        token = SharedPreferenceController.getAuthorization(ctx)
         return Holder(view)
     }
 
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
         holder.b_name.text = dataList[position].name_korean
         holder.p_name.text = dataList[position].name

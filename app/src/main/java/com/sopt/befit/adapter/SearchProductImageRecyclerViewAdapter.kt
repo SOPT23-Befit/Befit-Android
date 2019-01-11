@@ -15,6 +15,7 @@ import com.sopt.befit.R
 import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.data.SearchProductData
 import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -28,21 +29,25 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_search_image, parent, false)
         Utilities.setGlobalFont(view, ctx);
+        token = SharedPreferenceController.getAuthorization(ctx)
         return Holder(view)
     }
     lateinit var temp : UserTotalData
 
     lateinit var intent: Intent
 
+    var token : String = ""
+
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
 
-    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+
 
     override fun getItemCount(): Int = dataList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+
         val requestOptions = RequestOptions()
 
         Glide.with(ctx)
@@ -96,75 +101,58 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
         holder.mainImage1.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd0.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url", dataList[position].pd0.link)
             intent.putExtra("name_english", dataList[position].pd0.name_english)
-            getUserDataResponse()
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
         holder.mainImage2.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd1.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url", dataList[position].pd1.link)
             intent.putExtra("name_english", dataList[position].pd1.name_english)
-            getUserDataResponse()
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
         holder.mainImage3.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd2.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url", dataList[position].pd2.link)
             intent.putExtra("name_english", dataList[position].pd2.name_english)
-            getUserDataResponse()
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
         holder.mainImage4.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd3.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url", dataList[position].pd3.link)
             intent.putExtra("name_english", dataList[position].pd3.name_english)
-            getUserDataResponse()
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
         holder.mainImage5.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd4.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url", dataList[position].pd4.link)
             intent.putExtra("name_english", dataList[position].pd4.name_english)
-            getUserDataResponse()
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
         holder.mainImage6.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd5.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url", dataList[position].pd5.link)
             intent.putExtra("name_english", dataList[position].pd5.name_english)
-            getUserDataResponse()
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
         holder.mainImage7.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd6.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url", dataList[position].pd6.link)
             intent.putExtra("name_english", dataList[position].pd6.name_english)
-            getUserDataResponse()
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
         holder.mainImage8.setOnClickListener {
             intent = Intent(ctx, ProductContentViewActivity::class.java)
             intent.putExtra("idx", dataList[position].pd7.idx)
-            intent.putExtra("token", token)
             intent.putExtra("url",dataList[position].pd7.link)
             intent.putExtra("name_english",dataList[position].pd7.name_english)
-            getUserDataResponse()
-
-            ctx.startActivity(intent)
+            getUserDataResponse(ctx)
         }
     }
 
@@ -179,10 +167,8 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
         val mainImage8: ImageView = itemView.findViewById(R.id.img_rv_item_search_image_main8) as ImageView
     }
 
-    private fun getUserDataResponse(){
+    private fun getUserDataResponse(ctx : Context){
         Log.d("aaaaaaa","aaaaaa")
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
-        //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         val getUserDataResponse = networkService.getUserDataResponse(token)
         getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
             override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) { Log.e("board list fail", t.toString())
@@ -194,6 +180,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                             Log.v("success", response.message().toString())
                             temp  = response.body()!!.data
                             intent.putExtra("UserTotalData",temp)
+                            ctx.startActivity(intent)
                         }
 
                         400 -> {

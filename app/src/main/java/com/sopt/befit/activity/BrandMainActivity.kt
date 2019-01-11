@@ -15,6 +15,7 @@ import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
 import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetBrandResponse
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.get.GetUserDataResponse
@@ -54,7 +55,7 @@ class BrandMainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_brand_main)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI"//
+        token = SharedPreferenceController.getAuthorization(this)
         flag = intent.getIntExtra("flag", 0)
 
         if (flag == 0) {
@@ -295,8 +296,6 @@ class BrandMainActivity : BaseActivity() {
 
     private fun getUserDataResponse(ctx : Context) {
         Log.d("aaaaaaa", "aaaaaa")
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
-        //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         val getUserDataResponse = networkService.getUserDataResponse(token)
         getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
             override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) {
@@ -312,7 +311,6 @@ class BrandMainActivity : BaseActivity() {
 
                             val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
                             intent.putExtra("idx", productData.idx)
-                            intent.putExtra("token", token)
                             intent.putExtra("url", productData.link)
                             intent.putExtra("name_english", productData.name_english)
                             intent.putExtra("UserTotalData", temp)

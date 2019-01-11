@@ -12,6 +12,7 @@ import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
 
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -29,7 +30,6 @@ class EachProductFragment() : Fragment() {
     }
 
     var token: String = ""
-    var b_idx: Int = 0
     var search: String? = null
 
     val networkService: NetworkService by lazy {
@@ -46,9 +46,7 @@ class EachProductFragment() : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
-
-        //Toast.makeText(activity!!, "eachproduct:" + savedInstanceState!!.getString("searchImage"), Toast.LENGTH_SHORT).show();
+        token = SharedPreferenceController.getAuthorization(activity!!)
 
         arguments?.let {
             search = it.getString("search")

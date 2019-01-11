@@ -55,7 +55,7 @@ class JjimProductFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        token = SharedPreferenceController.getAuthorization(ctx)
+        token = SharedPreferenceController.getAuthorization(activity!!)
 
         setRecyclerView()
 
