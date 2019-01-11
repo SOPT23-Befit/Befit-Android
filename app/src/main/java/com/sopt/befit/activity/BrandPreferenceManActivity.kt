@@ -188,7 +188,7 @@ class BrandPreferenceManActivity : BaseActivity() {
             if(cnt == 0){
                 //cnt =>1 brand 1 에 14선택
                 cnt++
-                ibtn_brand_prefer_next.isClickable = false
+                ibtn_brand_prefer_next.isEnabled = false
                 ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                 brand1 = "14"
                 ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_select_critic) //선택
@@ -199,13 +199,13 @@ class BrandPreferenceManActivity : BaseActivity() {
                     //브랜드 해제
                     cnt--
                     brand1 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_critic_brand_select) //해제
                 }else if(brand1 == "" && brand2 =="14"){
                     //cnt ==1 인데 brand2 에 14이 들어가 있을 때
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand2 = ""
                     ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_critic_brand_select) //해제
@@ -231,17 +231,17 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand1 == "14"){
                     cnt--
                     brand1 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_critic_brand_select) //해제
                 }else if(brand2 =="14"){
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand2 = ""
                     ibtn_activity_brand_preference_man_Critic.setImageResource(R.drawable.man_critic_brand_select) //해제
                 }else{
-                    ibtn_brand_prefer_next.isClickable = true
+                    ibtn_brand_prefer_next.isEnabled = true
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_purplearrow)
                     //이미 두개가 다 다른거로 선택 되어있을 때
                     toast("두개 까지만 선택할 수 있습니다.").show()
@@ -261,7 +261,7 @@ class BrandPreferenceManActivity : BaseActivity() {
             if(cnt == 0){
                 //cnt =>1 brand 1 에 18선택
                 cnt++
-                ibtn_brand_prefer_next.isClickable = false
+                ibtn_brand_prefer_next.isEnabled = false
                 ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                 brand1 = "18"
                 ibtn_activity_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_select_istkunst) //선택
@@ -270,7 +270,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand2 == "" && brand1 == "18"){
                     //cnt ==1 인 놈이 brand1 에 18일 때
                     //브랜드 해제
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     cnt--
                     brand1 = ""
@@ -278,7 +278,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                 }else if(brand1 == "" && brand2 =="18"){
                     //cnt ==1 인데 brand2 에 18이 들어가 있을 때
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand2 = ""
                     ibtn_activity_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_istkunst_brand_secet) //해제
@@ -304,17 +304,17 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand1 == "18"){
                     cnt--
                     brand1 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_istkunst_brand_secet) //해제
                 }else if(brand2 =="18"){
                     cnt--
                     brand2 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Ist_Kunst.setImageResource(R.drawable.man_istkunst_brand_secet) //해제
                 }else{
-                    ibtn_brand_prefer_next.isClickable = true
+                    ibtn_brand_prefer_next.isEnabled = true
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_purplearrow)
                     //이미 두개가 다 다른거로 선택 되어있을 때
                     toast("두개 까지만 선택할 수 있습니다.").show()
@@ -333,7 +333,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                 //cnt =>1 brand 1 에 7선택
                 cnt++
                 brand1 = "7"
-                ibtn_brand_prefer_next.isClickable = false
+                ibtn_brand_prefer_next.isEnabled = false
                 ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                 ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_select_covernat) //선택
             }else if(cnt == 1){
@@ -342,7 +342,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                     //cnt ==1 인 놈이 brand1 에 7일 때
                     //브랜드 해제
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand1 = ""
                     ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_covernat_brand_select) //해제
@@ -350,7 +350,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                     //cnt ==1 인데 brand2 에 7이 들어가 있을 때
                     cnt--
                     brand2 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_covernat_brand_select) //해제
                 }else if(brand1 != "7" && brand2 != "7" ){
@@ -374,19 +374,19 @@ class BrandPreferenceManActivity : BaseActivity() {
             }else if(cnt == 2){
                 if(brand1 == "7"){
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand1 = ""
                     ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_covernat_brand_select) //해제
                 }else if(brand2 =="7"){
                     cnt--
                     brand2 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Covernat.setImageResource(R.drawable.man_covernat_brand_select) //해제
                 }else{
                     //이미 두개가 다 다른거로 선택 되어있을 때
-                    ibtn_brand_prefer_next.isClickable = true
+                    ibtn_brand_prefer_next.isEnabled = true
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_purplearrow)
                     toast("두개 까지만 선택할 수 있습니다.").show()
                 }
@@ -404,7 +404,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                 //cnt =>1 brand 1 에 22선택
                 cnt++
                 brand1 = "22"
-                ibtn_brand_prefer_next.isClickable = false
+                ibtn_brand_prefer_next.isEnabled = false
                 ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                 ibtn_activity_brand_preference_man_Insilence.setImageResource(R.drawable.man_select_insilence) //선택
             }else if(cnt == 1){
@@ -412,7 +412,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand2 == "" && brand1 == "22"){
                     //cnt ==1 인 놈이 brand1 에 22일 때
                     //브랜드 해제
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     cnt--
                     brand1 = ""
@@ -421,7 +421,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                     //cnt ==1 인데 brand2 에 22이 들어가 있을 때
                     cnt--
                     brand2 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled= false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Insilence.setImageResource(R.drawable.man_insilence_brand_select) //해제
                 }else if(brand1 != "22" && brand2 != "22" ){
@@ -446,18 +446,18 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand1 == "22"){
                     cnt--
                     brand1 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Insilence.setImageResource(R.drawable.man_insilence_brand_select) //해제
                 }else if(brand2 =="22"){
                     cnt--
                     brand2 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Insilence.setImageResource(R.drawable.man_insilence_brand_select) //해제
                 }else{
                     //이미 두개가 다 다른거로 선택 되어있을 때
-                    ibtn_brand_prefer_next.isClickable = true
+                    ibtn_brand_prefer_next.isEnabled = true
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_purplearrow)
                     toast("두개 까지만 선택할 수 있습니다.").show()
                 }
@@ -473,7 +473,7 @@ class BrandPreferenceManActivity : BaseActivity() {
             if(cnt == 0){
                 //cnt =>1 brand 1 에 10선택
                 cnt++
-                ibtn_brand_prefer_next.isClickable = false
+                ibtn_brand_prefer_next.isEnabled = false
                 ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                 brand1 = "10"
                 ibtn_activity_brand_preference_man_Liberteng.setImageResource(R.drawable.man_select_liberteng) //선택
@@ -482,7 +482,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand2 == "" && brand1 == "10"){
                     //cnt ==1 인 놈이 brand1 에 10일 때
                     //브랜드 해제
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     cnt--
                     brand1 = ""
@@ -490,7 +490,7 @@ class BrandPreferenceManActivity : BaseActivity() {
                 }else if(brand1 == "" && brand2 =="10"){
                     //cnt ==1 인데 brand2 에 10이 들어가 있을 때
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand2 = ""
                     ibtn_activity_brand_preference_man_Liberteng.setImageResource(R.drawable.man_liberteng_brand_select) //해제
@@ -516,18 +516,18 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand1 == "10"){
                     cnt--
                     brand1 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Liberteng.setImageResource(R.drawable.man_liberteng_brand_select) //해제
                 }else if(brand2 =="10"){
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled= false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand2 = ""
                     ibtn_activity_brand_preference_man_Liberteng.setImageResource(R.drawable.man_liberteng_brand_select) //해제
                 }else{
                     //이미 두개가 다 다른거로 선택 되어있을 때
-                    ibtn_brand_prefer_next.isClickable = true
+                    ibtn_brand_prefer_next.isEnabled = true
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_purplearrow)
                     toast("두개 까지만 선택할 수 있습니다.").show()
                 }
@@ -543,7 +543,7 @@ class BrandPreferenceManActivity : BaseActivity() {
             if(cnt == 0){
                 //cnt =>1 brand 1 에 12선택
                 cnt++
-                ibtn_brand_prefer_next.isClickable = false
+                ibtn_brand_prefer_next.isEnabled = false
                 ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                 brand1 = "12"
                 ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_select_romanticcrown) //선택
@@ -553,14 +553,14 @@ class BrandPreferenceManActivity : BaseActivity() {
                     //cnt ==1 인 놈이 brand1 에 12일 때
                     //브랜드 해제
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand1 = ""
                     ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_romanticcrown_brand_select) //해제
                 }else if(brand1 == "" && brand2 =="12"){
                     //cnt ==1 인데 brand2 에 10이 들어가 있을 때
                     cnt--
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     brand2 = ""
                     ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_romanticcrown_brand_select) //해제
@@ -586,18 +586,18 @@ class BrandPreferenceManActivity : BaseActivity() {
                 if(brand1 == "12"){
                     cnt--
                     brand1 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_romanticcrown_brand_select) //해제
                 }else if(brand2 =="12"){
                     cnt--
                     brand2 = ""
-                    ibtn_brand_prefer_next.isClickable = false
+                    ibtn_brand_prefer_next.isEnabled = false
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_grayarrow)
                     ibtn_activity_brand_preference_man_Romantic_crown.setImageResource(R.drawable.man_romanticcrown_brand_select) //해제
                 }else{
                     //이미 두개가 다 다른거로 선택 되어있을 때
-                    ibtn_brand_prefer_next.isClickable = true
+                    ibtn_brand_prefer_next.isEnabled = true
                     ibtn_brand_prefer_next.setImageResource(R.drawable.ic_purplearrow)
                     toast("두개 까지만 선택할 수 있습니다.").show()
                 }
@@ -616,6 +616,7 @@ class BrandPreferenceManActivity : BaseActivity() {
 
         ibtn_brand_prefer_next.setOnClickListener(){
             startActivity<SignUpActivity>("gender" to "$gender","brand1" to "$brand1","brand2" to "$brand2")
+            finish()
         }
     }
 
