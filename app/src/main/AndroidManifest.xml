@@ -8,8 +8,7 @@
     <application
         android:name=".network.ApplicationController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@drawable/befit_icon_rgb"
+        android:icon="@mipmap/ic_launcher_foreground"
         android:label="Befit"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
