@@ -29,7 +29,10 @@ class BrandRankingFragment :Fragment(){
     val dataList : ArrayList<BrandRankingData> by lazy {
         ArrayList<BrandRankingData>()
     }
+    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
+
+    lateinit var temp : UserTotalData
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -62,7 +65,7 @@ class BrandRankingFragment :Fragment(){
    private fun getBrandRankingResponse(){
 
        //networkService = ApplicationController.instance!!.networkService
-        val getBrandRankingResponse = networkService.getBrandRankingResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzUzNTUzfQ.g-nHgDAsxs6R21CqssW4Q-X8JpbL5H9tNwYYGHKtgXs")
+        val getBrandRankingResponse = networkService.getBrandRankingResponse(token)
         getBrandRankingResponse.enqueue(object : Callback<GetBrandRankingResponse> {
             override fun onFailure(call: retrofit2.Call<GetBrandRankingResponse>, t: Throwable) {
                 Log.e("brandRanking", t.toString())

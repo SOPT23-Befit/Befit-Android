@@ -1,5 +1,6 @@
 package com.sopt.befit.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -57,8 +58,9 @@ class BrandMainActivity : BaseActivity() {
         } else {
             toast("프로덕트 하나")
             layout_brand_main_one_product.visibility = View.VISIBLE
-            //productData = intent.getSerializableExtra("ProductData") as ProductData
-            //setOneProductView()
+            productData = intent.getSerializableExtra("ProductData") as ProductData
+            setOneProductView()
+            b_idx=productData.brand_idx
         }
 
         setViewClickListener()
@@ -67,12 +69,6 @@ class BrandMainActivity : BaseActivity() {
 
         getBrandResponse()
 
-        /*
-
-        refresh_brand_main_act.setOnRefresh {
-            toast("새로 고침!")
-        }
-         */
         getBrandNewProductListResponse()
     }
 
@@ -127,6 +123,13 @@ class BrandMainActivity : BaseActivity() {
 
         img_brand_main_back.setOnClickListener {
             finish()
+        }
+
+        img_brand_main_item_box.setOnClickListener{
+            val intent: Intent = Intent(this, ProductContentViewActivity::class.java)
+            intent.putExtra("brand_idx", productData.brand_idx)
+            intent.putExtra("link", productData.link)
+            startActivity(intent)
         }
     }
 
@@ -192,7 +195,6 @@ class BrandMainActivity : BaseActivity() {
                         val temp: ArrayList<ProductData> = response.body()!!.data
                         if (temp.size > 0) {
                             tv_brand_main_product_count.text = "PRODUCT (" + temp.size + ")"
-                            val position = brandProductListRecyclerViewAdapter.itemCount
                             brandProductListRecyclerViewAdapter.dataList.addAll(temp)
                             brandProductListRecyclerViewAdapter.notifyDataSetChanged()
                         }
@@ -214,7 +216,6 @@ class BrandMainActivity : BaseActivity() {
                     if (response.body()?.data != null) {
                         val temp: ArrayList<ProductData> = response.body()!!.data
                         if (temp.size > 0) {
-                            val position = brandProductListRecyclerViewAdapter.itemCount
                             brandProductListRecyclerViewAdapter.dataList.addAll(temp)
                             brandProductListRecyclerViewAdapter.notifyDataSetChanged()
                         }
