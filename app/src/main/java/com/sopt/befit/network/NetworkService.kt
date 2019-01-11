@@ -241,4 +241,11 @@ interface NetworkService {
             @Header("Authorization") token : String
     ) : Call<GetMyRecommendProduct>
 
+    @POST("/closet")
+    @Headers("Content-Type: application/json")
+    fun postAddMyCloset(
+            @Header("Authorization") authorization: String,
+            @Body closetAddData: ClosetAddData
+    ): Call<PostAddMyClosetResponse>
+
 }

@@ -30,6 +30,7 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
 
         //var gender : String = intent.getStringExtra("gender")
         var gender = "여성"
+        ibtn_brand_prefer_next_wm.isEnabled = false
 
 
         ibtn_brand_preference_woman_thisisneverthat.setOnClickListener() {
@@ -68,14 +69,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "17"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)  // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "17"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)  // 선택
                     }
@@ -140,14 +141,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "12"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = false
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_activity_brand_preference_woman_Romantic_crown.setImageResource(R.drawable.woman_select_romantic_crown)  // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "12"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Romantic_crown.setImageResource(R.drawable.woman_select_romantic_crown) // 선택
                     }
@@ -211,14 +212,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "3"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = false
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_activity_brand_preference_woman_Lafudgestore.setImageResource(R.drawable.woman_select_lafudgestore) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "3"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Lafudgestore.setImageResource(R.drawable.woman_select_lafudgestore) // 선택
                     }
@@ -282,14 +283,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "9"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = false
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_activity_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_select_andersson_bell) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "9"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_select_andersson_bell) // 선택
                     }
@@ -353,14 +354,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "14"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = false
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_activity_brand_preference_woman_Critic.setImageResource(R.drawable.woman_select_critic) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "14"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Critic.setImageResource(R.drawable.woman_select_critic) // 선택
                     }
@@ -424,14 +425,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "37"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = false
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_activity_brand_preference_woman_OIOI.setImageResource(R.drawable.woman_select_oioi) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "37"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_OIOI.setImageResource(R.drawable.woman_select_oioi) // 선택
                     }
@@ -496,14 +497,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "2"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = false
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_activity_brand_preference_woman_Minav.setImageResource(R.drawable.woman_select_minav) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "2"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Minav.setImageResource(R.drawable.woman_select_minav) // 선택
                     }
@@ -567,14 +568,14 @@ class BrandPreferenceWomanActivity : AppCompatActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "32"
-                        ibtn_brand_prefer_next_wm.isClickable = false
+                        ibtn_brand_prefer_next_wm.isEnabled = false
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                         ibtn_activity_brand_preference_woman_More_or_Less.setImageResource(R.drawable.woman_select_more_or_less) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
                         brand2 = "32"
                         cnt++
-                        ibtn_brand_prefer_next_wm.isClickable  = true
+                        ibtn_brand_prefer_next_wm.isEnabled  = true
                         ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_More_or_Less.setImageResource(R.drawable.woman_select_more_or_less) // 선택
                     }

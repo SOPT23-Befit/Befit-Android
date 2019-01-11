@@ -57,6 +57,7 @@ class GoodsRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Initial
                 intent.putExtra("idx", dataList[position].idx)                         //상품idx 보내기.
                 intent.putExtra("name",dataList[position].name)                        //상품이름 보내기.
                 intent.putExtra("image_url",dataList[position].image_url)              //상품이미지 보내기.
+                intent.putExtra("measure",dataList[position].measure.toString())
 
 
 

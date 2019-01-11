@@ -17,6 +17,7 @@ import com.sopt.befit.R
 import com.sopt.befit.data.ClosetData
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.fragment.CompareSizeDialog
 import com.sopt.befit.fragment.SizeCheckAddClothDialog
 import com.sopt.befit.get.*
@@ -193,10 +194,11 @@ class ProductContentViewActivity : AppCompatActivity() {
 
 
     private fun getMyClosetListResponse() {
+        val token = SharedPreferenceController.getAuthorization(this)
+
         val getMyClosetListResponse = networkService
-                .getClosetListResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI", 0)
+                .getClosetListResponse(token, 0)
         Log.d("aaaaaaa", "aaaaaa")
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
         //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
         getMyClosetListResponse.enqueue(object : Callback<GetClosetListResponse> {
             override fun onFailure(call: Call<GetClosetListResponse>, t: Throwable) {

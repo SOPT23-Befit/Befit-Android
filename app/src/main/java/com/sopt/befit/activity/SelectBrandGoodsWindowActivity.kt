@@ -10,23 +10,22 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.JsonParser
-import com.sopt.befit.R
 import com.sopt.befit.get.*
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
-import kotlinx.android.synthetic.main.activity_add_my_size.*
 import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
-import okhttp3.Response
-import org.jetbrains.anko.ctx
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.startActivityForResult
-import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 import org.json.JSONObject
 import retrofit2.Callback
+import android.widget.Spinner
+import com.sopt.befit.R
+import com.sopt.befit.data.ClosetAddData
+import com.sopt.befit.post.PostAddMyClosetResponse
+
 
 //import javax.security.auth.callback.Callback
 
@@ -35,9 +34,12 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
 
     var brand_idx : Int = 0
     var category_idx : Int = 3
+    var product_idx : Int = 0
     var image_url : String? = null
     var name_korean : String? = null
-
+    var measure : String? = null
+    var position : Int = 0
+    var product_size : String? = null
     val REQUEST_BRAND_ACTIVITY =777
     val REQUEST_GOODS_ACTIVITY =888
 
@@ -64,23 +66,7 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
         category_idx = 3
         category_idx = intent.getIntExtra("category_idx", 5)
 
-//        var data = AddMySizeGoodsPageActivity.instance.getGoodsData()
-//        var jsonString = data.measure.toString()
-//        var parser = JsonParser()
-//        var json = parser.parse(jsonString).asJsonObject
-//         closetSize = ArrayList<String>()
 
-        GoodsSize.add("사이즈 선택")
-//        for((index,measure) in json.entrySet().withIndex()){
-////            GoodsSize.add(measure.key)
-////        }
-        GoodsSize.add("S")
-        GoodsSize.add("M")
-        GoodsSize.add("L")
-
-
-
-        setSpinner(GoodsSize)
         setBrandBtnOnClick()
         setGoodsBtnOnClick()
         backGoodsBtnOnClick()
@@ -107,6 +93,20 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
                 name_korean=data!!.getStringExtra("name_korean")
                 val name : String = data!!.getStringExtra("name")
                 image_url = data!!.getStringExtra("image_url")
+                measure = data!!.getStringExtra("measure")
+                product_idx = data!!.getIntExtra("idx", 0)
+
+                var parser = JsonParser()
+                var json = parser.parse(measure).asJsonObject
+                GoodsSize = ArrayList<String>()
+
+                GoodsSize.add("사이즈 선택")
+                for((index,measure) in json.entrySet().withIndex()){
+                    GoodsSize.add(measure.key)
+                }
+
+                setSpinner(GoodsSize)
+
                 tv_select_brand_goods_window_goodsname.text = name
                 tv_select_brand_goods_window_brandname.text= name_korean
 
@@ -121,9 +121,49 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
         }
     }
 
-        fun addButtonOnClick() {
+    fun addButtonOnClick() {
         btn_activity_select_brand_goods_window_add.setOnClickListener {
-            finish()
+
+
+            val closetAddData : ClosetAddData = ClosetAddData(product_idx,product_size!!)
+            var userCreateResponse = networkService.postAddMyCloset("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI",closetAddData)
+            userCreateResponse!!.enqueue(object : Callback<PostAddMyClosetResponse> {
+                override fun onFailure(call: retrofit2.Call<PostAddMyClosetResponse>, t: Throwable) {
+                    Log.v("Error LoginActivity : ", t.message)
+                    //  overlapNetWorking = ""
+                }
+
+                override fun onResponse(call: retrofit2.Call<PostAddMyClosetResponse>, response: retrofit2.Response<PostAddMyClosetResponse>) {
+
+                    response?.let {
+                        when (it.body()!!.status) {
+                            201 -> {
+                                Log.v("success", response.message().toString())
+                                Log.v("dddddd","aaaaaa")
+                                finish()
+                            }
+                            400 -> {
+                                Log.v("400 error", response.message())
+                                Log.v("400 error", response.errorBody().toString())
+                                toast("서버 에러")
+                            }
+                            409 ->{
+                                Log.v("409 error",response.message())
+                                Log.v("conflict",response.errorBody().toString())
+                                toast("충돌 발생")
+                            }
+                            500 -> {
+
+                            }
+                            else -> {
+                                toast("Error")
+                            }
+                        }
+                    }?.also {
+                        // overlapNetWorking = " "
+                    }
+                }
+            })
         }
     }
 
@@ -156,13 +196,19 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
 
     private fun setSpinner(dataList : ArrayList<String>) {
 
+        btn_activity_select_brand_goods_window_add.visibility = View.GONE
+        activity_select_brand_goods_window_size.visibility = View.GONE
+
 
         sp_my_size_add_select_size.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataList)
         //sp_my_size_add_select_size.adapter = SelectSizeSpinnerAdapterval(this, dataList)
         sp_my_size_add_select_size.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                //toast("선택된 아이템 : " + sp_my_size_add_select_size.getItemAtPosition((position)))
+//                position =  sp_my_size_add_select_size.getItemAtPosition((position))
+                val spinner = findViewById<View>(R.id.sp_my_size_add_select_size) as Spinner
+                product_size = spinner.selectedItem.toString()
                 //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
+
                 btn_activity_select_brand_goods_window_add.visibility = View.VISIBLE
                 activity_select_brand_goods_window_size.visibility = View.VISIBLE
 

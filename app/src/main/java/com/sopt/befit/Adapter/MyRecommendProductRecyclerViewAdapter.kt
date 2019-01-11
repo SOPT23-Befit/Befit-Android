@@ -16,6 +16,7 @@ import com.sopt.befit.activity.BrandMainActivity
 import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -33,9 +34,9 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
-    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+    //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
-
+    val token = SharedPreferenceController.getAuthorization(ctx)
     lateinit var temp : UserTotalData
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
