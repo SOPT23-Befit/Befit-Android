@@ -121,6 +121,7 @@
 
         <!--</ExpandableListView>-->
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -150,10 +151,12 @@
 
 
         <LinearLayout
+            android:id="@+id/lo_mypage_cus_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_mypage_1vs1_Q_list"
