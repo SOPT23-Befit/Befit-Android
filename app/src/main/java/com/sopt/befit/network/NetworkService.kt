@@ -259,4 +259,8 @@ interface NetworkService {
             @Body modifyBrandData : ModifyBrandData
     ): Call<PutModifyBrandResponse>
 
+    @DELETE("/user")
+    fun deleteAccountResponse(
+            @Header("Authorization") authorization: String
+    ): Call<DeleteAccountResponse>
 }
