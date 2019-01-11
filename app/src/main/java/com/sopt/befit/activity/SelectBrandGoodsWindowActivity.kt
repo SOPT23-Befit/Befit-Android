@@ -29,7 +29,7 @@ import com.sopt.befit.post.PostAddMyClosetResponse
 
 //import javax.security.auth.callback.Callback
 
-class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
+class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
     var brand_idx : Int = 0
@@ -76,6 +76,8 @@ class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelecte
         activity_select_brand_goods_window_size.visibility = View.GONE                  //사이즈상세 레이아웃
         btn_activity_select_brand_goods_window_goods.setTextColor(Color.parseColor("#848484"))
         btn_activity_select_brand_goods_window_arrow.setImageResource(R.drawable.ic_left_arrow_wh_notactivated)
+        btn_activity_select_brand_goods_window_add.visibility = View.GONE
+        activity_select_brand_goods_window_size.visibility = View.GONE
         brandgoodsinstance = this
 
     }
@@ -126,7 +128,7 @@ class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelecte
 
 
             val closetAddData : ClosetAddData = ClosetAddData(product_idx,product_size!!)
-            var userCreateResponse = networkService.postAddMyCloset("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI",closetAddData)
+            var userCreateResponse = networkService.postAddMyCloset("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MTcsImV4cCI6MTU0OTg3MTI4OX0.-jWS-P3-DP5DdsqphUIHJP5icKH09xDrmA7X11cGaCw",closetAddData)
             userCreateResponse!!.enqueue(object : Callback<PostAddMyClosetResponse> {
                 override fun onFailure(call: retrofit2.Call<PostAddMyClosetResponse>, t: Throwable) {
                     Log.v("Error LoginActivity : ", t.message)
@@ -196,9 +198,6 @@ class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelecte
 
     private fun setSpinner(dataList : ArrayList<String>) {
 
-        btn_activity_select_brand_goods_window_add.visibility = View.GONE
-        activity_select_brand_goods_window_size.visibility = View.GONE
-
 
         sp_my_size_add_select_size.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataList)
         //sp_my_size_add_select_size.adapter = SelectSizeSpinnerAdapterval(this, dataList)
@@ -209,9 +208,10 @@ class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelecte
                 product_size = spinner.selectedItem.toString()
                 //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
 
-                btn_activity_select_brand_goods_window_add.visibility = View.VISIBLE
-                activity_select_brand_goods_window_size.visibility = View.VISIBLE
-
+                if(product_size != "사이즈 선택") {
+                    btn_activity_select_brand_goods_window_add.visibility = View.VISIBLE
+                    activity_select_brand_goods_window_size.visibility = View.VISIBLE
+                }
 
 
             }

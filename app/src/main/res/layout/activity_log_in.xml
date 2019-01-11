@@ -52,6 +52,7 @@
                 android:background="@null"
                 android:ems="10"
                 android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:hint="이메일" />
         </RelativeLayout>
 
@@ -89,6 +90,7 @@
                 android:background="@null"
                 android:gravity="center_vertical"
                 android:hint="비밀번호"
+                android:textColor="#ffffff"
                 android:textColorHint="#ffffff"/>
         </RelativeLayout>
         <LinearLayout

@@ -41,6 +41,8 @@ class LogInActivity : BaseActivity() {
             jsonObject.put("email", input_id)
             jsonObject.put("password", input_pw)
 
+            loginData = LoginData(input_id,input_pw)
+
             val postLogInResponse = networkService.postLoginResponse(loginData)
 
             postLogInResponse.enqueue(object : Callback<PostLoginResponse> {
@@ -56,6 +58,7 @@ class LogInActivity : BaseActivity() {
                         SharedPreferenceController.setAuthorization(this@LogInActivity, token)
                         toast(SharedPreferenceController.getAuthorization(this@LogInActivity))
                         startActivity<AAAAMainActivity>()
+                        finish()
                     }
                 }
             })

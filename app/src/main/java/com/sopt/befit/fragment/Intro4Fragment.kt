@@ -31,7 +31,7 @@ class Intro4Fragment : Fragment() {
 
 
         ibtn_intro_ok.setOnClickListener(){
-            if(token!=null)
+            if(token.length!=0)
             {
                 startActivity<AAAAMainActivity>("token" to token)
             }

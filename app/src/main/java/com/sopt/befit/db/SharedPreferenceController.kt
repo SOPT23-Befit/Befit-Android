@@ -11,7 +11,7 @@ import android.widget.ShareActionProvider
 //key -value 맵구조
 
 object SharedPreferenceController {
-    private val USER_NAME: String = "MYKEY"
+    private val USER_NAME: String? = null
     private val myAuth = "myAuth"
     private val USER_IDX : String = "user_idx"
     private val USER_ID: String = "user_id"

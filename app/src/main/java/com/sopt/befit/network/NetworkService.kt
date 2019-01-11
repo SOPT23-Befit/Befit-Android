@@ -30,8 +30,8 @@ interface NetworkService {
 
     // 로그인
     @POST("/login")
+    @Headers("Content-Type: application/json")
     fun postLoginResponse(
-            @Header("Content-Type: application/json")
             @Body loginData: LoginData
     ): Call<PostLoginResponse>
 
