@@ -21,7 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
+class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<BrandData>, val token : String) : RecyclerView.Adapter<JjimBrandRecyclerViewAdapter.Holder>() {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -83,7 +83,7 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
     }
 
     private fun postJjimBrandLikeResponse(p: Int) {
-        val postJjimBrandLikeResponse = networkService.postBrandLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postJjimBrandLikeResponse = networkService.postBrandLikeResponse(token,
                 dataList[p].idx)
         postJjimBrandLikeResponse.enqueue(object : Callback<PostBrandLikeResponse> {
             override fun onFailure(call: Call<PostBrandLikeResponse>, t: Throwable) {
@@ -99,7 +99,7 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
     }
 
     private fun postJjimBrandUnlikeResponse(p: Int) {
-        val postJjimBrandUnlikeResponse = networkService.postBrandUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postJjimBrandUnlikeResponse = networkService.postBrandUnlikeResponse(token,
                 dataList[p].idx)
         postJjimBrandUnlikeResponse.enqueue(object : Callback<PostBrandUnlikeResponse> {
             override fun onFailure(call: Call<PostBrandUnlikeResponse>, t: Throwable) {

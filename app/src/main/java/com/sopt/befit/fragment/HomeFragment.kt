@@ -78,84 +78,84 @@ class HomeFragment : Fragment() {
 
 
         tv_main_category_man_outer.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 0)
+            startActivity<CategoryActivity>("category_idx" to 0,"gender" to "남성")
         }
         tv_main_category_man_jacket.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 1)
+            startActivity<CategoryActivity>("category_idx" to 1,"gender" to "남성")
         }
         tv_main_category_man_coat.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 2)
+            startActivity<CategoryActivity>("category_idx" to 2,"gender" to "남성")
         }
         tv_main_category_man_shirts.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 3)
+            startActivity<CategoryActivity>("category_idx" to 3,"gender" to "남성")
         }
         tv_main_category_man_knits.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 4)
+            startActivity<CategoryActivity>("category_idx" to 4,"gender" to "남성")
         }
         tv_main_category_man_hoody.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 5)
+            startActivity<CategoryActivity>("category_idx" to 5,"gender" to "남성")
         }
         tv_main_category_man_seat_shirts.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 6)
+            startActivity<CategoryActivity>("category_idx" to 6,"gender" to "남성")
         }
         tv_main_category_man_t_shirts.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 7)
+            startActivity<CategoryActivity>("category_idx" to 7,"gender" to "남성")
         }
         tv_main_category_man_jeans.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 9)
+            startActivity<CategoryActivity>("category_idx" to 9,"gender" to "남성")
         }
         tv_main_category_man_pants.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 10)
+            startActivity<CategoryActivity>("category_idx" to 10,"gender" to "남성")
         }
         tv_main_category_man_slacks.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 11)
+            startActivity<CategoryActivity>("category_idx" to 11,"gender" to "남성")
         }
         tv_main_category_man_short_pants.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 12)
+            startActivity<CategoryActivity>("category_idx" to 12,"gender" to "남성")
         }
 
         tv_main_category_woman_outer.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 0)
+            startActivity<CategoryActivity>("category_idx" to 0,"gender" to "여성")
         }
         tv_main_category_woman_jacket.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 1)
+            startActivity<CategoryActivity>("category_idx" to 1,"gender" to "여성")
         }
         tv_main_category_woman_coat.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 2)
+            startActivity<CategoryActivity>("category_idx" to 2,"gender" to "여성")
         }
         tv_main_category_woman_shirts.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 3)
+            startActivity<CategoryActivity>("category_idx" to 3,"gender" to "여성")
         }
         tv_main_category_woman_knits.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 4)
+            startActivity<CategoryActivity>("category_idx" to 4,"gender" to "여성")
         }
         tv_main_category_woman_hoody.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 5)
+            startActivity<CategoryActivity>("category_idx" to 5,"gender" to "여성")
         }
 
         tv_main_category_woman_sweat_shirts.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 6)
+            startActivity<CategoryActivity>("category_idx" to 6,"gender" to "여성")
         }
         tv_main_category_woman_t_shirts.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 7)
+            startActivity<CategoryActivity>("category_idx" to 7,"gender" to "여성")
         }
         tv_main_category_woman_onepiece.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 8)
+            startActivity<CategoryActivity>("category_idx" to 8,"gender" to "여성")
         }
         tv_main_category_woman_Jean.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 9)
+            startActivity<CategoryActivity>("category_idx" to 9,"gender" to "여성")
         }
         tv_main_category_woman_pants.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 10)
+            startActivity<CategoryActivity>("category_idx" to 10,"gender" to "여성")
         }
         tv_main_category_woman_slacks.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 11)
+            startActivity<CategoryActivity>("category_idx" to 11,"gender" to "여성")
         }
         tv_main_category_woman_short_pants.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 12)
+            startActivity<CategoryActivity>("category_idx" to 12,"gender" to "여성")
         }
         tv_main_category_woman_skirts.setOnClickListener(){
-            startActivity<CategoryActivity>("category_idx" to 14)
+            startActivity<CategoryActivity>("category_idx" to 14,"gender" to "여성")
         }
 
         category_menu.setOnClickListener{

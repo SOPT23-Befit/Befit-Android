@@ -32,7 +32,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
         ApplicationController.instance.networkService
     }
 
-    var token: String = ""
+    lateinit var token :String
 
     lateinit var temp: UserTotalData
 
@@ -106,6 +106,11 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
             override fun onResponse(call: Call<PostProductLikeResponse>, response: Response<PostProductLikeResponse>) {
                 if (response.isSuccessful) {
 
+                    Log.v("jjim product success", response.body().toString())
+
+                }
+                else{
+                    Log.v("jjim product fail", response.code().toString())
                 }
             }
         })
