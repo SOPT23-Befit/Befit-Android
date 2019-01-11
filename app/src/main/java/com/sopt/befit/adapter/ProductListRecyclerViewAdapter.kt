@@ -66,7 +66,6 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
 
         holder.item_btn.setOnClickListener {
             getUserDataResponse(position)
-
         }
 
         holder.heart.setOnClickListener {
@@ -110,57 +109,6 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 }
             }
         })
-    }
-    private fun getUserDataResponse(position: Int){
-        Log.d("aaaaaaa","aaaaaa")
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
-        //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
-        val getUserDataResponse = networkService.getUserDataResponse(token)
-        getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
-            override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) { Log.e("board list fail", t.toString())
-            }
-            override fun onResponse(call: Call<GetUserDataResponse>, response: Response<GetUserDataResponse>) {
-                response?.let {
-                    when (it.body()!!.status) {
-                        200 -> {
-                            Log.v("success", response.message().toString())
-                            temp  = response.body()!!.data
-
-                            val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
-                            intent.putExtra("idx", dataList[position].idx)
-                            intent.putExtra("url", dataList[position].link)
-                            Log.v("product_url",dataList[position].link)
-                            intent.putExtra("name_english", dataList[position].name_english)
-                            intent.putExtra("token", token)
-                            intent.putExtra("UserTotalData",temp)
-
-                            ctx.startActivity(intent)
-
-                        }
-
-                        400 -> {
-                            Log.v("fail",response.message())
-                            Log.v("fail",response.errorBody().toString())
-                            ctx.toast("로그인 실패")
-                        }
-
-                        500 -> {
-
-                            Log.v("409 error",response.message())
-                            Log.v("server error",response.errorBody().toString())
-                            ctx.toast("서버 내부 에러")
-                        }
-                        600->{
-                            Log.v("600 error",response.message())
-                            Log.v("database error",response.errorBody().toString())
-                            ctx.toast("데이터베이스 에러")
-                        }
-                        else -> {
-                            ctx.toast("Error")
-                        }
-                    }
-                }
-            } })
     }
 
     private fun postJjimProductUnlikeResponse(p: Int) {
