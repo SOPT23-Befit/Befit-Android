@@ -63,8 +63,6 @@ class JjimBrandRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<Bra
                 //좋아요 상태면 싫어요를 한다
                 postJjimBrandUnlikeResponse(position)
                 dataList[position].likeFlag = 0
-                dataList.removeAt(position)
-                notifyItemRemoved(position)
             } else {
                 postJjimBrandLikeResponse(position)
                 dataList[position].likeFlag = 1

@@ -8,11 +8,14 @@ import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
 import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetProductListResponse
+import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.activity_category.*
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,19 +23,18 @@ import retrofit2.Response
 class CategoryActivity : BaseActivity() {
 
     lateinit var productListRecyclerViewAdapter: ProductListRecyclerViewAdapter
+    lateinit var temp: UserTotalData
 
     val dataList: ArrayList<ProductData> by lazy {
         ArrayList<ProductData>()
     }
 
-    var flag = 0
+    var gender : String = ""
     var token: String = ""
     var c_idx: Int = 0
     var search: String? = null
 
-    val networkService: NetworkService by lazy {
-        ApplicationController.instance.networkService
-    }
+    lateinit var networkService: NetworkService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class CategoryActivity : BaseActivity() {
 
         token = SharedPreferenceController.getAuthorization(this)
         c_idx = intent.getIntExtra("category_idx", 0)
+        gender = intent.getStringExtra("gender")
 
         setView()
 
@@ -48,8 +51,6 @@ class CategoryActivity : BaseActivity() {
         setViewClickListener()
 
         getCategoryNewProductListResponse()
-
-
     }
 
     private fun setView() {
@@ -77,7 +78,7 @@ class CategoryActivity : BaseActivity() {
                 getCategoryPopularProductListResponse()
             }
         }
-        img_brand_main_back.setOnClickListener{
+        img_brand_main_back.setOnClickListener {
             finish()
         }
     }
@@ -89,7 +90,7 @@ class CategoryActivity : BaseActivity() {
     }
 
     private fun getCategoryNewProductListResponse() {
-        val getCategoryNewProductListResponse = networkService.getCategoryNewProductListResponse(token, c_idx, "여성")
+        val getCategoryNewProductListResponse = networkService.getCategoryNewProductListResponse(token, c_idx, gender)
         getCategoryNewProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {
                 Log.e("category fail", t.toString())
@@ -111,7 +112,7 @@ class CategoryActivity : BaseActivity() {
     }
 
     private fun getCategoryPopularProductListResponse() {
-        val getCategoryPopularProductListResponse = networkService.getCategoryPopularProductListResponse(token, c_idx, "여성")
+        val getCategoryPopularProductListResponse = networkService.getCategoryPopularProductListResponse(token, c_idx, gender)
         getCategoryPopularProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {
                 Log.e("brand fail", t.toString())
