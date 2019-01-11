@@ -87,6 +87,8 @@ class JjimBrandFragment : Fragment() {
                         }
                     }
                     jjimBrandRecyclerViewAdapter.notifyDataSetChanged()
+                }else{
+                    tv_fragment_jjim_brand_count.text= "찜한 상품 " + 0
                 }
             }
         })
