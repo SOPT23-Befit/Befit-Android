@@ -11,7 +11,8 @@
         android:layout_height="288dp"
         android:scaleType="centerCrop"
         android:src="@drawable/woman_critic"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:background="@drawable/bigshadow"/>
 
     <TextView
         android:id="@+id/tv_main_brand_1"
@@ -39,7 +40,8 @@
                 android:layout_height="88dp"
                 android:src="@drawable/woman_critic"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="6dp"/>
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/smallshadow"/>
             <TextView
                 android:id="@+id/tv_aaa_main_brand1_recommend_p_name1"
                 android:layout_width="88dp"
@@ -65,7 +67,8 @@
                 android:src="@drawable/woman_critic"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="6dp"/>
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/smallshadow"/>
             <TextView
                 android:id="@+id/tv_aaa_main_brand1_recommend_p_name2"
                 android:layout_width="88dp"
@@ -73,7 +76,8 @@
                 android:layout_below="@id/iv_main_brand_1_product_2"
                 android:text="상품명"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal"
+                />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -87,7 +91,8 @@
                 android:layout_height="88dp"
                 android:src="@drawable/woman_critic"
                 android:layout_marginBottom="6dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/smallshadow"/>
             <TextView
                 android:id="@+id/tv_aaa_main_brand1_recommend_p_name3"
                 android:layout_width="88dp"
