@@ -39,7 +39,7 @@ class MypageFragment :Fragment(){
     lateinit var gender : String
     lateinit var birth : String
     lateinit var brand1 : String
-
+    lateinit var brand2 : String
 
     lateinit var brand2 : String
 
