@@ -56,7 +56,7 @@ class MySizeLookupActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        toast("재통신")
+
         getClosetListResponse()
     }
 

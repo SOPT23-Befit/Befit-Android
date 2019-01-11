@@ -132,7 +132,7 @@ interface NetworkService {
     ): Call<GetProductListResponse>
 
     //상품 전체 카테고리 최신순 조회
-    @GET("/products/new/category/{category_idx}?gender={gender}")
+    @GET("/products/new/category/{category_idx}")
     fun getCategoryNewProductListResponse(
             @Header("Authorization") authorization: String,
             @Path("category_idx") category_idx: Int,
@@ -140,7 +140,7 @@ interface NetworkService {
     ): Call<GetProductListResponse>
 
     //상품 전체 카테고리 최신순 조회
-    @GET("/products/popular/category/{category_idx}?gender={gender}")
+    @GET("/products/popular/category/{category_idx}")
     fun getCategoryPopularProductListResponse(
             @Header("Authorization") authorization: String,
             @Path("category_idx") category_idx: Int,

@@ -64,25 +64,6 @@ class AAAAMainActivity :BaseActivity() {
 
         instance = this
 
-
-
-        ibtn_AAAA_main_act_mypage.setOnClickListener(){
-            toast("mypage clisked")
-        }
-        ibtn_AAAA_main_act_search.setOnClickListener(){
-            toast("search clisked")
-        }
-        ibtn_AAAA_main_act_jjim.setOnClickListener(){
-            toast("jjim clicked")
-        }
-        ibtn_AAAA_main_act_home.setOnClickListener(){
-            toast("homeclicked")
-        }
-
-        ibtn_AAAA_main_act_ranking.setOnClickListener(){
-            toast("ranking clicked")
-        }
-
     }
 
     override fun onResume() {

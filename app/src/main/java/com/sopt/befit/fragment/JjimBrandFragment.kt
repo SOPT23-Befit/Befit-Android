@@ -49,9 +49,12 @@ class JjimBrandFragment : Fragment() {
 
         setRecyclerView()
 
-        getJjimBrandListResponse()
-
         setViewClickListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getJjimBrandListResponse()
     }
     private fun setViewClickListener(){
         refresh_brand_main.setOnRefreshListener {
