@@ -130,9 +130,8 @@ class MypageFragment :Fragment(){
             }
         }
         tv_mypage_fragment_size.setOnClickListener(){
-            //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
 
-            startActivity<MySizeInfoCategoryActivity>()
+            startActivity<MySizeInfoCategoryActivity>("gender" to gender)
         }
 
 
