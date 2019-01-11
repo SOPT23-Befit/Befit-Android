@@ -12,12 +12,14 @@ import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
 import com.sopt.befit.adapter.Utilities
 //import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_jjim.*
 import kotlinx.android.synthetic.main.fragment_product.*
 import org.jetbrains.anko.db.INTEGER
+import org.jetbrains.anko.support.v4.ctx
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,7 +55,7 @@ class JjimProductFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        token = SharedPreferenceController.getAuthorization(ctx)
 
         setRecyclerView()
 

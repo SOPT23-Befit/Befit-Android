@@ -79,6 +79,7 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                 postJjimProductUnlikeResponse(position)
                 dataList[position].product_like = 0
             } else {
+                Log.d("productListLike position",position.toString())
                 postJjimProductLikeResponse(position)
                 dataList[position].product_like = 1
             }
@@ -106,7 +107,9 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
 
             override fun onResponse(call: Call<PostProductLikeResponse>, response: Response<PostProductLikeResponse>) {
                 if (response.isSuccessful) {
-
+                    Log.d("ProductList like response",response.body().toString())
+                } else {
+                    Log.d("ProductList like response",response.code().toString())
                 }
             }
         })
@@ -164,7 +167,8 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
     }
 
     private fun postJjimProductUnlikeResponse(p: Int) {
-        val postJjimProductUnlikeResponse = networkService.postProductUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        var token = SharedPreferenceController.getAuthorization(ctx)
+        val postJjimProductUnlikeResponse = networkService.postProductUnlikeResponse(token,
                 dataList[p].idx)
         postJjimProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
             override fun onFailure(call: Call<PostProductUnlikeResponse>, t: Throwable) {

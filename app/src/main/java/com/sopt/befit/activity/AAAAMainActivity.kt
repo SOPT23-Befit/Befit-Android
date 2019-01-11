@@ -1,48 +1,22 @@
 package com.sopt.befit.activity
 
+
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
-
-
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
-import com.sopt.befit.adapter.Expandable
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MyFragmentStatePagerAdapter
 import com.sopt.befit.data.BrandRecommendData
-import com.sopt.befit.data.UserData
-import com.sopt.befit.data.UserTotalData
-import com.sopt.befit.fragment.MainBannerFragment2
-import com.sopt.befit.fragment.MainBrandFragment1
-import com.sopt.befit.fragment.MainBrandFragment2
-import com.sopt.befit.fragment.MainBrandFragment3
-import com.sopt.befit.get.GetBrandRecommendResponse
-import com.sopt.befit.get.GetUserDataResponse
-import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
-import com.sopt.befit.post.PostSignUpResponse
 import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.tab_bar.*
-import org.jetbrains.anko.activityManager
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import android.graphics.Color.parseColor
-import android.R.attr.fragment
-import android.support.design.widget.TabLayout.OnTabSelectedListener
 
 
-
-class AAAAMainActivity :BaseActivity() {
+class AAAAMainActivity :AppCompatActivity() {
 
     var time : Long = 0
 
@@ -52,7 +26,6 @@ class AAAAMainActivity :BaseActivity() {
 
     lateinit var networkService: NetworkService
     lateinit var temp: ArrayList<BrandRecommendData>
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,30 +37,24 @@ class AAAAMainActivity :BaseActivity() {
 
         instance = this
 
-
-
-        ibtn_AAAA_main_act_mypage.setOnClickListener(){
-            toast("mypage clisked")
-        }
-        ibtn_AAAA_main_act_search.setOnClickListener(){
-            toast("search clisked")
-        }
-        ibtn_AAAA_main_act_jjim.setOnClickListener(){
-            toast("jjim clicked")
-        }
-        ibtn_AAAA_main_act_home.setOnClickListener(){
-            toast("homeclicked")
-        }
-
-        ibtn_AAAA_main_act_ranking.setOnClickListener(){
-            toast("ranking clicked")
-        }
-
     }
 
     override fun onResume() {
         super.onResume()
+        if(vp_bottom_navi_act_frag_pager.adapter != null){
+            var adapter = vp_bottom_navi_act_frag_pager.adapter as MyFragmentStatePagerAdapter
+            adapter.notifyDataSetChanged()
 
+            val bottomNaviLayout: View = this.layoutInflater.inflate(R.layout.tab_bar, null, false)
+            //탭 하나하나 TabLayout에 연결시켜줍니다.
+            tl_bottom_navi_act_bottom_menu.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.ibtn_AAAA_main_act_home) as ImageView
+            tl_bottom_navi_act_bottom_menu.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.ibtn_AAAA_main_act_search) as ImageView
+
+            tl_bottom_navi_act_bottom_menu.getTabAt(2)!!.customView = bottomNaviLayout.findViewById(R.id.ibtn_AAAA_main_act_ranking) as ImageView
+            tl_bottom_navi_act_bottom_menu.getTabAt(3)!!.customView = bottomNaviLayout.findViewById(R.id.ibtn_AAAA_main_act_jjim) as ImageView
+
+            tl_bottom_navi_act_bottom_menu.getTabAt(4)!!.customView = bottomNaviLayout.findViewById(R.id.ibtn_AAAA_main_act_mypage) as ImageView
+        }
         Log.d("aaaaaa", "onResume")
     }
 
@@ -133,5 +100,6 @@ class AAAAMainActivity :BaseActivity() {
             finish()
         }
     }
+
 
 }

@@ -442,11 +442,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun configureBannerNavigation() {
-        /*
+
         vp_aaa_main_banner.adapter = HomeFragmentBannerPagerAdapter(childFragmentManager, 3)
         vp_aaa_main_banner.offscreenPageLimit = 3
         tabDots.setupWithViewPager(vp_aaa_main_banner)
-         */
+
     }
 
     private fun getBrandRecommendResponse() {

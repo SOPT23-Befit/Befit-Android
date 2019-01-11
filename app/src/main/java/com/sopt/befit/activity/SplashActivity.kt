@@ -3,6 +3,7 @@ package com.sopt.befit.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import com.sopt.befit.R
 import com.sopt.befit.db.SharedPreferenceController
 import org.jetbrains.anko.startActivity
@@ -12,20 +13,24 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
+        Log.v("oncreate","aaaaa")
 
         val token =SharedPreferenceController.getAuthorization(this)
-
+        Log.d("token_aa",token)
 
         Handler().apply {
             postDelayed({
 
-                if(token==null)
+                if(token.length == 0)
                 {
+                    Log.d("token_aa" , token)
+
                     startActivity<IntroActivity>()
                 }
-                else if(token!=null)
+                else
                 {
+                    Log.d("token_aa" , token)
+
                     startActivity<AAAAMainActivity>("token" to token)
                 }
 

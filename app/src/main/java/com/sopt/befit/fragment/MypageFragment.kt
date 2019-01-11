@@ -41,11 +41,12 @@ class MypageFragment :Fragment(){
     lateinit var brand1 : String
     lateinit var brand2 : String
 
+    lateinit var brand2 : String
 
    // val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
 
-    val token = SharedPreferenceController.getAuthorization(activity!!)
+   // val token = SharedPreferenceController.getAuthorization(activity!!)
 
 
 
@@ -102,7 +103,6 @@ class MypageFragment :Fragment(){
 
         tv_mypage_fragment_preference.setOnClickListener(){
 
-            // tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
             if(gender.equals("남성")) {
 
                 startActivity<CheckMyBrandPreferenceManActivity>("brand1" to "$brand1", "brand2" to "$brand2")
@@ -118,16 +118,7 @@ class MypageFragment :Fragment(){
             startActivity<MySizeInfoCategoryActivity>()
         }
 
-        tv_mypage_fragment_total.setOnClickListener(){
-            //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
 
-            var intent = Intent(activity,MyPageTotalUserInfoManage::class.java)
-            intent.putExtra("token",token)
-            intent.putExtra("UserTotalData",temp)
-            startActivity(intent)
-
-
-        }
         iv_mypage_setting.setOnClickListener(){
             startActivity<MyPageAccountSettingActivity>()
         }
@@ -165,7 +156,7 @@ class MypageFragment :Fragment(){
         Log.d("aaaaaaa","aaaaaa")
         networkService = ApplicationController.instance!!.networkService
 
-        //val token = SharedPreferenceController.getAuthorization(activity!!)
+        val token = SharedPreferenceController.getAuthorization(activity!!)
 
         val getUserDataResponse = networkService.getUserDataResponse(token)
         getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
@@ -173,42 +164,58 @@ class MypageFragment :Fragment(){
             }
             override fun onResponse(call: Call<GetUserDataResponse>, response: Response<GetUserDataResponse>) {
                 response?.let {
-                    when (it.body()!!.status) {
-                        200 -> {
-                            Log.v("success", response.message().toString())
-                            temp  = response.body()!!.data
+                    if (it.isSuccessful){
+                        when (it.body()!!.status) {
+                            200 -> {
+                                Log.v("success", response.message().toString())
+                                temp  = response.body()!!.data
 
 
-                            tv_my_page_email.text=temp.email
-                            tv_my_page_name.text=temp.name
+                                tv_my_page_email.text=temp.email
+                                tv_my_page_name.text=temp.name
 
-                            setlistview(response.body()!!.data)
+                                setlistview(response.body()!!.data)
+
+                                tv_mypage_fragment_total.setOnClickListener(){
+                                    //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
+
+                                    var intent = Intent(activity,MyPageTotalUserInfoManage::class.java)
+                                    intent.putExtra("token",token)
+                                    intent.putExtra("UserTotalData",temp)
+                                    startActivity(intent)
+
+
+                                }
 
 
 
+                            }
+
+                            400 -> {
+                                Log.v("fail",response.message())
+                                Log.v("fail",response.errorBody().toString())
+                                toast("로그인 실패")
+                            }
+
+                            500 -> {
+
+                                Log.v("409 error",response.message())
+                                Log.v("server error",response.errorBody().toString())
+                                toast("서버 내부 에러")
+                            }
+                            600->{
+                                Log.v("600 error",response.message())
+                                Log.v("database error",response.errorBody().toString())
+                                toast("데이터베이스 에러")
+                            }
+                            else -> {
+                                toast("Error")
+                            }
                         }
-
-                        400 -> {
-                            Log.v("fail",response.message())
-                            Log.v("fail",response.errorBody().toString())
-                            toast("로그인 실패")
-                        }
-
-                        500 -> {
-
-                            Log.v("409 error",response.message())
-                            Log.v("server error",response.errorBody().toString())
-                            toast("서버 내부 에러")
-                        }
-                        600->{
-                            Log.v("600 error",response.message())
-                            Log.v("database error",response.errorBody().toString())
-                            toast("데이터베이스 에러")
-                        }
-                        else -> {
-                            toast("Error")
-                        }
+                    } else{
+                        Log.d("MypageFragment Response", it.code().toString())
                     }
+
                 }
             } })
     }
