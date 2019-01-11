@@ -153,6 +153,8 @@ class ProductListRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<P
                             intent.putExtra("name_english", dataList[position].name_english)
                             intent.putExtra("UserTotalData", temp)
 
+                            //test
+                            intent.putExtra("product",dataList[position])
                             ctx.startActivity(intent)
 
                         }

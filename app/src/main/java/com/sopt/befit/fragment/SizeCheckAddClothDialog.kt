@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
 import com.sopt.befit.activity.MySizeLookupActivity
+import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.adapter.Utilities
 import kotlinx.android.synthetic.main.dl_size_check_no_compare_product.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -28,7 +29,8 @@ class SizeCheckAddClothDialog(): DialogFragment() {
 
         btn_dl_size_check_add_cloth.setOnClickListener {
             //내옷추가 액티비티로
-            startActivity<MySizeLookupActivity>()
+            var category_idx = ProductContentViewActivity.instance.productData.product_category_index
+            startActivity<MySizeLookupActivity>("category_idx" to category_idx)
             dismiss()
         }
         dl_size_check_add_cloth_cancel.setOnClickListener {

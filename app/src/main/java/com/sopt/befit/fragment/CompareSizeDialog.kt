@@ -69,12 +69,12 @@ class CompareSizeDialog() : DialogFragment() {
 //        product_idx = arguments!!.getInt("product_idx")
 //        measure = arguments!!.getString("measure")
 
+        measure = ProductContentViewActivity.instance.getCurrentProductData().measure.toString()
+
         measure = measure!!.replace(" ", "")
 
-        var data = ProductContentViewActivity.instance.getCurrentProductData()
-        var jsonString = data.measure.toString()
         var parser = JsonParser()
-        var json = parser.parse(jsonString).asJsonObject
+        var json = parser.parse(measure).asJsonObject
 
         closetSize = ArrayList<String>()
 
@@ -172,14 +172,15 @@ class CompareSizeDialog() : DialogFragment() {
         if(compareData == null){
 
         } else {
+            tv_fragment_compare_size_goods_name.text = ProductContentViewActivity.instance.getCurrentProductData().name
             tv_fragment_compare_size_percent.text = compareData.percent+"%"
             var animation = ProgressAnimation(progress, 2000)//2000은 2초
             animation.setProgress(compareData.percent.toInt())
-            setCompareTable(compareData)
+            setCompareTable(compareData,position)
         }
     }
 
-    fun setCompareTable(compareData: Compare){
+    fun setCompareTable(compareData: Compare,position: Int){
         layout_my_size_add_display_tvs.removeAllViews()
         Log.d("mmmmm",compareData.toString())
         var jsonString = compareData.measure.toString()
@@ -190,10 +191,26 @@ class CompareSizeDialog() : DialogFragment() {
         var valueList = ArrayList<Double>()
         for ( (index,result) in measureObject.entrySet().withIndex()){
             keyList.add(result.key)
+            Log.d("compare measure",keyList.get(index))
             if (result.value == null) {
                 valueList.add(-99.0)
             } else {
                 valueList.add(result.value.asDouble)
+            }
+        }
+
+        var spinnerPosition = sp_compare_size.selectedItemPosition
+        var closetMeasure = closetList.get(spinnerPosition).measure.toString()
+        closetMeasure = closetMeasure!!.replace(" ","")
+        var closetObject = parser.parse(closetMeasure).asJsonObject
+        var closetMeasureList = ArrayList<String>()
+        var closetKeyList = ArrayList<String>()
+        for((index,result) in closetObject.entrySet().withIndex()){
+            closetKeyList.add(result.key)
+            if((""+result.value).equals("null")){
+                closetMeasureList.add("")
+            } else {
+                closetMeasureList.add(result.value.asString+"cm")
             }
         }
 
@@ -228,7 +245,12 @@ class CompareSizeDialog() : DialogFragment() {
                         textList.set(j, TextView(activity))
                         textList.get(j)!!.textColor = Color.parseColor("#000000")
                         textList.get(j)!!.gravity = Gravity.CENTER
-                        textList.get(j)!!.text = valueList.get(j).toString()
+                        var closetSize = ""+closetObject.get(keyList.get(j))
+                        if(closetSize.equals("null")){
+                            textList.get(j)!!.text = ""
+                        } else {
+                            textList.get(j)!!.text = closetSize+"cm"
+                        }
                     }
                 }
 //                var childParams = TableLayout.LayoutParams(0,LinearLayout.LayoutParams.WRAP_CONTENT,1f)

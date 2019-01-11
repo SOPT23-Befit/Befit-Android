@@ -56,7 +56,6 @@ class AddMySizeGoodsPageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_my_size_goods_page)
-        rv_add_my_size_goods_list.visibility = View.GONE
         setBtnClickListener()
         setRecyclerView()
         brand_idx = intent.getIntExtra("brand_idx", 0)                       //브랜드 idx값 받기.
@@ -71,24 +70,6 @@ class AddMySizeGoodsPageActivity : BaseActivity() {
         btn_activity_add_my_size_goods_back.setOnClickListener {
             AddMySizeGoodsPageActivity.instance.finish()
         }
-        et_add_my_size_act_search_goods.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                //                // 입력이 끝났을 때
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // 입력하기 전에
-            }
-
-            override fun onTextChanged(searchKeyWord: CharSequence?, start: Int, before: Int, count: Int) {
-                // 입력되는 텍스트에 변화가 있을 때
-                if (searchKeyWord!!.length > 0) {
-                    getSelectedGoodsResponse(searchKeyWord.toString())
-                }
-            }
-        })
-
-
     }
 
     private fun setRecyclerView() {
@@ -111,7 +92,7 @@ class AddMySizeGoodsPageActivity : BaseActivity() {
 
         token = SharedPreferenceController.getAuthorization(this)
 
-        val getGoodsInitialResponse = networkService.getGoodsByInitialResponse("token", brand_idx, category_idx)
+        val getGoodsInitialResponse = networkService.getGoodsByInitialResponse(token, brand_idx, category_idx)
         getGoodsInitialResponse.enqueue(object : Callback<GetInitialGoodsResponse> {
             override fun onFailure(call: retrofit2.Call<GetInitialGoodsResponse>, t: Throwable) {
                 Log.e("goodsInitial error", t.toString())
@@ -120,6 +101,7 @@ class AddMySizeGoodsPageActivity : BaseActivity() {
             override fun onResponse(call: retrofit2.Call<GetInitialGoodsResponse>, response: retrofit2.Response<GetInitialGoodsResponse>) {
 
                 if (response.isSuccessful) {
+                    Log.d("qqqqqqqq",response.body()!!.toString())
                     if (response.body()?.data != null) {
                         val temp: ArrayList<InitialGoods> = response.body()!!.data
                         if (temp.size > 0) {
@@ -129,6 +111,8 @@ class AddMySizeGoodsPageActivity : BaseActivity() {
 
                         }
                     }
+                } else {
+                    Log.d("qqqqqqq",response.code().toString())
                 }
             }
         })
