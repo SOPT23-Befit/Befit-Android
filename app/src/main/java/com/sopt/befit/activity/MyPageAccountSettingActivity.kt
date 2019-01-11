@@ -20,6 +20,7 @@ class MyPageAccountSettingActivity : BaseActivity() {
 
         setSwitchClick()
         logOutOnClick()
+        backBtnOnClick()
 
     }
 
@@ -39,6 +40,11 @@ class MyPageAccountSettingActivity : BaseActivity() {
         btn_activity_my_page_account_setting_log_out.setOnClickListener {
             SharedPreferenceController.clearUserSharedPreferences(this)
             startActivity<LogInActivity>()
+            finish()
+        }
+    }
+    fun backBtnOnClick(){
+        btn_activity_my_page_account_setting_back.setOnClickListener{
             finish()
         }
     }

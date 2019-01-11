@@ -18,6 +18,15 @@
             android:name=".activity.AAAAMainActivity"
             android:windowSoftInputMode="adjustPan">
 
+<<<<<<< HEAD
+=======
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> 191213431f3c350b13249b2f8fc6b7743c8d313d
         </activity>
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
@@ -49,7 +58,6 @@
 
       
         </activity>
-
 
 
         <activity android:name=".activity.IntroActivity"></activity>
