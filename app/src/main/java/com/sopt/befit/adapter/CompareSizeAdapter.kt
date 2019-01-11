@@ -4,13 +4,22 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
+import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.befit.fragment.CompareSizeFragment1
 import com.sopt.befit.fragment.CompareSizeFragment2
 import com.sopt.befit.fragment.CompareSizeFragment3
 import com.sopt.befit.get.ClosetDetail
+import android.util.SparseArray
 
-class CompareSizeAdapter(fm: FragmentManager, val fragmentCount: Int,var ClosetList : ArrayList<ClosetDetail>) : FragmentStatePagerAdapter(fm) {
+
+
+class CompareSizeAdapter(fm: FragmentManager, val fragmentCount: Int,val closetIdx : Int) : FragmentStatePagerAdapter(fm) {
+
+
     override fun getItem(position: Int): Fragment? {
 //        when (position) {
 //            0 -> return CompareSizeFragment1()
@@ -21,7 +30,8 @@ class CompareSizeAdapter(fm: FragmentManager, val fragmentCount: Int,var ClosetL
         var fragment : Fragment
         var bundle = Bundle()
         bundle.putInt("position",position)
-        bundle.putSerializable("ClosetList",ClosetList)
+        bundle.putInt("closetIdx",closetIdx)
+        Log.d("fragment count",position.toString())
         fragment = CompareSizeFragment1()
         fragment.arguments = bundle
 
@@ -40,4 +50,11 @@ class CompareSizeAdapter(fm: FragmentManager, val fragmentCount: Int,var ClosetL
 
     override fun getCount(): Int = fragmentCount
 
+//    override fun getItemPosition(`object`: Any): Int {
+//        return PagerAdapter.POSITION_NONE
+//    }
+
+    override fun getItemPosition(`object`: Any): Int {
+        return PagerAdapter.POSITION_NONE
+    }
 }

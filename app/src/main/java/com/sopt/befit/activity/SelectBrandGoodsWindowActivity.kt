@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.telecom.Call
 import android.util.Log
+import android.view.Gravity
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.TextView
+import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.befit.get.*
 import com.sopt.befit.network.ApplicationController
@@ -21,15 +21,20 @@ import kotlinx.android.synthetic.main.activity_select_brand_goods_window.*
 import org.jetbrains.anko.toast
 import org.json.JSONObject
 import retrofit2.Callback
-import android.widget.Spinner
 import com.sopt.befit.R
 import com.sopt.befit.data.ClosetAddData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.post.PostAddMyClosetResponse
+import kotlinx.android.synthetic.main.activity_size_check_page_activiy.*
+import org.jetbrains.anko.backgroundColor
+import org.jetbrains.anko.textColor
 
 
 //import javax.security.auth.callback.Callback
 
 class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
+    var token: String = ""
 
 
     var brand_idx : Int = 0
@@ -98,16 +103,34 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
                 measure = data!!.getStringExtra("measure")
                 product_idx = data!!.getIntExtra("idx", 0)
 
+                Log.d("selectBrandGoods",measure)
+
+                measure = measure!!.replace(" ", "")
+//                var str = measure
+//                for(i in 0 until str!!.length){
+//                    if(str!!.get(i).toString().equals(" ")){
+//                        Log.d("aaaa",i.toString())
+//                        str!!.replaceRange(i,i+1,"a")
+//                    }
+//                }
+
+                Log.d("selectBrandGoods2",measure)
+
                 var parser = JsonParser()
                 var json = parser.parse(measure).asJsonObject
                 GoodsSize = ArrayList<String>()
 
+                var measureList = ArrayList<JsonObject>()
+                var keyList = ArrayList<String>()
+                var valueList = ArrayList<Double>()
+
                 GoodsSize.add("사이즈 선택")
                 for((index,measure) in json.entrySet().withIndex()){
                     GoodsSize.add(measure.key)
+                    measureList.add(measure.value.asJsonObject)
                 }
 
-                setSpinner(GoodsSize)
+                setSpinner(GoodsSize,measureList)
 
                 tv_select_brand_goods_window_goodsname.text = name
                 tv_select_brand_goods_window_brandname.text= name_korean
@@ -126,9 +149,11 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
     fun addButtonOnClick() {
         btn_activity_select_brand_goods_window_add.setOnClickListener {
 
+            token = SharedPreferenceController.getAuthorization(this)
 
+            var token = SharedPreferenceController.getAuthorization(this)
             val closetAddData : ClosetAddData = ClosetAddData(product_idx,product_size!!)
-            var userCreateResponse = networkService.postAddMyCloset("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MTcsImV4cCI6MTU0OTg3MTI4OX0.-jWS-P3-DP5DdsqphUIHJP5icKH09xDrmA7X11cGaCw",closetAddData)
+            var userCreateResponse = networkService.postAddMyCloset(token,closetAddData)
             userCreateResponse!!.enqueue(object : Callback<PostAddMyClosetResponse> {
                 override fun onFailure(call: retrofit2.Call<PostAddMyClosetResponse>, t: Throwable) {
                     Log.v("Error LoginActivity : ", t.message)
@@ -196,7 +221,7 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
         }
     }
 
-    private fun setSpinner(dataList : ArrayList<String>) {
+    private fun setSpinner(dataList : ArrayList<String>,measureList : ArrayList<JsonObject>) {
 
 
         sp_my_size_add_select_size.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataList)
@@ -205,12 +230,16 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 //                position =  sp_my_size_add_select_size.getItemAtPosition((position))
                 val spinner = findViewById<View>(R.id.sp_my_size_add_select_size) as Spinner
-                product_size = spinner.selectedItem.toString()
                 //누른 값에 맞게 서버로 부터 상세 사이즈 값을 받아와 텍스트값을 바꿔줌
 
-                if(product_size != "사이즈 선택") {
+                if(position > 0) {
                     btn_activity_select_brand_goods_window_add.visibility = View.VISIBLE
                     activity_select_brand_goods_window_size.visibility = View.VISIBLE
+                    product_size = spinner.selectedItem.toString()
+                    setCompareTable(measureList.get(position-1))
+                } else {
+                    btn_activity_select_brand_goods_window_add.visibility = View.GONE
+                    activity_select_brand_goods_window_size.visibility = View.GONE
                 }
 
 
@@ -220,6 +249,57 @@ class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSe
 
             }
         })
+
+    }
+    fun setCompareTable(measure: JsonObject) {
+        layout_add_my_size_table.removeAllViews()
+
+
+        var keyList = ArrayList<String>()
+        var valueList = ArrayList<Double>()
+
+        for((index, result) in measure.entrySet().withIndex()){
+            keyList.add(result.key)
+            if((""+result.value).equals("null")){
+                valueList.add(-99.0)
+            } else {
+                valueList.add(result.value.asDouble)
+            }
+        }
+
+        val row = arrayOfNulls<TableRow>(2)
+
+        for (i in 0 until 2) {
+            row.set(i, TableRow(this))
+            var params = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT)
+            row.get(i)!!.layoutParams = params
+            var textList = arrayOfNulls<TextView>(keyList.size)
+            for (j in 0 until keyList.size) {
+                when (i) {
+                    0 -> {
+                        textList.set(j, TextView(this))
+                        textList.get(j)!!.text = keyList.get(j)
+                        textList.get(j)!!.textColor = Color.parseColor("#191919")
+                        textList.get(j)!!.gravity = Gravity.CENTER
+                        textList.get(j)!!.backgroundColor = Color.parseColor("#f3f3f3")
+                    }
+                    1 -> {
+                        textList.set(j, TextView(this))
+                        textList.get(j)!!.textColor = Color.parseColor("#000000")
+                        textList.get(j)!!.gravity = Gravity.CENTER
+                        if(valueList.get(j) == -99.0){
+                            textList.get(j)!!.text = ""
+                        } else {
+                            textList.get(j)!!.text = valueList.get(j).toString()
+                        }
+
+                    }
+                }
+                row.get(i)!!.addView(textList.get(j))
+            }
+            layout_add_my_size_table.addView(row.get(i))
+            layout_add_my_size_table.isStretchAllColumns = true
+        }
 
     }
 
