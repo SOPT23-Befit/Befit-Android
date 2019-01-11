@@ -41,7 +41,6 @@ class MypageFragment :Fragment(){
     lateinit var brand1 : String
     lateinit var brand2 : String
 
-    lateinit var brand2 : String
 
    // val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
