@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_left_arrow_wh"
-            android:background="#ffffff"
+            android:background="@null"
             android:layout_centerVertical="true"
             android:layout_marginRight="18dp"
             />
@@ -38,7 +38,7 @@
             android:layout_height="30dp"
             android:text="완료"
             android:textSize="14sp"
-            android:background="#ffffff"
+            android:background="@null"
             android:tag="bold"
             android:layout_gravity="center_vertical"
             android:layout_alignParentEnd="true"
@@ -285,12 +285,14 @@
             />
     <ImageButton
         android:id="@+id/ib_activity_post_cancel"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/cancel"
+        android:background="@null"
+        android:scaleType="centerCrop"
         />
     </RelativeLayout>
     <LinearLayout

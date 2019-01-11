@@ -52,8 +52,7 @@ class CheckMyBrandPreferenceActivity : BaseActivity() {
         var cnt = 2
 
         if(brand1=="17"||brand2=="17"){
-            ibtn_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)
-
+            ibtn_check_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)
         }
         if(brand1=="12"||brand2=="12"){
             ibtn_check_brand_preference_woman_Romantic_crown.setImageResource(R.drawable.woman_select_romantic_crown)

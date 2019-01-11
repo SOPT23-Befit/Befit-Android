@@ -53,7 +53,8 @@
                 android:ems="10"
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
-                android:hint="이메일" />
+                android:hint="이메일"
+                android:maxLines="1"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -92,7 +93,8 @@
                 android:hint="비밀번호"
                 android:password="true"
                 android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
+                android:textColorHint="#ffffff"
+                android:maxLines="1"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

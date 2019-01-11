@@ -26,15 +26,17 @@ class SplashActivity : AppCompatActivity() {
                     Log.d("token_aa" , token)
 
                     startActivity<IntroActivity>()
+                    finish()
                 }
                 else
                 {
                     Log.d("token_aa" , token)
 
                     startActivity<AAAAMainActivity>("token" to token)
+                    finish()
                 }
 
-                finish()//피니쉬 안해주면 스플래쉬 액티비티 쌓임
+                //피니쉬 안해주면 스플래쉬 액티비티 쌓임
 
             },2000)//ctr+p 들어갈 매개변수 알려줌 {람다식 함수}
         }

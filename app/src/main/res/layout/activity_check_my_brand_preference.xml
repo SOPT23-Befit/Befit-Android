@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:clickable="false">
@@ -28,7 +28,19 @@
                 android:layout_marginTop="17dp"
                 android:layout_marginLeft="18dp"
                 android:textSize="20sp"
+                android:layout_gravity="center_vertical"
                 android:tag="bold"/>
+
+            <TextView
+                android:id="@+id/iv_woman_brand_preference_modify_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="16dp"
+                android:gravity="right"
+                android:text="완료"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -69,6 +81,7 @@
             android:text="선택해주세요"
             android:tag="bold"
             android:textSize="28sp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="26dp"/>
 
         <RelativeLayout
@@ -133,16 +146,6 @@
                 android:layout_marginTop="390.4dp"
                 android:layout_marginBottom="58dp"
                 android:src="@drawable/woman_critic" />
-            <Button
-                android:id="@+id/iv_woman_brand_preference_modify_ok"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:background="#eaeaea"
-                android:text="수정"
-                android:textColor="#000000"
-                android:textSize="20dp" />
         </RelativeLayout>
 
 

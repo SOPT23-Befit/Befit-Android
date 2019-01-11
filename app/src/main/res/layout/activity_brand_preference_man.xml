@@ -46,7 +46,8 @@
         android:layout_marginLeft="26dp"
         android:text="선택해주세요"
         android:textSize="28sp"
-        android:tag="bold" />
+        android:tag="bold"
+        android:layout_marginTop="10dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
