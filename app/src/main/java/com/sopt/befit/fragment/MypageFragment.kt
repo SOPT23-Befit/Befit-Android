@@ -23,6 +23,7 @@ import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_mypage.*
+import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.startActivityForResult
 import org.jetbrains.anko.support.v4.toast
@@ -44,6 +45,7 @@ class MypageFragment :Fragment(){
     lateinit var brand2 : String
     val REQUEST_CODE_ACTIVITY =7777
 
+    var flag =0
 
    // val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
@@ -85,7 +87,18 @@ class MypageFragment :Fragment(){
         getUserDataResponse()
 
         tv_mypage_fragment_FnQ.setOnClickListener(){
-            iv_mypage_arrow.setImageResource(R.drawable.arrow_up)
+            if(flag==0)
+            {
+                flag=1
+                iv_mypage_arrow.setImageResource(R.drawable.arrow_up)
+                lo_mypage_cus_center.visibility=View.VISIBLE
+            }
+           else if(flag==1)
+            {
+                flag = 0
+                iv_mypage_arrow.setImageResource(R.drawable.arrow_down)
+                lo_mypage_cus_center.visibility=View.GONE
+            }
         }
 
 
