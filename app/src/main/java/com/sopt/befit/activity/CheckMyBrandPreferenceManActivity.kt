@@ -4,11 +4,20 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.sopt.befit.R
+import com.sopt.befit.data.ModifyBrandData
+import com.sopt.befit.db.SharedPreferenceController
+import com.sopt.befit.network.ApplicationController
+import com.sopt.befit.network.NetworkService
+import com.sopt.befit.put.PutModifyBrandResponse
 import kotlinx.android.synthetic.main.activity_brand_preference_man.*
 import kotlinx.android.synthetic.main.activity_brand_preference_woman.*
 import kotlinx.android.synthetic.main.activity_check_my_brand_preference.*
 import kotlinx.android.synthetic.main.activity_check_my_brand_preference_man.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CheckMyBrandPreferenceManActivity : BaseActivity() {
 
@@ -17,9 +26,12 @@ class CheckMyBrandPreferenceManActivity : BaseActivity() {
    // var brand2 = intent.getStringExtra("brand2")
 
     var gender = "남성"
-      var brand1 = "17"
-     var brand2 = "7"
+
     var cnt = 2
+    lateinit var modifyBrandData: ModifyBrandData
+    lateinit var networkservice : NetworkService
+    lateinit var brand1 : String
+    lateinit var brand2 : String
 
 
 
@@ -27,7 +39,17 @@ class CheckMyBrandPreferenceManActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_my_brand_preference_man)
 
-        ibtn_check_brand_man_back.isEnabled=false
+
+
+        brand1 = intent.getStringExtra("brand1")
+        brand2 = intent.getStringExtra("brand2")
+
+        iv_man_brand_preference_modify_ok.setOnClickListener(){
+            putBrandModify(brand1,brand2)
+
+
+
+        }
 
 
         if(brand1=="17"||brand2=="17"){
@@ -621,5 +643,56 @@ class CheckMyBrandPreferenceManActivity : BaseActivity() {
 
             }
         }
+    }
+    fun putBrandModify(brand1 : String,brand2 : String){
+        //modifypwdata에 값 넣기
+        modifyBrandData = ModifyBrandData(brand1.toInt(),brand2.toInt())
+
+        Log.d("Modify Brand",modifyBrandData.toString())
+
+        val token = SharedPreferenceController.getAuthorization(this)
+
+        networkservice = ApplicationController.instance.networkService
+        var modifyBrandResponse= networkservice.putModifyBrandResponse(token,modifyBrandData)
+        modifyBrandResponse!!.enqueue(object : Callback<PutModifyBrandResponse> {
+            override fun onFailure(call: Call<PutModifyBrandResponse>, t: Throwable) {
+                Log.v("Error ModifyActivity",t.message)
+            }
+            override fun onResponse(call: Call<PutModifyBrandResponse>, response: Response<PutModifyBrandResponse>) {
+                if (response.isSuccessful) {
+                    Log.v("aaaa",response.body()!!.status.toString())
+                    when (response.body()!!.status) {
+                        200 -> {
+                            Log.v("success", response.body().toString())
+                            toast("성공적으로 수정되었습니다.")
+                            finish()
+
+
+                        }
+                        204 -> {
+                            Log.v("회원 수정 정보가 잘못되었습니다.", response.body().toString())
+                            toast("회원 수정 정보가 잘못되었습니다.")
+                        }
+                        500 -> {
+
+                            Log.v("서버 내부 에러", response.body().toString())
+                            toast("서버 에러 .")
+                        }
+                        600 -> {
+
+
+                            Log.v("DB 에러", response.body().toString())
+                            toast("디비에러 .")
+                        }
+                        else -> {
+                            Log.v("zzz","zz")
+                            toast("Error")
+                        }
+                    }
+                }
+
+
+            }
+        })
     }
 }

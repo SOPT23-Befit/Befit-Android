@@ -23,6 +23,7 @@ import com.sopt.befit.get.GetMyRecommendProduct
 import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
+import kotlinx.android.synthetic.main.activity_aaaamain.*
 import kotlinx.android.synthetic.main.fragment_brand.*
 
 
@@ -173,7 +174,8 @@ class HomeFragment : Fragment() {
             //lo_aaa_main_banner.visibility=View.GONE
             //lo_aaa_main_my_racommend_item.visibility=View.GONE
             iv_home_fragment_background.visibility = View.VISIBLE
-            AAAAMainActivity.instance.tabvisible()
+           // AAAAMainActivity.instance.tabvisible()
+            AAAAMainActivity.instance.tl_bottom_navi_act_bottom_menu.visibility=View.GONE
         }
 
         ibtn_menu_close.setOnClickListener() {
@@ -184,8 +186,9 @@ class HomeFragment : Fragment() {
             //lo_aaa_main_banner.visibility=View.VISIBLE
             //lo_aaa_main_my_racommend_item.visibility=View.VISIBLE
             iv_home_fragment_background.visibility = View.GONE
+            AAAAMainActivity.instance.tl_bottom_navi_act_bottom_menu.visibility=View.VISIBLE
 
-            AAAAMainActivity.instance.tabvisible()
+            //AAAAMainActivity.instance.tabvisible()
         }
 
         lo_aaa_main_women_category.setOnClickListener() {
@@ -251,171 +254,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    fun setcategory() {
 
-
-        val women: MutableList<String> = ArrayList()
-
-        women.add("Outer")
-        women.add("Jacket")
-        women.add("Coat")
-
-        women.add("Shirts")
-        women.add("Knits")
-
-        women.add("Hoody")
-
-        women.add("Sweat Shirts")
-
-        women.add("T-Shirts")
-
-        women.add("Jeans")
-
-        women.add("Pants")
-        women.add("Slacks")
-
-        women.add("Short-Pants")
-        women.add("Onepiece")
-        women.add("Skirts")
-
-        val men: MutableList<String> = ArrayList()
-        men.add("Outer")
-        men.add("Jacket")
-        men.add("Coat")
-
-        men.add("Shirts")
-        men.add("Knits")
-
-        men.add("Hoody")
-
-        men.add("Sweat Shirts")
-
-        men.add("T-Shirts")
-
-        men.add("Jeans")
-
-        men.add("Pants")
-        men.add("Slacks")
-
-        men.add("Short-Pants")
-
-        header.add("Women")
-        header.add("Men")
-
-        body.add(women)
-        body.add(men)
-
-
-//        nav_list.setAdapter(Expandable(activity!!, header, body))
-//
-//
-//        nav_list.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-//            tv_listview_title.setTextColor(Color.parseColor("#7a36e4"))
-//
-//            Log.e("child click", "groupPosition $groupPosition, childPosition $childPosition, id $id")
-//
-//            var gpos = groupPosition
-//            var cpos = childPosition
-//
-//            if (gpos == 0 && cpos == 0) {
-//                startActivity<CategoryActivity>("idx" to 0)
-//            }
-//
-//            if (gpos == 0 && cpos == 1) {
-//                startActivity<CategoryActivity>("idx" to 1)
-//            }
-//
-//            if (gpos == 0 && cpos == 2) {
-//                startActivity<CategoryActivity>("idx" to 2)
-//            }
-//
-//            if (gpos == 0 && cpos == 3) {
-//                startActivity<CategoryActivity>("idx" to 3)
-//            }
-//
-//            if (gpos == 0 && cpos == 4) {
-//                startActivity<CategoryActivity>("idx" to 4)
-//            }
-//
-//            if (gpos == 0 && cpos == 5) {
-//                startActivity<CategoryActivity>("idx" to 5)
-//            }
-//            if (gpos == 0 && cpos == 6) {
-//                startActivity<CategoryActivity>("idx" to 6)
-//            }
-//
-//            if (gpos == 0 && cpos == 7) {
-//                startActivity<CategoryActivity>("idx" to 7)
-//            }
-//            if (gpos == 0 && cpos == 8) {
-//                startActivity<CategoryActivity>("idx" to 9)
-//            }
-//            if (gpos == 0 && cpos == 9) {
-//                startActivity<CategoryActivity>("idx" to 10)
-//            }
-//            if (gpos == 0 && cpos == 10) {
-//                startActivity<CategoryActivity>("idx" to 11)
-//            }
-//            if (gpos == 0 && cpos == 11) {
-//                startActivity<CategoryActivity>("idx" to 12)
-//            }
-//            if (gpos == 0 && cpos == 12) {
-//                startActivity<CategoryActivity>("idx" to 8)
-//            }
-//
-//            if (gpos == 0 && cpos == 13) {
-//                startActivity<CategoryActivity>("idx" to 13)
-//            }
-//
-//
-//            if (gpos == 1 && cpos == 0) {
-//                startActivity<CategoryActivity>("idx" to 0)
-//            }
-//
-//            if (gpos == 1 && cpos == 1) {
-//                startActivity<CategoryActivity>("idx" to 1)
-//            }
-//            if (gpos == 1 && cpos == 2) {
-//                startActivity<CategoryActivity>("idx" to 2)
-//            }
-//
-//
-//            if (gpos == 1 && cpos == 3) {
-//                startActivity<CategoryActivity>("idx" to 3)
-//            }
-//
-//
-//            if (gpos == 1 && cpos == 4) {
-//                startActivity<CategoryActivity>("idx" to 4)
-//            }
-//
-//            if (gpos == 1 && cpos == 5) {
-//                startActivity<CategoryActivity>("idx" to 5)
-//            }
-//            if (gpos == 1 && cpos == 6) {
-//                startActivity<CategoryActivity>("idx" to 6)
-//            }
-//            if (gpos == 1 && cpos == 7) {
-//                startActivity<CategoryActivity>("idx" to 7)
-//            }
-//
-//            if (gpos == 1 && cpos == 8) {
-//                startActivity<CategoryActivity>("idx" to 9)
-//            }
-//            if (gpos == 1 && cpos == 9) {
-//                startActivity<CategoryActivity>("idx" to 10)
-//            }
-//            if (gpos == 1 && cpos == 10) {
-//                startActivity<CategoryActivity>("idx" to 11)
-//            }
-//            if (gpos == 1 && cpos == 11) {
-//                startActivity<CategoryActivity>("idx" to 12)
-//            }
-//            return@setOnChildClickListener false
-//
-//        }
-
-    }
 
     private fun setRecyclerView() {
         myRecommendProductRecyclerViewAdapter = MyRecommendProductRecyclerViewAdapter(activity!!, dataList)

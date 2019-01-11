@@ -45,7 +45,6 @@ class ProductContentViewActivity : BaseActivity() {
 
 
     //웹뷰에서 회원가입 누를 때 넘겨주려면 가지고 있어야 한다.
-    var  usertotaldata = intent.getSerializableExtra("UserTotalData") as UserTotalData
 
     lateinit var closetlist:ArrayList<ClosetDetail>
 //    val closetlist: ArrayList<Data> by lazy {
@@ -62,6 +61,7 @@ class ProductContentViewActivity : BaseActivity() {
     private var webView: WebView? = null
     private var webSetting: WebSettings? = null
     private var webChromeClient: WebChromeClient? = null
+    lateinit var usertotaldata : UserTotalData
 
     //상품 정보
     lateinit var productData : ProductData
@@ -81,8 +81,7 @@ class ProductContentViewActivity : BaseActivity() {
        var intent_url = intent!!.getStringExtra("url")
         var url = "http://"+intent_url.toString()
 
-
-
+        usertotaldata = intent.getSerializableExtra("UserTotalData") as UserTotalData
 
 
         webView = findViewById(R.id.wv_activity_product_content_view)

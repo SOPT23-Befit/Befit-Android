@@ -4,6 +4,7 @@ package com.sopt.befit.fragment
 import android.content.Intent
 
 import android.accounts.AccountAuthenticatorActivity
+import android.app.Activity
 
 import android.graphics.Color
 import android.os.Bundle
@@ -23,6 +24,7 @@ import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.startActivityForResult
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,6 +44,7 @@ class MypageFragment :Fragment(){
 
 
     lateinit var brand2 : String
+    val REQUEST_CODE_ACTIVITY =7777
 
    // val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
@@ -52,6 +55,24 @@ class MypageFragment :Fragment(){
 
 
     //   var birth = AAAAMainActivity.instance.usertotalData.birthday
+
+
+    companion object {
+        private var instance: MypageFragment? = null
+        @Synchronized
+        fun getInstance(title: String, content: String): MypageFragment {
+            if (instance == null) {
+                instance = MypageFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("brand1", brand1)
+                        putString("brand2", brand2)
+                    }
+                }
+            }
+            return instance!!
+        }
+
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val eachBrandFragmentView: View = inflater!!.inflate(R.layout.fragment_mypage, container, false)
@@ -64,7 +85,9 @@ class MypageFragment :Fragment(){
 
         getUserDataResponse()
 
-
+        tv_mypage_fragment_FnQ.setOnClickListener(){
+            iv_mypage_arrow.setImageResource(R.drawable.arrow_up)
+        }
 
 
     }
@@ -104,11 +127,10 @@ class MypageFragment :Fragment(){
         tv_mypage_fragment_preference.setOnClickListener(){
 
             if(gender.equals("남성")) {
-
-                startActivity<CheckMyBrandPreferenceManActivity>("brand1" to "$brand1", "brand2" to "$brand2")
+                startActivityForResult<CheckMyBrandPreferenceManActivity>(REQUEST_CODE_ACTIVITY, "brand1" to "$brand1", "brand2" to "$brand2")
             }
             else if(gender.equals("여성")){
-                startActivity<CheckMyBrandPreferenceActivity>("brand1" to "$brand1", "brand2" to "$brand2")
+                startActivityForResult<CheckMyBrandPreferenceActivity>(REQUEST_CODE_ACTIVITY,"brand1" to "$brand1", "brand2" to "$brand2")
 
             }
         }

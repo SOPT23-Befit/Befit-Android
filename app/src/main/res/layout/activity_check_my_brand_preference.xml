@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="41dp"
+            android:layout_marginTop="21dp"
             android:layout_marginLeft="26dp">
 
             <TextView
@@ -132,6 +132,16 @@
                 android:layout_marginTop="390.4dp"
                 android:layout_marginBottom="58dp"
                 android:src="@drawable/woman_critic" />
+            <Button
+                android:id="@+id/iv_woman_brand_preference_modify_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="#eaeaea"
+                android:text="수정"
+                android:textColor="#000000"
+                android:textSize="20dp" />
         </RelativeLayout>
 
 

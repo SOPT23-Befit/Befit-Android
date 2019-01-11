@@ -180,11 +180,13 @@
 
             <ImageButton
                 android:id="@+id/ibtn_menu_close"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:src="@drawable/cancel" />
+                android:src="@drawable/cancel"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="14dp"/>
 
         </LinearLayout>
 
@@ -213,7 +215,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow_down"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:layout_marginRight="16dp"/>
         </LinearLayout>
 
 
@@ -276,7 +279,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sweat Shirts"
-
+                    android:layout_marginTop="20dp"
                     />
 
                 <TextView
@@ -365,7 +368,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow_down"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:layout_marginRight="16dp"/>
         </LinearLayout>
 
         <LinearLayout

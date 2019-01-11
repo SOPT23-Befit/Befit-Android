@@ -18,18 +18,11 @@ object SharedPreferenceController {
     private val USER_PW: String = "user_pw"
     private val USER_TOKEN : String = "my_token"
 
-    var guide_flag=false
+
 
 
     private var pref: SharedPreferences? = null
 
-    fun setguideflad(){
-        guide_flag = true
-    }
-
-    fun getguideflag() : Boolean{
-        return guide_flag
-    }
 
 
 

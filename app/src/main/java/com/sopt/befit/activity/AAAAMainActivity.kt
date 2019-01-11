@@ -41,9 +41,13 @@ class AAAAMainActivity :AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        tl_bottom_navi_act_bottom_menu.visibility=View.VISIBLE
         if(vp_bottom_navi_act_frag_pager.adapter != null){
             var adapter = vp_bottom_navi_act_frag_pager.adapter as MyFragmentStatePagerAdapter
             adapter.notifyDataSetChanged()
+
+
 
             val bottomNaviLayout: View = this.layoutInflater.inflate(R.layout.tab_bar, null, false)
             //탭 하나하나 TabLayout에 연결시켜줍니다.
@@ -78,15 +82,15 @@ class AAAAMainActivity :AppCompatActivity() {
     }
 
 
-    fun tabvisible() {
-        if (tl_bottom_navi_act_bottom_menu.visibility == View.GONE) {
-            Log.d("aaaa", "toVisible")
-            tl_bottom_navi_act_bottom_menu.visibility = View.VISIBLE
-        } else if (tl_bottom_navi_act_bottom_menu.visibility == View.VISIBLE) {
-            Log.d("aaaa", "toInvisible")
-            tl_bottom_navi_act_bottom_menu.visibility = View.GONE
-        }
-    }
+//    fun tabvisible() {
+//        if (tl_bottom_navi_act_bottom_menu.visibility == View.GONE) {
+//            Log.d("aaaa", "toVisible")
+//            tl_bottom_navi_act_bottom_menu.visibility = View.VISIBLE
+//        } else if (tl_bottom_navi_act_bottom_menu.visibility == View.VISIBLE) {
+//            Log.d("aaaa", "toInvisible")
+//            tl_bottom_navi_act_bottom_menu.visibility = View.GONE
+//        }
+//    }
 
 
 

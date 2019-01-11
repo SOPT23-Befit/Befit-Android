@@ -15,6 +15,7 @@ import com.sopt.befit.get.GetProductListResponse
 
 import com.sopt.befit.get.*
 import com.sopt.befit.post.*
+import com.sopt.befit.put.PutModifyBrandResponse
 import com.sopt.befit.put.PutModifyPwResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -132,7 +133,7 @@ interface NetworkService {
     ): Call<GetProductListResponse>
 
     //상품 전체 카테고리 최신순 조회
-    @GET("/products/new/category/{category_idx}?gender={gender}")
+    @GET("/products/new/category/{category_idx}")
     fun getCategoryNewProductListResponse(
             @Header("Authorization") authorization: String,
             @Path("category_idx") category_idx: Int,
@@ -140,7 +141,7 @@ interface NetworkService {
     ): Call<GetProductListResponse>
 
     //상품 전체 카테고리 최신순 조회
-    @GET("/products/popular/category/{category_idx}?gender={gender}")
+    @GET("/products/popular/category/{category_idx}")
     fun getCategoryPopularProductListResponse(
             @Header("Authorization") authorization: String,
             @Path("category_idx") category_idx: Int,
@@ -249,5 +250,13 @@ interface NetworkService {
             @Header("Authorization") authorization: String,
             @Body closetAddData: ClosetAddData
     ): Call<PostAddMyClosetResponse>
+
+
+    @PUT("/user/brand")
+    @Headers("Content-Type: application/json")
+    fun putModifyBrandResponse(
+            @Header("Authorization") token : String,
+            @Body modifyBrandData : ModifyBrandData
+    ): Call<PutModifyBrandResponse>
 
 }

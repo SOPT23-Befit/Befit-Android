@@ -22,6 +22,9 @@ class MyPageAccountSettingActivity : BaseActivity() {
         logOutOnClick()
         backBtnOnClick()
 
+        btn_activity_my_page_account_setting_back.setOnClickListener(){
+            finish()
+        }
     }
 
     fun setSwitchClick(){

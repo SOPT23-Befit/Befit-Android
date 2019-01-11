@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_log_in.*
 import kotlinx.android.synthetic.main.activity_my_page_account_setting.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 import org.json.JSONObject
 import retrofit2.Call
@@ -52,13 +53,49 @@ class LogInActivity : BaseActivity() {
 
                 override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
                     if (response.isSuccessful) {
-                        val token = response.body()!!.data.token
+
+                        Log.v("success communicate", response.body().toString())
+                        when (response.body()!!.status) {
+                            200 -> {
+
+                                Log.v("success", response.message().toString())
+                                val token = response.body()!!.data.token
 //저번 시간에 배웠던 SharedPreference에 토큰을 저장!
 
-                        SharedPreferenceController.setAuthorization(this@LogInActivity, token)
-                        toast(SharedPreferenceController.getAuthorization(this@LogInActivity))
-                        startActivity<AAAAMainActivity>()
-                        finish()
+                                SharedPreferenceController.setAuthorization(this@LogInActivity, token)
+                                toast(SharedPreferenceController.getAuthorization(this@LogInActivity))
+                                startActivity<AAAAMainActivity>()
+                                finish()
+
+
+                            }
+
+
+
+                            401 -> {
+                                Log.v("401 fail", response.message())
+                                Log.v("fail", response.errorBody().toString())
+                                toast("인증 실패")
+                            }
+
+                            500 -> {
+
+                                Log.v("409 error", response.message())
+                                Log.v("server error", response.errorBody().toString())
+                                toast("서버 내부 에러")
+                            }
+                            600 -> {
+                                Log.v("600 error", response.message())
+                                Log.v("database error", response.errorBody().toString())
+                                toast("데이터베이스 에러")
+                            }
+                            else -> {
+                                toast("Error")
+                            }
+                        }
+                    }
+                    else{
+                        toast("로그인 실패")
                     }
                 }
             })
