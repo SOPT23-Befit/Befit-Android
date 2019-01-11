@@ -18,11 +18,12 @@
             android:name=".activity.AAAAMainActivity"
             android:windowSoftInputMode="adjustPan">
 
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".activity.AddMySizeBrandPageActivity" />
         <activity android:name=".activity.AddMySizeGoodsPageActivity" />
@@ -52,8 +53,13 @@
 
       
         </activity>
-        <activity android:name=".activity.MySizeInfoCategoryActivity" />
+        <activity android:name=".activity.MySizeInfoCategoryActivity" >
+
+
+        </activity>
+
         <activity android:name=".activity.IntroActivity"></activity>
+
         <activity android:name=".activity.SplashActivity"></activity>
     </application>
 
