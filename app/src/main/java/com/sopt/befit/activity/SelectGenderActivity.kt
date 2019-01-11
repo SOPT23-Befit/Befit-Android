@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_select_gender2.*
 
 import org.jetbrains.anko.startActivity
 
-class SelectGenderActivity : AppCompatActivity() {
+class SelectGenderActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -31,7 +31,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ProductContentViewActivity : AppCompatActivity() {
+class ProductContentViewActivity : BaseActivity() {
 
     val MY_CLOSET_LIST_REQUEST_CODE = 1000
 
@@ -54,7 +54,7 @@ class ProductContentViewActivity : AppCompatActivity() {
     //연결할 쇼핑몰 웹 url
 
     //intent로 바꿔주고 http 붙여주기
-    private var url: String = "http://www.naver.com"
+
     private var webView: WebView? = null
     private var webSetting: WebSettings? = null
     private var webChromeClient: WebChromeClient? = null
@@ -74,14 +74,19 @@ class ProductContentViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_content_view)
         handler = Handler()
         instance = this
-
+       var intent_url = intent!!.getStringExtra("url")
+        var url = "http://"+intent_url.toString()
         webView = findViewById(R.id.wv_activity_product_content_view)
         val animation : LottieAnimationView = findViewById(R.id.lottie_loading_web_view)
        webView!!.webViewClient = WebViewClient()
         webSetting = webView!!.settings
         webSetting!!.javaScriptEnabled = true
         Log.v("onCreate","aaaaa")
+        var token = intent!!.getStringExtra("token")
+        var brand_name = intent!!.getStringExtra("name_english")
+        tv_activity_product_contentview_brandname.text = brand_name.toString()
         webView!!.webViewClient = object : WebViewClient(){
+
 
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 Log.v("webViewClient,shouldOverride","bbbbbb")

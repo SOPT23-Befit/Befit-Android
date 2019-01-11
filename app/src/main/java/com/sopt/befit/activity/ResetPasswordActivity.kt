@@ -26,7 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
 
-class ResetPasswordActivity : AppCompatActivity() {
+class ResetPasswordActivity : BaseActivity() {
     //변수 선언
     val REQUEST_CODE_SEARCH_PW_ACTIVITY = 5555
     lateinit var modifypwData : ModifyPWData
@@ -34,8 +34,6 @@ class ResetPasswordActivity : AppCompatActivity() {
     private var overlapNetWorking : String =""
     val BACK_CODE_LOGIN_ACTIVITY = 7777
     private  var userIdx: Int = -1
-
-
 
     fun putPasswordModify(userIdx : Int, userpw: String){
         //modifypwdata에 값 넣기

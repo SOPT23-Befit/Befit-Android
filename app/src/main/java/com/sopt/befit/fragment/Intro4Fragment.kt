@@ -6,16 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sopt.befit.R
+
 import com.sopt.befit.activity.AAAAMainActivity
 import com.sopt.befit.activity.LogInActivity
 import com.sopt.befit.db.SharedPreferenceController
 import kotlinx.android.synthetic.main.intro4.*
 import org.jetbrains.anko.support.v4.startActivity
 
+import com.sopt.befit.adapter.Utilities
+
+
 class Intro4Fragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val brandFragmentView: View = inflater!!.inflate(R.layout.intro4, container, false)
+        Utilities.setGlobalFont(brandFragmentView, activity!!);
         return brandFragmentView
     }
 

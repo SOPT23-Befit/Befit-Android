@@ -30,7 +30,7 @@ import retrofit2.Response
 import java.util.*
 import java.util.regex.Pattern
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BaseActivity() {
 
     var datepickerStatus = 0//0안보임 1보임
     private lateinit var adapter: ArrayAdapter<String>

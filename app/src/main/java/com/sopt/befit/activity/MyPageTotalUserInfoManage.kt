@@ -17,6 +17,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
+import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -28,7 +29,7 @@ import retrofit2.Response
 import java.util.regex.Pattern
 
 
-class MyPageTotalUserInfoManage : AppCompatActivity() {
+class MyPageTotalUserInfoManage : BaseActivity() {
     lateinit var postnum : String
     lateinit var sub_postnum: String
     lateinit var home_address : String
@@ -41,7 +42,8 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
     lateinit var birth : String
     lateinit var name: String
     lateinit var gender : String
-
+    private var token : String = ""
+    lateinit var temp : UserTotalData
     var phoneWatcher = object : TextWatcher{
         override fun afterTextChanged(s: Editable?) {
 
@@ -55,7 +57,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
             if(Pattern.matches("^01(?:0|1|[6-9]) - (?:\\d{3}|\\d{4}) - \\d{4}$", s)){
                 if(et_activity_total_user_detail_address.text.isNotEmpty() && tv_activity_total_user_post_num.text.isNotEmpty()) {
                     btn_activity_total_user_complete.isClickable = true
-                    btn_activity_total_user_complete.setTextColor(Color.parseColor("#000000"))
+                    btn_activity_total_user_complete.setBackgroundColor(Color.parseColor("#000000"))
                 }
             }
         }
@@ -68,25 +70,16 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
         setContentView(R.layout.activity_my_page_total_user_info_manage)
 
         //intent 하고 setting 하는 작업
-       email = intent!!.getStringExtra("email")
-       name = intent!!.getStringExtra("name")
-       birth = intent!!.getStringExtra("birthday")
-       gender = intent!!.getStringExtra("gender")
-
-        tv_activity_total_user_name.setText(name)
-        tv_activity_total_user_email.setText(email)
-        tv_activity_total_user_birth.setText(birth)
-        tv_activity_total_user_gender.setText(gender)
+        token = intent!!.getStringExtra("token")
+        temp = intent.getSerializableExtra("UserTotalData") as UserTotalData
 
 
-
-
-        //뒤로가기 버튼
-        btn_activity_total_user_back.setOnClickListener {
-            finish()
-        }
+        tv_activity_total_user_name.setText(temp.name)
+        tv_activity_total_user_email.setText(temp.email)
+        tv_activity_total_user_birth.setText(temp.birthday)
+        tv_activity_total_user_gender.setText(temp.gender)
         ib_activity_post_cancel.visibility = View.GONE
-
+        ib_activity_post_cancel.visibility = View.GONE
         //완료 버튼 클릭 못하게
         btn_activity_total_user_complete.isClickable = false
         btn_activity_total_user_complete.setTextColor(Color.parseColor("#848484"))
@@ -94,6 +87,36 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
         //상세 주소 못쓰게
         et_activity_total_user_detail_address.isFocusableInTouchMode = false
 
+
+        if(temp.post_number!= null && temp.home_address!= null && temp.detail_address!= null && temp.phone!= null){
+            btn_activity_total_user_search_address.visibility = View.GONE
+            rl_activity_total_user_address.visibility = View.VISIBLE
+            tv_activity_total_user_post_num.text = temp.post_number
+            tv_activity_total_user_home_address.text = temp.home_address
+            et_activity_total_user_detail_address.setText(temp.detail_address)
+            et_activity_user_phone.setText(temp.phone)
+            btn_activity_total_user_complete.isClickable = true
+            btn_activity_total_user_complete.setTextColor(Color.parseColor("#000000"))
+            et_activity_total_user_detail_address.isFocusableInTouchMode = true
+
+            btn_activity_total_user_complete.setOnClickListener {
+                finish()
+            }
+            ib_activity_post_cancel.visibility = View.VISIBLE
+            ib_activity_post_cancel.isClickable =true
+            ib_activity_post_cancel.setOnClickListener {
+                btn_activity_total_user_search_address.visibility = View.VISIBLE
+                rl_activity_total_user_address.visibility = View.GONE
+                tv_activity_total_user_post_num.text = ""
+                tv_activity_total_user_home_address.text = ""
+            }
+        }
+
+
+        //뒤로가기 버튼
+        btn_activity_total_user_back.setOnClickListener {
+            finish()
+        }
 
 
         //우편번호 찾기 버튼 누르면
@@ -118,8 +141,9 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
                 // MainActivity 에서 요청할 때 보낸 요청 코드 (3000)
                 Activity.RESULT_OK-> {
 
-                    tv_activity_total_user_post_num.text = data!!.getStringExtra("postnum")
-                    tv_activity_total_user_home_address.text = data!!.getStringExtra("home_address")
+                    tv_activity_total_user_post_num.text = data!!.getStringExtra("zone_code")
+                    tv_activity_total_user_sub_post_num.text = data!!.getStringExtra("post_num")
+                    tv_activity_total_user_home_address.text = data!!.getStringExtra("full_address")
                     btn_activity_total_user_search_address.visibility = View.GONE
                     rl_activity_total_user_address.visibility = View.VISIBLE
                     ib_activity_post_cancel.visibility = View.VISIBLE
@@ -136,7 +160,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
                         tv_activity_total_user_post_num.text = ""
                         tv_activity_total_user_home_address.text = ""
                     }
-
+                    et_activity_user_phone.addTextChangedListener(phoneWatcher)
                      btn_activity_total_user_complete.setOnClickListener {
                          home_address = tv_activity_total_user_home_address.text.toString()
                          postnum = tv_activity_total_user_post_num.text.toString()
@@ -155,6 +179,8 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
                  }
                 else->{
                 toast("call in Data error")
+                    btn_activity_total_user_search_address.visibility = View.VISIBLE
+                    rl_activity_total_user_address.visibility = View.GONE
             }
                 }
             }else{
@@ -173,7 +199,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
     fun TotalUserInfoDataModify(postnum : String,home_address : String,detail_address : String ,phone : String ){
        combineFormData = CombineFormData(postnum,home_address,detail_address,phone)
         networkService = ApplicationController.instance.networkService
-        var totaluserdataResponse = networkService.TotalUserDataResponse(combineFormData)
+        var totaluserdataResponse = networkService.TotalUserDataResponse(token,combineFormData)
         totaluserdataResponse!!.enqueue(object : Callback<PostTotalUserDataResponse>{
             override fun onFailure(call: retrofit2.Call<PostTotalUserDataResponse>, t: Throwable) {
                 Log.v("Error response","omg")
@@ -181,7 +207,7 @@ class MyPageTotalUserInfoManage : AppCompatActivity() {
 
             override fun onResponse(call: retrofit2.Call<PostTotalUserDataResponse>, response: Response<PostTotalUserDataResponse>) {
                 response?.let {
-                    when(it.body()!!.status){
+                    when(response.body()!!.status){
                         200 ->{
                             Log.v("success",response.message().toString())
                             Log.v("success","ok")

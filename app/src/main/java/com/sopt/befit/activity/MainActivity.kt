@@ -10,7 +10,7 @@ import com.sopt.befit.network.NetworkService
 import com.sopt.befit.R
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     val networkServie: NetworkService by lazy {
         ApplicationController.instance.networkService
     }

@@ -28,14 +28,14 @@
             android:layout_height="wrap_content"
             android:text="선호브랜드 2가지"
             android:textColor="#000000"
-            android:textStyle="bold"
+            android:tag="bold"
             android:textSize="28sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="를"
-            android:textStyle="bold"
+            android:tag="bold"
             android:textSize="28sp"/>
 
     </LinearLayout>
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="선택해주세요"
-        android:textStyle="bold"
+        android:tag="bold"
         android:textSize="28sp"
         android:layout_marginLeft="26dp"/>
     <RelativeLayout

@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.startActivity
 import java.lang.Boolean.TRUE
 
-class MyPageAccountSettingActivity : AppCompatActivity() {
+class MyPageAccountSettingActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

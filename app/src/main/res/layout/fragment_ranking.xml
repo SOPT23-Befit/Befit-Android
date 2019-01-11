@@ -16,7 +16,7 @@
             android:layout_marginBottom="17dp"
             android:text="브랜드 랭킹"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:tag="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"

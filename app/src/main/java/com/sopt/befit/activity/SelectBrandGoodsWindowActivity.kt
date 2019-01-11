@@ -29,7 +29,7 @@ import com.sopt.befit.post.PostAddMyClosetResponse
 
 //import javax.security.auth.callback.Callback
 
-class SelectBrandGoodsWindowActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class SelectBrandGoodsWindowActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
 
 
     var brand_idx : Int = 0

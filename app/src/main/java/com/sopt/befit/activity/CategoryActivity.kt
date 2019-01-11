@@ -88,7 +88,7 @@ class CategoryActivity : BaseActivity() {
     }
 
     private fun getCategoryNewProductListResponse() {
-        val getCategoryNewProductListResponse = networkService.getCategoryNewProductListResponse(token, c_idx)
+        val getCategoryNewProductListResponse = networkService.getCategoryNewProductListResponse(token, c_idx, "여성")
         getCategoryNewProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {
                 Log.e("category fail", t.toString())
@@ -110,7 +110,7 @@ class CategoryActivity : BaseActivity() {
     }
 
     private fun getCategoryPopularProductListResponse() {
-        val getCategoryPopularProductListResponse = networkService.getCategoryPopularProductListResponse(token, c_idx)
+        val getCategoryPopularProductListResponse = networkService.getCategoryPopularProductListResponse(token, c_idx, "여성")
         getCategoryPopularProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {
                 Log.e("brand fail", t.toString())

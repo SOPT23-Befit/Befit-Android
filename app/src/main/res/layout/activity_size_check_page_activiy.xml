@@ -22,7 +22,7 @@
             android:text="내 사이즈"
             android:layout_centerVertical="true"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:tag="bold"
             android:textColor="#000000"/>
     </RelativeLayout>
     <RelativeLayout
@@ -44,7 +44,7 @@
             android:text="유니클로"
             android:textColor="#848484"
             android:textSize="14sp"
-            android:textStyle="bold"
+            android:tag="bold"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"/>
         <TextView
@@ -54,7 +54,7 @@
             android:text="실크풀집자켓"
             android:textSize="16sp"
             android:textColor="#242424"
-            android:textStyle="bold"
+            android:tag="bold"
             android:layout_below="@+id/text_brand"
             android:layout_marginTop="4dp"
             android:layout_marginLeft="16dp"/>
@@ -67,14 +67,14 @@
             android:layout_marginRight="50dp"
             android:text="L"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:tag="bold"
             android:textColor="#242424"></TextView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="size"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:tag="bold"
             android:layout_below="@+id/text_brand"
             android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
@@ -169,6 +169,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:tag="bold"
                         android:text="61" />
 
                     <TextView
@@ -177,6 +178,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:tag="bold"
                         android:text="73.5" />
 
                     <TextView
@@ -185,6 +187,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:tag="bold"
                         android:text="36" />
 
                     <TextView
@@ -193,6 +196,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:tag="bold"
                         android:text="43" />
 
                     <TextView
@@ -200,6 +204,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:tag="bold"
                         android:gravity="center"
                         android:text="55.5" />
                 </TableRow>

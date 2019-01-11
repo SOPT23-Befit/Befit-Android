@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 
 
 open class BaseActivity : AppCompatActivity() {
@@ -15,6 +14,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
+
         if (mediumTypeface == null) {
             mediumTypeface = Typeface.createFromAsset(this.assets, "fonts/kopubdotummedium.ttf")
         }
@@ -28,21 +28,23 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private fun setGlobalFont(view: View) {
-        if (view is ViewGroup) {
-            val vg = view
-            val vgCnt = vg.childCount
-            for (i in 0 until vgCnt) {
-                val v = vg.getChildAt(i)
-                if (v is TextView && v.getTag() != null) {
-                    if (v.getTag().equals("bold")) {
-                        v.typeface = boldTypeface
-                    } else if (v.getTag().equals("light")) {
-                        v.typeface = lightTypeface
+        if (view != null) {
+            if (view is ViewGroup) {
+                val vg = view
+                val vgCnt = vg.childCount
+                for (i in 0 until vgCnt) {
+                    val v = vg.getChildAt(i)
+                    if (v is TextView && v.getTag() != null) {
+                        if (v.getTag().equals("bold")) {
+                            v.typeface = boldTypeface
+                        } else if (v.getTag().equals("light")) {
+                            v.typeface = lightTypeface
+                        }
+                    } else if (v is TextView) {
+                        v.typeface = mediumTypeface
                     }
-                } else if (v is TextView) {
-                    v.typeface = mediumTypeface
+                    setGlobalFont(v)
                 }
-                setGlobalFont(v)
             }
         }
     }

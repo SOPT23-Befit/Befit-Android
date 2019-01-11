@@ -24,6 +24,7 @@
             android:layout_height="38dp"
             android:layout_toRightOf="@id/btn_activity_product_contentview_cancel"
             android:text="ADD"
+            android:tag="bold"
             android:textSize="22sp"
             android:gravity="center_vertical"
             android:layout_centerVertical="true"

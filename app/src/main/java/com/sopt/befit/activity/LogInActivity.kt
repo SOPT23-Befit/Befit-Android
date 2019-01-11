@@ -24,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LogInActivity : AppCompatActivity() {
+class LogInActivity : BaseActivity() {
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
