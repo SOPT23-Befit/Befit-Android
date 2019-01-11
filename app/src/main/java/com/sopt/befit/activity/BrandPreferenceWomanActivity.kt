@@ -70,7 +70,7 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         cnt++
                         brand1 = "17"
                         ibtn_brand_prefer_next_wm.isEnabled = true
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_brand_preference_woman_thisisneverthat.setImageResource(R.drawable.woman_select_thisisneverthat)  // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
@@ -141,8 +141,8 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "12"
-                        ibtn_brand_prefer_next_wm.isEnabled = false
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.isEnabled = true
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Romantic_crown.setImageResource(R.drawable.woman_select_romantic_crown)  // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
@@ -212,8 +212,8 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "3"
-                        ibtn_brand_prefer_next_wm.isEnabled = false
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.isEnabled = true
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Lafudgestore.setImageResource(R.drawable.woman_select_lafudgestore) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
@@ -283,8 +283,8 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "9"
-                        ibtn_brand_prefer_next_wm.isEnabled = false
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.isEnabled = true
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_select_andersson_bell) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
@@ -301,13 +301,13 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                     ibtn_brand_prefer_next_wm.isEnabled = false
                     ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
                     brand1 = ""
-                    ibtn_activity_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_lafudgestore) //해제
+                    ibtn_activity_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_andersson_bell) //해제
                 }else if(brand2 =="9"){
                     cnt--
                     brand2 = ""
                     ibtn_brand_prefer_next_wm.isEnabled = false
                     ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
-                    ibtn_activity_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_lafudgestore) //해제
+                    ibtn_activity_brand_preference_woman_Anderson_Bell.setImageResource(R.drawable.woman_andersson_bell) //해제
                 }else{
                     //이미 두개가 다 다른거로 선택 되어있을 때
                     ibtn_brand_prefer_next_wm.isEnabled  = true
@@ -354,8 +354,8 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "14"
-                        ibtn_brand_prefer_next_wm.isEnabled = false
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.isEnabled = true
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Critic.setImageResource(R.drawable.woman_select_critic) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
@@ -425,8 +425,8 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "37"
-                        ibtn_brand_prefer_next_wm.isEnabled = false
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.isEnabled = true
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_OIOI.setImageResource(R.drawable.woman_select_oioi) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
@@ -497,8 +497,8 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "2"
-                        ibtn_brand_prefer_next_wm.isEnabled = false
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.isEnabled = true
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_Minav.setImageResource(R.drawable.woman_select_minav) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
@@ -568,8 +568,8 @@ class BrandPreferenceWomanActivity : BaseActivity() {
                         //1. brand2 에 뭐가 들어가 있고 brand1에 비어있을 때
                         cnt++
                         brand1 = "32"
-                        ibtn_brand_prefer_next_wm.isEnabled = false
-                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_grayarrow)
+                        ibtn_brand_prefer_next_wm.isEnabled = true
+                        ibtn_brand_prefer_next_wm.setImageResource(R.drawable.ic_purplearrow)
                         ibtn_activity_brand_preference_woman_More_or_Less.setImageResource(R.drawable.woman_select_more_or_less) // 선택
                     }else {
                         //cnt =1 인데 brand1에 들어가 있을 때
