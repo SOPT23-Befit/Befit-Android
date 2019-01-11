@@ -240,5 +240,4 @@ class MypageFragment :Fragment(){
                 }
             } })
     }
-
 }
