@@ -43,6 +43,7 @@ class CategoryActivity : BaseActivity() {
         token = SharedPreferenceController.getAuthorization(this)
         c_idx = intent.getIntExtra("category_idx", 0)
         gender = intent.getStringExtra("gender")
+        Log.d("CategoryActivity",gender)
 
         setView()
 
@@ -51,6 +52,7 @@ class CategoryActivity : BaseActivity() {
         setViewClickListener()
 
         getCategoryNewProductListResponse()
+
     }
 
     private fun setView() {
@@ -90,6 +92,7 @@ class CategoryActivity : BaseActivity() {
     }
 
     private fun getCategoryNewProductListResponse() {
+        networkService = ApplicationController.instance.networkService
         val getCategoryNewProductListResponse = networkService.getCategoryNewProductListResponse(token, c_idx, gender)
         getCategoryNewProductListResponse.enqueue(object : Callback<GetProductListResponse> {
             override fun onFailure(call: Call<GetProductListResponse>, t: Throwable) {

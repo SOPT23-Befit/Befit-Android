@@ -17,6 +17,7 @@ import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.UserTotalData
 import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetBrandResponse
+import com.sopt.befit.get.GetEachProductResponse
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
@@ -66,9 +67,8 @@ class BrandMainActivity : BaseActivity() {
             productData = intent.getSerializableExtra("ProductData") as ProductData
             setOneProductView()
             b_idx = productData.brand_idx
+            getOneProductResponse()
         }
-
-
 
         setViewClickListener()
 
@@ -126,15 +126,6 @@ class BrandMainActivity : BaseActivity() {
             finish()
         }
 
-        img_brand_main_p_heart.setOnClickListener {
-            if (productData.product_like == 1) {
-                postBrandOneProductUnlikeResponse()
-                productData.product_like = 0
-            } else {
-                postBrandOneProductLikeResponse()
-                productData.product_like = 1
-            }
-        }
     }
 
     private fun setRecyclerView() {
@@ -180,6 +171,35 @@ class BrandMainActivity : BaseActivity() {
                         } else {
                             postBrandLikeResponse()
                             response.body()!!.data.likeFlag = 1
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    private fun getOneProductResponse() {
+        val getOneProductResponse = networkService.getEachProductListResponse(token, productData.idx)
+        getOneProductResponse.enqueue(object : Callback<GetEachProductResponse> {
+            override fun onFailure(call: Call<GetEachProductResponse>, t: Throwable) {
+                Log.e("brand fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetEachProductResponse>, response: Response<GetEachProductResponse>) {
+                if (response.isSuccessful) {
+
+                    if (response.body()!!.data.product_like == 1) {
+
+                        img_brand_main_p_heart.setChecked(true)
+                    }
+
+                    img_brand_main_p_heart.setOnClickListener {
+                        if (response.body()!!.data.product_like == 1) {
+                            postOneProductUnlikeResponse()
+                            response.body()!!.data.product_like= 0
+                        } else {
+                            postOneProductLikeResponse()
+                            response.body()!!.data.product_like = 1
                         }
                     }
                 }
@@ -262,10 +282,10 @@ class BrandMainActivity : BaseActivity() {
         })
     }
 
-    private fun postBrandOneProductLikeResponse() {
-        val postBrandOneProductLikeResponse = networkService.postProductLikeResponse(token,
+    private fun postOneProductLikeResponse() {
+        val postOneProductLikeResponse = networkService.postProductLikeResponse(token,
                 productData.idx)
-        postBrandOneProductLikeResponse.enqueue(object : Callback<PostProductLikeResponse> {
+        postOneProductLikeResponse.enqueue(object : Callback<PostProductLikeResponse> {
             override fun onFailure(call: Call<PostProductLikeResponse>, t: Throwable) {
                 Log.e("brand one product like fail", t.toString())
             }
@@ -278,10 +298,10 @@ class BrandMainActivity : BaseActivity() {
         })
     }
 
-    private fun postBrandOneProductUnlikeResponse() {
-        val postBrandOneProductUnlikeResponse = networkService.postProductUnlikeResponse(token,
+    private fun postOneProductUnlikeResponse() {
+        val postOneProductUnlikeResponse = networkService.postProductUnlikeResponse(token,
                 productData.idx)
-        postBrandOneProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
+        postOneProductUnlikeResponse.enqueue(object : Callback<PostProductUnlikeResponse> {
             override fun onFailure(call: Call<PostProductUnlikeResponse>, t: Throwable) {
                 Log.e("jjim product like fail", t.toString())
             }
@@ -294,7 +314,7 @@ class BrandMainActivity : BaseActivity() {
         })
     }
 
-    private fun getUserDataResponse(ctx : Context) {
+    private fun getUserDataResponse(ctx: Context) {
         Log.d("aaaaaaa", "aaaaaa")
         val getUserDataResponse = networkService.getUserDataResponse(token)
         getUserDataResponse.enqueue(object : Callback<GetUserDataResponse> {
