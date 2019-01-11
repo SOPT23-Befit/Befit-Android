@@ -60,7 +60,7 @@ class MainBannerFragment2: Fragment(){
 
 
                             iv_home_fragment_banner_2.setOnClickListener(){
-                                startActivity<ProductContentViewActivity>("url" to "http://m.frizm.co.kr/product/detail.html?product_no=1480&cate_no=33&display_group=1",
+                                startActivity<ProductContentViewActivity>("url" to "m.frizm.co.kr/product/detail.html?product_no=1480&cate_no=33&display_group=1",
                                         "name_english" to "FRIZMWORKS","token" to token,"UserTotalData" to temp)
                             }
 

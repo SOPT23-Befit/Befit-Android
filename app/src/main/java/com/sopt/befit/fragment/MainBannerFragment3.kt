@@ -16,12 +16,17 @@ class MainBannerFragment3: Fragment(){
         return brandFragmentView
     }
 
+    //val token = SharedPreferenceController.getAuthorization(activity!!)
+
+    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         iv_home_fragment_banner_3.setOnClickListener(){
 
-            startActivity<BrandMainActivity>("idx" to 21)
+            startActivity<BrandMainActivity>("idx" to 21,"token" to token)
         }
 
     }

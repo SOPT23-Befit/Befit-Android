@@ -43,13 +43,6 @@ class BrandRankingRecyclerViewAdapter(val ctx: Context, val dataList: ArrayList<
         holder.b_name.text = dataList[position].name_english
         holder.brandrankingcnt.text = (position+1).toString()
         holder.item_btn.setOnClickListener {
-            //            val intent : Intent = Intent(ctx, BrandMainActivity::class.java)
-//            intent.putExtra("idx",dataList[position].idx )
-//            Log.v("idx",dataList[position].idx.toString())
-//            intent.putExtra("flag",0)
-//            intent.putExtra("token",token)
-//            ctx.startActivity(intent)
-//
             ctx.startActivity<BrandMainActivity>("idx" to dataList[position].idx,"flag" to 0,"token" to token)
         }
         val requestOptions = RequestOptions()

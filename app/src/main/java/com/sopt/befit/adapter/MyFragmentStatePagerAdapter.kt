@@ -3,6 +3,7 @@ package com.sopt.befit.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
 import com.sopt.befit.fragment.*
 
 
@@ -22,5 +23,7 @@ class MyFragmentStatePagerAdapter(fm: FragmentManager, val FragmentCount: Int) :
 
     override fun getCount(): Int = FragmentCount
 
-
+    override fun getItemPosition(`object`: Any): Int {
+        return PagerAdapter.POSITION_NONE
+    }
 }

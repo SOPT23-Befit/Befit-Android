@@ -14,7 +14,7 @@
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:src="@drawable/cancel"
-            android:background="#ffffff"
+            android:background="@null"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             />

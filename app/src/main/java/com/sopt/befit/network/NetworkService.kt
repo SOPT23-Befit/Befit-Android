@@ -30,8 +30,8 @@ interface NetworkService {
 
     // 로그인
     @POST("/login")
+    @Headers("Content-Type: application/json")
     fun postLoginResponse(
-            @Header("Content-Type: application/json")
             @Body loginData: LoginData
     ): Call<PostLoginResponse>
 
@@ -242,5 +242,12 @@ interface NetworkService {
     fun getMyRecommendProduct(
             @Header("Authorization") token : String
     ) : Call<GetMyRecommendProduct>
+
+    @POST("/closet")
+    @Headers("Content-Type: application/json")
+    fun postAddMyCloset(
+            @Header("Authorization") authorization: String,
+            @Body closetAddData: ClosetAddData
+    ): Call<PostAddMyClosetResponse>
 
 }

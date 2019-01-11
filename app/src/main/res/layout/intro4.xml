@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:layout_marginTop="81dp"
         android:layout_marginLeft="26dp"
-        android:layout_marginBottom="68dp">
+        android:layout_marginBottom="26dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +30,14 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/intro_4"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/intro_4" />
+
+    <ImageButton
+        android:id="@+id/ibtn_intro_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@null"
+        android:src="@drawable/startnow" />
 </LinearLayout>

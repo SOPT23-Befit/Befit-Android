@@ -230,7 +230,7 @@ class BrandMainActivity : BaseActivity() {
     }
 
     private fun postBrandLikeResponse() {
-        val postBrandLikeResponse = networkService.postBrandLikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postBrandLikeResponse = networkService.postBrandLikeResponse(token,
                 b_idx)
         postBrandLikeResponse.enqueue(object : Callback<PostBrandLikeResponse> {
             override fun onFailure(call: Call<PostBrandLikeResponse>, t: Throwable) {
@@ -246,7 +246,7 @@ class BrandMainActivity : BaseActivity() {
     }
 
     private fun postBrandUnlikeResponse() {
-        val postJjimBrandUnlikeResponse = networkService.postBrandUnlikeResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80",
+        val postJjimBrandUnlikeResponse = networkService.postBrandUnlikeResponse(token,
                 b_idx)
         postJjimBrandUnlikeResponse.enqueue(object : Callback<PostBrandUnlikeResponse> {
             override fun onFailure(call: Call<PostBrandUnlikeResponse>, t: Throwable) {
