@@ -120,7 +120,7 @@ class ProductContentViewActivity : BaseActivity() {
                 tv_anouncement2.visibility = View.GONE
                 tv_anouncement3.visibility = View.GONE
                 if(url!!.contains("/member/join.html")){
-                    webView!!.loadUrl("file:///android_asset/signup.js:test()")
+                    webView!!.loadUrl("javascript:test()")
                 }
             }
 
