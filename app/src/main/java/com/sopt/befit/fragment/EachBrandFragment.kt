@@ -11,6 +11,7 @@ import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.adapter.EachBrandRecyclerViewAdapter
 import com.sopt.befit.data.BrandData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -24,7 +25,6 @@ class EachBrandFragment : Fragment() {
     lateinit var eachBrandRecyclerViewAdapter: EachBrandRecyclerViewAdapter
 
     var token: String = ""
-    var b_idx: Int = 0
     var search: String? = null
 
     val networkService: NetworkService by lazy {
@@ -44,7 +44,7 @@ class EachBrandFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        token = SharedPreferenceController.getAuthorization(activity!!)
 
         arguments?.let {
             search = it.getString("search")
@@ -56,7 +56,7 @@ class EachBrandFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
-        eachBrandRecyclerViewAdapter = EachBrandRecyclerViewAdapter(activity!!, dataList, token)
+        eachBrandRecyclerViewAdapter = EachBrandRecyclerViewAdapter(activity!!, dataList)
         rv_frag_s_brand_list.adapter = eachBrandRecyclerViewAdapter
         rv_frag_s_brand_list.layoutManager = LinearLayoutManager(activity)
     }

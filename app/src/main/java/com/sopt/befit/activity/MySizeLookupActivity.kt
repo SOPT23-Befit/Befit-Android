@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import com.sopt.befit.R
 import com.sopt.befit.adapter.MySizeLookupRecyclerViewAdapter
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.ClosetDetail
 import com.sopt.befit.get.GetClosetListResponse
 import com.sopt.befit.network.ApplicationController
@@ -43,10 +44,8 @@ class MySizeLookupActivity : BaseActivity() {
 
         instance = this
 
+        token = SharedPreferenceController.getAuthorization(this)
         category_idx=intent.getIntExtra("category_idx", 0)
-
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6NSwiZXhwIjoxNTQ4OTg0MjMyfQ._IqFlm-FClS2Ur5MH9xeyt-SpURmqlbj47-vyUHrClI"
-//var token : String = SharedPreferenceController.getAuthorization(activity !̆̈  !̆̈ )
 
         setView()
         setOnButton()

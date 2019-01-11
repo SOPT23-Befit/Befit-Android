@@ -11,6 +11,7 @@ import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.R
 import com.sopt.befit.adapter.JjimBrandRecyclerViewAdapter
 import com.sopt.befit.data.BrandData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetBrandListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -45,7 +46,7 @@ class JjimBrandFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        token = SharedPreferenceController.getAuthorization(activity!!)
 
         setRecyclerView()
 
@@ -56,15 +57,16 @@ class JjimBrandFragment : Fragment() {
         super.onResume()
         getJjimBrandListResponse()
     }
-    private fun setViewClickListener(){
+
+    private fun setViewClickListener() {
         refresh_brand_main.setOnRefreshListener {
             getJjimBrandListResponse()
-            refresh_brand_main.isRefreshing=false
+            refresh_brand_main.isRefreshing = false
         }
     }
 
     private fun setRecyclerView() {
-        jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList, token)
+        jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList)
         rv_frag_brand_list.adapter = jjimBrandRecyclerViewAdapter
         rv_frag_brand_list.layoutManager = LinearLayoutManager(activity)
     }
@@ -82,13 +84,14 @@ class JjimBrandFragment : Fragment() {
                     if (response.body()?.data != null) {
                         val temp: ArrayList<BrandData> = response.body()!!.data
                         if (temp.size > 0) {
-                            tv_fragment_jjim_brand_count.text="찜한 브랜드 "+ temp.size.toString()
+                            tv_fragment_jjim_brand_count.text = "찜한 브랜드 " + temp.size.toString()
                             jjimBrandRecyclerViewAdapter.dataList.addAll(temp)
                         }
+                    } else {
+                        tv_fragment_jjim_brand_count.text = "찜한 상품 " + 0
                     }
+
                     jjimBrandRecyclerViewAdapter.notifyDataSetChanged()
-                }else{
-                    tv_fragment_jjim_brand_count.text= "찜한 상품 " + 0
                 }
             }
         })

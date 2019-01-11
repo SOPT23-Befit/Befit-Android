@@ -18,6 +18,7 @@ import com.sopt.befit.adapter.SearchPBFragmentStatePagerAdapter
 import com.sopt.befit.adapter.SearchProductImageRecyclerViewAdapter
 import com.sopt.befit.data.ProductData
 import com.sopt.befit.data.SearchProductData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -45,14 +46,14 @@ class SearchFragment : Fragment(), TextView.OnEditorActionListener{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val searchFragmentView: View = inflater!!.inflate(R.layout.fragment_search, container, false)
         Utilities.setGlobalFont(searchFragmentView, activity!!);
-
+        token = SharedPreferenceController.getAuthorization(activity!!)
         return searchFragmentView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        token=SharedPreferenceController.getAuthorization(activity!!)
 
         setRecyclerView()
 

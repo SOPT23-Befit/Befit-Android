@@ -8,6 +8,7 @@ import com.sopt.befit.R
 import com.sopt.befit.adapter.ProductListRecyclerViewAdapter
 import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.ProductData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetProductListResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
@@ -24,8 +25,9 @@ class CategoryActivity : BaseActivity() {
         ArrayList<ProductData>()
     }
 
+    var flag = 0
     var token: String = ""
-    var c_idx: Int = 4//intent.getIntExtra("idx", 0)
+    var c_idx: Int = 0
     var search: String? = null
 
     val networkService: NetworkService by lazy {
@@ -36,8 +38,7 @@ class CategoryActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
-
+        token = SharedPreferenceController.getAuthorization(this)
         c_idx = intent.getIntExtra("category_idx", 0)
 
         setView()
