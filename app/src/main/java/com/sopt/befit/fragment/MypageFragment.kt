@@ -35,7 +35,6 @@ class MypageFragment :Fragment(){
     val header :MutableList<String> = ArrayList()
     val body : MutableList<MutableList<String>> = ArrayList()
     lateinit var networkService: NetworkService
-    lateinit var usertotalData: UserTotalData
     lateinit var temp : UserTotalData
     lateinit var name : String
     lateinit var email: String
@@ -43,7 +42,6 @@ class MypageFragment :Fragment(){
     lateinit var birth : String
     lateinit var brand1 : String
     lateinit var brand2 : String
-    val REQUEST_CODE_ACTIVITY =7777
 
     var flag =0
 
@@ -58,22 +56,7 @@ class MypageFragment :Fragment(){
     //   var birth = AAAAMainActivity.instance.usertotalData.birthday
 
 
-    companion object {
-        private var instance: MypageFragment? = null
-        @Synchronized
-        fun getInstance(title: String, content: String): MypageFragment {
-            if (instance == null) {
-                instance = MypageFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("brand1", brand1)
-                        putString("brand2", brand2)
-                    }
-                }
-            }
-            return instance!!
-        }
 
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val eachBrandFragmentView: View = inflater!!.inflate(R.layout.fragment_mypage, container, false)
@@ -139,10 +122,10 @@ class MypageFragment :Fragment(){
         tv_mypage_fragment_preference.setOnClickListener(){
 
             if(gender.equals("남성")) {
-                startActivityForResult<CheckMyBrandPreferenceManActivity>(REQUEST_CODE_ACTIVITY, "brand1" to "$brand1", "brand2" to "$brand2")
+                startActivity<CheckMyBrandPreferenceManActivity>("brand1" to "$brand1", "brand2" to "$brand2","gender" to gender)
             }
             else if(gender.equals("여성")){
-                startActivityForResult<CheckMyBrandPreferenceActivity>(REQUEST_CODE_ACTIVITY,"brand1" to "$brand1", "brand2" to "$brand2")
+                startActivity<CheckMyBrandPreferenceActivity>("brand1" to "$brand1", "brand2" to "$brand2","gender" to gender)
 
             }
         }
@@ -214,7 +197,7 @@ class MypageFragment :Fragment(){
                                     //tv_mypage_fragment_preference.setTextColor(Color.parseColor("#7a36e4"))
 
                                     var intent = Intent(activity,MyPageTotalUserInfoManage::class.java)
-                                    intent.putExtra("token",token)
+
                                     intent.putExtra("UserTotalData",temp)
                                     startActivity(intent)
 

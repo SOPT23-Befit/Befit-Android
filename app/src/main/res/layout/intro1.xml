@@ -25,7 +25,8 @@
             android:text="손쉬운 사이즈 비교"
             android:textStyle="bold"
             android:textSize="28sp"
-            android:textColor="#7a36e4"/>
+            android:textColor="#7a36e4"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 
