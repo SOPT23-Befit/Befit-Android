@@ -44,8 +44,7 @@ class ProductContentViewActivity : BaseActivity() {
     }
 
 
-    //웹뷰에서 회원가입 누를 때 넘겨주려면 가지고 있어야 한다.
-    var  usertotaldata = intent.getSerializableExtra("UserTotalData") as UserTotalData
+    lateinit var  usertotaldata : UserTotalData
 
     lateinit var closetlist:ArrayList<ClosetDetail>
 //    val closetlist: ArrayList<Data> by lazy {
@@ -82,7 +81,7 @@ class ProductContentViewActivity : BaseActivity() {
         var url = "http://"+intent_url.toString()
 
 
-
+        usertotaldata = intent!!.getSerializableExtra("UserTotalData") as UserTotalData
 
 
         webView = findViewById(R.id.wv_activity_product_content_view)
@@ -120,7 +119,13 @@ class ProductContentViewActivity : BaseActivity() {
                 tv_anouncement2.visibility = View.GONE
                 tv_anouncement3.visibility = View.GONE
                 if(url!!.contains("/member/join.html")){
-                    webView!!.loadUrl("javascript:test()")
+                    webView!!.settings.domStorageEnabled = true
+                    webView!!.loadUrl("file:///android_asset/signup.js")
+                    Log.v("url contains", url)
+                    val mHandler = Handler()
+                    mHandler.postDelayed({webView!!.loadUrl("javascript:test()")}, 3000)
+//                    webView!!.loadUrl("javascript.test()")
+
                 }
             }
 

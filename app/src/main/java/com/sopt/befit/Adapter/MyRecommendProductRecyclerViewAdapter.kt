@@ -104,7 +104,7 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                 response?.let {
                     when (it.body()!!.status) {
                         200 -> {
-                            Log.v("success", response.message().toString())
+                            Log.v("success", response.body().toString())
                             temp  = response.body()!!.data
 
                             val intent: Intent = Intent(ctx, ProductContentViewActivity::class.java)
@@ -114,6 +114,10 @@ class MyRecommendProductRecyclerViewAdapter(val ctx: Context, val dataList: Arra
                             intent.putExtra("name_english", dataList[position].name_english)
                             intent.putExtra("token", token)
                             intent.putExtra("UserTotalData",temp)
+
+
+
+
 
                             ctx.startActivity(intent)
 
