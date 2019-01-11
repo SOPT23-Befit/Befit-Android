@@ -103,6 +103,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd0.idx)
             intent.putExtra("url", dataList[position].pd0.link)
             intent.putExtra("name_english", dataList[position].pd0.name_english)
+            intent.putExtra("product", dataList[position].pd0)
             getUserDataResponse(ctx)
         }
         holder.mainImage2.setOnClickListener {
@@ -110,6 +111,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd1.idx)
             intent.putExtra("url", dataList[position].pd1.link)
             intent.putExtra("name_english", dataList[position].pd1.name_english)
+            intent.putExtra("product", dataList[position].pd1)
             getUserDataResponse(ctx)
         }
         holder.mainImage3.setOnClickListener {
@@ -117,6 +119,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd2.idx)
             intent.putExtra("url", dataList[position].pd2.link)
             intent.putExtra("name_english", dataList[position].pd2.name_english)
+            intent.putExtra("product", dataList[position].pd2)
             getUserDataResponse(ctx)
         }
         holder.mainImage4.setOnClickListener {
@@ -124,6 +127,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd3.idx)
             intent.putExtra("url", dataList[position].pd3.link)
             intent.putExtra("name_english", dataList[position].pd3.name_english)
+            intent.putExtra("product", dataList[position].pd3)
             getUserDataResponse(ctx)
         }
         holder.mainImage5.setOnClickListener {
@@ -131,6 +135,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd4.idx)
             intent.putExtra("url", dataList[position].pd4.link)
             intent.putExtra("name_english", dataList[position].pd4.name_english)
+            intent.putExtra("product", dataList[position].pd4)
             getUserDataResponse(ctx)
         }
         holder.mainImage6.setOnClickListener {
@@ -138,6 +143,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd5.idx)
             intent.putExtra("url", dataList[position].pd5.link)
             intent.putExtra("name_english", dataList[position].pd5.name_english)
+            intent.putExtra("product", dataList[position].pd5)
             getUserDataResponse(ctx)
         }
         holder.mainImage7.setOnClickListener {
@@ -145,6 +151,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd6.idx)
             intent.putExtra("url", dataList[position].pd6.link)
             intent.putExtra("name_english", dataList[position].pd6.name_english)
+            intent.putExtra("product", dataList[position].pd6)
             getUserDataResponse(ctx)
         }
         holder.mainImage8.setOnClickListener {
@@ -152,6 +159,7 @@ class SearchProductImageRecyclerViewAdapter(val ctx: Context, val dataList: Arra
             intent.putExtra("idx", dataList[position].pd7.idx)
             intent.putExtra("url",dataList[position].pd7.link)
             intent.putExtra("name_english",dataList[position].pd7.name_english)
+            intent.putExtra("product", dataList[position].pd7)
             getUserDataResponse(ctx)
         }
     }
