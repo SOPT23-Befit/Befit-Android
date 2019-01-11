@@ -66,7 +66,9 @@ class JjimBrandFragment : Fragment() {
     }
 
     private fun setRecyclerView() {
+
         jjimBrandRecyclerViewAdapter = JjimBrandRecyclerViewAdapter(activity!!, dataList, token)
+
         rv_frag_brand_list.adapter = jjimBrandRecyclerViewAdapter
         rv_frag_brand_list.layoutManager = LinearLayoutManager(activity)
     }
