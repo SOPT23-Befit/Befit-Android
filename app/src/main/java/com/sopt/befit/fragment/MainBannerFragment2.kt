@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.sopt.befit.R
 import com.sopt.befit.activity.ProductContentViewActivity
 import com.sopt.befit.data.UserTotalData
@@ -13,6 +14,7 @@ import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetUserDataResponse
 import com.sopt.befit.network.ApplicationController
 import com.sopt.befit.network.NetworkService
+import kotlinx.android.synthetic.main.fragment_main_banner1.*
 import kotlinx.android.synthetic.main.fragment_main_banner2.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -38,6 +40,8 @@ class MainBannerFragment2: Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        Glide.with(activity!!).load(resources.getDrawable(R.drawable.banner2)).into(iv_home_fragment_banner_2)
 
         getUserDataResponse()
 
