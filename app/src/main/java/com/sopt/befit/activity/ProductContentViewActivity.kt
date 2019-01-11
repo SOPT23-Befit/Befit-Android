@@ -29,10 +29,7 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-
-
-
+import java.io.BufferedReader
 
 
 class ProductContentViewActivity : BaseActivity() {
@@ -77,7 +74,7 @@ class ProductContentViewActivity : BaseActivity() {
         setContentView(R.layout.activity_product_content_view)
         handler = Handler()
         instance = this
-       var intent_url = intent!!.getStringExtra("url")
+        var intent_url = intent!!.getStringExtra("url")
         var url = "http://"+intent_url.toString()
 
 
@@ -120,12 +117,17 @@ class ProductContentViewActivity : BaseActivity() {
                 tv_anouncement3.visibility = View.GONE
                 if(url!!.contains("/member/join.html")){
                     webView!!.settings.domStorageEnabled = true
-                    webView!!.loadUrl("file:///android_asset/signup.js")
-                    Log.v("url contains", url)
-                    val mHandler = Handler()
-                    mHandler.postDelayed({webView!!.loadUrl("javascript:test()")}, 3000)
-//                    webView!!.loadUrl("javascript.test()")
+                    try {
+                        val inputStream = assets.open("postsignup.html")
+                        inputStream.bufferedReader().use(BufferedReader::readText)
+                        Log.v("url contains", url)
 
+                    }catch (e : Exception){
+                        null
+                    }?.let {
+                        Log.v("let_","aaaaa")
+                        webView!!.loadUrl("javascript:test()") }
+                    Log.v("let_","aaaaa")
                 }
             }
 

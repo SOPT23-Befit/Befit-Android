@@ -50,7 +50,7 @@
         android:id="@+id/lottie_loading_web_view"
         android:layout_width="240dp"
         android:layout_height="320dp"
-        app:lottie_rawRes="@raw/favourite_app_icon"
+        app:lottie_rawRes="@raw/data4"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
         />
