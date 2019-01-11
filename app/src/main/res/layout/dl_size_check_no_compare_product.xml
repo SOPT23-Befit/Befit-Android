@@ -3,8 +3,8 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
-    android:maxHeight="300dp"
+    android:layout_height="480dp"
+    android:maxHeight="400dp"
     android:maxWidth="200dp"
     android:orientation="vertical"
     android:layout_marginTop="60dp"
@@ -12,80 +12,84 @@
     android:layout_marginRight="25dp"
     android:layout_marginLeft="25dp"
     >
-
-    <ImageView
-        android:id="@+id/iv_size_check_no_compare__example_cloth"
-        android:layout_width="157dp"
-        android:layout_height="169dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-
-        android:layout_marginTop="63dp"
-        android:src="@drawable/plus_clothes" />
-    <TextView
-        android:id="@+id/tv_size_check_no_compare_text1"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/iv_size_check_no_compare__example_cloth"
-        android:layout_width="244dp"
-        android:layout_marginTop="31dp"
-        android:layout_height="wrap_content"
-        android:text="비교할 옷의 정보가 없습니다."
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textColor="#191919"
-        />
-    <TextView
-        android:id="@+id/tv_size_check_no_compare_text2"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_size_check_no_compare_text1"
-        android:layout_width="244dp"
-        android:layout_height="wrap_content"
-        android:text="새로운 옷의 정보를 추가하시겠습니까?"
-        android:textSize="15sp"
-        android:textColor="#191919"
-        />
-
-    <LinearLayout
-        android:layout_marginTop="70dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_size_check_no_compare_text2"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:id="@+id/btn_dl_size_check_add_cloth"
-        android:gravity="center"
-        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
         <ImageView
-            android:id="@+id/ib_size_check_no_compare_add_cloth"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_plus"
+            android:id="@+id/iv_size_check_no_compare__example_cloth"
+            android:layout_width="157dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginTop="63dp"
+            android:src="@drawable/plus_clothes" />
+        <TextView
+            android:id="@+id/tv_size_check_no_compare_text1"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/iv_size_check_no_compare__example_cloth"
+            android:layout_width="244dp"
+            android:layout_marginTop="31dp"
+            android:layout_height="wrap_content"
+            android:text="비교할 옷의 정보가 없습니다."
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#191919"
             />
         <TextView
-            android:layout_width="136dp"
-            android:layout_height="17dp"
-            android:layout_marginLeft="16dp"
-            android:text="옷 정보 추가 하기"
-            android:textSize="14sp"
+            android:id="@+id/tv_size_check_no_compare_text2"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_size_check_no_compare_text1"
+            android:layout_width="244dp"
+            android:layout_height="wrap_content"
+            android:text="새로운 옷의 정보를 추가하시겠습니까?"
+            android:textSize="15sp"
             android:textColor="#191919"
             />
 
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:background="#000000"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/dl_size_check_add_cloth_cancel"
-        >
-        <TextView
-            android:layout_width="32dp"
-            android:layout_height="17dp"
-            android:layout_centerInParent="true"
-            android:text="취소"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            />
+        <LinearLayout
+            android:layout_marginTop="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_size_check_no_compare_text2"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:id="@+id/btn_dl_size_check_add_cloth"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/ib_size_check_no_compare_add_cloth"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/ic_plus"
+                />
+            <TextView
+                android:layout_width="136dp"
+                android:layout_height="17dp"
+                android:layout_marginLeft="16dp"
+                android:text="옷 정보 추가 하기"
+                android:textSize="14sp"
+                android:textColor="#191919"
+                />
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="#000000"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/dl_size_check_add_cloth_cancel"
+            >
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="17dp"
+                android:layout_centerInParent="true"
+                android:text="취소"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                />
     </RelativeLayout>
+
+</RelativeLayout>
 </RelativeLayout>

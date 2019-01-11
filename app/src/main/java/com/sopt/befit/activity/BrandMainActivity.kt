@@ -334,6 +334,7 @@ class BrandMainActivity : BaseActivity() {
                             intent.putExtra("url", productData.link)
                             intent.putExtra("name_english", productData.name_english)
                             intent.putExtra("UserTotalData", temp)
+                            intent.putExtra("product", productData)
 
                             startActivity(intent)
                         }
