@@ -25,8 +25,9 @@ class MainBrandFragment2: Fragment(){
     var flag : Int = 1//0일때 브랜드 클릭시
     //1일때는 하위상품 클릭시
     //var token : String = SharedPreferenceController.getAuthorization(activity!!)
-    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+    //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
+    lateinit var token :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -42,6 +43,9 @@ class MainBrandFragment2: Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        token = SharedPreferenceController.getAuthorization(activity!!)
+
         Glide.with(activity!!).load(brandData.mainfeed_url).into(iv_main_brand_2)
         tv_main_brand_2.text=brandData.name_english
         Glide.with(activity!!).load(brandData.products[0].image_url).into(iv_main_brand_2_product_1)

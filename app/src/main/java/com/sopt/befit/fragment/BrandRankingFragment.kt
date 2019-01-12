@@ -12,6 +12,7 @@ import com.sopt.befit.adapter.BrandRankingRecyclerViewAdapter
 import com.sopt.befit.adapter.Utilities
 import com.sopt.befit.data.BrandRankingData
 import com.sopt.befit.data.UserTotalData
+import com.sopt.befit.db.SharedPreferenceController
 import com.sopt.befit.get.GetBrandRankingResponse
 import com.sopt.befit.get.GetInitialBrandResponse
 import com.sopt.befit.get.InitialBrand
@@ -23,6 +24,7 @@ import retrofit2.Callback
 
 class BrandRankingFragment :Fragment(){
     lateinit var brandRankingRecyclerViewAdapter: BrandRankingRecyclerViewAdapter
+    lateinit var token : String
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -30,7 +32,8 @@ class BrandRankingFragment :Fragment(){
     val dataList : ArrayList<BrandRankingData> by lazy {
         ArrayList<BrandRankingData>()
     }
-    val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+   // val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+
 
 
     lateinit var temp : UserTotalData
@@ -66,6 +69,7 @@ class BrandRankingFragment :Fragment(){
 
    private fun getBrandRankingResponse(){
 
+       token = SharedPreferenceController.getAuthorization(activity!!)
        //networkService = ApplicationController.instance!!.networkService
         val getBrandRankingResponse = networkService.getBrandRankingResponse(token)
         getBrandRankingResponse.enqueue(object : Callback<GetBrandRankingResponse> {

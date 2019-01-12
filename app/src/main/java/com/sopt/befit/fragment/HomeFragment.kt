@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_main_brand_1.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.layout_group.*
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
@@ -347,8 +348,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun getMyReccomendProduct() {
-        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
+        //val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKWUFNSSIsImlkeCI6MywiZXhwIjoxNTQ5MzcwMjAxfQ.10iSxgCGRU-d-DS9Tl_6-0DpKlf8SqKJZayLqNPYe80"
 
+        val token = SharedPreferenceController.getAuthorization(activity!!)
         val getMyRecommendProduct = networkService.getMyRecommendProduct(token)
         getMyRecommendProduct.enqueue(object : Callback<GetMyRecommendProduct> {
             override fun onFailure(call: Call<GetMyRecommendProduct>, t: Throwable) {
