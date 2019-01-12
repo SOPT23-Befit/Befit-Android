@@ -71,7 +71,7 @@ class MainBannerFragment2: Fragment(){
 
                             iv_home_fragment_banner_2.setOnClickListener(){
                                 startActivity<BrandMainActivity>(
-                                        "flag" to 1, "idx" to 24)
+                                        "flag" to 0, "idx" to 24)
                             }
 
                         }
