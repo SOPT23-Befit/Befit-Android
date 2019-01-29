@@ -18,13 +18,7 @@ object SharedPreferenceController {
     private val USER_PW: String = "user_pw"
     private val USER_TOKEN : String = "my_token"
 
-
-
-
     private var pref: SharedPreferences? = null
-
-
-
 
     fun setAuthorization(context: Context, authorization: String) {
         val pref = context.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
@@ -96,15 +90,16 @@ object SharedPreferenceController {
         editor.commit()
     }
 
+    fun getUserPW(ctx: Context): String {
+        val preferences: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
+        return preferences.getString(USER_PW, "")
+    }
+
     fun getUserID(ctx: Context): String {
         val preferences: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
         return preferences.getString(USER_ID, "")
     }
 
-    fun getUserPW(ctx: Context): String {
-        val preferences: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
-        return preferences.getString(USER_PW, "")
-    }
 
     fun getUserIDX(ctx: Context) : Int {
         val preferences : SharedPreferences = ctx.getSharedPreferences(USER_IDX, Context.MODE_PRIVATE)
@@ -116,6 +111,7 @@ object SharedPreferenceController {
         editor.putInt(USER_IDX, input_idx)
         editor.commit()
     }
+
     fun clearUserSharedPreferences(ctx: Context) {
         val preference: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context. MODE_PRIVATE )
         val editor: SharedPreferences.Editor = preference.edit()
